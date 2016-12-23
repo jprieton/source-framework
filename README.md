@@ -1,2 +1,2 @@
-# source-framework
-A WordPress microframework for themes and plugins
+# Source Framework
+An extensible framework for WordPress themes and plugins
