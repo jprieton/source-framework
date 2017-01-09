@@ -23,7 +23,6 @@ final class AdminInit extends \SourceFramework\Abstracts\Singleton {
    * Static instance of this class
    *
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    * @var           AdminInit
    */
   protected static $instance;

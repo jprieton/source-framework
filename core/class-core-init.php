@@ -23,7 +23,6 @@ final class CoreInit extends \SourceFramework\Abstracts\Singleton {
    * Static instance of this class
    *
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    * @var           CoreInit
    */
   protected static $instance;
@@ -32,7 +31,6 @@ final class CoreInit extends \SourceFramework\Abstracts\Singleton {
    * Load plugin texdomain
    *
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    */
   public function load_plugin_textdomain() {
     load_plugin_textdomain( 'source-framework', FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );

@@ -23,7 +23,6 @@ abstract class Singleton {
 
   /**
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    * @return  static
    */
   public static function &get_instance() {
@@ -35,7 +34,6 @@ abstract class Singleton {
 
   /**
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    */
   protected function __construct() {
 
@@ -43,7 +41,6 @@ abstract class Singleton {
 
   /**
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    */
   protected function __clone() {
 
@@ -51,7 +48,6 @@ abstract class Singleton {
 
   /**
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    */
   protected function __wakeup() {
 
@@ -59,7 +55,6 @@ abstract class Singleton {
 
   /**
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    */
   protected function __sleep() {
 

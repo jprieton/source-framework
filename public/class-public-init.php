@@ -23,7 +23,6 @@ final class PublicInit extends \SourceFramework\Abstracts\Singleton {
    * Static instance of this class
    *
    * @since         1.0.0
-   * @author        Javier Prieto <jprieton@gmail.com>
    * @var           PublicInit
    */
   protected static $instance;

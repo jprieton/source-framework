@@ -22,7 +22,6 @@ class Activator {
    * The code that runs during plugin activation.
    *
    * @since 1.0.0
-   * @author         Javier Prieto <jprieton@gmail.com>
    */
   public static function activate() {
 
@@ -32,7 +31,6 @@ class Activator {
    * The code that runs during plugin deactivation.
    *
    * @since 1.0.0
-   * @author         Javier Prieto <jprieton@gmail.com>
    */
   public static function deactivate() {
 
