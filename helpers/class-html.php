@@ -7,7 +7,7 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-namespace SourceFramework\Core\Helpers;
+namespace SourceFramework\Helpers;
 
 /**
  * Html class
