@@ -40,9 +40,10 @@ define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 
 /**
- * Load core dependencies
+ * Load dependencies
  */
 include_once __DIR__ . '/core/init.php';
+include_once __DIR__ . '/helpers/init.php';
 
 if ( is_admin() ) {
   /**
