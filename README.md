@@ -1,2 +1,9 @@
-# Source Framework
-An extensible framework for WordPress themes and plugins
+What is Source Framework
+===========
+
+Source Framework is an toolkit for WordPress that extends the core funcionality for quick develop themes and plugins
+
+Bug tracker
+-----------
+
+Have a bug? Please create an issue on GitHub at https://github.com/jprieton/source-framework/issues
