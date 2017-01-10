@@ -7,7 +7,7 @@
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3
  * License URI:    http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:    addthis-feeds
+ * Text Domain:    source-framework
  * Domain Path:    /languages
  *
  * Source Framework is free software: you can redistribute it and/or modify

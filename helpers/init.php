@@ -7,10 +7,27 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+/**
+ * Load a helper
+ *
+ * @since 1.0.0
+ *
+ * @param   string   $helper    Helper name
+ *
+ * @return  mixed
+ */
 function load_helper( $helper = '' ) {
-  $filename  = "class-{$helper}.php";
-  $classname = ucwords( $helper );
-  if ( file_exists( $filename ) && !class_exists( "\SourceFramework\Core\Helpers\{$classname}" ) ) {
-    include_once $filename;
+  $paths = array(
+      SourceFramework\ABSPATH . 'helpers',
+  );
+
+  foreach ( $paths as $path ) {
+    if ( file_exists( $filename = "{$path}/{$helper}.php" ) ) {
+      include_once $filename;
+    }
+
+    if ( file_exists( $filename = "{$path}/class-{$helper}.php" ) ) {
+      include_once $filename;
+    }
   }
 }
