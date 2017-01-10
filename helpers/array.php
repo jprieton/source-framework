@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @return  mixed
  */
 function array_get( $array, $key, $default = null ) {
-  if ( is_array( $array ) && array_key_exists( $key, $array ) ) {
+  if ( is_array( $array ) && isset( $array[$key] ) ) {
     $value = $array[$key];
   } else {
     $value = $default;
@@ -40,7 +40,7 @@ function array_get( $array, $key, $default = null ) {
  * @return  mixed
  */
 function array_get_not_empty( $array, $key, $default = null ) {
-  if ( is_array( $array ) && array_key_exists( $key, $array ) && !empty( $array[$key] ) ) {
+  if ( is_array( $array ) && !empty( $array[$key] ) ) {
     $value = $array[$key];
   } else {
     $value = $default;
@@ -61,7 +61,7 @@ function array_get_not_empty( $array, $key, $default = null ) {
  * @return  mixed
  */
 function array_get_remove( &$array, $key, $default = null ) {
-  if ( is_array( $array ) && array_key_exists( $key, $array ) ) {
+  if ( is_array( $array ) && isset( $array[$key] ) ) {
     $value = $array[$key];
     unset( $array[$key] );
   } else {
