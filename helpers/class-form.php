@@ -16,7 +16,7 @@ use SourceFramework\Helpers\Html;
  *
  * Based on Laravel Forms & HTML helper and CodeIgniter form helper
  *
- * @package Core
+ * @package Helper
  *
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html

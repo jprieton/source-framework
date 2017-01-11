@@ -14,7 +14,7 @@ namespace SourceFramework\Helpers;
  *
  * Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
- * @package Core
+ * @package Helper
  *
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
