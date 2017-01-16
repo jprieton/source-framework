@@ -1,13 +1,13 @@
 <?php
 
+namespace SourceFramework\Helpers;
+
 /**
  * If this file is called directly, abort.
  */
 if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
-
-namespace SourceFramework\Helpers;
 
 /**
  * Color class
@@ -276,7 +276,7 @@ class Color {
 
       return $rgb;
     }
-      return '';
+    return '';
   }
 
   /**

@@ -1,0 +1,376 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Source Framework\n"
+"POT-Creation-Date: 2017-01-11 13:49-0400\n"
+"PO-Revision-Date: 2017-01-11 13:50-0400\n"
+"Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#~ msgid "SMG WordPress Development Tools"
+#~ msgstr "SMG Herramientas de desarrollo de WordPress"
+
+#~ msgid "Import/Export settings via a json file."
+#~ msgstr "Importar/exportar configuraciones a través de un archivo json."
+
+#~ msgid "Another site created by Screen Media Group"
+#~ msgstr "Otro sitio creado por Screen Media Group"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanzado"
+
+#~ msgid "Cleanup"
+#~ msgstr "Limpieza"
+
+#~ msgid "Erase content"
+#~ msgstr "Borrar contenido"
+
+#~ msgid "Development"
+#~ msgstr "Desarrollo"
+
+#~ msgid "Posts"
+#~ msgstr "Entradas"
+
+#~ msgid "Post Type Enabled"
+#~ msgstr "Post types habilitados"
+
+#~ msgid "Carousel"
+#~ msgstr "Carrusel"
+
+#~ msgid "Service"
+#~ msgstr "Servicio"
+
+#~ msgid "Portfolio"
+#~ msgstr "Portafolio"
+
+#~ msgid "Product"
+#~ msgstr "Producto"
+
+#~ msgid "Security"
+#~ msgstr "Seguridad"
+
+#~ msgid "Header"
+#~ msgstr "Cabecera"
+
+#~ msgid "Remove WordPress version number"
+#~ msgstr "Remover la versión de WordPress"
+
+#~ msgid ""
+#~ "Remove WordPress version number from header, feed, styles and scripts."
+#~ msgstr ""
+#~ "Elimina el número de versión de WordPress de la cabecera, feed, estilos y "
+#~ "scripts."
+
+#~ msgid "Cache"
+#~ msgstr "Caché"
+
+#~ msgid "Others"
+#~ msgstr "Otros"
+
+#~ msgid "Enable CDN"
+#~ msgstr "Habilitar CDN"
+
+#~ msgid "Enable use of CDN in local registered scripts and styles."
+#~ msgstr "Habilita el uso de CDN para scripts y estilos registrados."
+
+#~ msgid "Forms"
+#~ msgstr "Formularios"
+
+#~ msgid "Addresses"
+#~ msgstr "Direcciones"
+
+#~ msgid "General Settings"
+#~ msgstr "Ajustes generales"
+
+#~ msgid "Export posts"
+#~ msgstr "Exportar entradas"
+
+#~ msgid "Maximum size: %s"
+#~ msgstr "Tamaño máximo: %s"
+
+#~ msgid "Delimiter"
+#~ msgstr "Delimitador"
+
+#~ msgid "Upload file and import"
+#~ msgstr "Subir archivo e importar"
+
+#~ msgid "The file does not exist, please try again."
+#~ msgstr "El fichero no existe, por favor, inténtelo de nuevo."
+
+#~ msgid "Error on read file, please try again."
+#~ msgstr "Error en archivo de lectura, por favor, inténtelo de nuevo."
+
+#~ msgid "The CSV is invalid."
+#~ msgstr "El CSV no es válido."
+
+#~ msgid "<span id=\"import_counter\">%d/0</span> Products to import"
+#~ msgstr "<span id=\"import_counter\">%d/0</span> Productos a importar"
+
+#~ msgid "Importing..."
+#~ msgstr "Importando..."
+
+#~ msgid "Product #%d OK."
+#~ msgstr "Producto #%d OK."
+
+#~ msgid "All done!"
+#~ msgstr "¡Hecho!"
+
+#~ msgid "Sorry, there has been an error."
+#~ msgstr "Lo sentimos, ha habido un error."
+
+#~ msgid "Analytics &amp; SEO"
+#~ msgstr "Analítica y SEO"
+
+#~ msgid "Site Verification Code"
+#~ msgstr "Código de Verificación"
+
+#~ msgctxt "settings"
+#~ msgid "verification-code"
+#~ msgstr "código-de-verificación"
+
+#~ msgid "Social Networks"
+#~ msgstr "Redes Sociales"
+
+#~ msgid "Links"
+#~ msgstr "Enlaces"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid "Invalid email"
+#~ msgstr "Email inválido"
+
+#~ msgid "Your user is blocked"
+#~ msgstr "Tu usuario está bloqueada"
+
+#~ msgid "Action disabled"
+#~ msgstr "Acción deshabilitada"
+
+#~ msgid "Empty password"
+#~ msgstr "Contraseña vacía"
+
+#~ msgid "Password does not match with the confirm password."
+#~ msgstr "Contraseña no coincide con la contraseña de confirmación."
+
+#~ msgid "Submit"
+#~ msgstr "Enviar"
+
+#~ msgid "Select an option..."
+#~ msgstr "Selecciona una opción…"
+
+#~ msgid "Image can't be downloaded"
+#~ msgstr "La Imagen no puede ser descargada."
+
+#~ msgid "Web Contact"
+#~ msgstr "Contacto web"
+
+#~ msgid "Web Contact %s"
+#~ msgstr "Contacto web %s"
+
+#~ msgid "You are not authorized to perform this action."
+#~ msgstr "No estás autorizado para realizar esta acción."
+
+#~ msgid "You must logged in to perform this action."
+#~ msgstr "Debes iniciar sesión para realizar esta acción."
+
+#~ msgid "The data that you entered is invalid."
+#~ msgstr "Los datos que ha ingresado son inválidos."
+
+#~ msgid "Success!"
+#~ msgstr "¡Éxito!"
+
+#~ msgid "Fail!"
+#~ msgstr "¡Falló!"
+
+#~ msgid "Error!"
+#~ msgstr "¡Error!"
+
+#~ msgid "Send"
+#~ msgstr "Enviar"
+
+#~ msgid "Sending..."
+#~ msgstr "Enviando..."
+
+#~ msgid "Sent!"
+#~ msgstr "¡Enviado!"
+
+#~ msgid "All Portfolio"
+#~ msgstr "Todo el Portafolio"
+
+#~ msgid "Add New Portfolio"
+#~ msgstr "Añadir nuevo portfolio"
+
+#~ msgid "New Portfolio"
+#~ msgstr "Nuevo portafolio"
+
+#~ msgid "Edit Portfolio"
+#~ msgstr "Editar portafolio"
+
+#~ msgid "Update Portfolio"
+#~ msgstr "Actualizar portafolio"
+
+#~ msgid "View Portfolio"
+#~ msgstr "Ver portafolio"
+
+#~ msgid "Search portfolio"
+#~ msgstr "Buscar portafolio"
+
+#~ msgid "No portfolio found"
+#~ msgstr "Ningún portafolio encontrado."
+
+#~ msgid "No portfolio found in Trash"
+#~ msgstr "Ningún portafolio encontrado en la papelera."
+
+#~ msgctxt "post_type slug"
+#~ msgid "portfolio"
+#~ msgstr "portafolio"
+
+#~ msgctxt "post_type archive_slug"
+#~ msgid "portfolio"
+#~ msgstr "portafolio"
+
+#~ msgid "Products"
+#~ msgstr "Productos"
+
+#~ msgid "All Products"
+#~ msgstr "Todos los productos"
+
+#~ msgid "Add New Product"
+#~ msgstr "Añadir nuevo producto"
+
+#~ msgid "New Product"
+#~ msgstr "Nuevo producto"
+
+#~ msgid "Edit Product"
+#~ msgstr "Editar producto"
+
+#~ msgid "Update Product"
+#~ msgstr "Actualizar producto"
+
+#~ msgid "View Product"
+#~ msgstr "Ver producto"
+
+#~ msgid "Search products"
+#~ msgstr "Buscar productos"
+
+#~ msgid "No products found"
+#~ msgstr "No se han encontrado productos"
+
+#~ msgid "No products found in Trash"
+#~ msgstr "Ningún producto encontrado en la papelera."
+
+#~ msgctxt "post_type slug"
+#~ msgid "product"
+#~ msgstr "producto"
+
+#~ msgctxt "post_type archive_slug"
+#~ msgid "product"
+#~ msgstr "producto"
+
+#~ msgid "Services"
+#~ msgstr "Servicios"
+
+#~ msgid "All Services"
+#~ msgstr "Todos los servicios"
+
+#~ msgid "Add New Service"
+#~ msgstr "Añadir nuevo servicio"
+
+#~ msgid "New Service"
+#~ msgstr "Nuevo servicio"
+
+#~ msgid "Edit Service"
+#~ msgstr "Editar servicio"
+
+#~ msgid "Update Service"
+#~ msgstr "Actualizar servicio"
+
+#~ msgid "View Service"
+#~ msgstr "Ver servicio"
+
+#~ msgid "Search services"
+#~ msgstr "Buscar servicios"
+
+#~ msgid "No services found"
+#~ msgstr "No se han encontrado servicios"
+
+#~ msgid "No services found in Trash"
+#~ msgstr "Ningún servicio encontrado en la papelera."
+
+#~ msgctxt "post_type slug"
+#~ msgid "service"
+#~ msgstr "servicio"
+
+#~ msgctxt "post_type archive_slug"
+#~ msgid "service"
+#~ msgstr "servicio"
+
+#~ msgid "Slide"
+#~ msgstr "Diapositiva"
+
+#~ msgid "All Slides"
+#~ msgstr "Todas las diapositivas"
+
+#~ msgid "Add New Slide"
+#~ msgstr "Añadir nueva diapositiva"
+
+#~ msgid "New Slide"
+#~ msgstr "Nueva diapositiva"
+
+#~ msgid "Edit Slide"
+#~ msgstr "Editar diapositiva"
+
+#~ msgid "View Slide"
+#~ msgstr "Ver diapositiva"
+
+#~ msgctxt "post_type slug"
+#~ msgid "carousel"
+#~ msgstr "carrusel"
+
+#~ msgid "Categories"
+#~ msgstr "Categorías"
+
+#~ msgid "Not Found"
+#~ msgstr "No encontrado"
+
+#~ msgid "Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgctxt "form-field"
+#~ msgid "Browse..."
+#~ msgstr "Examinar..."
+
+#~ msgid "No file selected."
+#~ msgstr "Ningún archivo seleccionado."
+
+#~ msgid "Close"
+#~ msgstr "Cerrar"
+
+#~ msgid "Page not found"
+#~ msgstr "Página no encontrada"
+
+#~ msgid "Author: %s"
+#~ msgstr "Autor: %s"
+
+#~ msgid "Page %d"
+#~ msgstr "Página %d"
+
+#~ msgid "Search results for &ldquo;%s&rdquo;"
+#~ msgstr "Resultados de búsqueda para &ldquo;%s&rdquo;"
+
+#~ msgid "Image not available"
+#~ msgstr "Imagen no disponible"
+
+#~ msgid "Enable use of CDN in local registered scripts/styles."
+#~ msgstr "Habilita el uso de CDN para scripts y estilos registrados."

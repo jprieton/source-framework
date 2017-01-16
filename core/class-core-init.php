@@ -1,13 +1,13 @@
 <?php
 
+namespace SourceFramework\Core;
+
 /**
  * If this file is called directly, abort.
  */
 if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
-
-namespace SourceFramework\Core;
 
 /**
  * CoreInit class
