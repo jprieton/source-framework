@@ -10,20 +10,20 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * PublicInit class
+ * Public_Init class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class PublicInit {
+final class Public_Init {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           PublicInit
+   * @var           Public_Init
    */
   protected static $instance;
 

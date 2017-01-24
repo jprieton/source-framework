@@ -10,11 +10,11 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Html builder class
+ * Html Builder class
  *
- * Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
+ * Singleton class Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
- * @package Helper
+ * @package Builder
  *
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
@@ -22,7 +22,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Html {
+class Html_Builder {
 
   /**
    * Static instance of this class
@@ -42,26 +42,40 @@ class Html {
     return static::$instance;
   }
 
+  /**
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
+   *
+   * @since 1.0.0
+   */
   protected function __construct() {
-    /**
-     * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-     */
+
   }
 
+  /**
+   * Declared as private to prevent cloning of an instance of the class via the clone operator.
+   *
+   * @since 1.0.0
+   */
   private function __clone() {
-    /**
-     * Declared as private to prevent cloning of an instance of the class via the clone operator.
-     */
+
   }
 
+  /**
+   * Declared as private to prevent unserializing of an instance of the class via the global function unserialize() .
+   *
+   * @since 1.0.0
+   */
   private function __wakeup() {
-    /**
-     * declared as private to prevent unserializing of an instance of the class via the global function unserialize() .
-     */
+
   }
 
+  /**
+   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
+   *
+   * @since 1.0.0
+   */
   protected function __sleep() {
-    // Avoid Serializg of Object
+
   }
 
   /**

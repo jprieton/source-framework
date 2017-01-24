@@ -10,12 +10,11 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Load dependencies
  */
-require_once SourceFramework\ABSPATH . '/includes/abstracts/abstract-singleton.php';
 require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
 
 add_action( 'plugins_loaded', function() {
 
-  $init = \SourceFramework\Core\CoreInit::get_instance();
+  $init = \SourceFramework\Core\Core_Init::get_instance();
 
   /**
    * Load plugin texdomain

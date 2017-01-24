@@ -12,11 +12,11 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 require_once SourceFramework\ABSPATH . '/admin/class-admin-init.php';
 
-use SourceFramework\Core\AdminInit;
+use SourceFramework\Core\Admin_Init;
 
 add_action( 'admin_enqueue_scripts', function() {
 
-  $init = AdminInit::get_instance();
+  $init = Admin_Init::get_instance();
 
   /**
    * Register and enqueue plugin scripts

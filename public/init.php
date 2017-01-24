@@ -10,13 +10,13 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Load dependencies
  */
-require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/Public/class-public-init.php';
 
-use SourceFramework\Core\PublicInit;
+use SourceFramework\Core\Public_Init;
 
 add_action( 'admin_enqueue_scripts', function() {
 
-  $init = PublicInit::get_instance();
+  $init = Public_Init::get_instance();
 
   /**
    * Register and enqueue plugin scripts

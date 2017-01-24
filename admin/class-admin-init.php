@@ -10,14 +10,14 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * AdminInit class
+ * Admin_Init class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class AdminInit {
+final class Admin_Init {
 
   /**
    * Static instance of this class
@@ -39,37 +39,39 @@ final class AdminInit {
   }
 
   /**
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
+   *
    * @since         1.0.0
    */
   protected function __construct() {
-    /**
-     * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-     */
+
   }
 
   /**
+   * Declared as private to prevent cloning of an instance of the class via the clone operator.
+   *
    * @since         1.0.0
    */
   private function __clone() {
-    /**
-     * Declared as private to prevent cloning of an instance of the class via the clone operator.
-     */
+
   }
 
   /**
+   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
+   *
    * @since         1.0.0
    */
   private function __wakeup() {
-    /**
-     * declared as private to prevent unserializing of an instance of the class via the global function unserialize() .
-     */
+
   }
 
   /**
-   * @since   1.0.0
+   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
+   *
+   * @since         1.0.0
    */
   protected function __sleep() {
-    // Avoid Serializg of Object
+
   }
 
   /**

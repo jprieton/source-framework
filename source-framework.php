@@ -44,6 +44,7 @@ define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
  */
 include_once __DIR__ . '/core/init.php';
 include_once __DIR__ . '/helpers/init.php';
+include_once __DIR__ . '/Builders/Init.php';
 
 if ( is_admin() ) {
   /**
