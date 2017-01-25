@@ -14,7 +14,7 @@ require_once SourceFramework\ABSPATH . '/Public/class-public-init.php';
 
 use SourceFramework\Core\Public_Init;
 
-add_action( 'admin_enqueue_scripts', function() {
+add_action( 'wp_enqueue_scripts', function() {
 
   $init = Public_Init::get_instance();
 

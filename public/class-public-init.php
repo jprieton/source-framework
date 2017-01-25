@@ -80,7 +80,7 @@ final class Public_Init {
   public function enqueue_scripts() {
     $scripts = array(
         'source-framework' => array(
-            'local'     => \SourceFramework\ABSPATH . 'assets/js/public.min.js',
+            'local'     => plugins_url( 'assets/js/public.min.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => array( 'jquery' ),
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
@@ -105,7 +105,7 @@ final class Public_Init {
         'autoload'  => false
     );
 
-    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
+    $use_cdn = (bool) get_option( 'cdn-enabled', false );
 
     foreach ( $scripts as $handle => $script ) {
       $script = wp_parse_args( $script, $defaults );
@@ -154,7 +154,7 @@ final class Public_Init {
      */
     $styles = array(
         'source-framework' => array(
-            'local'    => \SourceFramework\ABSPATH . 'assets/css/public.css',
+            'local'    => plugins_url( 'assets/js/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'autoload' => true
         ),
@@ -177,7 +177,7 @@ final class Public_Init {
         'autoload' => false
     );
 
-    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
+    $use_cdn = (bool) get_option( 'cdn-enabled', false );
 
     foreach ( $styles as $handle => $style ) {
       $style = wp_parse_args( $style, $defaults );

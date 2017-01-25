@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function load_builder( $builder = '' ) {
   $paths = array(
-      SourceFramework\ABSPATH . 'builders',
+      SourceFramework\ABSPATH . '/builders',
   );
 
   $builder = str_replace( '_', '-', strtolower( $builder ) );
@@ -30,7 +30,7 @@ function load_builder( $builder = '' ) {
       include_once $filename;
     }
 
-    if ( file_exists( $filename = "{$path}/class-{$builder}-builder.php" ) ) {
+    if ( file_exists( $filename = "{$path}/class-{$builder}.php" ) ) {
       include_once $filename;
     }
   }

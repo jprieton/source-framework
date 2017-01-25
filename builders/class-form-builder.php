@@ -129,7 +129,7 @@ class Form_Builder {
     );
     $attributes = wp_parse_args( $attributes, $defaults );
 
-    $html = HtmlBuilder::get_instance();
+    $html = Html_Builder::get_instance();
     return $html->tag( 'input', null, $attributes );
   }
 
@@ -233,6 +233,24 @@ class Form_Builder {
    */
   public function file( $name, $attributes = array() ) {
     return $this->input( 'file', $name, null, $attributes );
+  }
+
+  /**
+   *
+   * @param string $label
+   * @param string $type
+   * @param type $attributes
+   * @return string
+   */
+  public function button( $label, $type = 'button', $attributes = array() ) {
+    $defaults   = array(
+        'type' => $type,
+    );
+    $attributes = wp_parse_args( $attributes, $defaults );
+
+    $html = Html_Builder::get_instance();
+
+    return $html->tag( 'button', $label, $attributes );
   }
 
 }

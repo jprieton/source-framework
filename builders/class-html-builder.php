@@ -100,8 +100,8 @@ class Html_Builder {
    */
   public function tag( $tag, $content = '', $attributes = array() ) {
     $tag        = esc_attr( $tag );
-    $attributes = $this->attributes( $attributes );
     $this->shorthand( $tag, $attributes );
+    $attributes = $this->attributes( $attributes );
 
     if ( in_array( $tag, $this->void ) ) {
       $html_tag = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
