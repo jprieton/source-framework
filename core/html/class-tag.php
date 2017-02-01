@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Builders;
+namespace SourceFramework\Html;
 
 /**
  * If this file is called directly, abort.
@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Html Builder class
+ * Tag class
  *
  * Singleton class Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
@@ -22,61 +22,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Html_Builder {
-
-  /**
-   * Static instance of this class
-   *
-   * @since         1.0.0
-   * @var           Html
-   */
-  protected static $instance;
-
-  /**
-   * @return  static
-   */
-  public static function &get_instance() {
-    if ( !isset( static::$instance ) ) {
-      static::$instance = new static;
-    }
-    return static::$instance;
-  }
-
-  /**
-   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-   *
-   * @since 1.0.0
-   */
-  protected function __construct() {
-
-  }
-
-  /**
-   * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   *
-   * @since 1.0.0
-   */
-  private function __clone() {
-
-  }
-
-  /**
-   * Declared as private to prevent unserializing of an instance of the class via the global function unserialize() .
-   *
-   * @since 1.0.0
-   */
-  private function __wakeup() {
-
-  }
-
-  /**
-   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
-   *
-   * @since 1.0.0
-   */
-  protected function __sleep() {
-
-  }
+class Tag {
 
   /**
    * @see http://w3c.github.io/html/syntax.html#void-elements
@@ -90,6 +36,35 @@ class Html_Builder {
   );
 
   /**
+   * Retrieve a HTML open tag
+   *
+   * @since   1.0.0
+   *
+   * @param   string              $tag
+   * @param   array|string        $attributes
+   * @return  string
+   */
+  public function open( $tag, $attributes = array() ) {
+    $tag        = esc_attr( $tag );
+    $attributes = self::attributes( $attributes );
+    self::emmet( $tag, $attributes );
+
+    return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
+  }
+
+  /**
+   * Retrieve a HTML close tag
+   *
+   * @since   1.0.0
+   *
+   * @param   string              $tag
+   * @return  string
+   */
+  public function close( $tag ) {
+    return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
+  }
+
+  /**
    * Retrieve a HTML complete tag
    *
    * @since   1.0.0
@@ -99,22 +74,22 @@ class Html_Builder {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function tag( $tag, $content = '', $attributes = array() ) {
+  public function html( $tag, $content = '', $attributes = array() ) {
     $tag        = esc_attr( $tag );
-    $this->shorthand( $tag, $attributes );
-    $attributes = $this->attributes( $attributes );
+    $this->parse_shorthand( $tag, $attributes );
+    $attributes = $this->parse_attributes( $attributes );
 
     if ( in_array( $tag, $this->void ) ) {
-      $html_tag = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
+      $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
     } else {
-      $html_tag = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
+      $html = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
     }
 
-    return $html_tag;
+    return $html;
   }
 
   /**
-   * Convert an array to HTML attributes
+   * Convert an asociative array to HTML attributes
    *
    * @since   1.0.0
    *
@@ -122,7 +97,7 @@ class Html_Builder {
    * @return  string
    *
    */
-  public function attributes( $attributes = array() ) {
+  public function parse_attributes( $attributes = array() ) {
     $attributes = wp_parse_args( $attributes );
 
     if ( count( $attributes ) == 0 ) {
@@ -157,8 +132,7 @@ class Html_Builder {
   }
 
   /**
-   * Parse a emmet snippet for single element (beta).
-   * Current only support class and id attributes.
+   * Parse a shorthand for single element (beta).
    *
    * @since   1.0.0
    *
@@ -166,7 +140,7 @@ class Html_Builder {
    * @param   array               $attributes
    * @return  array
    */
-  public function shorthand( &$tag, &$attributes = array() ) {
+  public function parse_shorthand( &$tag, &$attributes = array() ) {
     $matches = array();
     preg_match( '(#|\.)', $tag, $matches );
 

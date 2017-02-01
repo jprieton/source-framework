@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:    Source Framework
- * Description:    An extensible framework for WordPress themes and plugins
+ * Description:    An extensible framework for WordPress themes based on Bootstrap v3.x
  * Version:        1.0.0-dev
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3

@@ -10,7 +10,21 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Load dependencies
  */
+
+// Core
 require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
+
+// Html
+require_once SourceFramework\ABSPATH . '/core/html/class-tag.php';
+
+// Forms
+require_once SourceFramework\ABSPATH . '/core/forms/class-form.php';
+require_once SourceFramework\ABSPATH . '/core/forms/class-element.php';
+require_once SourceFramework\ABSPATH . '/core/forms/elements/class-email.php';
+require_once SourceFramework\ABSPATH . '/core/forms/elements/class-hidden.php';
+require_once SourceFramework\ABSPATH . '/core/forms/elements/class-text.php';
+require_once SourceFramework\ABSPATH . '/core/forms/elements/class-textarea.php';
+require_once SourceFramework\ABSPATH . '/core/forms/elements/class-password.php';
 
 add_action( 'plugins_loaded', function() {
 

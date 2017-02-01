@@ -96,7 +96,7 @@ final class Admin_Init {
      * @since   0.5.0
      * @param   array   $scripts
      */
-    $scripts = apply_filters( 'source_framework_asmin_register_scripts', $scripts );
+    $scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
 
     $defaults = array(
         'local'     => '',
@@ -107,7 +107,7 @@ final class Admin_Init {
         'autoload'  => false
     );
 
-    $use_cdn = $this->setting_group->get_bool_option( 'enable-cdn' );
+    $use_cdn = get_option( 'enable-cdn' );
 
     foreach ( $scripts as $handle => $script ) {
       $script = wp_parse_args( $script, $defaults );
@@ -141,7 +141,70 @@ final class Admin_Init {
      */
     $localize_script = apply_filters( 'source_framework_localize_scripts', array() );
 
-    wp_localize_script( 'source-framework-admin', 'SMGDevTools', $localize_script );
+    wp_localize_script( 'source-framework-admin', 'SourceFrameworkLocale', $localize_script );
+  }
+
+  /**
+   * Register & enqueue plugin styles
+   *
+   * @since 1.0.0
+   */
+  public function enqueue_styles() {
+    /**
+     * Plugin styles
+     *
+     * @since 1.0.0
+     */
+    $styles = array(
+        'source-framework' => array(
+            'local'    => plugins_url( 'assets/css/admin.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'      => \SourceFramework\VERSION,
+            'autoload' => true
+        ),
+    );
+
+    /**
+     * Filter styles
+     *
+     * @since   1.0.0
+     * @param   array   $styles
+     */
+    $styles = apply_filters( 'source_framework_admin_register_styles', $styles );
+
+    $defaults = array(
+        'local'    => '',
+        'remote'   => '',
+        'deps'     => array(),
+        'ver'      => null,
+        'media'    => 'all',
+        'autoload' => false
+    );
+
+    $use_cdn = (bool) get_option( 'cdn-enabled', false );
+
+    foreach ( $styles as $handle => $style ) {
+      $style = wp_parse_args( $style, $defaults );
+
+      if ( ($use_cdn && !empty( $style['remote'] )) || empty( $style['local'] ) ) {
+        $src = $style['remote'];
+      } elseif ( (!$use_cdn && !empty( $style['local'] )) || empty( $style['remote'] ) ) {
+        $src = $style['local'];
+      } else {
+        continue;
+      }
+
+      $deps  = $style['deps'];
+      $ver   = $style['ver'];
+      $media = $style['media'];
+
+      /* Register styles */
+      wp_register_style( $handle, $src, (array) $deps, $ver, $media );
+
+      if ( $style['autoload'] ) {
+        /* Enqueue styles if autolad in enabled */
+        wp_enqueue_style( $handle );
+      }
+    }
   }
 
 }

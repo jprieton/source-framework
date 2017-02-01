@@ -80,7 +80,7 @@ final class Public_Init {
   public function enqueue_scripts() {
     $scripts = array(
         'source-framework' => array(
-            'local'     => plugins_url( 'assets/js/public.min.js', \SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => array( 'jquery' ),
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
@@ -154,7 +154,7 @@ final class Public_Init {
      */
     $styles = array(
         'source-framework' => array(
-            'local'    => plugins_url( 'assets/js/public.css', \SourceFramework\PLUGIN_FILE ),
+            'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'autoload' => true
         ),
