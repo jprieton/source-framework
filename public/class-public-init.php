@@ -158,6 +158,18 @@ final class Public_Init {
             'ver'      => \SourceFramework\VERSION,
             'autoload' => true
         ),
+        'animate'          => array(
+            'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
+            'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+            'ver'    => '3.5.2',
+            'media'  => 'screen',
+        ),
+        'hover'            => array(
+            'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
+            'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
+            'ver'    => '2.1.0',
+            'media'  => 'screen',
+        ),
     );
 
     /**
