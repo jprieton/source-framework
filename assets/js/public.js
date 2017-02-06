@@ -5,6 +5,7 @@
 
   /**
    * Get Default submit button text
+   * @since 1.0.0
    */
   $('.ajax-form').find('button[type=submit]').each(function () {
     var text = $(this).attr('data-default') ? $(this).attr('data-default') : $(this).html();
@@ -14,6 +15,7 @@
 
   /**
    * Default ajaxForm elements focus behavior
+   * @since 1.0.0
    */
   $('.ajax-form').each(function () {
     var form = $(this);
@@ -25,6 +27,7 @@
 
   /**
    * Default ajaxForm behavior
+   * @since 1.0.0
    */
   $('.ajax-form').ajaxForm({
     url: SourceFrameworkLocale.ajaxUrl,
@@ -42,9 +45,10 @@
         var textSuccess = button.attr('data-success') ? button.attr('data-success') : SourceFrameworkLocale.messages.success;
         button.text(textSuccess);
         form.find('.ajax-cleanable').find('select,textarea,input[type=text],input[type=email]').val('');
-        form.find('.ajax-cleanable').find('input[type=checkbox]').prop('checked', false);
+        form.find('.ajax-cleanable').find('input[type=checkbox],input[type=radio]').prop('checked', false);
         /**
          * Trigger on success
+         * @since 1.0.0
          */
         form.trigger('ajaxFormSuccess', [response, form]);
       } else {
@@ -52,6 +56,7 @@
         button.text(textError);
         /**
          * Trigger on error
+         * @since 1.0.0
          */
         form.trigger('ajaxFormError', [response, form]);
       }
