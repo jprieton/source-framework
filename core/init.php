@@ -36,3 +36,24 @@ add_action( 'plugins_loaded', function() {
    */
   $init->load_plugin_textdomain();
 } );
+
+add_filter( 'source_framework_localize_scripts', function() {
+  /**
+   * Localize script
+   *
+   * @since 1.0.0
+   */
+  $localize_script = array(
+      'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
+      'messages' => array(
+          'success' => __( 'Success!', 'source-framework' ),
+          'fail'    => __( 'Fail!', 'source-framework' ),
+          'error'   => __( 'Error!', 'source-framework' ),
+          'send'    => __( 'Send', 'source-framework' ),
+          'submit'  => __( 'Submit', 'source-framework' ),
+          'sending' => __( 'Sending...', 'source-framework' ),
+          'sent'    => __( 'Sent!', 'source-framework' ),
+      )
+  );
+  return $localize_script;
+}, 0 );
