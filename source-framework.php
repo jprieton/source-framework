@@ -38,6 +38,7 @@ define( 'SourceFramework\ABSPATH', dirname( __FILE__ ) );
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
+define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
 
 /**
  * Load dependencies

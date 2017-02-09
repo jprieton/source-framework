@@ -7,9 +7,8 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-/**
- * Load dependencies
- */
+// Includes
+require_once SourceFramework\ABSPATH . '/includes/option.php';
 
 // Core
 require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
@@ -29,30 +28,31 @@ require_once SourceFramework\ABSPATH . '/core/forms/elements/class-password.php'
 add_action( 'plugins_loaded', function() {
 
   $init = \SourceFramework\Core\Core_Init::get_instance();
+} );
 
+add_action( 'init', function() {
   /**
    * Load plugin texdomain
    * @since 1.0.0
    */
-  $init->load_plugin_textdomain();
+  load_plugin_textdomain( SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
 } );
 
 add_filter( 'source_framework_localize_scripts', function() {
   /**
    * Localize script
-   *
    * @since 1.0.0
    */
   $localize_script = array(
       'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
       'messages' => array(
-          'success' => __( 'Success!', 'source-framework' ),
-          'fail'    => __( 'Fail!', 'source-framework' ),
-          'error'   => __( 'Error!', 'source-framework' ),
-          'send'    => __( 'Send', 'source-framework' ),
-          'submit'  => __( 'Submit', 'source-framework' ),
-          'sending' => __( 'Sending...', 'source-framework' ),
-          'sent'    => __( 'Sent!', 'source-framework' ),
+          'success' => __( 'Success!', SourceFramework\TEXDOMAIN ),
+          'fail'    => __( 'Fail!', SourceFramework\TEXDOMAIN ),
+          'error'   => __( 'Error!', SourceFramework\TEXDOMAIN ),
+          'send'    => __( 'Send', SourceFramework\TEXDOMAIN ),
+          'submit'  => __( 'Submit', SourceFramework\TEXDOMAIN ),
+          'sending' => __( 'Sending...', SourceFramework\TEXDOMAIN ),
+          'sent'    => __( 'Sent!', SourceFramework\TEXDOMAIN ),
       )
   );
   return $localize_script;

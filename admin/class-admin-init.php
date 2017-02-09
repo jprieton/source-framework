@@ -93,7 +93,7 @@ final class Admin_Init {
     /**
      * Filter plugin admin scripts
      *
-     * @since   0.5.0
+     * @since   1.0.0
      * @param   array   $scripts
      */
     $scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
@@ -107,7 +107,7 @@ final class Admin_Init {
         'autoload'  => false
     );
 
-    $use_cdn = get_option( 'enable-cdn' );
+    $use_cdn = get_bool_option( 'enable-cdn' );
 
     foreach ( $scripts as $handle => $script ) {
       $script = wp_parse_args( $script, $defaults );
@@ -180,7 +180,7 @@ final class Admin_Init {
         'autoload' => false
     );
 
-    $use_cdn = (bool) get_option( 'cdn-enabled', false );
+    $use_cdn = get_bool_option( 'enable-cdn' );
 
     foreach ( $styles as $handle => $style ) {
       $style = wp_parse_args( $style, $defaults );

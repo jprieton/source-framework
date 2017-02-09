@@ -19,6 +19,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
  * @see     http://www.yiiframework.com/doc-2.0/yii-helpers-basehtml.html
+ * @see     https://docs.phalconphp.com/en/latest/reference/tags.html#tag-service
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
@@ -36,6 +37,25 @@ class Tag {
   );
 
   /**
+   * Static instance of this class
+   *
+   * @since         1.0.0
+   * @var           Public_Init
+   */
+  protected static $instance;
+
+  /**
+   * @since         1.0.0
+   * @return  static
+   */
+  public static function &get_instance() {
+    if ( !isset( static::$instance ) ) {
+      static::$instance = new static;
+    }
+    return static::$instance;
+  }
+
+  /**
    * Retrieve a HTML open tag
    *
    * @since   1.0.0
@@ -46,8 +66,8 @@ class Tag {
    */
   public function open( $tag, $attributes = array() ) {
     $tag        = esc_attr( $tag );
-    $attributes = self::attributes( $attributes );
-    self::emmet( $tag, $attributes );
+    $this->parse_shorthand( $tag, $attributes );
+    $attributes = $this->parse_attributes( $attributes );
 
     return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
   }
@@ -171,6 +191,42 @@ class Tag {
     if ( $class && empty( $attributes['class'] ) ) {
       $attributes['class'] = $class;
     }
+  }
+
+  /**
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
+   *
+   * @since         1.0.0
+   */
+  protected function __construct() {
+
+  }
+
+  /**
+   * Declared as private to prevent cloning of an instance of the class via the clone operator.
+   *
+   * @since         1.0.0
+   */
+  private function __clone() {
+
+  }
+
+  /**
+   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
+   *
+   * @since         1.0.0
+   */
+  private function __wakeup() {
+
+  }
+
+  /**
+   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
+   *
+   * @since         1.0.0
+   */
+  protected function __sleep() {
+
   }
 
 }

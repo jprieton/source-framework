@@ -74,13 +74,4 @@ final class Core_Init {
 
   }
 
-  /**
-   * Load plugin texdomain
-   *
-   * @since         1.0.0
-   */
-  public function load_plugin_textdomain() {
-    load_plugin_textdomain( 'source-framework', FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
-  }
-
 }

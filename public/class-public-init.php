@@ -79,9 +79,15 @@ final class Public_Init {
    */
   public function enqueue_scripts() {
     $scripts = array(
+        'modernizr'        => array(
+            'local'    => SMGDEVTOOLS_URL . 'assets/js/modernizr.min.js',
+            'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
+            'ver'      => '2.8.3',
+            'autoload' => false
+        ),
         'source-framework' => array(
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
-            'deps'      => array( 'jquery' ),
+            'deps'      => array( 'jquery', 'jquery-form' ),
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true
@@ -105,7 +111,7 @@ final class Public_Init {
         'autoload'  => false
     );
 
-    $use_cdn = (bool) get_option( 'cdn-enabled', false );
+    $use_cdn = get_bool_option( 'cdn-enabled', false );
 
     foreach ( $scripts as $handle => $script ) {
       $script = wp_parse_args( $script, $defaults );
@@ -153,6 +159,14 @@ final class Public_Init {
      * @since 1.0.0
      */
     $styles = array(
+        'fontawesome'      => array(
+            'remote' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+            'ver'    => '4.7.0',
+        ),
+        'ionicons'         => array(
+            'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
+            'ver'    => '2.0.1',
+        ),
         'source-framework' => array(
             'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
@@ -189,7 +203,7 @@ final class Public_Init {
         'autoload' => false
     );
 
-    $use_cdn = (bool) get_option( 'cdn-enabled', false );
+    $use_cdn = get_bool_option( 'cdn-enabled', false );
 
     foreach ( $styles as $handle => $style ) {
       $style = wp_parse_args( $style, $defaults );
