@@ -52,16 +52,15 @@ class Form {
    * @since 1.0.0
    */
   public function add( $element, $wrapper = '' ) {
-    $tag               = new Tag();
+    $tag = Tag::get_instance();
     $this->_elements[] = empty( $wrapper ) ? $element : $tag->html( $wrapper, $element );
   }
 
   /**
    * @since 1.0.0
    */
-  public function render( $echo = true ) {
-    $tag = new Tag();
-
+  public function render( $echo = false ) {
+    $tag = Tag::get_instance();
     $this->_render = $tag->open( 'form', $tag->parse_attributes( $this->_attributes ) );
 
     foreach ( $this->_elements as $element ) {

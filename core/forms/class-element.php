@@ -54,7 +54,7 @@ class Element {
 
     $this->_attributes = $attributes;
 
-    $tag            = new Tag();
+    $tag            = Tag::get_instance();
     $this->_element = $tag->html( 'input', null, $attributes );
   }
 
@@ -84,7 +84,7 @@ class Element {
 
     $this->_attributes = $attributes;
 
-    $tag            = new Tag();
+    $tag            = Tag::get_instance();
     $this->_element = $tag->html( 'textarea', esc_textarea( $text ), $attributes );
   }
 
@@ -103,7 +103,8 @@ class Element {
     );
 
     $attributes   = wp_parse_args( $attributes, $defaults );
-    $tag          = new Tag();
+
+    $tag            = Tag::get_instance();
     $this->_label = $tag->html( 'label', $label, $attributes );
   }
 
