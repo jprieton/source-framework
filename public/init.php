@@ -10,9 +10,10 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Load dependencies
  */
-require_once SourceFramework\ABSPATH . '/Public/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
 
 use SourceFramework\Core\Public_Init;
+use SourceFramework\Core\User;
 
 add_action( 'wp_enqueue_scripts', function() {
 
@@ -29,4 +30,28 @@ add_action( 'wp_enqueue_scripts', function() {
    * @since 1.0.0
    */
   $init->enqueue_styles();
+} );
+
+add_action( 'wp_ajax_nopriv_user_create_profile', function() {
+  require_once SourceFramework\ABSPATH . '/includes/class-user.php';
+
+  $user = new User();
+
+  /**
+   * Creates an user profile
+   * @since 1.0.0
+   */
+  $user->ajax_create_profile();
+} );
+
+add_action( 'wp_ajax_user_update_profile', function() {
+  require_once SourceFramework\ABSPATH . '/includes/class-user.php';
+
+  $user = new User();
+
+  /**
+   * Updates an user profile
+   * @since 1.0.0
+   */
+  $user->ajax_update_profile();
 } );
