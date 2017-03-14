@@ -7,15 +7,11 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-/**
- * Load dependencies
- */
-require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
-
 use SourceFramework\Core\Public_Init;
 use SourceFramework\Core\User;
 
 add_action( 'wp_enqueue_scripts', function() {
+  require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
 
   $init = Public_Init::get_instance();
 
