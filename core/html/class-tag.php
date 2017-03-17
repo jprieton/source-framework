@@ -194,6 +194,33 @@ class Tag {
   }
 
   /**
+   * Generate a HTML link to an email address.
+   *
+   * @since   1.0.0
+   *
+   * @param   string              $email
+   * @param   string              $text
+   * @param   array|string        $attributes
+   * @return  string
+   */
+  public function mailto( $email, $text = null, $attributes = array() ) {
+    if ( empty( $email ) || !is_email( $email ) ) {
+      return '';
+    }
+
+    $email = obfuscate_email( $email );
+    $text  = $text ?: $email;
+    $email = obfuscate( 'mailto:' ) . $email;
+
+    $defaults   = array(
+        'href' => $email
+    );
+    $attributes = wp_parse_args( $attributes, $defaults );
+
+    return $this->html( 'a', $text, $attributes );
+  }
+
+  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0

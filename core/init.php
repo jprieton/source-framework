@@ -9,6 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 // Includes
 require_once SourceFramework\ABSPATH . '/includes/option.php';
+require_once SourceFramework\ABSPATH . '/includes/format.php';
 
 // Core
 require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
