@@ -10,9 +10,9 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Core\Public_Init;
 use SourceFramework\Core\User;
 
-add_action( 'wp_enqueue_scripts', function() {
-  require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
 
+add_action( 'wp_enqueue_scripts', function() {
   $init = Public_Init::get_instance();
 
   /**
@@ -26,6 +26,26 @@ add_action( 'wp_enqueue_scripts', function() {
    * @since 1.0.0
    */
   $init->enqueue_styles();
+} );
+
+add_action( 'wp_head', function () {
+  $init = Public_Init::get_instance();
+
+  /**
+   * Shows a custom code in header of the singular template
+   * @since 1.0.0
+   */
+  $init->singular_custom_code_header_script();
+} );
+
+add_action( 'wp_footer', function () {
+  $init = Public_Init::get_instance();
+
+  /**
+   * Shows a custom code in footer of the singular template
+   * @since 1.0.0
+   */
+  $init->singular_custom_code_footer_script();
 } );
 
 add_action( 'wp_ajax_nopriv_user_create_profile', function() {

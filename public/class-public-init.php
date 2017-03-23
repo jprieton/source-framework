@@ -9,6 +9,8 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use WP_Post;
+
 /**
  * Public_Init class
  *
@@ -227,6 +229,52 @@ final class Public_Init {
         /* Enqueue styles if autolad in enabled */
         wp_enqueue_style( $handle );
       }
+    }
+  }
+
+  /**
+   * Shows a custom code in header of the singular template
+   *
+   * @since 1.0.0
+   *
+   * @global WP_Post $post
+   */
+  public function singular_custom_code_header_script() {
+    wp_reset_postdata();
+
+    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code')) {
+      return;
+    }
+
+    global $post;
+
+    $header_script = get_post_meta( $post->ID, '_header_custom_code', true );
+
+    if ( !empty( $header_script ) ) {
+      echo (string) $header_script;
+    }
+  }
+
+  /**
+   * Shows a custom code in footer of the singular template
+   *
+   * @since 1.0.0
+   *
+   * @global WP_Post $post
+   */
+  public function singular_custom_code_footer_script() {
+    wp_reset_postdata();
+
+    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code')) {
+      return;
+    }
+
+    global $post;
+
+    $footet_script = get_post_meta( $post->ID, '_footer_custom_code', true );
+
+    if ( !empty( $footet_script ) ) {
+      echo (string) $footet_script;
     }
   }
 
