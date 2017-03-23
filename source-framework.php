@@ -49,12 +49,12 @@ include_once __DIR__ . '/Builders/Init.php';
 
 if ( is_admin() ) {
   /**
-   * Load admin dependencies
+   * Init admin
    */
   include_once __DIR__ . '/admin/init.php';
 } else {
   /**
-   * Load public dependencies
+   * Init public
    */
   include_once __DIR__ . '/public/init.php';
 }
