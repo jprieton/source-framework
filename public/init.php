@@ -11,6 +11,7 @@ use SourceFramework\Core\Public_Init;
 use SourceFramework\Core\User;
 
 require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/bootstrap/init.php';
 
 add_action( 'wp_enqueue_scripts', function() {
   $init = Public_Init::get_instance();
