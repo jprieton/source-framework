@@ -21,11 +21,11 @@ require_once SourceFramework\ABSPATH . '/bootstrap/general-template.php';
  *
  * @since 1.0.0
  */
-add_filter( 'source_framework_enqueue_scripts', [ Bootstrap_Init::get_instance(), 'enqueue_scripts' ] );
+add_filter( 'source_framework_public_enqueue_scripts', [ Bootstrap_Init::get_instance(), 'enqueue_scripts' ] );
 
 /**
  * Add Bootstrap styles
  *
  * @since 1.0.0
  */
-add_filter( 'source_framework_enqueue_styles', [ Bootstrap_Init::get_instance(), 'enqueue_styles' ] );
+add_filter( 'source_framework_public_enqueue_styles', [ Bootstrap_Init::get_instance(), 'enqueue_styles' ] );

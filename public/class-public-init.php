@@ -103,8 +103,8 @@ final class Public_Init {
      * @since   0.5.0
      * @param   array   $scripts
      */
-    $scripts = apply_filters( 'source_framework_enqueue_scripts', $scripts );
-    _enqueue_scripts( $scripts );
+    $scripts = apply_filters( 'source_framework_public_enqueue_scripts', $scripts );
+    do_action( 'source_framework_enqueue_scripts', $scripts );
   }
 
   /**
@@ -152,8 +152,8 @@ final class Public_Init {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $styles = apply_filters( 'source_framework_enqueue_styles', $styles );
-    _enqueue_styles( $styles );
+    $styles = apply_filters( 'source_framework_public_enqueue_styles', $styles );
+    do_action( 'source_framework_enqueue_styles', $styles );
   }
 
   /**

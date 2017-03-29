@@ -97,7 +97,7 @@ final class Admin_Init {
      * @param   array   $scripts
      */
     $scripts = apply_filters( 'source_framework_admin_enqueue_scripts', $scripts );
-    _enqueue_scripts( $scripts );
+    do_action( 'source_framework_enqueue_scripts', $scripts );
   }
 
   /**
@@ -126,7 +126,7 @@ final class Admin_Init {
      * @param   array   $styles
      */
     $styles = apply_filters( 'source_framework_admin_enqueue_styles', $styles );
-    _enqueue_styles( $styles );
+    do_action( 'source_framework_enqueue_styles', $styles );
   }
 
 }
