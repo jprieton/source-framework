@@ -12,25 +12,25 @@ use SourceFramework\Helpers\Html;
  * @param   array         $args
  * @return  string
  */
-function bootstrap_paginate_links( $args = array() ) {
-  $defaults = array(
+function bootstrap_paginate_links( $args = [] ) {
+  $defaults = [
       'type' => 'list',
-  );
+  ];
   $args     = wp_parse_args( $args, $defaults );
 
   $paginate   = paginate_links( $args );
-  $search     = array(
+  $search     = [
       "<ul class='page-numbers'>",
       "<li><span class='page-numbers current'>"
-  );
-  $replace    = array(
+  ];
+  $replace    = [
       "<ul class='page-numbers pagination'>",
       "<li class='active'><span class='page-numbers current'>"
-  );
+  ];
   $paginate   = str_replace( $search, $replace, $paginate );
-  $pagination = Html::tag( 'nav', $paginate, array(
+  $pagination = Html::tag( 'nav', $paginate, [
               'itemscope',
-              'itemtype' => 'http://schema.org/SiteNavigationElement' ) );
+              'itemtype' => 'http://schema.org/SiteNavigationElement' ] );
 
-  return $paginate;
+  return $pagination;
 }

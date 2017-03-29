@@ -80,15 +80,15 @@ final class Admin_Init {
    * @since   1.0.0
    */
   public function enqueue_scripts() {
-    $scripts = array(
-        'source-framework-admin' => array(
+    $scripts = [
+        'source-framework-admin' => [
             'local'     => \SourceFramework\ABSPATH . 'assets/js/admin.js',
             'deps'      => array( 'jquery' ),
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true
-        ),
-    );
+        ],
+    ];
 
     /**
      * Filter plugin admin scripts
@@ -96,16 +96,16 @@ final class Admin_Init {
      * @since   1.0.0
      * @param   array   $scripts
      */
-    $scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
+    $scripts = apply_filters( 'source_framework_admin_enqueue_scripts', $scripts );
 
-    $defaults = array(
+    $defaults = [
         'local'     => '',
         'remote'    => '',
-        'deps'      => array(),
+        'deps'      => [],
         'ver'       => null,
         'in_footer' => false,
         'autoload'  => false
-    );
+    ];
 
     $use_cdn = get_bool_option( 'enable-cdn' );
 
@@ -139,7 +139,7 @@ final class Admin_Init {
      * @since   1.0.0
      * @param   array   $localize_script
      */
-    $localize_script = apply_filters( 'source_framework_localize_scripts', array() );
+    $localize_script = apply_filters( 'source_framework_localize_scripts', [] );
 
     wp_localize_script( 'source-framework-admin', 'SourceFrameworkLocale', $localize_script );
   }
@@ -155,13 +155,13 @@ final class Admin_Init {
      *
      * @since 1.0.0
      */
-    $styles = array(
-        'source-framework' => array(
+    $styles = [
+        'source-framework' => [
             'local'    => plugins_url( 'assets/css/admin.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'autoload' => true
-        ),
-    );
+        ],
+    ];
 
     /**
      * Filter styles
@@ -169,16 +169,16 @@ final class Admin_Init {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $styles = apply_filters( 'source_framework_admin_register_styles', $styles );
+    $styles = apply_filters( 'source_framework_admin_enqueue_styles', $styles );
 
-    $defaults = array(
+    $defaults = [
         'local'    => '',
         'remote'   => '',
-        'deps'     => array(),
+        'deps'     => [],
         'ver'      => null,
         'media'    => 'all',
         'autoload' => false
-    );
+    ];
 
     $use_cdn = get_bool_option( 'enable-cdn' );
 

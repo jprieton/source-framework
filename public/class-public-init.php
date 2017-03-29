@@ -80,21 +80,21 @@ final class Public_Init {
    * @since 0.5.0
    */
   public function enqueue_scripts() {
-    $scripts = array(
-        'modernizr'        => array(
+    $scripts = [
+        'modernizr'        => [
             'local'    => SMGDEVTOOLS_URL . 'assets/js/modernizr.min.js',
             'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
             'ver'      => '2.8.3',
             'autoload' => false
-        ),
-        'source-framework' => array(
+        ],
+        'source-framework' => [
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
-            'deps'      => array( 'jquery', 'jquery-form' ),
+            'deps'      => [ 'jquery', 'jquery-form' ],
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
-            'autoload'  => true
-        ),
-    );
+            'autoload'  => true,
+        ],
+    ];
 
     /**
      * Filter plugin scripts
@@ -102,16 +102,16 @@ final class Public_Init {
      * @since   0.5.0
      * @param   array   $scripts
      */
-    $scripts = apply_filters( 'source_framework_register_scripts', $scripts );
+    $scripts = apply_filters( 'source_framework_enqueue_scripts', $scripts );
 
-    $defaults = array(
+    $defaults = [
         'local'     => '',
         'remote'    => '',
-        'deps'      => array(),
+        'deps'      => [],
         'ver'       => null,
         'in_footer' => false,
         'autoload'  => false
-    );
+    ];
 
     $use_cdn = get_bool_option( 'cdn-enabled', false );
 
@@ -145,7 +145,7 @@ final class Public_Init {
      * @since   0.5.0
      * @param   array   $localize_script
      */
-    $localize_script = apply_filters( 'source_framework_localize_scripts', array() );
+    $localize_script = apply_filters( 'source_framework_localize_scripts', [] );
     wp_localize_script( 'source-framework', 'SourceFrameworkLocale', $localize_script );
   }
 
@@ -160,33 +160,33 @@ final class Public_Init {
      *
      * @since 1.0.0
      */
-    $styles = array(
-        'fontawesome'      => array(
+    $styles = [
+        'fontawesome'      => [
             'remote' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
             'ver'    => '4.7.0',
-        ),
-        'ionicons'         => array(
+        ],
+        'ionicons'         => [
             'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
             'ver'    => '2.0.1',
-        ),
-        'source-framework' => array(
+        ],
+        'source-framework' => [
             'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'autoload' => true
-        ),
-        'animate'          => array(
+        ],
+        'animate'          => [
             'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
             'ver'    => '3.5.2',
             'media'  => 'screen',
-        ),
-        'hover'            => array(
+        ],
+        'hover'            => [
             'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
             'ver'    => '2.1.0',
             'media'  => 'screen',
-        ),
-    );
+        ],
+    ];
 
     /**
      * Filter styles
@@ -194,12 +194,12 @@ final class Public_Init {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $styles = apply_filters( 'source_framework_register_styles', $styles );
+    $styles = apply_filters( 'source_framework_enqueue_styles', $styles );
 
     $defaults = array(
         'local'    => '',
         'remote'   => '',
-        'deps'     => array(),
+        'deps'     => [],
         'ver'      => null,
         'media'    => 'all',
         'autoload' => false
@@ -240,9 +240,7 @@ final class Public_Init {
    * @global WP_Post $post
    */
   public function singular_custom_code_header_script() {
-    wp_reset_postdata();
-
-    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code')) {
+    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code' ) ) {
       return;
     }
 
@@ -263,9 +261,7 @@ final class Public_Init {
    * @global WP_Post $post
    */
   public function singular_custom_code_footer_script() {
-    wp_reset_postdata();
-
-    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code')) {
+    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code' ) ) {
       return;
     }
 

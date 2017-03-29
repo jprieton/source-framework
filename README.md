@@ -1,7 +1,7 @@
 What is Source Framework
 ===========
 
-Source Framework is an toolkit for WordPress that extends the core funcionality for quick develop themes
+Source Framework is an toolkit for WordPress that extends the core funcionality for quick develop themes/plugins
 
 Bug tracker
 -----------

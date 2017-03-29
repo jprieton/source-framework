@@ -74,4 +74,41 @@ final class Bootstrap_Init {
 
   }
 
+  /**
+   * Register & enqueue plugin scripts
+   *
+   * @since         1.0.0
+   */
+  public function enqueue_scripts( $scripts ) {
+    $scripts['bootstrap'] = [
+        'local'     => plugins_url( 'assets/js/bootstrap.min.js', \SourceFramework\PLUGIN_FILE ),
+        'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+        'deps'      => [ 'jquery' ],
+        'ver'       => '3.3.7',
+        'in_footer' => true,
+        'autoload'  => true,
+    ];
+    return $scripts;
+  }
+
+  /**
+   * Register & enqueue plugin styles
+   *
+   * @since         1.0.0
+   */
+  public function enqueue_styles( $styles ) {
+    $styles['bootstrap']      = [
+        'remote'   => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+        'ver'      => '3.3.7',
+        'autoload' => true,
+    ];
+    $styles['bootstrap-flex'] = [
+        'local'    => plugins_url( 'assets/css/bootstrap-flex.css', \SourceFramework\PLUGIN_FILE ),
+        'deps'     => [ 'bootstrap' ],
+        'ver'      => \SourceFramework\VERSION,
+        'autoload' => true,
+    ];
+    return $styles;
+  }
+
 }
