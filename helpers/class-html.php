@@ -12,13 +12,14 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Html class
  *
- * Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
+ * Singleton class Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
- * @package Helper
+ * @package Builder
  *
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
  * @see     http://www.yiiframework.com/doc-2.0/yii-helpers-basehtml.html
+ * @see     https://docs.phalconphp.com/en/latest/reference/tags.html#tag-service
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
@@ -28,11 +29,41 @@ class Html {
    * @see http://w3c.github.io/html/syntax.html#void-elements
    *
    * @var array List of void elements.
+   * @since   1.0.0
    */
   public static $void = array(
       'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
       'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'
   );
+
+  /**
+   * Retrieve a HTML open tag
+   *
+   * @since   1.0.0
+   *
+   * @param   string              $tag
+   * @param   array|string        $attributes
+   * @return  string
+   */
+  public static function open( $tag, $attributes = array() ) {
+    $tag        = esc_attr( $tag );
+    self::parse_shorthand( $tag, $attributes );
+    $attributes = self::parse_attributes( $attributes );
+
+    return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
+  }
+
+  /**
+   * Retrieve a HTML close tag
+   *
+   * @since   1.0.0
+   *
+   * @param   string              $tag
+   * @return  string
+   */
+  public static function close( $tag ) {
+    return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
+  }
 
   /**
    * Retrieve a HTML complete tag
@@ -45,21 +76,45 @@ class Html {
    * @return  string
    */
   public static function tag( $tag, $content = '', $attributes = array() ) {
-    $tag        = esc_attr( $tag );
-    $attributes = self::attributes( $attributes );
-    self::emmet( $tag, $attributes );
+    $tag  = esc_attr( $tag );
+    $void = ( isset( $attributes['void'] ) && $attributes['void'] );
+    unset( $attributes['void'] );
 
-    if ( in_array( $tag, self::$void ) ) {
-      $html_tag = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
+    self::parse_shorthand( $tag, $attributes );
+    $attributes = self::parse_attributes( $attributes );
+
+    if ( in_array( $tag, self::$void ) || $void ) {
+      $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
     } else {
-      $html_tag = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
+      $html = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
     }
 
-    return $html_tag;
+    return $html;
   }
 
   /**
-   * Convert an array to HTML attributes
+   * Retrieve an HTML img element
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $src
+   * @param   string|array        $attributes
+   *
+   * @see     http://png-pixel.com/
+   *
+   * @return  string
+   */
+  public static function img( $src, $attributes = array() ) {
+    if ( 'pixel' == $src ) {
+      $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+    }
+    $attributes = wp_parse_args( $attributes, compact( 'src' ) );
+
+    return self::tag( 'img', $attributes );
+  }
+
+  /**
+   * Convert an asociative array of HTML attributes
    *
    * @since   1.0.0
    *
@@ -67,7 +122,7 @@ class Html {
    * @return  string
    *
    */
-  public static function attributes( $attributes = array() ) {
+  public static function parse_attributes( $attributes = array() ) {
     $attributes = wp_parse_args( $attributes );
 
     if ( count( $attributes ) == 0 ) {
@@ -102,8 +157,7 @@ class Html {
   }
 
   /**
-   * Parse a emmet snippet for single element (beta).
-   * Current only support class and id attributes.
+   * Parse a shorthand for single element (beta).
    *
    * @since   1.0.0
    *
@@ -111,7 +165,7 @@ class Html {
    * @param   array               $attributes
    * @return  array
    */
-  public static function emmet( &$tag, &$attributes = array() ) {
+  public static function parse_shorthand( &$tag, &$attributes = array() ) {
     $matches = array();
     preg_match( '(#|\.)', $tag, $matches );
 
@@ -145,164 +199,30 @@ class Html {
   }
 
   /**
-   * Retrieve a HTML open tag
+   * Generate a HTML link to an email address.
    *
    * @since   1.0.0
    *
-   * @param   string              $tag
-   * @param   array|string        $attributes
-   * @return  string
-   */
-  public static function open_tag( $tag, $attributes = array() ) {
-    $tag        = esc_attr( $tag );
-    $attributes = self::attributes( $attributes );
-    self::emmet( $tag, $attributes );
-
-    return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
-  }
-
-  /**
-   * Retrieve a HTML close tag
-   *
-   * @since   1.0.0
-   *
-   * @param   string              $tag
-   * @return  string
-   */
-  public static function close_tag( $tag ) {
-    return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
-  }
-
-  /**
-   * Retrieve a HTML close tag
-   *
-   * @since   1.0.0
-   *
-   * @param   string              $tag
-   * @return  string
-   */
-  public static function void_tag( $tag, $attributes = array() ) {
-    $tag        = trim( esc_attr( $tag ) );
-    $attributes = self::attributes( $attributes );
-    self::emmet( $tag, $attributes );
-
-    return sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
-  }
-
-  /**
-   * Retrieve a HTML link
-   *
-   * @since   1.0.0
-   *
+   * @param   string              $email
    * @param   string              $text
-   * @param   string              $href
    * @param   array|string        $attributes
    * @return  string
    */
-  public static function a( $text, $href = '#', $attributes = array() ) {
-    $attributes          = self::attributes( $attributes );
-    $attributes ['href'] = $href;
+  public static function mailto( $email, $text = null, $attributes = array() ) {
+    if ( empty( $email ) || !is_email( $email ) ) {
+      return '';
+    }
 
-    return self::tag( 'a', $text, $attributes );
-  }
+    $email = obfuscate_email( $email );
+    $text  = $text ?: $email;
+    $email = obfuscate( 'mailto:' ) . $email;
 
-  /**
-   * Retrieve an HTML style element. Is recommended enqueue the script using <i>wp_register_script</i> and/or
-   * <i>wp_enqueue_script</i> because it is the method recommended by WordPress Guidelines.
-   *
-   * @since   1.0.0
-   * @see     https://developer.wordpress.org/themes/basics/including-css-javascript/
-   *
-   * @param   string              $href
-   * @param   string|array        $attributes
-   *
-   * @return  string
-   */
-  public static function link( $href, $attributes = array() ) {
     $defaults   = array(
-        'href'  => $href,
-        'rel'   => 'stylesheet',
-        'type'  => 'text/css',
-        'media' => 'all',
+        'href' => $email
     );
     $attributes = wp_parse_args( $attributes, $defaults );
 
-    return self::void_tag( 'link', $attributes );
-  }
-
-  /**
-   * Retrieve an HTML img element
-   *
-   * @since 1.0.0
-   *
-   * @param   string              $src
-   * @param   string|array        $attributes
-   *
-   * @see     http://png-pixel.com/
-   *
-   * @return  string
-   */
-  public static function img( $src, $attributes = array() ) {
-    if ( 'pixel' == $src ) {
-      $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
-    }
-    $attributes = wp_parse_args( $attributes, compact( 'src' ) );
-
-    return self::void_tag( 'img', $attributes );
-  }
-
-  /**
-   * Generate an un-ordered list of items.
-   *
-   * @since   1.0.0
-   *
-   * @param   array               $items
-   * @param   array|string        $attributes
-   *
-   * @return  string
-   */
-  public static function ul( $items, $attributes = array() ) {
-    $html = '';
-
-    if ( !is_array( $items ) || count( $items ) == 0 ) {
-      return $html;
-    }
-
-    foreach ( $items as $key => $value ) {
-      if ( is_array( $value ) ) {
-        $value = $key . self::ul( $value );
-      }
-      $html .= self::tag( 'li', $value );
-    }
-
-    return self::tag( 'ul', $html, $attributes );
-  }
-
-  /**
-   * Generate an ordered list of items.
-   *
-   * @since   1.0.0
-   *
-   * @param   array               $items
-   * @param   array|string        $attributes
-   *
-   * @return  string
-   */
-  public static function ol( $items, $attributes = array() ) {
-    $html = '';
-
-    if ( count( $items ) == 0 ) {
-      return $html;
-    }
-
-    foreach ( $items as $key => $value ) {
-      if ( is_array( $value ) ) {
-        $value = $key . self::ol( $value );
-      }
-      $html .= self::tag( 'li', $value );
-    }
-
-    return self::tag( 'ol', $html, $attributes );
+    return self::tag( 'a', $text, $attributes );
   }
 
 }

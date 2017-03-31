@@ -18,8 +18,10 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function load_helper( $helper = '' ) {
   $paths = array(
-      SourceFramework\ABSPATH . 'helpers',
+      SourceFramework\ABSPATH . '/helpers',
   );
+
+  $helper = strtolower( $helper );
 
   foreach ( $paths as $path ) {
     if ( file_exists( $filename = "{$path}/{$helper}.php" ) ) {
