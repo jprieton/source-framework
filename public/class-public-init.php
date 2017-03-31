@@ -164,7 +164,7 @@ final class Public_Init {
    * @global WP_Post $post
    */
   public function singular_custom_code_header_script() {
-    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code' ) ) {
+    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
@@ -185,16 +185,37 @@ final class Public_Init {
    * @global WP_Post $post
    */
   public function singular_custom_code_footer_script() {
-    if ( !is_singular() || !get_bool_option( 'enabled_singular_custom_code' ) ) {
+    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
     global $post;
 
-    $footet_script = get_post_meta( $post->ID, '_footer_custom_code', true );
+    $footer_script = get_post_meta( $post->ID, '_footer_custom_code', true );
 
-    if ( !empty( $footet_script ) ) {
-      echo (string) $footet_script;
+    if ( !empty( $footer_script ) ) {
+      echo (string) $footer_script;
+    }
+  }
+
+  /**
+   * Shows a custom code in top of body of the singular template
+   *
+   * @since 1.0.0
+   *
+   * @global WP_Post $post
+   */
+  public function singular_custom_code_body_script() {
+    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
+      return;
+    }
+
+    global $post;
+
+    $body_script = get_post_meta( $post->ID, '_body_custom_code', true );
+
+    if ( !empty( $body_script ) ) {
+      echo (string) $body_script;
     }
   }
 

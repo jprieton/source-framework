@@ -27,8 +27,8 @@ class User {
    */
   public function ajax_create_profile() {
     // Check if is enabled
-    $enable_user_create_profile = get_bool_option( 'enable_user_create_profile' );
-    if ( !$enable_user_create_profile ) {
+    $users_can_register = get_bool_option( 'users_can_create_profile' );
+    if ( !$users_can_register ) {
       wp_send_json_error( new WP_Error( 'user_create_profile_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
     }
 
@@ -104,8 +104,8 @@ class User {
    */
   public function ajax_update_profile() {
     // Check if is enabled
-    $enable_user_update_profile = get_bool_option( 'enable_user_update_profile' );
-    if ( $enable_user_update_profile ) {
+    $users_can_update = get_bool_option( 'users_can_update_profile' );
+    if ( $users_can_update ) {
       wp_send_json_error( new WP_Error( 'user_update_profile_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
     }
 
