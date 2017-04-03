@@ -1,0 +1,84 @@
+@import "lesshat.less";
+@import "variables.less";
+
+.grid(@col) {
+  .col0(@index:1) {
+    @item : ~".col-@{col}-@{index}";
+    .col0((@index + 1), @item);
+  }
+  .col0(@index,@list) when (@index =< 12) {
+    @item : ~".col-@{col}-@{index}";
+    .col0((@index + 1), ~"@{list}, @{item}");
+  }
+  .col0(@index,@list) when (@index > 12) {
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      padding-left:  15px;
+      padding-right: 15px;
+    }
+  }
+  .col1(@counter:1) when (@counter < 13) {
+    .col-@{col}-@{counter} {
+      width:((100% / 12) * @counter);
+    }
+    .col1((@counter + 1));
+  }
+  .col2(@counter:1) when (@counter < 13) {
+    .col-@{col}-pull-@{counter} {
+      right:((100% / 12) * @counter);
+    }
+    .col2((@counter + 1));
+  }
+  .col3(@counter:1) when (@counter < 13) {
+    .col-@{col}-push-@{counter} {
+      left:((100% / 12) * @counter);
+    }
+    .col3((@counter + 1));
+  }
+  .col4(@counter:1) when (@counter < 13) {
+    .col-@{col}-offset-@{counter} {
+      margin-left:((100% / 12) * @counter);
+    }
+    .col4((@counter + 1));
+  }
+  .col-display() {
+    .visible-@{col} {
+      display: block !important;
+    }
+    table.visible-@{col} {
+      display: table !important;
+    }
+    tr.visible-@{col} {
+      display: table-row !important;
+    }
+    th.visible-@{col},
+    td.visible-@{col} {
+      display: table-cell !important;
+    }
+    .visible-@{col}-block {
+      display: block !important;
+    }
+    .visible-@{col}-inline {
+      display: inline !important;
+    }
+    .visible-@{col}-inline-block {
+      display: inline-block !important;
+    }
+    .hidden-@{col} {
+      display: none !important;
+    }
+  }
+  .col0();
+  .col1();
+  .col2();
+  .col3();
+  .col4();
+  .col-display();
+}
+
+@media(max-width: (@xs - 1)) {
+  .grid(xxs);
+}

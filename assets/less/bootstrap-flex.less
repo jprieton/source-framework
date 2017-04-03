@@ -1,9 +1,5 @@
 @import "lesshat.less";
-
-@lg: 1200px;
-@md: 992px;
-@sm: 768px;
-@xs: 480px;
+@import "variables.less";
 
 /////////////////////////////////////////
 
@@ -32,8 +28,8 @@
     .flex-vertical-centered;
   }
 }
-@media (min-width: @lg) {
-  .flex-vertical-stretched-lg {
+@media (max-width:(@xs - 1)){
+  .flex-vertical-centered-xxs {
     .flex-vertical-centered;
   }
 }
@@ -64,6 +60,11 @@
     .flex-vertical-stretched;
   }
 }
+@media (max-width:(@xs - 1)){
+  .flex-vertical-stretched-xxs {
+    .flex-vertical-stretched;
+  }
+}
 
 /////////////////////////////////////////
 
@@ -87,6 +88,11 @@
   }
 }
 @media (min-width: @xs) and (max-width:(@sm - 1)){
+  .flex-column-xs {
+    .flex-column;
+  }
+}
+@media (max-width:(@xs - 1)){
   .flex-column-xs {
     .flex-column;
   }
