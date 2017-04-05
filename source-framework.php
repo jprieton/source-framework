@@ -34,7 +34,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Define plugin constants
  */
-define( 'SourceFramework\ABSPATH', dirname( __FILE__ ) );
+define( 'SourceFramework\ABSPATH', file_exists( __DIR__ . '/source-framework.phar' ) ? 'phar://' . __DIR__ . '/source-framework.phar' : __DIR__  );
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
@@ -43,27 +43,27 @@ define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
 /**
  * Load dependencies
  */
-include_once __DIR__ . '/core/init.php';
-include_once __DIR__ . '/helpers/init.php';
-include_once __DIR__ . '/Builders/Init.php';
+include_once SourceFramework\ABSPATH . '/core/init.php';
+include_once SourceFramework\ABSPATH . '/helpers/init.php';
+include_once SourceFramework\ABSPATH . '/Builders/Init.php';
 
 if ( is_admin() ) {
   /**
    * Init admin
    */
-  include_once __DIR__ . '/admin/init.php';
+  include_once SourceFramework\ABSPATH . '/admin/init.php';
 } else {
   /**
    * Init public
    */
-  include_once __DIR__ . '/public/init.php';
+  include_once SourceFramework\ABSPATH . '/public/init.php';
 }
 
 /**
  * The code that runs during plugin activation.
  */
 register_activation_hook( __FILE__, function() {
-  require_once __DIR__ . '/includes/class-activator.php';
+  require_once SourceFramework\ABSPATH . '/includes/class-activator.php';
   SourceFramework\Activator::activate();
 } );
 
@@ -71,6 +71,6 @@ register_activation_hook( __FILE__, function() {
  * The code that runs during plugin activation.
  */
 register_deactivation_hook( __FILE__, function() {
-  require_once __DIR__ . '/includes/class-activator.php';
+  require_once SourceFramework\ABSPATH . '/includes/class-activator.php';
   SourceFramework\Activator::deactivate();
 } );
