@@ -39,42 +39,6 @@ final class Admin_Init {
   }
 
   /**
-   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-   *
-   * @since         1.0.0
-   */
-  protected function __construct() {
-
-  }
-
-  /**
-   * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   *
-   * @since         1.0.0
-   */
-  private function __clone() {
-
-  }
-
-  /**
-   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
-   *
-   * @since         1.0.0
-   */
-  private function __wakeup() {
-
-  }
-
-  /**
-   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
-   *
-   * @since         1.0.0
-   */
-  protected function __sleep() {
-
-  }
-
-  /**
    * Enqueue admin scripts.
    *
    * @since   1.0.0
@@ -127,6 +91,42 @@ final class Admin_Init {
      */
     $styles = apply_filters( 'source_framework_admin_enqueue_styles', $styles );
     do_action( 'source_framework_enqueue_styles', $styles );
+  }
+
+  /**
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
+   *
+   * @since         1.0.0
+   */
+  protected function __construct() {
+
+  }
+
+  /**
+   * Declared as private to prevent cloning of an instance of the class via the clone operator.
+   *
+   * @since         1.0.0
+   */
+  private function __clone() {
+
+  }
+
+  /**
+   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
+   *
+   * @since         1.0.0
+   */
+  private function __wakeup() {
+
+  }
+
+  /**
+   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
+   *
+   * @since         1.0.0
+   */
+  protected function __sleep() {
+
   }
 
 }

@@ -11,10 +11,8 @@ if ( !defined( 'ABSPATH' ) ) {
  * Load dependencies
  */
 require_once SourceFramework\ABSPATH . '/admin/class-admin-init.php';
-require_once SourceFramework\ABSPATH . '/admin/class-advanced-settings.php';
 
 use SourceFramework\Core\Admin_Init;
-use SourceFramework\Admin\Advanced_Settings;
 
 add_action( 'admin_enqueue_scripts', function() {
 
@@ -31,13 +29,4 @@ add_action( 'admin_enqueue_scripts', function() {
    * @since 1.0.0
    */
   $init->enqueue_styles();
-} );
-
-add_action( 'admin_menu', function() {
-
-  /**
-   * Register Advanced Settings
-   * @since 1.0.0
-   */
-  new Advanced_Settings();
 } );
