@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * CoreInit class
+ * Core_Init class
  *
  * @package        Core
  * @subpackage     Init

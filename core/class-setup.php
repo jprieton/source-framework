@@ -10,18 +10,19 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Activation class
+ * Core_Setup class
  *
  * @package        Core
+ * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Activator {
+final class Setup {
 
   /**
    * The code that runs during plugin activation.
    *
-   * @since 1.0.0
+   * @since         1.0.0
    */
   public static function activate() {
 
@@ -30,10 +31,22 @@ class Activator {
   /**
    * The code that runs during plugin deactivation.
    *
-   * @since 1.0.0
+   * @since         1.0.0
    */
   public static function deactivate() {
 
+  }
+
+  /**
+   * The code that runs during plugin deactivation.
+   *
+   * @since         1.0.0
+   */
+  public static function uninstall() {
+    $options = [];
+    foreach ( $options as $option ) {
+      delete_option( $option );
+    }
   }
 
 }

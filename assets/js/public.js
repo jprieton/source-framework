@@ -63,4 +63,13 @@
     }
   });
 
+  /**
+   * Go to url on select change
+   * @since 1.0.0
+   */
+  $('.select-to-url').on('change', function () {
+    var url = $(this).val();
+    window.location = url;
+  });
+
 })(jQuery);
