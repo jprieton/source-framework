@@ -46,9 +46,9 @@ final class Admin_Init {
   public function enqueue_scripts() {
     $scripts = [
         'source-framework-admin' => [
-            'local'     => SourceFramework\ABSPATH . 'assets/js/admin.js',
+            'local'     => \SourceFramework\ABSPATH . 'assets/js/admin.js',
             'deps'      => array( 'jquery' ),
-            'ver'       => SourceFramework\VERSION,
+            'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true
         ],
@@ -78,7 +78,7 @@ final class Admin_Init {
     $styles = [
         'source-framework' => [
             'local'    => plugins_url( 'assets/css/admin.css', \SourceFramework\PLUGIN_FILE ),
-            'ver'      => SourceFramework\VERSION,
+            'ver'      => \SourceFramework\VERSION,
             'autoload' => true
         ],
     ];

@@ -25,7 +25,7 @@ final class Setup {
    * @since         1.0.0
    */
   public static function activate() {
-
+    
   }
 
   /**
@@ -34,7 +34,7 @@ final class Setup {
    * @since         1.0.0
    */
   public static function deactivate() {
-
+    
   }
 
   /**
@@ -43,7 +43,9 @@ final class Setup {
    * @since         1.0.0
    */
   public static function uninstall() {
-    $options = [];
+    $options = [
+        'use-cdn'
+    ];
     foreach ( $options as $option ) {
       delete_option( $option );
     }

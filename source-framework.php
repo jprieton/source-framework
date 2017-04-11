@@ -23,6 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Source Framework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
+
 /**
  * If this file is called directly, abort.
  */
@@ -40,6 +41,7 @@ define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
 
 include_once SourceFramework\ABSPATH . '/core/init.php';
+
 /**
  * The code that runs when the plugin is activated.
  * @since 1.0.0
@@ -57,22 +59,3 @@ register_deactivation_hook( __FILE__, [ 'SourceFramework\Core\Setup', 'deactivat
  * @since 1.0.0
  */
 register_uninstall_hook( __FILE__, [ 'SourceFramework\Core\Setup', 'uninstall_hook' ] );
-
-/**
- * Load dependencies
- */
-include_once SourceFramework\ABSPATH . '/helpers/init.php';
-include_once SourceFramework\ABSPATH . '/Builders/Init.php';
-
-if ( is_admin() ) {
-  /**
-   * Init admin
-   */
-  include_once SourceFramework\ABSPATH . '/admin/init.php';
-} else {
-  /**
-   * Init public
-   */
-  include_once SourceFramework\ABSPATH . '/public/init.php';
-}
-
