@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function get_bool_option( $option, $default = false ) {
   $option = get_option( $option, $default );
-  return (bool) (strtolower( $option ) === 'yes' || $option === true);
+  return (bool) (strtolower( $option ) === 'yes' || $option === true || $option == '1');
 }
 
 /**
