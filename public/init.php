@@ -7,14 +7,14 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-require_once SourceFramework\ABSPATH . '/includes/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/includes/abstracts/abstract-singleton.php';
+require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
 require_once SourceFramework\ABSPATH . '/includes/general-template.php';
 require_once SourceFramework\ABSPATH . '/includes/shortcodes.php';
 require_once SourceFramework\ABSPATH . '/includes/user.php';
-require_once SourceFramework\ABSPATH . '/bootstrap/init.php';
 
 add_action( 'wp_enqueue_scripts', function() {
-  $init = SourceFramework\Core\Public_Init::get_instance();
+  $init = SourceFramework\Core\PublicInit::get_instance();
 
   /**
    * Register and enqueue plugin scripts
@@ -30,7 +30,7 @@ add_action( 'wp_enqueue_scripts', function() {
 } );
 
 add_action( 'wp_head', function () {
-  $init = SourceFramework\Core\Public_Init::get_instance();
+  $init = SourceFramework\Core\PublicInit::get_instance();
 
   /**
    * Shows a custom code in header of the singular template
@@ -40,7 +40,7 @@ add_action( 'wp_head', function () {
 } );
 
 add_action( 'wp_body', function () {
-  $init = SourceFramework\Core\Public_Init::get_instance();
+  $init = SourceFramework\Core\PublicInit::get_instance();
 
   /**
    * Shows a custom code in footer of the singular template
@@ -50,7 +50,7 @@ add_action( 'wp_body', function () {
 } );
 
 add_action( 'wp_footer', function () {
-  $init = SourceFramework\Core\Public_Init::get_instance();
+  $init = SourceFramework\Core\PublicInit::get_instance();
 
   /**
    * Shows a custom code in footer of the singular template

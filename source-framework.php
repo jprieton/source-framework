@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name:    Source Framework
- * Description:    An extensible framework for WordPress themes based on Bootstrap v3.x
+ * Plugin Name:    SourceFramework
+ * Description:    An extensible framework for WordPress themes and plugins
  * Version:        1.0.0-dev
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3
@@ -40,7 +40,7 @@ define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
 
-include_once SourceFramework\ABSPATH . '/core/init.php';
+include_once SourceFramework\ABSPATH . '/includes/init.php';
 
 /**
  * The code that runs when the plugin is activated.

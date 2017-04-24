@@ -9,15 +9,17 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Abstracts\Singleton;
+
 /**
- * Admin_Init class
+ * AdminInit class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class Admin_Init {
+final class AdminInit extends Singleton {
 
   /**
    * Static instance of this class
@@ -28,17 +30,6 @@ final class Admin_Init {
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @return  static
-   */
-  public static function &get_instance() {
-    if ( !isset( static::$instance ) ) {
-      static::$instance = new static;
-    }
-    return static::$instance;
-  }
-
-  /**
    * Enqueue admin scripts.
    *
    * @since   1.0.0
@@ -46,8 +37,8 @@ final class Admin_Init {
   public function enqueue_scripts() {
     $scripts = [
         'source-framework-admin' => [
-            'local'     => \SourceFramework\ABSPATH . 'assets/js/admin.js',
-            'deps'      => array( 'jquery' ),
+            'local'     => plugins_url( 'assets/js/admin.js', \SourceFramework\PLUGIN_FILE ),
+            'deps'      => [ 'jquery' ],
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true
@@ -91,42 +82,6 @@ final class Admin_Init {
      */
     $styles = apply_filters( 'source_framework_admin_enqueue_styles', $styles );
     do_action( 'source_framework_enqueue_styles', $styles );
-  }
-
-  /**
-   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-   *
-   * @since         1.0.0
-   */
-  protected function __construct() {
-
-  }
-
-  /**
-   * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   *
-   * @since         1.0.0
-   */
-  private function __clone() {
-
-  }
-
-  /**
-   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
-   *
-   * @since         1.0.0
-   */
-  private function __wakeup() {
-
-  }
-
-  /**
-   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
-   *
-   * @since         1.0.0
-   */
-  protected function __sleep() {
-
   }
 
 }

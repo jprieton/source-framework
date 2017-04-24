@@ -15,11 +15,10 @@ require_once SourceFramework\ABSPATH . '/core/class-setup.php';
 
 // Includes
 include_once SourceFramework\ABSPATH . '/helpers/init.php';
-require_once SourceFramework\ABSPATH . '/includes/option.php';
 require_once SourceFramework\ABSPATH . '/includes/format.php';
 
 // Core
-require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
+require_once SourceFramework\ABSPATH . '/includes/class-core-init.php';
 
 // Html
 require_once SourceFramework\ABSPATH . '/core/html/class-tag.php';
@@ -75,10 +74,10 @@ if ( is_admin() ) {
   /**
    * Init admin
    */
-  include_once SourceFramework\ABSPATH . '/includes/admin-init.php';
+  include_once SourceFramework\ABSPATH . '/admin/init.php';
 } else {
   /**
    * Init public
    */
-  include_once SourceFramework\ABSPATH . '/includes/public-init.php';
+  include_once SourceFramework\ABSPATH . '/public/init.php';
 }

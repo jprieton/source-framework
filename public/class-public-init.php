@@ -9,34 +9,25 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Abstracts\Singleton;
+
 /**
- * Public_Init class
+ * PublicInit class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class Public_Init {
+final class PublicInit extends Singleton {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           Public_Init
+   * @var           PublicInit
    */
   protected static $instance;
-
-  /**
-   * @since         1.0.0
-   * @return  static
-   */
-  public static function &get_instance() {
-    if ( !isset( static::$instance ) ) {
-      static::$instance = new static;
-    }
-    return static::$instance;
-  }
 
   /**
    * Register & enqueue plugin scripts
@@ -46,15 +37,15 @@ final class Public_Init {
   public function enqueue_scripts() {
     $scripts = [
         'modernizr'        => [
-            'local'    => plugins_url( 'assets/js/modernizr.min.js' . SourceFramework\PLUGIN_FILE ),
+            'local'    => plugins_url( 'assets/js/modernizr.min.js' . \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
             'ver'      => '2.8.3',
             'autoload' => false
         ],
         'source-framework' => [
-            'local'     => plugins_url( 'assets/js/public.js', SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => [ 'jquery', 'jquery-form' ],
-            'ver'       => SourceFramework\VERSION,
+            'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true,
         ],
@@ -91,18 +82,18 @@ final class Public_Init {
             'ver'    => '2.0.1',
         ],
         'source-framework' => [
-            'local'    => plugins_url( 'assets/css/public.css', SourceFramework\PLUGIN_FILE ),
-            'ver'      => SourceFramework\VERSION,
+            'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'      => \SourceFramework\VERSION,
             'autoload' => true
         ],
         'animate'          => [
-            'local'  => plugins_url( 'assets/css/animate.min.css', SourceFramework\PLUGIN_FILE ),
+            'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
             'ver'    => '3.5.2',
             'media'  => 'screen',
         ],
         'hover'            => [
-            'local'  => plugins_url( 'assets/css/hover.min.css', SourceFramework\PLUGIN_FILE ),
+            'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
             'ver'    => '2.1.0',
             'media'  => 'screen',
@@ -180,40 +171,6 @@ final class Public_Init {
     if ( !empty( $body_script ) ) {
       echo (string) $body_script;
     }
-  }
-
-  /**
-   * @since         1.0.0
-   */
-  protected function __construct() {
-    /**
-     * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-     */
-  }
-
-  /**
-   * @since         1.0.0
-   */
-  private function __clone() {
-    /**
-     * Declared as private to prevent cloning of an instance of the class via the clone operator.
-     */
-  }
-
-  /**
-   * @since         1.0.0
-   */
-  private function __wakeup() {
-    /**
-     * declared as private to prevent unserializing of an instance of the class via the global function unserialize() .
-     */
-  }
-
-  /**
-   * @since         1.0.0
-   */
-  protected function __sleep() {
-    // Avoid Serializg of Object
   }
 
 }
