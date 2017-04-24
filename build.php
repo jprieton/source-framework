@@ -7,7 +7,7 @@ if ( file_exists( 'source-framework.phar' ) ) {
 $phar = new Phar( 'source-framework.phar' );
 $phar->setStub( '<?php __HALT_COMPILER();' );
 
-$folders = [ 'core', 'helpers', 'includes', 'admin', 'public' ];
+$folders = [ 'core', 'helpers', 'includes' ];
 
 foreach ( $folders as $folder ) {
   $files = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $folder ), RecursiveIteratorIterator::SELF_FIRST );

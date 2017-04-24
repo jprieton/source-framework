@@ -7,6 +7,9 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+// Core functions
+require_once SourceFramework\ABSPATH . '/core/functions.php';
+
 // Setup plugin
 require_once SourceFramework\ABSPATH . '/core/class-setup.php';
 
@@ -62,7 +65,7 @@ add_action( 'source_framework_register_scripts', function( $scripts ) {
   $init = SourceFramework\Core\Core_Init::get_instance();
 
   /**
-   * Register and optionally enqueue scripts  
+   * Register and optionally enqueue scripts
    * @since   1.0.0
    */
   $init->register_scripts( $scripts );
@@ -72,10 +75,10 @@ if ( is_admin() ) {
   /**
    * Init admin
    */
-  include_once SourceFramework\ABSPATH . '/admin/init.php';
+  include_once SourceFramework\ABSPATH . '/includes/admin-init.php';
 } else {
   /**
    * Init public
    */
-  include_once SourceFramework\ABSPATH . '/public/init.php';
+  include_once SourceFramework\ABSPATH . '/includes/public-init.php';
 }

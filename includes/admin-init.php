@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Load core dependencies
  */
-require_once SourceFramework\ABSPATH . '/admin/class-admin-init.php';
+require_once SourceFramework\ABSPATH . '/includes/class-admin-init.php';
 
 /**
  * Enqueue admin script & styles
@@ -32,3 +32,16 @@ add_action( 'admin_enqueue_scripts', function() {
    */
   $init->enqueue_styles();
 } );
+
+add_action( 'admin_init', function() {
+  $page_title = __( 'About', SourceFramework\TEXDOMAIN );
+  $menu_title = 'SourceFramework';
+  $capability = 'manage_options';
+  $menu_slug  = 'source-framework-about';
+  $icon       = 'dashicons-admin-tools';
+  $position   = 76;
+  $about      = new SourceFramework\Core\Admin_Page( $page_title, $menu_title, $capability, $menu_slug, $icon, $position );
+  $about->add_menu_page();
+} );
+
+

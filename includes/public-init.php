@@ -7,7 +7,7 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
+require_once SourceFramework\ABSPATH . '/includes/class-public-init.php';
 require_once SourceFramework\ABSPATH . '/includes/general-template.php';
 require_once SourceFramework\ABSPATH . '/includes/shortcodes.php';
 require_once SourceFramework\ABSPATH . '/includes/user.php';
