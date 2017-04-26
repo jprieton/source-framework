@@ -132,10 +132,6 @@ class Html {
     $_attributes = array();
 
     foreach ( (array) $attributes as $key => $value ) {
-      if ( is_numeric( $key ) && !is_bool( $value ) ) {
-        $key = $value;
-      }
-
       if ( is_bool( $value ) && $value ) {
         $value = $key;
       }
@@ -150,6 +146,8 @@ class Html {
 
       if ( !is_null( $value ) ) {
         $_attributes[] = sprintf( '%s="%s"', trim( esc_attr( $key ) ), trim( esc_attr( $value ) ) );
+      } elseif ( is_numeric( $key ) && !is_bool( $value ) ) {
+        $_attributes[] = trim( esc_attr( $value ) );
       }
     }
 

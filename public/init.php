@@ -39,7 +39,7 @@ add_action( 'wp_head', function () {
   $init->singular_custom_code_header_script();
 } );
 
-add_action( 'wp_body', function () {
+add_action( 'before_main_content', function () {
   $init = SourceFramework\Core\PublicInit::get_instance();
 
   /**
