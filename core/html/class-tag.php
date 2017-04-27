@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Html;
+namespace SourceFramework\Template;
 
 /**
  * If this file is called directly, abort.
@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * Singleton class Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
- * @package Builder
+ * @package Template
  *
  * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
