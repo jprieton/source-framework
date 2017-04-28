@@ -12,6 +12,7 @@ require_once SourceFramework\ABSPATH . '/public/class-public-init.php';
 require_once SourceFramework\ABSPATH . '/includes/general-template.php';
 require_once SourceFramework\ABSPATH . '/includes/shortcodes.php';
 require_once SourceFramework\ABSPATH . '/includes/user.php';
+require_once SourceFramework\ABSPATH . '/includes/class-microdata.php';
 
 add_action( 'wp_enqueue_scripts', function() {
   $init = SourceFramework\Core\PublicInit::get_instance();

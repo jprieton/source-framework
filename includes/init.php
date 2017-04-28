@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 // Core functions
-require_once SourceFramework\ABSPATH . '/core/functions.php';
+require_once SourceFramework\ABSPATH . '/includes/functions.php';
 
 // Setup plugin
 require_once SourceFramework\ABSPATH . '/core/class-setup.php';
