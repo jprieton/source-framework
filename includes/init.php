@@ -38,6 +38,30 @@ add_action( 'init', function() {
    * @since 1.0.0
    */
   load_plugin_textdomain( SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
+
+  /**
+   * Enables Post Formats support for a theme. 
+   * @since 1.0.0
+   */
+  add_theme_support( 'post-formats' );
+
+  /**
+   * This feature enables Post Thumbnails support for a theme. 
+   * @since 1.0.0
+   */
+  add_theme_support( 'post-thumbnails' );
+
+  /**
+   * Enables plugins and themes to manage the document title tag. 
+   * @since 1.0.0
+   */
+  add_theme_support( 'title-tag' );
+
+  /**
+   * enables Automatic Feed Links for post and comment in the head.
+   * @since 1.0.0
+   */
+  add_theme_support( 'automatic-feed-links' );
 } );
 
 add_filter( 'source_framework_localize_scripts', function() {
