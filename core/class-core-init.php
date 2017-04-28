@@ -9,33 +9,61 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Abstracts\Singleton;
+
 /**
- * Core_Init class
+ * CoreInit class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class Core_Init {
+final class CoreInit extends Singleton {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           Public_Init
+   * @var           CoreInit
    */
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @return  static
+   * Init plugin
+   * 
+   * @since 1.0.0
    */
-  public static function &get_instance() {
-    if ( !isset( static::$instance ) ) {
-      static::$instance = new static;
-    }
-    return static::$instance;
+  public static function init() {
+    /**
+     * Load plugin texdomain
+     * @since 1.0.0
+     */
+    load_plugin_textdomain( SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
+
+    /**
+     * Enables Post Formats support for a theme. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'post-formats' );
+
+    /**
+     * This feature enables Post Thumbnails support for a theme. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'post-thumbnails' );
+
+    /**
+     * Enables plugins and themes to manage the document title tag. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'title-tag' );
+
+    /**
+     * enables Automatic Feed Links for post and comment in the head.
+     * @since 1.0.0
+     */
+    add_theme_support( 'automatic-feed-links' );
   }
 
   /**
@@ -45,11 +73,11 @@ final class Core_Init {
   public static function register_styles( $styles ) {
 
     $defaults = [
-        'local'    => '',
-        'remote'   => '',
-        'deps'     => [],
-        'ver'      => null,
-        'media'    => 'all',
+        'local' => '',
+        'remote' => '',
+        'deps' => [],
+        'ver' => null,
+        'media' => 'all',
         'autoload' => false
     ];
 
@@ -66,8 +94,8 @@ final class Core_Init {
         continue;
       }
 
-      $deps  = $style['deps'];
-      $ver   = $style['ver'];
+      $deps = $style['deps'];
+      $ver = $style['ver'];
       $media = $style['media'];
 
       /* Register styles */
@@ -86,12 +114,12 @@ final class Core_Init {
    */
   public static function register_scripts( $scripts ) {
     $defaults = [
-        'local'     => '',
-        'remote'    => '',
-        'deps'      => [],
-        'ver'       => null,
+        'local' => '',
+        'remote' => '',
+        'deps' => [],
+        'ver' => null,
         'in_footer' => false,
-        'autoload'  => false
+        'autoload' => false
     ];
 
     $use_cdn = get_bool_option( 'use_cdn' );
@@ -107,8 +135,8 @@ final class Core_Init {
         continue;
       }
 
-      $deps      = $script['deps'];
-      $ver       = $script['ver'];
+      $deps = $script['deps'];
+      $ver = $script['ver'];
       $in_footer = $script['in_footer'];
 
       /* Register admin scripts */
@@ -137,54 +165,18 @@ final class Core_Init {
    */
   public static function localize_scripts() {
     $localize_script = array(
-        'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
         'messages' => array(
             'success' => __( 'Success!', \SourceFramework\TEXDOMAIN ),
-            'fail'    => __( 'Fail!', \SourceFramework\TEXDOMAIN ),
-            'error'   => __( 'Error!', \SourceFramework\TEXDOMAIN ),
-            'send'    => __( 'Send', \SourceFramework\TEXDOMAIN ),
-            'submit'  => __( 'Submit', \SourceFramework\TEXDOMAIN ),
+            'fail' => __( 'Fail!', \SourceFramework\TEXDOMAIN ),
+            'error' => __( 'Error!', \SourceFramework\TEXDOMAIN ),
+            'send' => __( 'Send', \SourceFramework\TEXDOMAIN ),
+            'submit' => __( 'Submit', \SourceFramework\TEXDOMAIN ),
             'sending' => __( 'Sending...', \SourceFramework\TEXDOMAIN ),
-            'sent'    => __( 'Sent!', \SourceFramework\TEXDOMAIN ),
+            'sent' => __( 'Sent!', \SourceFramework\TEXDOMAIN ),
         )
     );
     return $localize_script;
-  }
-
-  /**
-   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-   *
-   * @since         1.0.0
-   */
-  protected function __construct() {
-
-  }
-
-  /**
-   * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   *
-   * @since         1.0.0
-   */
-  private function __clone() {
-
-  }
-
-  /**
-   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
-   *
-   * @since         1.0.0
-   */
-  private function __wakeup() {
-
-  }
-
-  /**
-   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
-   *
-   * @since         1.0.0
-   */
-  protected function __sleep() {
-
   }
 
 }
