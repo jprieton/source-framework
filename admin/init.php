@@ -8,9 +8,8 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load core dependencies
+ * Load dependencies
  */
-require_once SourceFramework\ABSPATH . '/includes/abstracts/abstract-singleton.php';
 require_once SourceFramework\ABSPATH . '/admin/class-admin-init.php';
 
 /**
@@ -18,17 +17,17 @@ require_once SourceFramework\ABSPATH . '/admin/class-admin-init.php';
  * @since 1.0.0
  */
 add_action( 'admin_enqueue_scripts', function() {
-  $init = SourceFramework\Core\AdminInit::get_instance();
+  $admin = SourceFramework\Core\AdminInit::get_instance();
 
   /**
    * Register and enqueue plugin scripts
    * @since 1.0.0
    */
-  $init->enqueue_scripts();
+  $admin->enqueue_scripts();
 
   /**
    * Register and enqueue plugin styles
    * @since 1.0.0
    */
-  $init->enqueue_styles();
+  $admin->enqueue_styles();
 } );

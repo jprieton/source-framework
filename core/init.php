@@ -7,8 +7,12 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-
+/**
+ * Load dependencies
+ */
+require_once SourceFramework\ABSPATH . '/includes/abstracts/abstract-singleton.php';
 require_once SourceFramework\ABSPATH . '/includes/functions.php';
+require_once SourceFramework\ABSPATH . '/core/class-core-init.php';
 
 add_action( 'init', function() {
   $core = SourceFramework\Core\CoreInit::get_instance();
