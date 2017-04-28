@@ -93,15 +93,3 @@ add_action( 'source_framework_register_scripts', function( $scripts ) {
    */
   $init->register_scripts( $scripts );
 } );
-
-if ( is_admin() ) {
-  /**
-   * Init admin
-   */
-  include_once SourceFramework\ABSPATH . '/admin/init.php';
-} else {
-  /**
-   * Init public
-   */
-  include_once SourceFramework\ABSPATH . '/public/init.php';
-}

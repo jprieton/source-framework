@@ -3,7 +3,7 @@
 /**
  * Plugin Name:    SourceFramework
  * Description:    An extensible framework for WordPress themes and plugins
- * Version:        1.0.0-dev
+ * Version:        1.0.0
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3
  * License URI:    http://www.gnu.org/licenses/gpl-3.0.txt
@@ -23,7 +23,6 @@
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
-
 /**
  * If this file is called directly, abort.
  */
@@ -59,3 +58,24 @@ register_deactivation_hook( __FILE__, [ 'SourceFramework\Core\Setup', 'deactivat
  * @since 1.0.0
  */
 register_uninstall_hook( __FILE__, [ 'SourceFramework\Core\Setup', 'uninstall_hook' ] );
+
+/**
+ * CoreInit
+ * @since 1.0.0
+ */
+require_once SourceFramework\ABSPATH . '/core/init.php';
+
+if ( is_admin() ) {
+  /**
+   * AdminInit
+   * @since 1.0.0
+   */
+  include_once SourceFramework\ABSPATH . '/admin/init.php';
+} else {
+  /**
+   * PublicInit
+   * @since 1.0.0
+   */
+  include_once SourceFramework\ABSPATH . '/public/init.php';
+}
+
