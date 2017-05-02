@@ -9,6 +9,8 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Abstracts\Singleton;
+
 /**
  * Tag class
  *
@@ -23,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Tag {
+class Tag extends Singleton {
 
   /**
    * @see http://w3c.github.io/html/syntax.html#void-elements
@@ -218,42 +220,6 @@ class Tag {
     $attributes = wp_parse_args( $attributes, $defaults );
 
     return $this->html( 'a', $text, $attributes );
-  }
-
-  /**
-   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
-   *
-   * @since         1.0.0
-   */
-  protected function __construct() {
-
-  }
-
-  /**
-   * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   *
-   * @since         1.0.0
-   */
-  private function __clone() {
-
-  }
-
-  /**
-   * declared as private to prevent unserializing of an instance of the class via the global function unserialize().
-   *
-   * @since         1.0.0
-   */
-  private function __wakeup() {
-
-  }
-
-  /**
-   * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
-   *
-   * @since         1.0.0
-   */
-  protected function __sleep() {
-
   }
 
 }

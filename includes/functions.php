@@ -17,11 +17,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @return mixed  Default value if the variable is empty
  */
 function maybe_empty( $var, $default = null ) {
-  if ( !empty( $var ) ) {
-    return $var;
-  } else {
-    return $default;
-  }
+  return !empty( $var ) ? $var : $default;
 }
 
 /**
@@ -135,6 +131,7 @@ function get_int_option( $option, $default = 0 ) {
  *
  * @param  string  $name
  * @param  string  $value
+ * @param  bool    $case_insensitive
  */
 function define_maybe_defined( $name, $value, $case_insensitive = false ) {
   if ( !defined( $name ) ) {

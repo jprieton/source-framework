@@ -124,10 +124,10 @@ final class PublicInit extends Singleton {
 
     global $post;
 
-    $header_script = get_post_meta( $post->ID, '_header_custom_code', true );
+    $script = get_post_meta( $post->ID, '_header_custom_code', true );
 
-    if ( !empty( $header_script ) ) {
-      echo (string) $header_script;
+    if ( !empty( $script ) ) {
+      echo (string) $script;
     }
   }
 
@@ -145,10 +145,10 @@ final class PublicInit extends Singleton {
 
     global $post;
 
-    $footer_script = get_post_meta( $post->ID, '_footer_custom_code', true );
+    $script = get_post_meta( $post->ID, '_footer_custom_code', true );
 
-    if ( !empty( $footer_script ) ) {
-      echo (string) $footer_script;
+    if ( !empty( $script ) ) {
+      echo (string) $script;
     }
   }
 
@@ -166,10 +166,10 @@ final class PublicInit extends Singleton {
 
     global $post;
 
-    $body_script = get_post_meta( $post->ID, '_body_custom_code', true );
+    $script = get_post_meta( $post->ID, '_body_custom_code', true );
 
-    if ( !empty( $body_script ) ) {
-      echo (string) $body_script;
+    if ( !empty( $script ) ) {
+      echo (string) $script;
     }
   }
 
