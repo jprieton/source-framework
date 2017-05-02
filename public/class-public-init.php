@@ -36,18 +36,25 @@ final class PublicInit extends Singleton {
    */
   public function enqueue_scripts() {
     $scripts = [
-        'modernizr'        => [
+        'modernizr'                    => [
             'local'    => plugins_url( 'assets/js/modernizr.min.js' . \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
             'ver'      => '2.8.3',
             'autoload' => false
         ],
-        'source-framework' => [
+        'source-framework'             => [
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => [ 'jquery', 'jquery-form' ],
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true,
+        ],
+        'geodatasource-country-region' => [
+            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' . \SourceFramework\PLUGIN_FILE ),
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
+            'ver'       => '1.0.1',
+            'in_footer' => true,
+            'autoload'  => false
         ],
     ];
 
