@@ -23,6 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
+
 /**
  * If this file is called directly, abort.
  */

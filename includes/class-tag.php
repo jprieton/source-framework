@@ -9,12 +9,10 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Abstracts\Singleton;
-
 /**
  * Tag class
  *
- * Singleton class Based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
+ * Class based on Laravel Forms & HTML helper and Yii Framework BaseHtml helper
  *
  * @package Template
  *
@@ -25,7 +23,7 @@ use SourceFramework\Abstracts\Singleton;
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Tag extends Singleton {
+class Tag {
 
   /**
    * @see http://w3c.github.io/html/syntax.html#void-elements
@@ -33,29 +31,10 @@ class Tag extends Singleton {
    * @var array List of void elements.
    * @since   1.0.0
    */
-  public $void = array(
+  public static $void = [
       'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
       'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'
-  );
-
-  /**
-   * Static instance of this class
-   *
-   * @since         1.0.0
-   * @var           Public_Init
-   */
-  protected static $instance;
-
-  /**
-   * @since         1.0.0
-   * @return  static
-   */
-  public static function &get_instance() {
-    if ( !isset( static::$instance ) ) {
-      static::$instance = new static;
-    }
-    return static::$instance;
-  }
+  ];
 
   /**
    * Retrieve a HTML open tag
@@ -66,10 +45,10 @@ class Tag extends Singleton {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function open( $tag, $attributes = array() ) {
+  public static function open( $tag, $attributes = array() ) {
     $tag        = esc_attr( $tag );
-    $this->parse_shorthand( $tag, $attributes );
-    $attributes = $this->parse_attributes( $attributes );
+    static::parse_shorthand( $tag, $attributes );
+    $attributes = static::parse_attributes( $attributes );
 
     return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
   }
@@ -82,7 +61,7 @@ class Tag extends Singleton {
    * @param   string              $tag
    * @return  string
    */
-  public function close( $tag ) {
+  public static function close( $tag ) {
     return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
   }
 
@@ -96,12 +75,12 @@ class Tag extends Singleton {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function html( $tag, $content = '', $attributes = array() ) {
+  public static function html( $tag, $content = '', $attributes = array() ) {
     $tag        = esc_attr( $tag );
-    $this->parse_shorthand( $tag, $attributes );
-    $attributes = $this->parse_attributes( $attributes );
+    static::parse_shorthand( $tag, $attributes );
+    $attributes = static::parse_attributes( $attributes );
 
-    if ( in_array( $tag, $this->void ) ) {
+    if ( in_array( $tag, static::void ) ) {
       $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
     } else {
       $html = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
@@ -119,7 +98,7 @@ class Tag extends Singleton {
    * @return  string
    *
    */
-  public function parse_attributes( $attributes = array() ) {
+  public static function parse_attributes( $attributes = array() ) {
     $attributes = wp_parse_args( $attributes );
 
     if ( count( $attributes ) == 0 ) {
@@ -162,7 +141,7 @@ class Tag extends Singleton {
    * @param   array               $attributes
    * @return  array
    */
-  public function parse_shorthand( &$tag, &$attributes = array() ) {
+  public static function parse_shorthand( &$tag, &$attributes = array() ) {
     $matches = array();
     preg_match( '(#|\.)', $tag, $matches );
 
@@ -205,7 +184,7 @@ class Tag extends Singleton {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function mailto( $email, $text = null, $attributes = array() ) {
+  public static function mailto( $email, $text = null, $attributes = array() ) {
     if ( empty( $email ) || !is_email( $email ) ) {
       return '';
     }
@@ -219,7 +198,7 @@ class Tag extends Singleton {
     );
     $attributes = wp_parse_args( $attributes, $defaults );
 
-    return $this->html( 'a', $text, $attributes );
+    return static::html( 'a', $text, $attributes );
   }
 
 }
