@@ -73,11 +73,11 @@ final class CoreInit extends Singleton {
   public static function register_styles( $styles ) {
 
     $defaults = [
-        'local' => '',
-        'remote' => '',
-        'deps' => [],
-        'ver' => null,
-        'media' => 'all',
+        'local'    => '',
+        'remote'   => '',
+        'deps'     => [],
+        'ver'      => null,
+        'media'    => 'all',
         'autoload' => false
     ];
 
@@ -94,8 +94,8 @@ final class CoreInit extends Singleton {
         continue;
       }
 
-      $deps = $style['deps'];
-      $ver = $style['ver'];
+      $deps  = $style['deps'];
+      $ver   = $style['ver'];
       $media = $style['media'];
 
       /* Register styles */
@@ -114,12 +114,12 @@ final class CoreInit extends Singleton {
    */
   public static function register_scripts( $scripts ) {
     $defaults = [
-        'local' => '',
-        'remote' => '',
-        'deps' => [],
-        'ver' => null,
+        'local'     => '',
+        'remote'    => '',
+        'deps'      => [],
+        'ver'       => null,
         'in_footer' => false,
-        'autoload' => false
+        'autoload'  => false
     ];
 
     $use_cdn = get_bool_option( 'use_cdn' );
@@ -135,8 +135,8 @@ final class CoreInit extends Singleton {
         continue;
       }
 
-      $deps = $script['deps'];
-      $ver = $script['ver'];
+      $deps      = $script['deps'];
+      $ver       = $script['ver'];
       $in_footer = $script['in_footer'];
 
       /* Register admin scripts */
@@ -165,15 +165,15 @@ final class CoreInit extends Singleton {
    */
   public static function localize_scripts() {
     $localize_script = array(
-        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+        'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
         'messages' => array(
             'success' => __( 'Success!', \SourceFramework\TEXDOMAIN ),
-            'fail' => __( 'Fail!', \SourceFramework\TEXDOMAIN ),
-            'error' => __( 'Error!', \SourceFramework\TEXDOMAIN ),
-            'send' => __( 'Send', \SourceFramework\TEXDOMAIN ),
-            'submit' => __( 'Submit', \SourceFramework\TEXDOMAIN ),
+            'fail'    => __( 'Fail!', \SourceFramework\TEXDOMAIN ),
+            'error'   => __( 'Error!', \SourceFramework\TEXDOMAIN ),
+            'send'    => __( 'Send', \SourceFramework\TEXDOMAIN ),
+            'submit'  => __( 'Submit', \SourceFramework\TEXDOMAIN ),
             'sending' => __( 'Sending...', \SourceFramework\TEXDOMAIN ),
-            'sent' => __( 'Sent!', \SourceFramework\TEXDOMAIN ),
+            'sent'    => __( 'Sent!', \SourceFramework\TEXDOMAIN ),
         )
     );
     return $localize_script;
