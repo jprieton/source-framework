@@ -40,13 +40,25 @@ final class CoreInit extends Singleton {
     parent::__construct();
 
     /**
-     * Register and optionally enqueue scripts
+     * Load plugin texdomain
+     * @since 1.0.0
+     */
+    add_action( 'init', [ $this, 'plugin_textdomain' ] );
+
+    /**
+     * Enable theme suports
+     * @since 1.0.0
+     */
+    add_action( 'init', [ $this, 'theme_supports' ] );
+
+    /**
+     * Register and enqueue scripts
      * @since   1.0.0
      */
     add_action( 'source_framework_register_scripts', [ $this, 'register_scripts' ] );
 
     /**
-     * Register and optionally enqueue styles
+     * Register and enqueue styles
      * @since   1.0.0
      */
     add_action( 'source_framework_register_styles', [ $this, 'register_styles' ] );
@@ -56,6 +68,46 @@ final class CoreInit extends Singleton {
      * @since 1.0.0
      */
     add_filter( 'source_framework_localize_scripts', [ $this, 'localize_scripts' ] );
+  }
+
+  /**
+   * Load plugin texdomain
+   * 
+   * @since 1.0.0
+   */
+  public function plugin_textdomain() {
+    load_plugin_textdomain( SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
+  }
+
+  /**
+   * Enable theme suports
+   * 
+   * @since 1.0.0
+   */
+  public function theme_supports() {
+    /**
+     * Enables Post Formats support for a theme. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'post-formats' );
+
+    /**
+     * This feature enables Post Thumbnails support for a theme. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'post-thumbnails' );
+
+    /**
+     * Enables plugins and themes to manage the document title tag. 
+     * @since 1.0.0
+     */
+    add_theme_support( 'title-tag' );
+
+    /**
+     * enables Automatic Feed Links for post and comment in the head.
+     * @since 1.0.0
+     */
+    add_theme_support( 'automatic-feed-links' );
   }
 
   /**
