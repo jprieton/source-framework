@@ -40,7 +40,7 @@ class Media {
     $image_data = wp_handle_upload( $_FILES[$field], $overrides );
 
     if ( isset( $image_data['error'] ) || isset( $image_data['upload_error_handler'] ) ) {
-      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXDOMAIN ) ) );
+      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     $defaults = array(
@@ -84,7 +84,7 @@ class Media {
           break;
       }
     } catch ( Exception $e ) {
-      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXDOMAIN ) ) );
+      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     $post_title = preg_replace( '/\.[^.]+$/', '', basename( $image_data['file'] ) );

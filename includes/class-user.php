@@ -29,14 +29,14 @@ class User {
     // Check if is enabled
     $users_can_register = get_bool_option( 'users_can_create_profile' );
     if ( !$users_can_register ) {
-      wp_send_json_error( new WP_Error( 'user_create_profile_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'user_create_profile_disabled', __( 'Action disabled', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Verify nonce
     $nonce        = filter_input( INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING );
     $verify_nonce = (bool) wp_verify_nonce( $nonce, 'user_create_profile' );
     if ( !$verify_nonce ) {
-      wp_send_json_error( new WP_Error( 'action_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'action_disabled', __( 'Action disabled', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Get userdata
@@ -47,10 +47,10 @@ class User {
     if ( $handle_username ) {
       $user_login = sanitize_user( filter_input( INPUT_POST, 'user_login', FILTER_SANITIZE_STRING ) );
       if ( empty( $user_login ) || !validate_username( $user_login ) ) {
-        wp_send_json_error( new WP_Error( 'bad_user_login', __( 'Please enter a valid account username.', \SourceFramework\TEXDOMAIN ) ) );
+        wp_send_json_error( new WP_Error( 'bad_user_login', __( 'Please enter a valid account username.', \SourceFramework\TEXTDOMAIN ) ) );
       }
       if ( username_exists( $user_login ) ) {
-        wp_send_json_error( new WP_Error( 'user_login_exists', __( 'An account is already registered with that username. Please choose another.', \SourceFramework\TEXDOMAIN ) ) );
+        wp_send_json_error( new WP_Error( 'user_login_exists', __( 'An account is already registered with that username. Please choose another.', \SourceFramework\TEXTDOMAIN ) ) );
       }
       $userdata['user_login'] = $user_login;
     } else {
@@ -65,13 +65,13 @@ class User {
       $userdata['user_pass'] = filter_input( INPUT_POST, 'user_pass', FILTER_SANITIZE_STRING );
     }
     if ( empty( $userdata['user_pass'] ) ) {
-      wp_send_json_error( new WP_Error( 'empty_password', __( 'Empty password', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'empty_password', __( 'Empty password', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Confirm pass if isn't enabled generate password
     $user_pass_confirm = filter_input( INPUT_POST, 'user_pass_confirm', FILTER_SANITIZE_STRING );
     if ( !$generate_password && ($userdata['user_pass'] !== $user_pass_confirm) ) {
-      wp_send_json_error( new WP_Error( 'password_error', __( 'Password does not match the confirm password.', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'password_error', __( 'Password does not match the confirm password.', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Filter $userdata
@@ -91,7 +91,7 @@ class User {
     } else {
       $response = array(
           'code'    => 'user_created_successfully',
-          'message' => __( 'User created successfully', \SourceFramework\TEXDOMAIN )
+          'message' => __( 'User created successfully', \SourceFramework\TEXTDOMAIN )
       );
       wp_send_json_success( array( $response ) );
     }
@@ -106,14 +106,14 @@ class User {
     // Check if is enabled
     $users_can_update = get_bool_option( 'users_can_update_profile' );
     if ( $users_can_update ) {
-      wp_send_json_error( new WP_Error( 'user_update_profile_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'user_update_profile_disabled', __( 'Action disabled', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Verify nonce
     $nonce        = filter_input( INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING );
     $verify_nonce = (bool) wp_verify_nonce( $nonce, 'user_update_profile' );
     if ( !$verify_nonce ) {
-      wp_send_json_error( new WP_Error( 'action_disabled', __( 'Action disabled', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'action_disabled', __( 'Action disabled', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     // Get userdata
@@ -124,7 +124,7 @@ class User {
     $user_pass         = filter_input( INPUT_POST, 'user_pass', FILTER_SANITIZE_STRING );
     $user_pass_confirm = filter_input( INPUT_POST, 'user_pass_confirm', FILTER_SANITIZE_STRING );
     if ( !empty( $user_pass ) && $user_pass != $user_pass_confirm ) {
-      wp_send_json_error( new WP_Error( 'password_error', __( 'Password does not match the confirm password.', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'password_error', __( 'Password does not match the confirm password.', \SourceFramework\TEXTDOMAIN ) ) );
     } elseif ( !empty( $user_pass ) && $user_pass == $user_pass_confirm ) {
       $userdata = array_merge( $userdata, compact( 'user_pass' ) );
     }
@@ -146,7 +146,7 @@ class User {
     } else {
       $response = array(
           'code'    => 'user_updated_successfully',
-          'message' => __( 'User updated successfully', \SourceFramework\TEXDOMAIN )
+          'message' => __( 'User updated successfully', \SourceFramework\TEXTDOMAIN )
       );
       wp_send_json_success( array( $response ) );
     }
@@ -166,11 +166,11 @@ class User {
     );
 
     if ( !is_email( $userdata['user_email'] ) ) {
-      wp_send_json_error( new WP_Error( 'bad_user_email', __( 'Please provide a valid email address.', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'bad_user_email', __( 'Please provide a valid email address.', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     if ( email_exists( $userdata['user_email'] ) ) {
-      wp_send_json_error( new WP_Error( 'user_email_exists', __( 'An account is already registered with your email address.', \SourceFramework\TEXDOMAIN ) ) );
+      wp_send_json_error( new WP_Error( 'user_email_exists', __( 'An account is already registered with your email address.', \SourceFramework\TEXTDOMAIN ) ) );
     }
 
     $first_name = sanitize_text_field( filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING ) );

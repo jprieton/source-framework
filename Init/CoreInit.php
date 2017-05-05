@@ -40,7 +40,7 @@ final class CoreInit extends Singleton {
     parent::__construct();
 
     /**
-     * Load plugin texdomain
+     * Load plugin TEXTDOMAIN
      * @since 1.0.0
      */
     add_action( 'init', [ $this, 'plugin_textdomain' ] );
@@ -71,12 +71,12 @@ final class CoreInit extends Singleton {
   }
 
   /**
-   * Load plugin texdomain
+   * Load plugin TEXTDOMAIN
    * 
    * @since 1.0.0
    */
   public function plugin_textdomain() {
-    load_plugin_textdomain( \SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
+    load_plugin_textdomain( \SourceFramework\TEXTDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
   }
 
   /**
@@ -165,14 +165,14 @@ final class CoreInit extends Singleton {
     $localize_script = array(
         'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
         'messages' => array(
-            'success'   => __( 'Success!', \SourceFramework\TEXDOMAIN ),
-            'fail'      => __( 'Fail!', \SourceFramework\TEXDOMAIN ),
-            'error'     => __( 'Error!', \SourceFramework\TEXDOMAIN ),
-            'send'      => __( 'Send', \SourceFramework\TEXDOMAIN ),
-            'submit'    => __( 'Submit', \SourceFramework\TEXDOMAIN ),
-            'submiting' => __( 'Submiting...', \SourceFramework\TEXDOMAIN ),
-            'sending'   => __( 'Sending...', \SourceFramework\TEXDOMAIN ),
-            'sent'      => __( 'Sent!', \SourceFramework\TEXDOMAIN ),
+            'success'   => __( 'Success!', \SourceFramework\TEXTDOMAIN ),
+            'fail'      => __( 'Fail!', \SourceFramework\TEXTDOMAIN ),
+            'error'     => __( 'Error!', \SourceFramework\TEXTDOMAIN ),
+            'send'      => __( 'Send', \SourceFramework\TEXTDOMAIN ),
+            'submit'    => __( 'Submit', \SourceFramework\TEXTDOMAIN ),
+            'submiting' => __( 'Submiting...', \SourceFramework\TEXTDOMAIN ),
+            'sending'   => __( 'Sending...', \SourceFramework\TEXTDOMAIN ),
+            'sent'      => __( 'Sent!', \SourceFramework\TEXTDOMAIN ),
         )
     );
     return $localize_script;

@@ -15,7 +15,7 @@ namespace SourceFramework\Core;
 class About extends Admin_Page {
 
   public function __construct() {
-    $this->page_title = __( 'About', SourceFramework\TEXDOMAIN );
+    $this->page_title = __( 'About', SourceFramework\TEXTDOMAIN );
     $this->menu_title = 'SourceFramework';
     $this->capability = 'manage_options';
     $this->menu_slug  = 'source-framework-about';

@@ -43,7 +43,7 @@ if ( file_exists( plugin_dir_path( __FILE__ ) . 'source-framework.phar' ) ) {
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
-define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
+define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
 
 /**
  * Registering an autoload implementation
