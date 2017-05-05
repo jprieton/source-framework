@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Singleton abstract class
  *
- * @package        Core
+ * @package        SourceFramework
  * @subpackage     Abstracts
  *
  * @since          1.0.0

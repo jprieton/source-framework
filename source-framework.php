@@ -32,38 +32,51 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * Define plugin constants
+ * @since 1.0.0
  */
-define( 'SourceFramework\ABSPATH', file_exists( __DIR__ . '/source-framework.phar' ) ? 'phar://' . __DIR__ . '/source-framework.phar' : __DIR__  );
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'source-framework.phar' ) ) {
+  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( __FILE__ ) . 'source-framework.phar' );
+} else {
+  define( 'SourceFramework\ABSPATH', plugin_dir_path( __FILE__ ) );
+}
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
 
-/**
- * Activation, Deactivation and Uninstall hooks
- * @since 1.0.0
- */
-include_once SourceFramework\ABSPATH . '/Init/Setup.php';
-
-include_once SourceFramework\ABSPATH . '/includes/init.php';
 
 /**
- * CoreInit
+ * Registering an autoload implementation
  * @since 1.0.0
  */
-require_once SourceFramework\ABSPATH . '/core/init.php';
+spl_autoload_register( function($class_name) {
+
+  $namespace = explode( '\\', $class_name );
+
+  if ( $namespace[0] != 'SourceFramework' ) {
+    return false;
+  }
+
+  $namespace[0] = SourceFramework\ABSPATH;
+  $filename     = implode( DIRECTORY_SEPARATOR, $namespace ) . '.php';
+
+  if ( file_exists( $filename ) ) {
+    include $filename;
+  }
+} );
+
+/**
+ * Core Init
+ * @since 1.0.0
+ */
+SourceFramework\Init\CoreInit::get_instance();
 
 if ( is_admin() ) {
-  /**
-   * AdminInit
-   * @since 1.0.0
-   */
-  include_once SourceFramework\ABSPATH . '/admin/init.php';
+  
 } else {
   /**
-   * PublicInit
+   * Public Init
    * @since 1.0.0
    */
-  include_once SourceFramework\ABSPATH . '/public/init.php';
+  SourceFramework\Init\PublicInit::get_instance();
 }
-
