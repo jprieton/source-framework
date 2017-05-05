@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * If this file is called directly, abort.
+ */
+if ( !defined( 'ABSPATH' ) ) {
+  die( 'Direct access is forbidden.' );
+}
+
+/**
  * Plugin Name:    SourceFramework
  * Description:    An extensible framework for WordPress themes and plugins
  * Version:        1.0.0
@@ -23,12 +30,6 @@
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
-/**
- * If this file is called directly, abort.
- */
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
 
 /**
  * Define plugin constants
@@ -43,7 +44,6 @@ define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXDOMAIN', 'source-framework' );
-
 
 /**
  * Registering an autoload implementation
