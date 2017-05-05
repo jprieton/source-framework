@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-04-06 15:09-0400\n"
-"PO-Revision-Date: 2017-04-06 15:09-0400\n"
+"POT-Creation-Date: 2017-05-05 14:08-0400\n"
+"PO-Revision-Date: 2017-05-05 14:09-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -18,45 +18,41 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../admin/class-advanced-settings.php:18
-msgid "Advanced Settings"
-msgstr "Ajustes avanzados"
-
-#: ../core/forms/elements/class-select.php:42
-msgid "Select..."
-msgstr "Seleccione..."
-
-#: ../core/init.php:50
+#: ../Init/CoreInit.php:168
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../core/init.php:51
+#: ../Init/CoreInit.php:169
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../core/init.php:52
+#: ../Init/CoreInit.php:170
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../core/init.php:53
+#: ../Init/CoreInit.php:171
 msgid "Send"
 msgstr "Enviar"
 
-#: ../core/init.php:54
+#: ../Init/CoreInit.php:172
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../core/init.php:55
+#: ../Init/CoreInit.php:173
+msgid "Submiting..."
+msgstr "Enviando..."
+
+#: ../Init/CoreInit.php:174
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../core/init.php:56
+#: ../Init/CoreInit.php:175
 msgid "Sent!"
 msgstr "¡Enviado!"
 
-#: ../core/settings/abstract-settings-page___option.php:376
-msgid "Default"
-msgstr "Predeterminado"
+#: ../includes/class-about.php:18
+msgid "About"
+msgstr "Acerca"
 
 #: ../includes/class-media.php:43 ../includes/class-media.php:87
 msgid "Invalid or empty file"
@@ -86,11 +82,11 @@ msgstr "La contraseña no coincide con la contraseña de confirmación."
 
 #: ../includes/class-user.php:94
 msgid "User created successfully"
-msgstr "Usuario creado correctamente."
+msgstr "Usuario creado correctamente"
 
 #: ../includes/class-user.php:149
 msgid "User updated successfully"
-msgstr "Usuario actualizado correctamente:"
+msgstr "Usuario actualizado correctamente"
 
 #: ../includes/class-user.php:169
 msgid "Please provide a valid email address."
@@ -99,3 +95,11 @@ msgstr "Por favor ingrese una dirección de correo electrónico válida."
 #: ../includes/class-user.php:173
 msgid "An account is already registered with your email address."
 msgstr "Ya ha sido registrada una cuenta con este email."
+
+#: ../includes/forms/elements/class-select.php:42
+msgid "Select..."
+msgstr "Seleccione..."
+
+#: ../includes/settings/abstract-settings-page___option.php:376
+msgid "Default"
+msgstr "Predeterminado"
