@@ -73,12 +73,11 @@ abstract class Singleton {
   /**
    * PHP5 style destructor and will run when object is destroyed.
    *
-   * @since 0.1.0
-   * @return true
+   * @since         1.0.0
+   * @return        true
    */
   public function __destruct() {
     static::$instance = null;
-    return true;
   }
 
 }

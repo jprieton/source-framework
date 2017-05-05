@@ -10,13 +10,16 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Option_Group class
+ * OptionGroup class
  *
- * @package Core
- * @since 1.0.0
- * @author jprieton
+ * @package        SourceFramework
+ * @subpackage     Core
+ *
+ * @since          1.0.0
+ *
+ * @author         Javier Prieto <jprieton@gmail.com>
  */
-class Option_Group {
+class OptionGroup {
 
   /**
    * Setting group name
@@ -25,7 +28,7 @@ class Option_Group {
    *
    * @var   string
    */
-  protected $option_group = '';
+  protected $setting_group = '';
 
   /**
    * Option data
@@ -41,21 +44,11 @@ class Option_Group {
    *
    * @since   1.0.0
    *
-   * @param   string    $option_group
+   * @param   string    $setting_group
    */
-  public function __construct( $option_group ) {
-    $this->option_group = trim( $option_group );
-    $this->options      = (array) get_option( $this->option_group, array() );
-  }
-
-  /**
-   * PHP5 style destructor and will run when object is destroyed.
-   *
-   * @since   1.0.0
-   * @return  true
-   */
-  public function __destruct() {
-    return true;
+  public function __construct( $setting_group ) {
+    $this->setting_group = trim( $setting_group );
+    $this->options       = (array) get_option( $this->setting_group, array() );
   }
 
   /**
@@ -71,7 +64,7 @@ class Option_Group {
   public function set_option( $option, $value ) {
     $this->options[$option] = $value;
 
-    return update_option( $this->option_group, $this->options );
+    return update_option( $this->setting_group, $this->options );
   }
 
   /**
@@ -85,9 +78,9 @@ class Option_Group {
    * @return  mixed
    */
   public function get_option( $option, $default = false ) {
-    $response = isset( $this->options[$option] ) ? $this->options[$option] : $default;
+    $value = isset( $this->options[$option] ) ? $this->options[$option] : $default;
 
-    return $response;
+    return $value;
   }
 
   /**
@@ -102,8 +95,7 @@ class Option_Group {
    */
   public function get_bool_option( $option, $default = false ) {
     $value = $this->get_option( $option, $default );
-
-    return (bool) in_array( $value, array( 'Y', 'y', 'yes', 'true', '1' ) );
+    return (bool) (strtolower( $value ) === 'yes' || $value === true || $value == '1');
   }
 
   /**
@@ -177,38 +169,17 @@ class Option_Group {
     }
 
     $this->options = array_merge( $this->options, (array) $new_value );
-    $this->options = $this->_clean_options( $this->options );
-    return $this->options;
-  }
 
-  /**
-   * Clean empty or _unset_ options
-   *
-   * @since   1.0.0
-   *
-   * @param   array     $new_value
-   * @return  array
-   */
-  private function _clean_options( $new_value ) {
-    foreach ( $new_value as $key => $value ) {
+    foreach ( $this->options as $key => $value ) {
       if ( is_array( $value ) ) {
-        $new_value[$key] = $this->_clean_options( $value );
+        $this->options[$key] = $this->_clean_options( $value );
       }
 
       if ( empty( $value ) || $value == '_unset_' ) {
-        unset( $new_value[$key] );
+        unset( $this->options[$key] );
       }
     }
-    return $new_value;
-  }
-
-  /**
-   * Register a setting. Must be called in admin_init hook.
-   *
-   * @since   1.0.0
-   */
-  public function register_setting() {
-    register_setting( $this->option_group, $this->option_group );
+    return $this->options;
   }
 
 }
