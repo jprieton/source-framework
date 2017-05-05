@@ -34,9 +34,9 @@ class Form {
    *
    * @param   string              $label
    * @param   array|string        $attributes
-   * @return  void
+   * @return  string
    */
-  public function label( $label, $attributes = array() ) {
+  public static function label( $label, $attributes = array() ) {
     return Tag::html( 'label', $label, $attributes );
   }
 
@@ -107,7 +107,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function hidden( $name, $value = '', $attributes = array() ) {
+  public static function hidden( $name, $value = '', $attributes = array() ) {
     return static::input( 'hidden', $name, $value, $attributes );
   }
 
@@ -121,7 +121,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function text( $name, $value = '', $attributes = array() ) {
+  public static function text( $name, $value = '', $attributes = array() ) {
     return static::input( 'text', $name, $value, $attributes );
   }
 
@@ -135,7 +135,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function email( $name, $value = '', $attributes = array() ) {
+  public static function email( $name, $value = '', $attributes = array() ) {
     return static::input( 'email', $name, $value, $attributes );
   }
 
@@ -149,7 +149,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function url( $name, $value = '', $attributes = array() ) {
+  public static function url( $name, $value = '', $attributes = array() ) {
     return static::input( 'url', $name, $value, $attributes );
   }
 
@@ -162,7 +162,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function password( $name, $attributes = array() ) {
+  public static function password( $name, $attributes = array() ) {
     return static::input( 'password', $name, null, $attributes );
   }
 
@@ -175,7 +175,7 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public function file( $name, $attributes = array() ) {
+  public static function file( $name, $attributes = array() ) {
     return static::input( 'file', $name, null, $attributes );
   }
 
