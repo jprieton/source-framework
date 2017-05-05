@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Core;
+namespace SourceFramework\Init;
 
 /**
  * If this file is called directly, abort.
@@ -25,14 +25,36 @@ final class AdminInit extends Singleton {
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           AdminInit
+   * @var           PublicInit
    */
   protected static $instance;
 
   /**
-   * Enqueue admin scripts.
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
-   * @since   1.0.0
+   * @since         1.0.0
+   */
+  protected function __construct() {
+    parent::__construct();
+
+    /**
+     * Register and enqueue scripts
+     * @since   1.0.0
+     */
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+
+    /**
+     * Register and enqueue styles
+     * @since   1.0.0
+     */
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+  
+  }
+
+  /**
+   * Register & enqueue plugin scripts
+   *
+   * @since 0.5.0
    */
   public function enqueue_scripts() {
     $scripts = [
@@ -46,13 +68,13 @@ final class AdminInit extends Singleton {
     ];
 
     /**
-     * Filter plugin admin scripts
+     * Filter plugin scripts
      *
-     * @since   1.0.0
+     * @since   0.5.0
      * @param   array   $scripts
      */
-    $scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
-    do_action( 'source_framework_register_scripts', $scripts );
+    $_scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
+    do_action( 'source_framework_enqueue_scripts', $_scripts );
   }
 
   /**
@@ -80,8 +102,8 @@ final class AdminInit extends Singleton {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $styles = apply_filters( 'source_framework_admin_register_styles', $styles );
-    do_action( 'source_framework_register_styles', $styles );
+    $_styles = apply_filters( 'source_framework_admin_register_styles', $styles );
+    do_action( 'source_framework_enqueue_styles', $_styles );
   }
 
 }
