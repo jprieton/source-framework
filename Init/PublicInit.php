@@ -72,12 +72,31 @@ final class PublicInit extends Singleton {
      * @since 1.0.0
      */
     add_action( 'wp_footer', [ $this, 'singular_custom_code_footer_script' ] );
+
+    /**
+     * Add shortcodes
+     * @since 1.0.0
+     */
+    $this->add_shorcodes();
+  }
+
+  /**
+   * Add shortcodes
+   *
+   * @since 1.0.0
+   */
+  public function add_shorcodes() {
+    /**
+     * Add an ofuscate mailto link to prevent spam-bots from sniffing it.
+     * @since 1.0.0
+     */
+    add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
   }
 
   /**
    * Register & enqueue plugin scripts
    *
-   * @since 0.5.0
+   * @since 1.0.0
    */
   public function enqueue_scripts() {
     $scripts = [
@@ -106,7 +125,7 @@ final class PublicInit extends Singleton {
     /**
      * Filter plugin scripts
      *
-     * @since   0.5.0
+     * @since   1.0.0
      * @param   array   $scripts
      */
     $scripts = apply_filters( 'source_framework_public_enqueue_scripts', $scripts );

@@ -21,7 +21,7 @@ use SourceFramework\Template\Tag;
  * @since   1.0.0
  * @see     http://schema.org/docs/schemas.html
  *
- * @author         Javier Prieto <jprieton@gmail.com>
+ * @author  Javier Prieto <jprieton@gmail.com>
  */
 class Microdata {
 
