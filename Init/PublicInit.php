@@ -109,8 +109,8 @@ final class PublicInit extends Singleton {
      * @since   0.5.0
      * @param   array   $scripts
      */
-    $_scripts = apply_filters( 'source_framework_public_enqueue_scripts', $scripts );
-    do_action( 'source_framework_enqueue_scripts', $_scripts );
+    $scripts = apply_filters( 'source_framework_public_enqueue_scripts', $scripts );
+    do_action( 'source_framework_enqueue_scripts', $scripts );
   }
 
   /**
@@ -158,8 +158,8 @@ final class PublicInit extends Singleton {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $_styles = apply_filters( 'source_framework_public_enqueue_styles', $styles );
-    do_action( 'source_framework_enqueue_styles', $_styles );
+    $styles = apply_filters( 'source_framework_public_enqueue_styles', $styles );
+    do_action( 'source_framework_enqueue_styles', $styles );
   }
 
   /**

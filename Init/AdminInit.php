@@ -73,8 +73,8 @@ final class AdminInit extends Singleton {
      * @since   0.5.0
      * @param   array   $scripts
      */
-    $_scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
-    do_action( 'source_framework_enqueue_scripts', $_scripts );
+    $scripts = apply_filters( 'source_framework_admin_register_scripts', $scripts );
+    do_action( 'source_framework_enqueue_scripts', $scripts );
   }
 
   /**
@@ -102,8 +102,8 @@ final class AdminInit extends Singleton {
      * @since   1.0.0
      * @param   array   $styles
      */
-    $_styles = apply_filters( 'source_framework_admin_register_styles', $styles );
-    do_action( 'source_framework_enqueue_styles', $_styles );
+    $styles = apply_filters( 'source_framework_admin_register_styles', $styles );
+    do_action( 'source_framework_enqueue_styles', $styles );
   }
 
 }

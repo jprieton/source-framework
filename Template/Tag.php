@@ -90,6 +90,27 @@ class Tag {
   }
 
   /**
+   * Retrieve an HTML img element
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $src
+   * @param   string|array        $attributes
+   *
+   * @see     http://png-pixel.com/
+   *
+   * @return  string
+   */
+  public static function img( $src, $attributes = array() ) {
+    if ( 'pixel' == $src ) {
+      $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+    }
+    $attributes = wp_parse_args( $attributes, compact( 'src' ) );
+
+    return static::html( 'img', '', $attributes );
+  }
+
+  /**
    * Convert an asociative array to HTML attributes
    *
    * @since   1.0.0
