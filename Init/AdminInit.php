@@ -41,14 +41,13 @@ final class AdminInit extends Singleton {
      * Register and enqueue scripts
      * @since   1.0.0
      */
-    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ], 0 );
 
     /**
      * Register and enqueue styles
      * @since   1.0.0
      */
-    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-  
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 0 );
   }
 
   /**
