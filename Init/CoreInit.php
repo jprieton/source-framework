@@ -76,7 +76,7 @@ final class CoreInit extends Singleton {
    * @since 1.0.0
    */
   public function plugin_textdomain() {
-    load_plugin_textdomain( SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
+    load_plugin_textdomain( \SourceFramework\TEXDOMAIN, FALSE, basename( dirname( __DIR__ ) ) . '/languages/' );
   }
 
   /**
