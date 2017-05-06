@@ -65,22 +65,10 @@ spl_autoload_register( function($class_name) {
   }
 } );
 
+use SourceFramework\Init\SourceFramework;
+
 /**
- * Core Init
+ * Initialize
  * @since 1.0.0
  */
-SourceFramework\Init\CoreInit::get_instance();
-
-if ( is_admin() ) {
-  /**
-   * Admin Init
-   * @since 1.0.0
-   */
-  SourceFramework\Init\AdminInit::get_instance();
-} else {
-  /**
-   * Public Init
-   * @since 1.0.0
-   */
-  SourceFramework\Init\PublicInit::get_instance();
-}
+SourceFramework::init();

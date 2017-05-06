@@ -10,9 +10,11 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Init\PublicInit;
+use SourceFramework\Init\AdminInit;
 
 /**
- * Core class
+ * SourceFramework class
  *
  * @package        SourceFramework
  * @subpackage     Init
@@ -21,7 +23,7 @@ use SourceFramework\Abstracts\Singleton;
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class CoreInit extends Singleton {
+final class SourceFramework extends Singleton {
 
   /**
    * Static instance of this class
@@ -68,6 +70,20 @@ final class CoreInit extends Singleton {
      * @since 1.0.0
      */
     add_filter( 'source_framework_localize_scripts', [ $this, 'localize_scripts' ] );
+
+    if ( is_admin() ) {
+      /**
+       * Admin Init
+       * @since 1.0.0
+       */
+      AdminInit::init();
+    } else {
+      /**
+       * Public Init
+       * @since 1.0.0
+       */
+      PublicInit::init();
+    }
   }
 
   /**
