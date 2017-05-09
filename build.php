@@ -1,10 +1,12 @@
 <?php
 
-if ( file_exists( 'source-framework.phar' ) ) {
-  unlink( 'source-framework.phar' );
+$phar_path = 'source-framework.phar';
+
+if ( file_exists($phar_path) ) {
+  unlink( $phar_path );
 }
 
-$phar = new Phar( 'source-framework.phar' );
+$phar = new Phar( $phar_path );
 $phar->setStub( '<?php __HALT_COMPILER();' );
 
 $folders = [ 'Abstracts', 'Init', 'Template', 'Settings', 'helpers', 'includes', 'admin', 'public' ];

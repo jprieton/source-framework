@@ -35,15 +35,20 @@ if ( !defined( 'ABSPATH' ) ) {
  * Define plugin constants
  * @since 1.0.0
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'source-framework.phar' ) ) {
-  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( __FILE__ ) . 'source-framework.phar' );
-} else {
-  define( 'SourceFramework\ABSPATH', plugin_dir_path( __FILE__ ) );
-}
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
+
+/**
+ * Path to the plugin directory
+ * @since 1.0.0
+ */
+if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' ) ) {
+  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' );
+} else {
+  define( 'SourceFramework\ABSPATH', plugin_dir_path( SourceFramework\PLUGIN_FILE ) );
+}
 
 /**
  * Registering an autoload implementation
@@ -66,13 +71,10 @@ spl_autoload_register( function($class_name) {
 } );
 
 /**
- * Init
+ * Initialize SourceFramework
  * @since 1.0.0
  */
-use SourceFramework\Init\SourceFramework;
-SourceFramework::init
-
-SourceFramework\Init\SourceFramework::get_instance();
+SourceFramework\Core\SourceFramework::get_instance();
 
 if ( is_admin() ) {
   /**
