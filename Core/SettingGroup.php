@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Core;
+namespace SourceFramework\Settings;
 
 /**
  * If this file is called directly, abort.
@@ -10,16 +10,16 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * OptionGroup class
+ * SettingGroup class
  *
  * @package        SourceFramework
- * @subpackage     Core
+ * @subpackage     Settings
  *
  * @since          1.0.0
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class OptionGroup {
+class SettingGroup {
 
   /**
    * Setting group name
@@ -96,62 +96,6 @@ class OptionGroup {
   public function get_bool_option( $option, $default = false ) {
     $value = $this->get_option( $option, $default );
     return (bool) (strtolower( $value ) === 'yes' || $value === true || $value == '1');
-  }
-
-  /**
-   * Get float option value in option group.
-   *
-   * @since   1.0.0
-   *
-   * @param   string    $option   Name of option to retrieve. Expected to not be SQL-escaped.
-   * @param   float     $default  Optional. Default value to return if the option does not exist.
-   *
-   * @return  float
-   */
-  public function get_float_option( $option, $default = 0 ) {
-    return floatval( $this->get_option( $option, $default ) );
-  }
-
-  /**
-   * Get integer option value in option group.
-   *
-   * @since   1.0.0
-   *
-   * @param   string    $option   Name of option to retrieve. Expected to not be SQL-escaped.
-   * @param   integer   $default  Optional. Default value to return if the option does not exist.
-   *
-   * @return  integer
-   */
-  public function get_int_option( $option, $default = 0 ) {
-    return intval( $this->get_option( $option, $default ) );
-  }
-
-  /**
-   * Get non-negative integer option value in option group.
-   *
-   * @since   1.0.0
-   *
-   * @param   string    $option   Name of option to retrieve. Expected to not be SQL-escaped.
-   * @param   integer   $default  Optional. Default value to return if the option does not exist.
-   *
-   * @return  integer
-   */
-  public function get_absint_option( $option, $default = 0 ) {
-    return absint( $this->get_option( $option, $default ) );
-  }
-
-  /**
-   * Get integer option value in option group.
-   *
-   * @since   1.0.0
-   *
-   * @param   string    $option   Name of option to retrieve. Expected to not be SQL-escaped.
-   * @param   integer   $default  Optional. Default value to return if the option does not exist.
-   *
-   * @return  integer
-   */
-  public function get_array_option( $option, $default = array() ) {
-    return (array) $this->get_option( $option, $default );
   }
 
   /**

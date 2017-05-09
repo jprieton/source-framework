@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\Singleton;
 
 /**
- * Core class
+ * SourceFramework class
  *
  * @package        SourceFramework
  * @subpackage     Init
@@ -21,13 +21,13 @@ use SourceFramework\Abstracts\Singleton;
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class CoreInit extends Singleton {
+final class SourceFramework extends Singleton {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           PublicInit
+   * @var           SourceFramework
    */
   protected static $instance;
 
@@ -40,7 +40,7 @@ final class CoreInit extends Singleton {
     parent::__construct();
 
     /**
-     * Load plugin TEXTDOMAIN
+     * Load plugin textdomain
      * @since 1.0.0
      */
     add_action( 'init', [ $this, 'plugin_textdomain' ] );
@@ -72,7 +72,7 @@ final class CoreInit extends Singleton {
 
   /**
    * Load plugin TEXTDOMAIN
-   * 
+   *
    * @since 1.0.0
    */
   public function plugin_textdomain() {
@@ -81,24 +81,24 @@ final class CoreInit extends Singleton {
 
   /**
    * Enable theme suports
-   * 
+   *
    * @since 1.0.0
    */
   public function theme_supports() {
     /**
-     * Enables Post Formats support for a theme. 
+     * Enables Post Formats support for a theme.
      * @since 1.0.0
      */
     add_theme_support( 'post-formats' );
 
     /**
-     * This feature enables Post Thumbnails support for a theme. 
+     * This feature enables Post Thumbnails support for a theme.
      * @since 1.0.0
      */
     add_theme_support( 'post-thumbnails' );
 
     /**
-     * Enables plugins and themes to manage the document title tag. 
+     * Enables plugins and themes to manage the document title tag.
      * @since 1.0.0
      */
     add_theme_support( 'title-tag' );
@@ -158,7 +158,7 @@ final class CoreInit extends Singleton {
 
   /**
    * Localize script
-   * 
+   *
    * @since 1.0.0
    */
   public function localize_scripts() {
@@ -180,7 +180,7 @@ final class CoreInit extends Singleton {
 
   /**
    * Register and enqueue plugin styles
-   * 
+   *
    * @since   1.0.0
    */
   public function register_styles( $styles ) {

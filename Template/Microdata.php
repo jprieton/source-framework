@@ -30,6 +30,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WebPage
+   *
+   * @return  string
    */
   public static function web_page() {
     $default    = [
@@ -38,7 +40,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_web_page_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -46,6 +48,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/SearchResultsPage
+   *
+   * @return  string
    */
   public static function search_results_page() {
     $default    = [
@@ -54,7 +58,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_search_results_page_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -62,6 +66,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/AboutPage
+   *
+   * @return  string
    */
   public static function about_page() {
     $default    = [
@@ -70,7 +76,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_about_page_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -78,6 +84,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/ContactPage
+   *
+   * @return  string
    */
   public static function contact_page() {
     $default    = [
@@ -86,7 +94,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_contact_page_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -94,6 +102,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/QAPage
+   *
+   * @return  string
    */
   public static function faq_page() {
     $default    = [
@@ -103,7 +113,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_faq_page_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -111,6 +121,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WPHeader
+   *
+   * @return  string
    */
   public static function web_page_header() {
     $default    = [
@@ -119,7 +131,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_web_page_header_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -127,6 +139,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WPFooter
+   *
+   * @return  string
    */
   public static function web_page_footer() {
     $default    = [
@@ -136,7 +150,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_web_page_footer_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -144,6 +158,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WPSideBar
+   *
+   * @return  string
    */
   public static function web_page_sidebar() {
     $default    = [
@@ -152,7 +168,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_web_page_sidebar_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -160,6 +176,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WPAdBlock
+   *
+   * @return  string
    */
   public static function web_page_ad_block() {
     $default    = [
@@ -169,7 +187,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_web_page_ad_block_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -177,6 +195,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/WebPageElement
+   *
+   * @return  string
    */
   public static function web_page_element() {
     $default    = [
@@ -185,7 +205,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_web_page_element_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -193,6 +213,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/SiteNavigationElement
+   *
+   * @return  string
    */
   public static function site_navigation_element() {
     $default    = [
@@ -202,7 +224,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_site_navigation_element_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -210,6 +232,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/mainContentOfPage
+   *
+   * @return  string
    */
   public static function main_content() {
     $default    = [
@@ -218,7 +242,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_main_content_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -226,6 +250,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/ItemPage
+   *
+   * @return  string
    */
   public static function item_page() {
     $default    = [
@@ -235,7 +261,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_item_page_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -243,6 +269,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/SearchAction
+   *
+   * @return  string
    */
   public static function search_action() {
     $default    = [
@@ -252,7 +280,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_search_action_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -260,6 +288,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/SubscribeAction
+   *
+   * @return  string
    */
   public static function subscribe_action() {
     $default    = [
@@ -270,7 +300,7 @@ class Microdata {
     $attributes = apply_filters( 'microdata_subscribe_action_attributes', $default );
 
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
   /**
@@ -278,6 +308,8 @@ class Microdata {
    *
    * @since 1.0.0
    * @see   http://schema.org/RegisterAction
+   *
+   * @return  string
    */
   public static function register_action() {
     $default    = [
@@ -287,7 +319,7 @@ class Microdata {
     ];
     $attributes = apply_filters( 'microdata_register_action_attributes', $default );
 
-    echo Tag::parse_attributes( $attributes );
+    return Tag::parse_attributes( $attributes );
   }
 
 }
