@@ -60,16 +60,22 @@ class SourceFramework extends Singleton {
     add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
 
     /**
-     * Load styles
+     * Register and enqueue styles
      * @since   1.0.0
      */
-    add_action( 'source_framework_styles', [ $this, 'register_styles' ] );
+    add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
 
     /**
-     * Load styles
+     * Register and enqueue scripts
      * @since   1.0.0
      */
-    add_action( 'source_framework_scripts', [ $this, 'register_scripts' ] );
+    add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
+
+    /**
+     * Register and enqueue scripts
+     * @since   1.0.0
+     */
+    add_action( 'wp_enqueue_scripts', [ $this, 'localize_scripts' ] );
 
     /**
      * Check handle names to add <code>async</code> and/or <code>defer</code> attributes;
@@ -83,11 +89,13 @@ class SourceFramework extends Singleton {
      */
     add_action( 'script_loader_tag', [ $this, 'script_loader_tag' ], 20, 2 );
 
-    /**
-     * Localize script
-     * @since 1.0.0
-     */
-    add_filter( 'source_framework_localize_scripts', [ $this, 'localize_scripts' ] );
+    if ( is_admin() ) {
+      /**
+       * Initialize admin
+       * @since   1.0.0
+       */
+      Admin::get_instance();
+    }
   }
 
   /**
@@ -108,7 +116,8 @@ class SourceFramework extends Singleton {
    *
    * @since 1.0.0
    */
-  public function register_scripts( $scripts ) {
+  public function scripts() {
+    $scripts  = apply_filters( 'source_framework_scripts', [] );
     $defaults = [
         'local'     => '',
         'remote'    => '',
@@ -159,7 +168,7 @@ class SourceFramework extends Singleton {
    * @since 1.0.0
    */
   public function localize_scripts() {
-    $localize_script = array(
+    $data = array(
         'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
         'messages' => array(
             'success'   => __( 'Success!', \SourceFramework\TEXTDOMAIN ),
@@ -172,7 +181,7 @@ class SourceFramework extends Singleton {
             'sent'      => __( 'Sent!', \SourceFramework\TEXTDOMAIN ),
         )
     );
-    return $localize_script;
+    wp_localize_script( 'source-framework', 'SourceFrameworkLocale', apply_filters( 'source_framework_localize_scripts', $data ) );
   }
 
   /**
@@ -180,8 +189,8 @@ class SourceFramework extends Singleton {
    *
    * @since   1.0.0
    */
-  public function register_styles( $styles ) {
-
+  public function styles( $styles ) {
+    $styles   = apply_filters( 'source_framework_styles', [] );
     $defaults = [
         'local'    => '',
         'remote'   => '',
@@ -248,11 +257,11 @@ class SourceFramework extends Singleton {
    */
   public function script_loader_tag( $tag, $handle ) {
     if ( in_array( $handle, $this->script_async_handles ) ) {
-      $tag = str_replace( '<script ', '<script async ', $tag );
+      $tag = str_replace( '></script>', ' async></script>', $tag );
     }
 
     if ( in_array( $handle, $this->script_defer_handles ) ) {
-      $tag = str_replace( '<script ', '<script defer ', $tag );
+      $tag = str_replace( '></script>', ' defer></script>', $tag );
     }
     return $tag;
   }

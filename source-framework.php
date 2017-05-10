@@ -30,7 +30,6 @@ if ( !defined( 'ABSPATH' ) ) {
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
-
 /**
  * Define plugin constants
  * @since 1.0.0
@@ -76,13 +75,7 @@ spl_autoload_register( function($class_name) {
  */
 SourceFramework\Core\SourceFramework::get_instance();
 
-if ( is_admin() ) {
-  /**
-   * Admin Init
-   * @since 1.0.0
-   */
-  SourceFramework\Init\AdminInit::get_instance();
-} else {
+if ( !is_admin() ) {
   /**
    * Public Init
    * @since 1.0.0

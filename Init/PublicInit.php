@@ -38,22 +38,16 @@ final class PublicInit extends Singleton {
     parent::__construct();
 
     /**
-     * Register and enqueue scripts
-     * @since   1.0.0
-     */
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 0 );
-
-    /**
      * Register and enqueue styles
      * @since   1.0.0
      */
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ], 0 );
+    add_filter( 'source_framework_styles', [ $this, 'styles' ], 0 );
 
     /**
-     * Localize script
-     * @since 1.0.0
+     * Register and enqueue scripts
+     * @since   1.0.0
      */
-    add_filter( 'source_framework_localize_scripts', [ $this, 'localize_scripts' ] );
+    add_filter( 'source_framework_scripts', [ $this, 'scripts' ], 0 );
 
     /**
      * Shows a custom code in header of the singular template
@@ -65,13 +59,13 @@ final class PublicInit extends Singleton {
      * Shows a custom code on top of body
      * @since 1.0.0
      */
-    add_action( 'before_main_content', [ $this, 'singular_custom_code_body_script' ] );
+    add_action( 'before_main_content', [ $this, 'singular_before_main_content' ] );
 
     /**
      * Shows a custom code in footer of the singular template
      * @since 1.0.0
      */
-    add_action( 'wp_footer', [ $this, 'singular_custom_code_footer_script' ] );
+    add_action( 'after_main_content', [ $this, 'singular_after_main_content' ] );
 
     /**
      * Add shortcodes
@@ -94,91 +88,68 @@ final class PublicInit extends Singleton {
   }
 
   /**
-   * Register & enqueue plugin scripts
+   * Register/enqueue scripts
    *
    * @since 1.0.0
    */
-  public function enqueue_scripts() {
-    $scripts = [
-        'modernizr'                    => [
-            'local'    => plugins_url( 'assets/js/modernizr.min.js' . \SourceFramework\PLUGIN_FILE ),
-            'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
-            'ver'      => '2.8.3',
-            'autoload' => false
-        ],
-        'source-framework'             => [
-            'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
-            'deps'      => [ 'jquery', 'jquery-form' ],
-            'ver'       => \SourceFramework\VERSION,
-            'in_footer' => true,
-            'autoload'  => true,
-        ],
-        'geodatasource-country-region' => [
-            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' . \SourceFramework\PLUGIN_FILE ),
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
-            'ver'       => '1.0.1',
-            'in_footer' => true,
-            'autoload'  => false
-        ],
+  public function scripts( $scripts ) {
+    $scripts ['modernizr']                    = [
+        'local'    => plugins_url( 'assets/js/modernizr.min.js' . \SourceFramework\PLUGIN_FILE ),
+        'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
+        'ver'      => '2.8.3',
+        'autoload' => false
     ];
-
-    /**
-     * Filter plugin scripts
-     *
-     * @since   1.0.0
-     * @param   array   $scripts
-     */
-    $scripts = apply_filters( 'source_framework_public_enqueue_scripts', $scripts );
-    do_action( 'source_framework_enqueue_scripts', $scripts );
+    $scripts ['source-framework']             = [
+        'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
+        'deps'      => [ 'jquery', 'jquery-form' ],
+        'ver'       => \SourceFramework\VERSION,
+        'in_footer' => true,
+        'autoload'  => true,
+        'async'     => true,
+        'defer'     => true,
+    ];
+    $scripts ['geodatasource-country-region'] = [
+        'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' . \SourceFramework\PLUGIN_FILE ),
+        'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
+        'ver'       => '1.0.1',
+        'in_footer' => true,
+        'autoload'  => false
+    ];
+    return $scripts;
   }
 
   /**
-   * Register & enqueue plugin styles
+   * Register/enqueue styles
    *
    * @since 1.0.0
    */
-  public function enqueue_styles() {
-    /**
-     * Plugin styles
-     *
-     * @since 1.0.0
-     */
-    $styles = [
-        'fontawesome'      => [
-            'remote' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-            'ver'    => '4.7.0',
-        ],
-        'ionicons'         => [
-            'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
-            'ver'    => '2.0.1',
-        ],
-        'source-framework' => [
-            'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
-            'ver'      => \SourceFramework\VERSION,
-            'autoload' => true
-        ],
-        'animate'          => [
-            'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
-            'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
-            'ver'    => '3.5.2',
-            'media'  => 'screen',
-        ],
-        'hover'            => [
-            'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
-            'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
-            'ver'    => '2.1.0',
-            'media'  => 'screen',
-        ],
+  public function styles( $styles ) {
+    $styles['fontawesome']      = [
+        'remote' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        'ver'    => '4.7.0',
     ];
-
-    /**
-     * Filter styles
-     *
-     * @since   1.0.0
-     * @param   array   $styles
-     */
-    $styles = apply_filters( 'source_framework_public_enqueue_styles', $styles );
-    do_action( 'source_framework_enqueue_styles', $styles );
+    $styles['ionicons']         = [
+        'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
+        'ver'    => '2.0.1',
+    ];
+    $styles['source-framework'] = [
+        'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
+        'ver'      => \SourceFramework\VERSION,
+        'autoload' => true
+    ];
+    $styles['animate']          = [
+        'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
+        'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+        'ver'    => '3.5.2',
+        'media'  => 'screen',
+    ];
+    $styles['hover']            = [
+        'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
+        'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
+        'ver'    => '2.1.0',
+        'media'  => 'screen',
+    ];
+    return $styles;
   }
 
   /**
@@ -209,14 +180,14 @@ final class PublicInit extends Singleton {
    *
    * @global WP_Post $post
    */
-  public function singular_custom_code_footer_script() {
+  public function singular_after_main_content() {
     if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
     global $post;
 
-    $script = get_post_meta( $post->ID, '_footer_custom_code', true );
+    $script = get_post_meta( $post->ID, '_after_main_content', true );
 
     if ( !empty( $script ) ) {
       echo (string) $script;
@@ -230,14 +201,14 @@ final class PublicInit extends Singleton {
    *
    * @global WP_Post $post
    */
-  public function singular_custom_code_body_script() {
+  public function singular_before_main_content() {
     if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
     global $post;
 
-    $script = get_post_meta( $post->ID, '_body_custom_code', true );
+    $script = get_post_meta( $post->ID, '_before_main_content', true );
 
     if ( !empty( $script ) ) {
       echo (string) $script;

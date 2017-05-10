@@ -80,7 +80,7 @@ class Tag {
     static::parse_shorthand( $tag, $attributes );
     $attributes = static::parse_attributes( $attributes );
 
-    if ( in_array( $tag, static::void ) ) {
+    if ( in_array( $tag, static::$void ) ) {
       $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
     } else {
       $html = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );
