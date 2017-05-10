@@ -16,14 +16,17 @@ use SourceFramework\Template\Tag;
  *
  * A collection of static methods to generate form elements markup.
  *
- * @package Template
+ * @package     SourceFramework
+ * @subpackage  Template
  *
- * @since   1.0.0
  * @see     https://laravelcollective.com/docs/master/html
  * @see     https://www.codeigniter.com/userguide3/helpers/form_helper.html
  * @see     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  *
- * @author  Javier Prieto <jprieton@gmail.com>
+ * @author      Javier Prieto <jprieton@gmail.com>
+ * @copyright	  Copyright (c) 2017, Javier Prieto
+ * @since       1.0.0
+ * @license     http://www.gnu.org/licenses/gpl-3.0.txt
  */
 class Form {
 
@@ -177,6 +180,35 @@ class Form {
    */
   public static function file( $name, $attributes = array() ) {
     return static::input( 'file', $name, null, $attributes );
+  }
+
+  /**
+   * Retrieves the alternative nonce hidden form field.
+   *
+   * @since 1.0.0
+   *
+   * @param   string    $action
+   * @return  string
+   */
+  public static function create_nonce( $action ) {
+    $nonce = wp_create_nonce( $action );
+    return static::hidden( $nonce, '', [ 'data-nonce' => $nonce ] );
+  }
+
+  /**
+   * Verify that alternative nonce is correct and unexpired with the respect to a specified action.
+   *
+   * @since 1.0.0
+   *
+   * @param   string    $action
+   * @return  bool|int
+   */
+  public static function verify_nonce( $action ) {
+    $nonce = wp_create_nonce( $action );
+    $post  = filter_input( INPUT_POST, $nonce, FILTER_SANITIZE_STRING );
+    $get   = filter_input( INPUT_GET, $nonce, FILTER_SANITIZE_STRING );
+    $value = empty( $get ) ? $post : $get;
+    return wp_verify_nonce( $value, $action );
   }
 
 }
