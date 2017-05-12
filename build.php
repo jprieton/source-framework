@@ -2,16 +2,19 @@
 
 $phar_path = 'source-framework.phar';
 
-if ( file_exists($phar_path) ) {
+if ( file_exists( $phar_path ) ) {
   unlink( $phar_path );
 }
 
 $phar = new Phar( $phar_path );
 $phar->setStub( '<?php __HALT_COMPILER();' );
 
-$folders = [ 'Abstracts', 'Init', 'Template', 'Settings', 'helpers', 'includes', 'admin', 'public' ];
+$folders = [ 'Abstracts', 'Admin', 'Core', 'Factory', 'Init', 'Misc', 'Settings', 'Template', 'includes', 'public' ];
 
 foreach ( $folders as $folder ) {
+  if ( !file_exists( $folder ) || !is_dir( $folder ) ) {
+    continue;
+  }
   $files = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $folder ), RecursiveIteratorIterator::SELF_FIRST );
 
   foreach ( $files as $file ) {
