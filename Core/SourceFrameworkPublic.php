@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Init;
+namespace SourceFramework\Core;
 
 /**
  * If this file is called directly, abort.
@@ -12,20 +12,20 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\Singleton;
 
 /**
- * PublicInit class
+ * SourceFrameworkPublic class
  *
  * @package        Core
  * @subpackage     Init
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class PublicInit extends Singleton {
+final class SourceFrameworkPublic extends Singleton {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           PublicInit
+   * @var           SourceFrameworkPublic
    */
   protected static $instance;
 
@@ -105,7 +105,6 @@ final class PublicInit extends Singleton {
         'ver'       => \SourceFramework\VERSION,
         'in_footer' => true,
         'autoload'  => true,
-        'async'     => true,
         'defer'     => true,
     ];
     $scripts ['geodatasource-country-region'] = [
@@ -113,7 +112,8 @@ final class PublicInit extends Singleton {
         'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
         'ver'       => '1.0.1',
         'in_footer' => true,
-        'autoload'  => false
+        'autoload'  => false,
+        'defer'     => true,
     ];
     return $scripts;
   }

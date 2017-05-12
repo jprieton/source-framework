@@ -74,11 +74,3 @@ spl_autoload_register( function($class_name) {
  * @since 1.0.0
  */
 SourceFramework\Core\SourceFramework::get_instance();
-
-if ( !is_admin() ) {
-  /**
-   * Public Init
-   * @since 1.0.0
-   */
-  SourceFramework\Init\PublicInit::get_instance();
-}

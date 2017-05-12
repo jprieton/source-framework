@@ -19,7 +19,7 @@ use SourceFramework\Abstracts\Singleton;
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class Admin extends Singleton {
+final class SourceFrameworkAdmin extends Singleton {
 
   /**
    * Static instance of this class
@@ -62,7 +62,6 @@ final class Admin extends Singleton {
         'ver'       => \SourceFramework\VERSION,
         'in_footer' => true,
         'autoload'  => true,
-        'async'     => true,
         'defer'     => true,
     ];
     return $scripts;

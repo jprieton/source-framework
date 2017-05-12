@@ -23,7 +23,7 @@ use SourceFramework\Settings\Setting;
  * @since       1.0.0
  * @license     http://www.gnu.org/licenses/gpl-3.0.txt
  */
-class SourceFramework extends Singleton {
+final class SourceFramework extends Singleton {
 
   /**
    * Static instance of this class
@@ -94,7 +94,13 @@ class SourceFramework extends Singleton {
        * Initialize admin
        * @since   1.0.0
        */
-      Admin::get_instance();
+      SourceFrameworkAdmin::get_instance();
+    } else {
+      /**
+       * Initialize public
+       * @since   1.0.0
+       */
+      SourceFrameworkPublic::get_instance();
     }
   }
 
@@ -150,11 +156,7 @@ class SourceFramework extends Singleton {
         $this->script_defer_handles[] = $handle;
       }
 
-      $deps      = $script['deps'];
-      $ver       = $script['ver'];
-      $in_footer = $script['in_footer'];
-
-      wp_register_script( $handle, $src, (array) $deps, $ver, (bool) $in_footer );
+      wp_register_script( $handle, $src, (array) $script['deps'], $script['ver'], (bool) $script['in_footer'] );
 
       if ( $script['autoload'] ) {
         wp_enqueue_script( $handle );
@@ -213,11 +215,7 @@ class SourceFramework extends Singleton {
         continue;
       }
 
-      $deps  = $style['deps'];
-      $ver   = $style['ver'];
-      $media = $style['media'];
-
-      wp_register_style( $handle, $src, (array) $deps, $ver, $media );
+      wp_register_style( $handle, $src, (array) $style['deps'], $style['ver'], $style['media'] );
 
       if ( $style['autoload'] ) {
         wp_enqueue_style( $handle );
