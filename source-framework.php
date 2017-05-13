@@ -30,20 +30,24 @@ if ( !defined( 'ABSPATH' ) ) {
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
-
 /**
  * Define plugin constants
  * @since 1.0.0
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'source-framework.phar' ) ) {
-  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( __FILE__ ) . 'source-framework.phar' );
-} else {
-  define( 'SourceFramework\ABSPATH', plugin_dir_path( __FILE__ ) );
-}
 define( 'SourceFramework\VERSION', '1.0.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
+
+/**
+ * Path to the plugin directory
+ * @since 1.0.0
+ */
+if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' ) ) {
+  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' );
+} else {
+  define( 'SourceFramework\ABSPATH', plugin_dir_path( SourceFramework\PLUGIN_FILE ) );
+}
 
 /**
  * Registering an autoload implementation
@@ -68,7 +72,7 @@ spl_autoload_register( function($class_name) {
 use SourceFramework\Init\SourceFramework;
 
 /**
- * Initialize
+ * Initialize SourceFramework
  * @since 1.0.0
  */
-SourceFramework::init();
+SourceFramework\Core\SourceFramework::get_instance();

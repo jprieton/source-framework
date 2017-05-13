@@ -31,7 +31,7 @@ class Tag {
    * @var array List of void elements.
    * @since   1.0.0
    */
-  public static $void = [
+  private static $void = [
       'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
       'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'
   ];
@@ -80,7 +80,7 @@ class Tag {
     static::parse_shorthand( $tag, $attributes );
     $attributes = static::parse_attributes( $attributes );
 
-    if ( in_array( $tag, static::void ) ) {
+    if ( in_array( $tag, static::$void ) ) {
       $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
     } else {
       $html = sprintf( '<%s>%s</%s>', trim( $tag . ' ' . $attributes ), $content, $tag );

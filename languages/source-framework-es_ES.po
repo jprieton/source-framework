@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-05-05 14:08-0400\n"
-"PO-Revision-Date: 2017-05-05 14:09-0400\n"
+"POT-Creation-Date: 2017-05-12 13:38-0400\n"
+"PO-Revision-Date: 2017-05-12 13:40-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -18,37 +18,41 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../Init/CoreInit.php:168
+#: ../Core/SourceFramework.php:176
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../Init/CoreInit.php:169
+#: ../Core/SourceFramework.php:177
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../Init/CoreInit.php:170
+#: ../Core/SourceFramework.php:178
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../Init/CoreInit.php:171
+#: ../Core/SourceFramework.php:179
 msgid "Send"
 msgstr "Enviar"
 
-#: ../Init/CoreInit.php:172
+#: ../Core/SourceFramework.php:180
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../Init/CoreInit.php:173
+#: ../Core/SourceFramework.php:181
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../Init/CoreInit.php:174
+#: ../Core/SourceFramework.php:182
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../Init/CoreInit.php:175
+#: ../Core/SourceFramework.php:183
 msgid "Sent!"
 msgstr "¡Enviado!"
+
+#: ../Template/Form.php:220 ../includes/forms/elements/class-select.php:42
+msgid "Select..."
+msgstr "Seleccione..."
 
 #: ../includes/class-about.php:18
 msgid "About"
@@ -70,7 +74,7 @@ msgstr "Por favor ingrese un nombre de usuario válido."
 #: ../includes/class-user.php:53
 msgid ""
 "An account is already registered with that username. Please choose another."
-msgstr "Ya existe una cuenta registrada con ese nombre de usuario. Elija otro."
+msgstr "Una cuenta ya está registrada con ese nombre de usuario. Elija otro."
 
 #: ../includes/class-user.php:68
 msgid "Empty password"
@@ -94,11 +98,7 @@ msgstr "Por favor ingrese una dirección de correo electrónico válida."
 
 #: ../includes/class-user.php:173
 msgid "An account is already registered with your email address."
-msgstr "Ya ha sido registrada una cuenta con este email."
-
-#: ../includes/forms/elements/class-select.php:42
-msgid "Select..."
-msgstr "Seleccione..."
+msgstr "Una cuenta ya está registrada con con este email."
 
 #: ../includes/settings/abstract-settings-page___option.php:376
 msgid "Default"

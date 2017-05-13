@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Helpers;
+namespace SourceFramework\Misc;
 
 /**
  * If this file is called directly, abort.
@@ -10,13 +10,15 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Color class
+ * Color conversion class class
  *
- * @package Helper
+ * @package     SourceFramework
+ * @subpackage  Misc
  *
- * @since   1.0.0
- *
- * @author         Javier Prieto <jprieton@gmail.com>
+ * @author      Javier Prieto <jprieton@gmail.com>
+ * @copyright	  Copyright (c) 2017, Javier Prieto
+ * @since       1.0.0
+ * @license     http://www.gnu.org/licenses/gpl-3.0.txt
  */
 class Color {
 
@@ -176,13 +178,9 @@ class Color {
   );
 
   /**
-   * Convert color HEX to RGB
    *
-   * @since   1.0.0
-   *
-   * @param   string         $hex         Hexadecimal representacion of color (#RGB, #RRGGBB, RGB or RRGGBB);
-   * @param   string         $output
-   * @return  string|array
+   * @param string $hex Hexadecimal representacion of color (#RGB, #RRGGBB, RGB or RRGGBB);
+   * @param string $output
    */
   public function hex_to_rgb( $hex, $output = 'property' ) {
     if ( strstr( $hex, '#' ) ) {
@@ -196,7 +194,7 @@ class Color {
     } elseif ( strlen( $hex ) == 6 ) {
       $rgb = array_map( 'hexdec', str_split( $hex, 2 ) );
     } else {
-      return '';
+      return false;
     }
 
     if ( 'property' == $output ) {
@@ -207,14 +205,10 @@ class Color {
   }
 
   /**
-   * Convert color HEX to RGBA
    *
-   * @since   1.0.0
-   *
-   * @param   string         $hex         Hexadecimal representacion of color (#RGB, #RRGGBB, RGB or RRGGBB);
-   * @param   float          $opacity
-   * @param   string         $output
-   * @return  string|array
+   * @param string $hex Hexadecimal representacion of color (#RGB, #RRGGBB, RGB or RRGGBB);
+   * @param float $opacity
+   * @param string $output
    */
   public function hex_to_rgba( $hex, $opacity = 1, $output = 'property' ) {
     if ( strstr( $hex, '#' ) ) {
@@ -231,8 +225,181 @@ class Color {
 
       return $rgba;
     } else {
-      return '';
+      return false;
     }
+  }
+
+  /**
+   *
+   * @param string $hex Hexadecimal representacion of color (#RGB, #RRGGBB, RGB or RRGGBB);
+   * @param string $output
+   * @param bool $rounded
+   */
+  public function hex_to_hsl( $hex, $output = 'property', $rounded = true ) {
+    $rgb = $this->hex_to_rgb( $hex, 'array' );
+    $hsl = $this->rgb_to_hsl( $rgb, $output, $rounded );
+    return $hsl;
+  }
+
+  /**
+   * Convert color HSL to RGB
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $hsl
+   * @param   string         $output
+   * @param   bool           $rounded
+   * @return  string|array
+   */
+  public function hsl_to_rgb( $hsl, $output = 'property', $rounded = true ) {
+    list($h, $s, $l) = (array) $hsl;
+
+    $s /= 100;
+    $l /= 100;
+
+    $c = (1 - abs( (2 * $l) - 1 ) ) * $s;
+
+    $hh = $h / 60;
+
+    $x = $c * (1 - abs( fmod( $hh, 2 ) - 1 ));
+    $r = $g = $b = 0;
+    if ( $hh >= 0 && $hh < 1 ) {
+      $r = $c;
+      $g = $x;
+    } else if ( $hh >= 1 && $hh < 2 ) {
+      $r = $x;
+      $g = $c;
+    } else if ( $hh >= 2 && $hh < 3 ) {
+      $g = $c;
+      $b = $x;
+    } else if ( $hh >= 3 && $hh < 4 ) {
+      $g = $x;
+      $b = $c;
+    } else if ( $hh >= 4 && $hh < 5 ) {
+      $r = $x;
+      $b = $c;
+    } else {
+      $r = $c;
+      $b = $x;
+    }
+
+    $m = $l - $c / 2;
+    $r += $m;
+    $g += $m;
+    $b += $m;
+    $r *= 255.0;
+    $g *= 255.0;
+    $b *= 255.0;
+
+    if ( $rounded ) {
+      $r = round( $r );
+      $g = round( $g );
+      $b = round( $b );
+    }
+
+    $rgb = array( $r, $g, $b );
+
+    if ( 'property' == $output ) {
+      $rgb = 'rgb(' . implode( ',', $rgb ) . ')';
+    }
+
+    return $rgb;
+  }
+
+  /**
+   * Convert color HSL to HEX
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $rgb
+   * @param   string         $output
+   * @return  string|array
+   */
+  public function hsl_to_hex( $rgb, $output = 'property' ) {
+    $rgb = $this->hsl_to_rgb( $rgb, 'array' );
+    $hex = $this->rgb_to_hex( $rgb, $output );
+    return $hex;
+  }
+
+  /**
+   * Convert color RGB to HEX
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $rgb
+   * @param   string         $output
+   * @return  string|array
+   */
+  public function rgb_to_hex( $rgb, $output = 'property' ) {
+    $rgb = array_map( function($dec) {
+      return str_pad( dechex( $dec ), 2, '0', STR_PAD_LEFT );
+    }, $rgb );
+
+    if ( 'property' == $output ) {
+      $hex = '#' . implode( '', $rgb );
+    }
+
+    return $hex;
+  }
+
+  /**
+   * Convert color RGB to HSL
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $rgb
+   * @param   string         $output
+   * @param   bool           $rounded
+   * @return  string|array
+   */
+  public function rgb_to_hsl( $rgb, $output = 'property', $rounded = true ) {
+    list($r, $g, $b) = (array) $rgb;
+    $r = ( $r / 255 ); //RGB from 0 to 255
+    $g = ( $g / 255 );
+    $b = ( $b / 255 );
+
+    $min = min( $r, $g, $b ); //Min. value of RGB
+    $max = max( $r, $g, $b ); //Max. value of RGB
+    $d   = $max - $min; //Delta RGB value
+
+    $l = ( $max + $min ) / 2;
+
+    if ( $d == 0 ) { //This is a gray, no chroma...
+      $h = 0; //HSL results from 0 to 1
+      $s = 0;
+    } else { //Chromatic data...
+      if ( $l < 0.5 ) $s = $d / ( $max + $min );
+      else $s = $d / ( 2 - $max - $min );
+
+      $dr = ( ( ( $max - $r ) / 6 ) + ( $d / 2 ) ) / $d;
+      $dg = ( ( ( $max - $g ) / 6 ) + ( $d / 2 ) ) / $d;
+      $db = ( ( ( $max - $b ) / 6 ) + ( $d / 2 ) ) / $d;
+
+      if ( $r == $max ) $h = $db - $dg;
+      else if ( $g == $max ) $h = ( 1 / 3 ) + $dr - $db;
+      else if ( $b == $max ) $h = ( 2 / 3 ) + $dg - $dr;
+
+      if ( $h < 0 ) $h += 1;
+      if ( $h > 1 ) $h -= 1;
+    }
+
+    $h *= 360;
+    $s *= 100;
+    $l *= 100;
+
+    if ( $rounded ) {
+      $h = round( $h );
+      $s = round( $s );
+      $l = round( $l );
+    }
+
+    if ( 'property' == $output ) {
+      $hsl = "hsl({$h},{$s}%,{$l}%)";
+    } else {
+      $hsl = array( $h, $s, $l );
+    }
+
+    return $hsl;
   }
 
   /**
@@ -258,6 +425,52 @@ class Color {
   }
 
   /**
+   * Convert color name to HSL
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $color
+   * @param   string         $output
+   * @return  string|array
+   */
+  public function name_to_hsl( $color, $output = 'property' ) {
+    if ( !empty( $this->color_names[$color] ) ) {
+      $hsl = $this->rgb_to_hsl( $this->color_names[$color], 'array' );
+
+      if ( 'property' == $output ) {
+        $hsl = 'hsl(' . implode( ',', $hsl ) . ')';
+      }
+
+      return $hsl;
+    }
+    return '';
+  }
+
+  /**
+   * Convert color name to HSLA
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $color
+   * @param   float          $opacity
+   * @param   string         $output
+   * @return  string|array
+   */
+  public function name_to_hsla( $color, $opacity = 1, $output = 'property' ) {
+    if ( !empty( $this->color_names[$color] ) ) {
+      $hsla   = $this->rgb_to_hsl( $this->color_names[$color], 'array' );
+      $hsla[] = ($opacity >= 0 && $opacity <= 1) ? $opacity : 1;
+
+      if ( 'property' == $output ) {
+        $hsla = 'hsla(' . implode( ',', $hsla ) . ')';
+      }
+
+      return $hsla;
+    }
+    return false;
+  }
+
+  /**
    * Convert color name to RGB
    *
    * @since   1.0.0
@@ -276,7 +489,7 @@ class Color {
 
       return $rgb;
     }
-    return '';
+    return false;
   }
 
   /**
@@ -300,8 +513,55 @@ class Color {
 
       return $rgba;
     } else {
-      return '';
+      return false;
     }
+  }
+
+  /**
+   *
+   * @param string $color
+   * @param float $amount
+   * @param string $method
+   * @return string
+   */
+  public function darken( $color, $amount, $method = 'relative' ) {
+    list($h, $s, $l) = $this->hex_to_hsl( $color, 'array', false );
+
+    switch ( $method ) {
+      case 'relative':
+        $l -= $l * $amount / 100;
+        break;
+
+      default:
+        $l -= $amount;
+        break;
+    }
+
+    $hex = $this->hsl_to_hex( array( $h, $s, $l ), 'property' );
+    return $hex;
+  }
+
+  /**
+   *
+   * @param string $color
+   * @param float $amount
+   * @param string $method
+   * @return string
+   */
+  public function lighten( $color, $amount, $method = 'relative' ) {
+    list($h, $s, $l) = $this->hex_to_hsl( $color, 'array', false );
+
+    switch ( $method ) {
+      case 'relative':
+        $l += $l * $amount / 100;
+        break;
+
+      default:
+        $l += $amount;
+        break;
+    }
+    $hex = $this->hsl_to_hex( array( $h, $s, $l ), 'property' );
+    return $hex;
   }
 
 }

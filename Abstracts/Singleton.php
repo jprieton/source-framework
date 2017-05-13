@@ -12,12 +12,13 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Singleton abstract class
  *
- * @package        SourceFramework
- * @subpackage     Abstracts
+ * @package     SourceFramework
+ * @subpackage  Abstracts
  *
- * @since          1.0.0
- *
- * @author         Javier Prieto <jprieton@gmail.com>
+ * @author      Javier Prieto <jprieton@gmail.com>
+ * @copyright	  Copyright (c) 2017, Javier Prieto
+ * @since       1.0.0
+ * @license     http://www.gnu.org/licenses/gpl-3.0.txt
  */
 abstract class Singleton {
 
@@ -83,7 +84,6 @@ abstract class Singleton {
    * PHP5 style destructor and will run when object is destroyed.
    *
    * @since         1.0.0
-   * @return        true
    */
   public function __destruct() {
     static::$instance = null;

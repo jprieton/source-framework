@@ -1,7 +1,14 @@
-/* global SourceFrameworkLocale */
-
 (function ($) {
   'use strict';
+
+  /**
+   * Autofill alternative nonce fields
+   * @since 1.0.0
+   */
+  $('form input[data-nonce]').each(function () {
+    $(this).val($(this).attr('data-nonce'));
+    $(this).removeAttr('data-nonce');
+  });
 
   /**
    * Get Default submit button text
