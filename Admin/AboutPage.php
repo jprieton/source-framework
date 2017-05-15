@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Abstracts\SettingPage;
 
 /**
  * AboutPage class
@@ -19,14 +19,17 @@ use SourceFramework\Abstracts\Singleton;
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class AboutPage extends Singleton {
+final class AboutPage extends SettingPage {
 
   /**
-   * Static instance of this class
+   * Constructor
    *
-   * @since         1.0.0
-   * @var           AdminInit
+   * @since 1.0.0
    */
-  protected static $instance;
+  public function __construct() {
+    $this->title = __( 'About SourceFramework', \SourceFramework\TEXTDOMAIN );
+    parent::__construct( 'source-framework', 'source-framework-about' );
+    $this->add_menu_page( __( 'About', \SourceFramework\TEXTDOMAIN ), 'SourceFramework', 'activate_plugins' );
+  }
 
 }

@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Admin\AboutPage;
 
 /**
  * Admin class
@@ -48,6 +49,12 @@ final class SourceFrameworkAdmin extends Singleton {
      * @since   1.0.0
      */
     add_filter( 'source_framework_scripts', [ $this, 'scripts' ], 0 );
+
+    /**
+     * Add menu pages
+     * @since   1.0.0
+     */
+    add_filter( 'admin_menu', [ $this, 'admin_menu' ] );
   }
 
   /**
@@ -79,6 +86,10 @@ final class SourceFrameworkAdmin extends Singleton {
         'autoload' => true
     ];
     return $styles;
+  }
+
+  public function admin_menu() {
+    new AboutPage();
   }
 
 }
