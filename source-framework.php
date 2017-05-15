@@ -41,7 +41,7 @@ define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
 
 /**
- * Path to the plugin directory
+ * Path to the plugin directory or phar package
  * @since 1.0.0
  */
 if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' ) ) {
