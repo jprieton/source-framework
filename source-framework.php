@@ -30,7 +30,6 @@ if ( !defined( 'ABSPATH' ) ) {
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
-
 /**
  * Define plugin constants
  * @since 1.0.0
@@ -69,6 +68,15 @@ spl_autoload_register( function($class_name) {
     include $filename;
   }
 } );
+
+namespace SourceFramework\Core {
+  /**
+   * Initialize SourceFramework
+   * @since 1.0.0
+   */
+  Script::get_instance();
+  Style::get_instance();
+}
 
 /**
  * Initialize SourceFramework
