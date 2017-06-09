@@ -30,6 +30,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
  */
+
 /**
  * Define plugin constants
  * @since 1.0.0
