@@ -69,17 +69,20 @@ spl_autoload_register( function($class_name) {
   }
 } );
 
-namespace SourceFramework\Core {
-  /**
-   * Initialize SourceFramework
-   * @since 1.0.0
-   */
-  Script::get_instance();
-  Style::get_instance();
-}
-
 /**
  * Initialize SourceFramework
  * @since 1.0.0
  */
-SourceFramework\Core\SourceFramework::get_instance();
+SourceFramework\Core\Init::get_instance();
+
+/**
+ * Initialize Script API
+ * @since 1.0.0
+ */
+SourceFramework\Core\Script::get_instance();
+
+/**
+ * Initialize Style API
+ * @since 1.0.0
+ */
+SourceFramework\Core\Style::get_instance();

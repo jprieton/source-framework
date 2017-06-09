@@ -10,10 +10,9 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
-use SourceFramework\Settings\Setting;
 
 /**
- * SourceFramework class
+ * Init class
  *
  * @package     SourceFramework
  * @subpackage  Core
@@ -23,27 +22,15 @@ use SourceFramework\Settings\Setting;
  * @since       1.0.0
  * @license     http://www.gnu.org/licenses/gpl-3.0.txt
  */
-final class SourceFramework extends Singleton {
+final class Init extends Singleton {
 
   /**
    * Static instance of this class
    *
    * @since         1.0.0
-   * @var           SourceFramework
+   * @var           Init
    */
   protected static $instance;
-
-  /**
-   * Array of handlers of scritps to add <code>async</code> property;
-   * @var array
-   */
-  private $script_async_handles = [];
-
-  /**
-   * Array of handlers of scritps to add <code>defer</code> property;
-   * @var array
-   */
-  private $script_defer_handles = [];
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -57,7 +44,7 @@ final class SourceFramework extends Singleton {
      * This hook is called once any activated plugins have been loaded
      * @since 1.0.0
      */
-    add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
+    add_action( 'plugins_loaded', [ $this, 'load_plugin_textdomain' ] );
 
     if ( is_admin() ) {
       /**
@@ -79,7 +66,7 @@ final class SourceFramework extends Singleton {
    *
    * @since 1.0.0
    */
-  public function plugins_loaded() {
+  public function load_plugin_textdomain() {
     /**
      * Load plugin textdomain
      * @since 1.0.0
