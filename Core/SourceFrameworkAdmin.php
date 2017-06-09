@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Admin\AboutPage;
 
 /**
  * Admin class
@@ -38,47 +39,14 @@ final class SourceFrameworkAdmin extends Singleton {
     parent::__construct();
 
     /**
-     * Register and enqueue styles
+     * Add menu pages
      * @since   1.0.0
      */
-    add_filter( 'source_framework_styles', [ $this, 'styles' ], 0 );
-
-    /**
-     * Register and enqueue scripts
-     * @since   1.0.0
-     */
-    add_filter( 'source_framework_scripts', [ $this, 'scripts' ], 0 );
+    add_filter( 'admin_menu', [ $this, 'admin_menu' ] );
   }
 
-  /**
-   * Register & enqueue plugin scripts
-   *
-   * @since 1.0.0
-   */
-  public function scripts( $scripts ) {
-    $scripts['source-framework-admin'] = [
-        'local'     => plugins_url( 'assets/js/admin.js', \SourceFramework\PLUGIN_FILE ),
-        'deps'      => [ 'jquery' ],
-        'ver'       => \SourceFramework\VERSION,
-        'in_footer' => true,
-        'autoload'  => true,
-        'defer'     => true,
-    ];
-    return $scripts;
-  }
-
-  /**
-   * Register & enqueue plugin styles
-   *
-   * @since 1.0.0
-   */
-  public function enqueue_styles() {
-    $styles['source-framework-admin'] = [
-        'local'    => plugins_url( 'assets/css/admin.css', \SourceFramework\PLUGIN_FILE ),
-        'ver'      => \SourceFramework\VERSION,
-        'autoload' => true
-    ];
-    return $styles;
+  public function admin_menu() {
+    new AboutPage();
   }
 
 }
