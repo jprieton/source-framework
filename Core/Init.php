@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Settings\SettingGroup;
 
 /**
  * Init class
@@ -33,6 +34,12 @@ final class Init extends Singleton {
   protected static $instance;
 
   /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $setting_group;
+
+  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
@@ -45,6 +52,12 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     add_action( 'plugins_loaded', [ $this, 'load_plugin_textdomain' ] );
+
+    /**
+     * This hook check if is enabled cli and filter hook action
+     * @since 1.0.0
+     */
+    $this->enable_cli_commands();
 
     if ( is_admin() ) {
       /**
@@ -72,6 +85,48 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     load_plugin_textdomain( \SourceFramework\TEXTDOMAIN, FALSE, basename( dirname( \SourceFramework\BASENAME ) ) . '/languages/' );
+  }
+
+  /**
+   * Check if is enabled CLI and filter hook action
+   *
+   * Shell example usage<br>
+   * <code>
+   * php /wordpress-path/wp-admin/admin-ajax.php --my_option
+   * </code>
+   *
+   * @since 1.0.0
+   * @return boolean
+   */
+  private function enable_cli_commands() {
+    // Check if SettingGroup is instanciated
+    if ( empty( $this->setting_group ) ) {
+      $this->setting_group = new SettingGroup( 'source_framework' );
+    }
+
+    // Check if is enabled
+    if ( !$this->setting_group->get_bool_option( 'cli_commands_enabled' ) ) {
+      return false;
+    }
+
+    // Check if is shell
+    if ( !defined( 'STDERR' ) ) {
+      return false;
+    }
+
+    add_filter( 'allowed_http_origin', [ $this, 'allowed_http_origin' ] );
+    return true;
+  }
+
+  /**
+   * Set $_REQUEST param for use of CLI
+   *
+   * @since 1.0.0
+   * @param array $origin
+   */
+  public function allowed_http_origin( $origin ) {
+    $GLOBALS['_REQUEST']['action'] = 'source_framework_cli';
+    return $origin;
   }
 
 }
