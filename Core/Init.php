@@ -109,7 +109,7 @@ final class Init extends Singleton {
       return false;
     }
 
-    // Check if is shell
+    // CLI only
     if ( !defined( 'STDERR' ) ) {
       return false;
     }
