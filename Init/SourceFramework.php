@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Admin\Import;
 use SourceFramework\Init\PublicInit;
 use SourceFramework\Init\AdminInit;
 
@@ -54,6 +55,12 @@ final class SourceFramework extends Singleton {
     add_action( 'init', [ $this, 'theme_supports' ] );
 
     /**
+     * Enable csv importer
+     * @since 1.0.0
+     */
+    add_action( 'admin_init', [ $this, 'register_csv_importer' ] );
+
+    /**
      * Register and enqueue scripts
      * @since   1.0.0
      */
@@ -88,7 +95,7 @@ final class SourceFramework extends Singleton {
 
   /**
    * Load plugin TEXTDOMAIN
-   * 
+   *
    * @since 1.0.0
    */
   public function plugin_textdomain() {
@@ -97,24 +104,24 @@ final class SourceFramework extends Singleton {
 
   /**
    * Enable theme suports
-   * 
+   *
    * @since 1.0.0
    */
   public function theme_supports() {
     /**
-     * Enables Post Formats support for a theme. 
+     * Enables Post Formats support for a theme.
      * @since 1.0.0
      */
     add_theme_support( 'post-formats' );
 
     /**
-     * This feature enables Post Thumbnails support for a theme. 
+     * This feature enables Post Thumbnails support for a theme.
      * @since 1.0.0
      */
     add_theme_support( 'post-thumbnails' );
 
     /**
-     * Enables plugins and themes to manage the document title tag. 
+     * Enables plugins and themes to manage the document title tag.
      * @since 1.0.0
      */
     add_theme_support( 'title-tag' );
@@ -174,7 +181,7 @@ final class SourceFramework extends Singleton {
 
   /**
    * Localize script
-   * 
+   *
    * @since 1.0.0
    */
   public function localize_scripts() {
@@ -196,7 +203,7 @@ final class SourceFramework extends Singleton {
 
   /**
    * Register and enqueue plugin styles
-   * 
+   *
    * @since   1.0.0
    */
   public function register_styles( $styles ) {
@@ -227,14 +234,23 @@ final class SourceFramework extends Singleton {
       $ver   = $style['ver'];
       $media = $style['media'];
 
-      // Register styles
+// Register styles
       wp_register_style( $handle, $src, (array) $deps, $ver, $media );
 
       if ( $style['autoload'] ) {
-        // Enqueue styles if autolad in enabled
+// Enqueue styles if autolad in enabled
         wp_enqueue_style( $handle );
       }
     }
+  }
+
+  /**
+   * Register CSV Import
+   *
+   * @since   1.0.0
+   */
+  public function register_csv_importer() {
+    Import::get_instance();
   }
 
 }
