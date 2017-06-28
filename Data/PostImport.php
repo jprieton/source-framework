@@ -9,6 +9,9 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use WP_Importer;
+use SourceFramework\Template\Tag;
+
 /**
  * CSV PostImport class
  *
@@ -16,7 +19,14 @@ if ( !defined( 'ABSPATH' ) ) {
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class PostImport {
+class PostImport extends WP_Importer {
+
+  /**
+   * The current delimiter.
+   *
+   * @var string
+   */
+  public $delimiter = ';';
 
   /**
    * Default values
@@ -138,6 +148,47 @@ class PostImport {
   }
 
   /**
+   * Output header html.
+   */
+  public function header() {
+    echo Tag::open( 'div.wrap' );
+    echo Tag::html( 'h2', __( 'CSV Post Importer', \SourceFramework\TEXTDOMAIN ) );
+  }
+
+  /**
+   * Output footer html.
+   */
+  public function footer() {
+    echo Tag::close( 'div' );
+  }
+
+  /**
+   *
+   * @param string $filepath
+   */
+  public function import( $filepath ) {
+    if ( !is_file( $filepath ) ) {
+      fwrite( STDERR, __( "The file does not exist.\n", \SourceFramework\TEXTDOMAIN ) );
+      exit();
+    }
+
+    $handle = fopen( $filepath, "r" );
+    if ( $handle === false ) {
+      fwrite( STDERR, __( "Error on read file.\n", \SourceFramework\TEXTDOMAIN ) );
+      exit();
+    }
+  }
+
+  /**
+   *
+   */
+  public function dispatch() {
+    $this->header();
+    $this->greet();
+    $this->footer();
+  }
+
+  /**
    * Filter the post data
    *
    * @since          1.0.0
@@ -180,6 +231,16 @@ class PostImport {
     }
   }
 
+  public function greet() {
+    $http_query['import'] = filter_input( INPUT_GET, 'import', FILTER_SANITIZE_STRING );
+    $action               = get_admin_url( null, '/admin.php?' . http_build_query( $http_query ) );
+    echo Tag::open( 'form#import-upload-form', [ 'enctype' => 'multipart/form-data', 'method' => 'post', 'action' => $action ] );
+    echo Tag::close( 'form' );
+  }
+
+  /**
+   * @since          1.0.0
+   */
   public function save_post() {
     // Check if post exists
     if ( $this->data['ID'] > 0 ) {
@@ -195,6 +256,16 @@ class PostImport {
         $this->data['post_parent'] = 0;
       }
     }
+  }
+
+  /**
+   * Bump up the request timeout for http requests
+   *
+   * @param int $val
+   * @return int
+   */
+  public function bump_request_timeout( $val = 60 ) {
+    return (int) $val;
   }
 
 }
