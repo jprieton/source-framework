@@ -116,7 +116,7 @@ class PostImport extends WP_Importer {
           'callback' => 'intval' ],
       'post_type'             => [
           'callback' => 'trim',
-          'values'   => [ 'post', 'attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset' ] ],
+          'values'   => [] ],
       'post_mime_type'        => [
           'callback' => 'trim' ],
       'comment_count'         => [
@@ -143,12 +143,17 @@ class PostImport extends WP_Importer {
    * @since          1.0.0
    */
   public function __construct() {
+    // Add all enabled post types to filter
+    $this->filter['post_type']['values'] = array_values( get_post_types( array(), 'names' ) );
+
     $this->default = apply_filters( 'source_framework_post_import_default', $this->default );
     $this->filter  = apply_filters( 'source_framework_post_import_filter', $this->filter );
   }
 
   /**
    * Output header html.
+   *
+   * @since          1.0.0
    */
   public function header() {
     echo Tag::open( 'div.wrap' );
@@ -157,9 +162,31 @@ class PostImport extends WP_Importer {
 
   /**
    * Output footer html.
+   *
+   * @since          1.0.0
    */
   public function footer() {
     echo Tag::close( 'div' );
+  }
+
+  /**
+   *
+   * @since          1.0.0
+   */
+  public function greet() {
+    $http_query['import'] = filter_input( INPUT_GET, 'import', FILTER_SANITIZE_STRING );
+    $action               = get_admin_url( null, '/admin.php?' . http_build_query( $http_query ) );
+    echo Tag::open( 'form#import-upload-form', [ 'enctype' => 'multipart/form-data', 'method' => 'post', 'action' => $action ] );
+    echo Tag::close( 'form' );
+  }
+
+  /**
+   * @since          1.0.0
+   */
+  public function dispatch() {
+    $this->header();
+    $this->greet();
+    $this->footer();
   }
 
   /**
@@ -177,15 +204,6 @@ class PostImport extends WP_Importer {
       fwrite( STDERR, __( "Error on read file.\n", \SourceFramework\TEXTDOMAIN ) );
       exit();
     }
-  }
-
-  /**
-   *
-   */
-  public function dispatch() {
-    $this->header();
-    $this->greet();
-    $this->footer();
   }
 
   /**
@@ -229,13 +247,6 @@ class PostImport extends WP_Importer {
         $this->data[$key] = $this->default[$key];
       }
     }
-  }
-
-  public function greet() {
-    $http_query['import'] = filter_input( INPUT_GET, 'import', FILTER_SANITIZE_STRING );
-    $action               = get_admin_url( null, '/admin.php?' . http_build_query( $http_query ) );
-    echo Tag::open( 'form#import-upload-form', [ 'enctype' => 'multipart/form-data', 'method' => 'post', 'action' => $action ] );
-    echo Tag::close( 'form' );
   }
 
   /**
