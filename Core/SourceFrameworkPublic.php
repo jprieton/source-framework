@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Settings\Setting;
 
 /**
  * SourceFrameworkPublic class
@@ -83,7 +84,7 @@ final class SourceFrameworkPublic extends Singleton {
    * @global WP_Post $post
    */
   public function singular_custom_code_header_script() {
-    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
+    if ( !(is_singular() && Setting::get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
@@ -104,7 +105,7 @@ final class SourceFrameworkPublic extends Singleton {
    * @global WP_Post $post
    */
   public function singular_after_main_content() {
-    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
+    if ( !(is_singular() && Setting::get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 
@@ -125,7 +126,7 @@ final class SourceFrameworkPublic extends Singleton {
    * @global WP_Post $post
    */
   public function singular_before_main_content() {
-    if ( !(is_singular() && get_bool_option( 'enabled_singular_custom_code' )) ) {
+    if ( !(is_singular() && Setting::get_bool_option( 'enabled_singular_custom_code' )) ) {
       return;
     }
 

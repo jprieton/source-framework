@@ -80,6 +80,10 @@ class Style extends Singleton {
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
             'ver'    => '2.1.0',
             'media'  => 'screen',
+        ],
+        'bootstrap'              => [
+            'remote' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+            'ver'    => '3.3.7',
         ]
     ];
 
