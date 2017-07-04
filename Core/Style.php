@@ -84,7 +84,13 @@ class Style extends Singleton {
         'bootstrap'              => [
             'remote' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
             'ver'    => '3.3.7',
-        ]
+        ],
+        'frontend-helper'        => [
+            'local'    => plugins_url( 'assets/css/frontend-helper.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'      => \SourceFramework\VERSION,
+            'media'    => 'screen',
+            'autoload' => false,
+        ],
     ];
 
     $filter = is_admin() ? 'source_framework_admin_styles' : 'source_framework_styles';
