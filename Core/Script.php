@@ -99,13 +99,19 @@ class Script extends Singleton {
             'defer'     => true,
         ],
         'modernizr'                    => [
-            'local'    => plugins_url( 'assets/js/modernizr.min.js' . \SourceFramework\PLUGIN_FILE ),
+            'local'    => plugins_url( 'assets/js/modernizr.min.js' , \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
             'ver'      => '2.8.3',
             'autoload' => false,
         ],
+        'bootstrap'                    => [
+            'local'    => plugins_url( 'assets/js/bootstrap.min.js' , \SourceFramework\PLUGIN_FILE ),
+            'remote'   => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+            'ver'      => '3.3.7',
+            'autoload' => false,
+        ],
         'jquery-appear'                => [
-            'local'     => plugins_url( 'assets/js/jquery.appear.min.js' . \SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/jquery.appear.min.js' , \SourceFramework\PLUGIN_FILE ),
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
             'deps'      => [ 'jquery' ],
             'ver'       => '0.3.3',
@@ -113,7 +119,7 @@ class Script extends Singleton {
             'autoload'  => false
         ],
         'geodatasource-country-region' => [
-            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' . \SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' , \SourceFramework\PLUGIN_FILE ),
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
             'ver'       => '1.0.1',
             'in_footer' => true,
