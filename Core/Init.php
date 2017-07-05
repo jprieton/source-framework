@@ -66,6 +66,12 @@ final class Init extends Singleton {
      */
     add_action( 'admin_init', [ $this, 'register_csv_importer' ] );
 
+    /**
+     * Add shortcodes
+     * @since 1.0.0
+     */
+    $this->add_shortcodes();
+
     if ( is_admin() ) {
       /**
        * Initialize admin
@@ -143,6 +149,14 @@ final class Init extends Singleton {
    */
   public function register_csv_importer() {
     Importer::get_instance();
+  }
+
+  public function add_shortcodes() {
+    /**
+     * Add an ofuscate mailto link to prevent spam-bots from sniffing it.
+     * @since 1.0.0
+     */
+    add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
   }
 
 }
