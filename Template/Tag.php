@@ -9,6 +9,8 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Data\Format;
+
 /**
  * Tag class
  *
@@ -210,9 +212,9 @@ class Tag {
       return '';
     }
 
-    $email = obfuscate_email( $email );
+    $email = Format::obfuscate_email( $email );
     $text  = $text ?: $email;
-    $email = obfuscate( 'mailto:' ) . $email;
+    $email = Format::obfuscate( 'mailto:' ) . $email;
 
     $defaults   = array(
         'href' => $email
