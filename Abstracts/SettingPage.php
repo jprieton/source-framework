@@ -55,11 +55,11 @@ abstract class SettingPage {
    *
    * @param   string         $setting_group
    * @param   string         $menu_slug
-   * @param   string         $submenu
+   * @param   string         $submenu_slug
    */
-  public function __construct( $menu_slug, $submenu = '' ) {
+  public function __construct( $menu_slug, $submenu_slug = '' ) {
     $this->menu_slug    = $menu_slug;
-    $this->submenu_slug = empty( $submenu ) ? $menu_slug : $submenu;
+    $this->submenu_slug = empty( $submenu_slug ) ? $menu_slug : $submenu_slug;
   }
 
   /**
@@ -74,7 +74,7 @@ abstract class SettingPage {
    * @param   int            $position
    */
   public function add_menu_page( $page_title, $menu_title, $capability, $icon_url = 'dashicons-admin-generic', $position = null ) {
-    add_menu_page( $page_title, $menu_title, $capability, $this->submenu_slug, [ $this, 'render_setting_page' ], $icon_url );
+    add_menu_page( $page_title, $menu_title, $capability, $this->menu_slug, [ $this, 'render_setting_page' ], $icon_url );
   }
 
   /**
@@ -89,6 +89,10 @@ abstract class SettingPage {
       <h2><?php echo $this->title ?></h2>
     </div>
     <?php
+  }
+
+  public function add_submenu_page( $page_title, $menu_title, $capability ) {
+    add_submenu_page( $this->menu_slug, $page_title, $menu_title, $capability, $this->submenu_slug, [ $this, 'render_setting_page' ] );
   }
 
 }

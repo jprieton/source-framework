@@ -19,7 +19,7 @@ use SourceFramework\Abstracts\SettingPage;
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class AboutPage extends SettingPage {
+final class GeneralPage extends SettingPage {
 
   /**
    * Constructor
@@ -27,9 +27,10 @@ final class AboutPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title = __( 'About SourceFramework', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-about' );
-    $this->add_submenu_page( __( 'About', \SourceFramework\TEXTDOMAIN ), __( 'About', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+    $this->title = __( 'General Settings', \SourceFramework\TEXTDOMAIN );
+    parent::__construct( 'source-framework', 'source-framework' );
+    $this->add_menu_page( __( 'General Settings', \SourceFramework\TEXTDOMAIN ), 'SourceFramework', 'activate_plugins' );
+    $this->add_submenu_page( __( 'General', \SourceFramework\TEXTDOMAIN ), __( 'General', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
   }
 
 }

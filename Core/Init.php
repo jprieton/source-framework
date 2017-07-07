@@ -11,7 +11,6 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
-use SourceFramework\Admin\Importer;
 
 /**
  * Init class
@@ -61,12 +60,6 @@ final class Init extends Singleton {
     $this->enable_cli_commands();
 
     /**
-     * Enable csv importer
-     * @since 1.0.0
-     */
-    add_action( 'admin_init', [ $this, 'register_csv_importer' ] );
-
-    /**
      * Add shortcodes
      * @since 1.0.0
      */
@@ -77,7 +70,7 @@ final class Init extends Singleton {
        * Initialize admin
        * @since   1.0.0
        */
-      SourceFrameworkAdmin::get_instance();
+      Admin::get_instance();
     } else {
       /**
        * Initialize public
@@ -140,15 +133,6 @@ final class Init extends Singleton {
   public function allowed_http_origin( $origin ) {
     $GLOBALS['_REQUEST']['action'] = 'source_framework_cli';
     return $origin;
-  }
-
-  /**
-   * Register CSV Import
-   *
-   * @since   1.0.0
-   */
-  public function register_csv_importer() {
-    Importer::get_instance();
   }
 
   public function add_shortcodes() {

@@ -12,14 +12,14 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\SettingPage;
 
 /**
- * AboutPage class
+ * AdvancedPage class
  *
  * @package        Admin
  * @subpackage     SettingPages
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class AboutPage extends SettingPage {
+final class AdvancedPage extends SettingPage {
 
   /**
    * Constructor
@@ -27,9 +27,13 @@ final class AboutPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title = __( 'About SourceFramework', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-about' );
-    $this->add_submenu_page( __( 'About', \SourceFramework\TEXTDOMAIN ), __( 'About', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+    $this->title = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
+    parent::__construct( 'source-framework', 'source-framework-advanced' );
+    $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
   }
+
+  /**
+   * enable_cli_commands
+   */
 
 }
