@@ -100,8 +100,8 @@ class Script extends Singleton {
         ],
         'modernizr'                    => [
             'local'    => plugins_url( 'assets/js/modernizr.min.js' , \SourceFramework\PLUGIN_FILE ),
-            'remote'   => '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
-            'ver'      => '2.8.3',
+            'remote'   => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
+            'ver'      => '3.3.1',
             'autoload' => false,
         ],
         'bootstrap'                    => [
