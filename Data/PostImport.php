@@ -148,6 +148,8 @@ class PostImport extends WP_Importer {
 
     $this->default = apply_filters( 'source_framework_post_import_default', $this->default );
     $this->filter  = apply_filters( 'source_framework_post_import_filter', $this->filter );
+
+    parent::__construct();
   }
 
   /**
