@@ -109,53 +109,59 @@ abstract class SettingPage {
   public function render_setting_page() {
     global $wp_settings_sections, $wp_settings_fields;
 
-    echo Tag::open( 'div.wrap' );
-    echo Tag::html( 'h2', $this->title );
-    echo Tag::open( 'form', [ 'method' => 'post', 'action' => 'options.php' ] );
-
-    settings_fields( $this->fields->option_group );
+    echo Tag::open( 'div.wrap' ) . Tag::html( 'h2', $this->title );
 
     if ( !empty( $this->description ) ) {
       apply_filters( 'the_content', $this->description );
     }
 
-    $tab_list = '';
+    if ( !empty( $wp_settings_sections[$this->submenu_slug] ) ) {
 
-    if ( count( (array) $wp_settings_sections[$this->submenu_slug] ) > 1 ) {
+      echo Tag::open( 'form', [ 'method' => 'post', 'action' => 'options.php' ] );
+      
+      settings_fields( $this->fields->option_group );
 
-      $tab_class = 'nav-tab nav-tab-active';
+      $tab_list = '';
+
+      if ( count( (array) $wp_settings_sections[$this->submenu_slug] ) > 1 ) {
+
+        $tab_class = 'nav-tab nav-tab-active';
+
+        foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
+          $tab_list  .= Tag::a( '#', $section['title'], [ 'class' => $tab_class, 'data-target' => "#{$section['id']}" ] );
+          $tab_class = 'nav-tab';
+        }
+
+        echo Tag::html( 'h2.nav-tab-wrapper.custom-nav-tab-wrapper', $tab_list );
+      }
 
       foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
-        $tab_list  .= Tag::a( '#', $section['title'], array( 'class' => $tab_class, 'data-target' => "#{$section['id']}" ) );
-        $tab_class = 'nav-tab';
+        if ( $section['title'] && empty( $tab_list ) ) {
+          echo Tag::html( 'h2', $section['title'] );
+        }
+
+        if ( $section['callback'] ) {
+          call_user_func( $section['callback'], $section );
+        }
+
+        if ( !isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$this->submenu_slug] ) || !isset( $wp_settings_fields[$this->submenu_slug][$section['id']] ) ) {
+          continue;
+        }
+
+        echo Tag::open( 'div.data-tab', [ 'id' => $section['id'] ] )
+        . Tag::open( 'table.form-table' );
+
+        do_settings_fields( $this->submenu_slug, $section['id'] );
+
+        echo Tag::close( 'table' )
+        . Tag::close( 'div' );
       }
 
-      echo Tag::html( 'h2.nav-tab-wrapper.custom-nav-tab-wrapper', $tab_list );
+      submit_button();
+
+      echo Tag::close( 'form' );
     }
 
-    foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
-      if ( $section['title'] && empty( $tab_list ) ) {
-        echo Tag::html( 'h2', $section['title'] );
-      }
-
-      if ( $section['callback'] ) {
-        call_user_func( $section['callback'], $section );
-      }
-
-      if ( !isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$this->submenu_slug] ) || !isset( $wp_settings_fields[$this->submenu_slug][$section['id']] ) ) {
-        continue;
-      }
-
-      echo Tag::open( 'div.data-tab', array( 'id' => $section['id'] ) );
-      echo Tag::open( 'table.form-table' );
-      do_settings_fields( $this->submenu_slug, $section['id'] );
-      echo Tag::close( 'table' );
-      echo Tag::close( 'div' );
-    }
-
-    submit_button();
-
-    echo Tag::close( 'form' );
     echo Tag::close( 'div' );
   }
 
