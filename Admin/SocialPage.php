@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Abstracts\SettingPage;
+use SourceFramework\Abstracts\SettingGroupPage;
 
 /**
  * SocialPage class
@@ -19,10 +19,10 @@ use SourceFramework\Abstracts\SettingPage;
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-final class SocialPage extends SettingPage {
+final class SocialPage extends SettingGroupPage {
 
   /** Default networks */
-  private $social_networks = [
+  private $social_links = [
       'social-facebook'    => 'Facebook',
       'social-dribbble'    => 'Dribble',
       'social-google-plus' => 'Google+',
@@ -44,6 +44,15 @@ final class SocialPage extends SettingPage {
     $this->title = __( 'Social Settings', \SourceFramework\TEXTDOMAIN );
     parent::__construct( 'source-framework', 'source-framework-social' );
     $this->add_submenu_page( __( 'Social', \SourceFramework\TEXTDOMAIN ), __( 'Social', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+  }
+
+  public function add_social_links_section() {
+    /** Filter to add more networks */
+    $social_links = apply_filters( 'social_links', $this->social_links );
+  }
+
+  public function render_setting_page() {
+    include_once \SourceFramework\ABSPATH . '/Admin/Templates/SocialNetworks.php';
   }
 
   /**

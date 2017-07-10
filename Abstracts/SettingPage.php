@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -35,14 +36,14 @@ abstract class SettingPage {
   protected $title;
 
   /**
-   * Page title
+   * Page menu slug
    * @since   1.0.0
    * @var     string
    */
   private $menu_slug;
 
   /**
-   * Page title
+   * Page submenu slug
    * @since   1.0.0
    * @var     string
    */
@@ -78,17 +79,12 @@ abstract class SettingPage {
   }
 
   /**
-   *
-   * @global   array         $wp_settings_sections
-   * @global   array         $wp_settings_fields
-   * @return boolean
+   * Render setting page
+   * 
+   * @since 1.0.0
    */
   public function render_setting_page() {
-    ?>
-    <div class="wrap">
-      <h2><?php echo $this->title ?></h2>
-    </div>
-    <?php
+    include_once \SourceFramework\ABSPATH . '/Admin/Templates/Default.php';
   }
 
   public function add_submenu_page( $page_title, $menu_title, $capability ) {
