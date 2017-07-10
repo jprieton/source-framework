@@ -15,6 +15,9 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
+use SourceFramework\Settings\SettingField;
+use SourceFramework\Template\Tag;
+
 /**
  * SettingPage abstract class
  *
@@ -36,6 +39,13 @@ abstract class SettingPage {
   protected $title;
 
   /**
+   * Page description
+   * @since   1.0.0
+   * @var     string
+   */
+  protected $description;
+
+  /**
    * Page menu slug
    * @since   1.0.0
    * @var     string
@@ -48,6 +58,19 @@ abstract class SettingPage {
    * @var     string
    */
   private $submenu_slug;
+
+  /**
+   * Page section
+   * @since   1.0.0
+   * @var     string
+   */
+  private $section;
+
+  /**
+   * @var SettingField
+   * @since 1.0.0
+   */
+  public $fields;
 
   /**
    * Constructor
@@ -75,20 +98,98 @@ abstract class SettingPage {
    * @param   int            $position
    */
   public function add_menu_page( $page_title, $menu_title, $capability, $icon_url = 'dashicons-admin-generic', $position = null ) {
-    add_menu_page( $page_title, $menu_title, $capability, $this->menu_slug, [ $this, 'render_setting_page' ], $icon_url );
+    add_menu_page( $page_title, $menu_title, $capability, $this->menu_slug, [ $this, 'render_setting_page' ], $icon_url, $position );
   }
 
   /**
    * Render setting page
-   * 
+   *
    * @since 1.0.0
    */
   public function render_setting_page() {
-    include_once \SourceFramework\ABSPATH . '/Admin/Templates/Default.php';
+    global $wp_settings_sections, $wp_settings_fields;
+
+    echo Tag::open( 'div.wrap' );
+    echo Tag::html( 'h2', $this->title );
+    echo Tag::open( 'form', [ 'method' => 'post', 'action' => 'options.php' ] );
+
+    settings_fields( $this->fields->option_group );
+
+    if ( !empty( $this->description ) ) {
+      apply_filters( 'the_content', $this->description );
+    }
+
+    $tab_list = '';
+
+    if ( count( (array) $wp_settings_sections[$this->submenu_slug] ) > 1 ) {
+
+      $tab_class = 'nav-tab nav-tab-active';
+
+      foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
+        $tab_list  .= Tag::a( '#', $section['title'], array( 'class' => $tab_class, 'data-target' => "#{$section['id']}" ) );
+        $tab_class = 'nav-tab';
+      }
+
+      echo Tag::html( 'h2.nav-tab-wrapper.custom-nav-tab-wrapper', $tab_list );
+    }
+
+    foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
+      if ( $section['title'] && empty( $tab_list ) ) {
+        echo Tag::html( 'h2', $section['title'] );
+      }
+
+      if ( $section['callback'] ) {
+        call_user_func( $section['callback'], $section );
+      }
+
+      if ( !isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$this->submenu_slug] ) || !isset( $wp_settings_fields[$this->submenu_slug][$section['id']] ) ) {
+        continue;
+      }
+
+      echo Tag::open( 'div.data-tab', array( 'id' => $section['id'] ) );
+      echo Tag::open( 'table.form-table' );
+      do_settings_fields( $this->submenu_slug, $section['id'] );
+      echo Tag::close( 'table' );
+      echo Tag::close( 'div' );
+    }
+
+    submit_button();
+
+    echo Tag::close( 'form' );
+    echo Tag::close( 'div' );
   }
 
+  /**
+   * Add a submenu page.
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $page_title
+   * @param   string         $menu_title
+   * @param   string         $capability
+   */
   public function add_submenu_page( $page_title, $menu_title, $capability ) {
     add_submenu_page( $this->menu_slug, $page_title, $menu_title, $capability, $this->submenu_slug, [ $this, 'render_setting_page' ] );
+  }
+
+  /**
+   * Add a new section to a settings page.
+   *
+   * @since   1.0.0
+   *
+   * @param   string         $section
+   * @param   string         $title
+   */
+  public function add_setting_section( $section, $title ) {
+    if ( empty( $this->fields ) ) {
+      $this->fields = new SettingField( $this->submenu_slug );
+    }
+
+    $this->section              = $section;
+    $this->fields->section      = $this->section;
+    $this->fields->submenu_slug = $this->submenu_slug;
+
+    add_settings_section( $this->fields->section, $title, '__return_null', $this->submenu_slug );
   }
 
 }

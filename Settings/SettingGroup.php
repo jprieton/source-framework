@@ -28,7 +28,7 @@ class SettingGroup {
    *
    * @var   string
    */
-  protected $setting_group = '';
+  public $setting_group_name = '';
 
   /**
    * Option data
@@ -47,8 +47,8 @@ class SettingGroup {
    * @param   string    $setting_group
    */
   public function __construct( $setting_group ) {
-    $this->setting_group = trim( $setting_group );
-    $this->options       = (array) get_option( $this->setting_group, array() );
+    $this->setting_group_name = trim( $setting_group );
+    $this->options       = (array) get_option( $this->setting_group_name, array() );
   }
 
   /**
@@ -64,7 +64,7 @@ class SettingGroup {
   public function set_option( $option, $value ) {
     $this->options[$option] = $value;
 
-    return update_option( $this->setting_group, $this->options );
+    return update_option( $this->setting_group_name, $this->options );
   }
 
   /**

@@ -92,6 +92,24 @@ class Tag {
   }
 
   /**
+   * Retrieve a HTML link
+   *
+   * @since   0.5.0
+   *
+   * @param   string              $href
+   * @param   string              $text
+   * @param   array|string        $attributes
+   * @return  string
+   */
+  public static function a( $href, $text = '', $attributes = array() ) {
+    $text                = is_null( $text ) ? esc_url( $href ) : trim( $text );
+    $attributes          = wp_parse_args( $attributes );
+    $attributes ['href'] = $href;
+
+    return self::html( 'a', $text, $attributes );
+  }
+
+  /**
    * Retrieve an HTML img element
    *
    * @since 1.0.0

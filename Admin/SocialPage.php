@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\SettingGroupPage;
+use SourceFramework\Settings\SettingField;
 
 /**
  * SocialPage class
@@ -21,8 +22,12 @@ use SourceFramework\Abstracts\SettingGroupPage;
  */
 final class SocialPage extends SettingGroupPage {
 
-  /** Default networks */
-  private $social_links = [
+  /**
+   * Default social networks
+   * @var type
+   */
+  private $social_networks = [
+      'social-email'       => 'Email',
       'social-facebook'    => 'Facebook',
       'social-dribbble'    => 'Dribble',
       'social-google-plus' => 'Google+',
@@ -44,18 +49,32 @@ final class SocialPage extends SettingGroupPage {
     $this->title = __( 'Social Settings', \SourceFramework\TEXTDOMAIN );
     parent::__construct( 'source-framework', 'source-framework-social' );
     $this->add_submenu_page( __( 'Social', \SourceFramework\TEXTDOMAIN ), __( 'Social', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-  }
 
-  public function add_social_links_section() {
-    /** Filter to add more networks */
-    $social_links = apply_filters( 'social_links', $this->social_links );
-  }
-
-  public function render_setting_page() {
-    include_once \SourceFramework\ABSPATH . '/Admin/Templates/SocialNetworks.php';
+    $this->add_social_links_section();
   }
 
   /**
-   * social_network_links
+   * Add social networks links tab
+   *
+   * @since 1.0.0
    */
+  public function add_social_links_section() {
+    $this->fields = new SettingField( 'social-links', 'social-links' );
+    $this->add_setting_section( 'social_settings_section_links', __( 'Links', \SourceFramework\TEXTDOMAIN ) );
+
+    /** Filter to add more networks */
+    $social_links = apply_filters( 'social_networks', $this->social_networks );
+
+    foreach ( $social_links as $key => $label ) {
+      $this->fields->add_field( array(
+          'name'  => $label,
+          'id'    => $key,
+          'type'  => 'text',
+          'input_class' => 'regular-text code',
+      ) );
+    }
+
+    do_action( 'add_social_links_section', $this );
+  }
+
 }
