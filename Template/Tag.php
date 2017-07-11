@@ -94,7 +94,7 @@ class Tag {
   /**
    * Retrieve a HTML link
    *
-   * @since   0.5.0
+   * @since   1.0.0
    *
    * @param   string              $href
    * @param   string              $text
@@ -102,11 +102,7 @@ class Tag {
    * @return  string
    */
   public static function a( $href, $text = '', $attributes = array() ) {
-    $text                = is_null( $text ) ? esc_url( $href ) : trim( $text );
-    $attributes          = wp_parse_args( $attributes );
-    $attributes ['href'] = $href;
-
-    return self::html( 'a', $text, $attributes );
+    return self::html( 'a', (string) $text, wp_parse_args( $attributes, compact( 'href' ) ) );
   }
 
   /**

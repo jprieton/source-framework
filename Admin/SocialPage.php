@@ -62,7 +62,7 @@ final class SocialPage extends SettingGroupPage {
     $this->fields = new SettingField( 'social-links', 'social-links' );
     $this->add_setting_section( 'social_settings_section_links', __( 'Links', \SourceFramework\TEXTDOMAIN ) );
 
-    /** Filter to add more networks */
+    // Filter to allow to plugins/themes add more social networks
     $social_links = apply_filters( 'social_networks', $this->social_networks );
 
     foreach ( $social_links as $key => $label ) {
