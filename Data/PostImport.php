@@ -29,54 +29,20 @@ class PostImport extends WP_Importer {
   public $delimiter = ';';
 
   /**
-   * Default values
+   * Default post filters
    *
    * @since          1.0.0
    * @var array
    */
-  private $default = [
-      'ID'                    => 0,
-      'post_author'           => '',
-      'post_date'             => '0000-00-00 00:00:00',
-      'post_date_gmt'         => '0000-00-00 00:00:00',
-      'post_content'          => '',
-      'post_title'            => '',
-      'post_excerpt'          => '',
-      'post_status'           => 'publish',
-      'comment_status'        => 'open',
-      'ping_status'           => 'open',
-      'post_password'         => '',
-      'post_name'             => '',
-      'to_ping'               => '',
-      'pinged'                => '',
-      'post_modified'         => '0000-00-00 00:00:00',
-      'post_modified_gmt'     => '0000-00-00 00:00:00',
-      'post_content_filtered' => '',
-      'post_parent'           => 0,
-      'guid'                  => '',
-      'menu_order'            => 0,
-      'post_type'             => 'post',
-      'post_mime_type'        => '',
-      'comment_count'         => 0,
-  ];
-
-  /**
-   * Default filters
-   *
-   * @since          1.0.0
-   * @var array
-   */
-  private $filter = [
+  protected $post_filter = [
       'ID'                    => [
           'callback' => 'absint' ],
       'post_author'           => [
           'callback' => 'absint' ],
       'post_date'             => [
-          'validate' => 'is_date',
-          'default'  => '0000-00-00 00:00:00' ],
+          'validate' => 'is_date' ],
       'post_date_gmt'         => [
-          'validate' => 'is_date',
-          'default'  => '0000-00-00 00:00:00' ],
+          'validate' => 'is_date' ],
       'post_content'          => [
           'callback' => 'trim' ],
       'post_title'            => [
@@ -101,19 +67,19 @@ class PostImport extends WP_Importer {
       'pinged'                => [
           'callback' => 'trim' ],
       'post_modified'         => [
-          'validate' => 'is_date',
-          'default'  => '0000-00-00 00:00:00' ],
+          'validate' => 'is_date' ],
       'post_modified_gmt'     => [
-          'validate' => 'is_date',
-          'default'  => '0000-00-00 00:00:00' ],
+          'validate' => 'is_date', ],
       'post_content_filtered' => [
           'callback' => 'trim' ],
       'post_parent'           => [
-          'callback' => 'absint' ],
+          'callback' => 'absint',
+          'default'  => 0 ],
       'guid'                  => [
           'callback' => 'trim' ],
       'menu_order'            => [
-          'callback' => 'intval' ],
+          'callback' => 'intval',
+          'default'  => 0 ],
       'post_type'             => [
           'callback' => 'trim',
           'values'   => [] ],
@@ -124,12 +90,28 @@ class PostImport extends WP_Importer {
   ];
 
   /**
+   * Default meta filters
+   *
+   * @since          1.0.0
+   * @var array
+   */
+  protected $meta_filter = [];
+
+  /**
+   * Default taxonomy filters
+   *
+   * @since          1.0.0
+   * @var array
+   */
+  protected $taxonomy_filter = [];
+
+  /**
    * Stores the post data ready to import
    *
    * @since          1.0.0
    * @var type
    */
-  private $data = [];
+  private $post_data = [];
 
   /**
    * Stores the post data before to import
@@ -146,8 +128,9 @@ class PostImport extends WP_Importer {
     // Add all enabled post types to filter
     $this->filter['post_type']['values'] = array_values( get_post_types( array(), 'names' ) );
 
-    $this->default = apply_filters( 'source_framework_post_import_default', $this->default );
-    $this->filter  = apply_filters( 'source_framework_post_import_filter', $this->filter );
+    $this->post_filter     = apply_filters( 'source_framework_post_import_post_filter', $this->post_filter );
+    $this->meta_filter     = apply_filters( 'source_framework_post_import_meta_filter', $this->meta_filter );
+    $this->taxonomy_filter = apply_filters( 'source_framework_post_import_taxonomy_filter', $this->taxonomy_filter );
 
     parent::__construct();
   }
@@ -272,8 +255,37 @@ class PostImport extends WP_Importer {
   }
 
   /**
+   * Create terms if not exists
+   * 
+   * @since          1.0.0
+   * 
+   * @param string $name
+   * @param string $taxonomy
+   */
+  private function _create_term( $name, $taxonomy ) {
+    $term_ids = [];
+    $names    = array_diff( array_unique( explode( '>', $name ) ), [ '' ] );
+
+    $parent = 0;
+    foreach ( $names as $item ) {
+      $item  = apply_filters( "pre_term_name", $item, $taxonomy );
+      $_term = get_term_by( 'name', $item, $taxonomy );
+
+      if ( empty( $_term ) ) {
+        $_term      = wp_insert_term( $item, $taxonomy, compact( 'parent' ) );
+        $term_ids[] = $parent     = $_term['term_id'];
+      } else {
+        $term_ids[] = $parent     = $_term->term_id;
+      }
+    }
+    return $term_ids;
+  }
+
+  /**
    * Bump up the request timeout for http requests
    *
+   * @since          1.0.0
+   * 
    * @param int $val
    * @return int
    */
