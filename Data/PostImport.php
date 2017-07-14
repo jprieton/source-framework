@@ -9,9 +9,6 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use WP_Importer;
-use SourceFramework\Template\Tag;
-
 /**
  * CSV PostImport class
  *
@@ -19,7 +16,7 @@ use SourceFramework\Template\Tag;
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */
-class PostImport extends WP_Importer {
+class PostImport {
 
   /**
    * The current delimiter.
@@ -131,47 +128,6 @@ class PostImport extends WP_Importer {
     $this->post_filter     = apply_filters( 'source_framework_post_import_post_filter', $this->post_filter );
     $this->meta_filter     = apply_filters( 'source_framework_post_import_meta_filter', $this->meta_filter );
     $this->taxonomy_filter = apply_filters( 'source_framework_post_import_taxonomy_filter', $this->taxonomy_filter );
-
-    parent::__construct();
-  }
-
-  /**
-   * Output header html.
-   *
-   * @since          1.0.0
-   */
-  public function header() {
-    echo Tag::open( 'div.wrap' );
-    echo Tag::html( 'h2', __( 'CSV Post Importer', \SourceFramework\TEXTDOMAIN ) );
-  }
-
-  /**
-   * Output footer html.
-   *
-   * @since          1.0.0
-   */
-  public function footer() {
-    echo Tag::close( 'div' );
-  }
-
-  /**
-   *
-   * @since          1.0.0
-   */
-  public function greet() {
-    $http_query['import'] = filter_input( INPUT_GET, 'import', FILTER_SANITIZE_STRING );
-    $action               = get_admin_url( null, '/admin.php?' . http_build_query( $http_query ) );
-    echo Tag::open( 'form#import-upload-form', [ 'enctype' => 'multipart/form-data', 'method' => 'post', 'action' => $action ] );
-    echo Tag::close( 'form' );
-  }
-
-  /**
-   * @since          1.0.0
-   */
-  public function dispatch() {
-    $this->header();
-    $this->greet();
-    $this->footer();
   }
 
   /**
@@ -279,18 +235,6 @@ class PostImport extends WP_Importer {
       }
     }
     return $term_ids;
-  }
-
-  /**
-   * Bump up the request timeout for http requests
-   *
-   * @since          1.0.0
-   * 
-   * @param int $val
-   * @return int
-   */
-  public function bump_request_timeout( $val = 60 ) {
-    return (int) $val;
   }
 
 }
