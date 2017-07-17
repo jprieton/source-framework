@@ -192,6 +192,32 @@ class PostImport extends WP_Importer {
   }
 
   /**
+   * Set the post data before to import
+   * 
+   * @since          1.0.0
+   */
+  public function set_post_data() {
+    $this->_filter_post_fields();
+
+    if ( empty( $this->old_data['ID'] ) ) {
+      unset( $this->post_data['ID'] );
+    } else {
+      $this->post_data['ID'] = $this->old_data['ID'];
+    }
+
+    if ( !empty( $this->old_data['post_author'] ) ) {
+      $this->post_data['post_author'] = $this->old_data['post_author'];
+    }
+
+    if ( empty( $this->post_data['post_author'] ) ) {
+      $this->post_data['post_author'] = get_current_user_id();
+    }
+
+    // Allow to plugins modify post data import
+    $this->post_data = apply_filters( 'source_framework_post_import_post_data', $this->post_data );
+  }
+
+  /**
    * Filter the post data
    *
    * @since          1.0.0
@@ -256,9 +282,9 @@ class PostImport extends WP_Importer {
 
   /**
    * Create terms if not exists
-   * 
+   *
    * @since          1.0.0
-   * 
+   *
    * @param string $name
    * @param string $taxonomy
    */
@@ -285,7 +311,7 @@ class PostImport extends WP_Importer {
    * Bump up the request timeout for http requests
    *
    * @since          1.0.0
-   * 
+   *
    * @param int $val
    * @return int
    */
