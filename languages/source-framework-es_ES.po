@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-06-28 14:32-0400\n"
-"PO-Revision-Date: 2017-06-28 14:33-0400\n"
+"POT-Creation-Date: 2017-07-14 01:45-0400\n"
+"PO-Revision-Date: 2017-07-14 01:51-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
@@ -23,59 +23,91 @@ msgstr ""
 msgid "About SourceFramework"
 msgstr "Acerca de SourceFramework"
 
-#: ../Admin/AboutPage.php:32 ../includes/class-about.php:18
+#: ../Admin/AboutPage.php:32
 msgid "About"
 msgstr "Acerca"
 
-#: ../Admin/Importer.php:39
+#: ../Admin/AdvancedPage.php:30
+msgid "Advanced Settings"
+msgstr "Ajustes avanzados"
+
+#: ../Admin/AdvancedPage.php:32
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: ../Admin/GeneralPage.php:30 ../Admin/GeneralPage.php:32
+msgid "General Settings"
+msgstr "Ajustes generales"
+
+#: ../Admin/GeneralPage.php:33
+msgid "General"
+msgstr "General"
+
+#: ../Admin/Importer.php:45
 msgid "SourceFramework CSV Import"
 msgstr "SourceFramework CSV Import"
 
-#: ../Admin/Importer.php:40
+#: ../Admin/Importer.php:46
 msgid "Import data via CSV file."
 msgstr "Importación mediante archivo CSV."
 
-#: ../Core/Script.php:186 ../Init/SourceFramework.php:191
-msgid "Success!"
-msgstr "¡Éxito!"
+#: ../Admin/SocialPage.php:49
+msgid "Social Settings"
+msgstr ""
 
-#: ../Core/Script.php:187 ../Init/SourceFramework.php:192
-msgid "Fail!"
-msgstr "¡Falló!"
+#: ../Admin/SocialPage.php:51
+msgid "Social"
+msgstr "Social"
 
-#: ../Core/Script.php:188 ../Init/SourceFramework.php:193
-msgid "Error!"
-msgstr "¡Error!"
+#: ../Admin/SocialPage.php:63
+msgid "Links"
+msgstr "Enlaces"
 
-#: ../Core/Script.php:189 ../Init/SourceFramework.php:194
-msgid "Send"
-msgstr "Enviar"
+#: ../Admin/ToolsPage.php:30 ../Admin/ToolsPage.php:32
+msgid "Tools"
+msgstr "Herramientas"
 
-#: ../Core/Script.php:190 ../Init/SourceFramework.php:195
-msgid "Submit"
-msgstr "Enviar"
-
-#: ../Core/Script.php:191 ../Init/SourceFramework.php:196
-msgid "Submiting..."
-msgstr "Enviando..."
-
-#: ../Core/Script.php:192 ../Init/SourceFramework.php:197
-msgid "Sending..."
-msgstr "Enviando..."
-
-#: ../Core/Script.php:193 ../Init/SourceFramework.php:198
-msgid "Sent!"
-msgstr "¡Enviado!"
-
-#: ../Data/PostImport.php:155
+#: ../Core/PostImporter.php:31
 msgid "CSV Post Importer"
 msgstr "CSV Post Importer"
 
-#: ../Data/PostImport.php:171
+#: ../Core/Script.php:192 ../Init/SourceFramework.php:191
+msgid "Success!"
+msgstr "¡Éxito!"
+
+#: ../Core/Script.php:193 ../Init/SourceFramework.php:192
+msgid "Fail!"
+msgstr "¡Falló!"
+
+#: ../Core/Script.php:194 ../Init/SourceFramework.php:193
+msgid "Error!"
+msgstr "¡Error!"
+
+#: ../Core/Script.php:195 ../Init/SourceFramework.php:194
+msgid "Send"
+msgstr "Enviar"
+
+#: ../Core/Script.php:196 ../Init/SourceFramework.php:195
+msgid "Submit"
+msgstr "Enviar"
+
+#: ../Core/Script.php:197 ../Init/SourceFramework.php:196
+msgid "Submiting..."
+msgstr "Enviando..."
+
+#: ../Core/Script.php:198 ../Init/SourceFramework.php:197
+msgid "Sending..."
+msgstr "Enviando..."
+
+#: ../Core/Script.php:199 ../Init/SourceFramework.php:198
+msgid "Sent!"
+msgstr "¡Enviado!"
+
+#: ../Data/PostImport.php:139
 msgid "The file does not exist.\n"
 msgstr "El archivo no existe.\n"
 
-#: ../Data/PostImport.php:177
+#: ../Data/PostImport.php:145
 msgid "Error on read file.\n"
 msgstr "Error al leer el archivo.\n"
 
