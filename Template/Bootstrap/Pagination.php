@@ -34,29 +34,28 @@ class Pagination {
    * @param   array         $args
    * @return  string
    */
-  public static function paginate_links( $args = array() ) {
-    $defaults  = array(
+  public static function paginate_links( $args = [] ) {
+    $defaults   = array(
         'nav_class' => 'text-center',
         'class'     => '',
         'prev_text' => '<span aria-hidden="true">&laquo;</span>',
         'next_text' => '<span aria-hidden="true">&raquo;</span>',
         'type'      => 'list',
     );
-    $args      = wp_parse_args( $args, $defaults );
-
+    $args       = wp_parse_args( $args, $defaults );
     $paginate   = paginate_links( $args );
-    $search     = array(
+    $search     = [
         "<ul class='page-numbers'>",
         "<li><span class='page-numbers current'>"
-    );
-    $replace    = array(
+    ];
+    $replace    = [
         "<ul class='page-numbers pagination'>",
         "<li class='active'><span class='page-numbers current'>"
-    );
+    ];
     $paginate   = str_replace( $search, $replace, $paginate );
-    $pagination = Tag::html( 'nav', $paginate, array(
+    $pagination = Tag::html( 'nav', $paginate, [
                 'itemscope',
-                'itemtype' => 'http://schema.org/SiteNavigationElement' ) );
+                'itemtype' => 'http://schema.org/SiteNavigationElement' ] );
 
     return $paginate;
   }
