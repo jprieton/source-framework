@@ -1,6 +1,6 @@
 <?php
 
-namespace SMGDevTools\Vendor\Bootstrap;
+namespace SourceFramework\Template\Bootstrap;
 
 /**
  * If this file is called directly, abort.
