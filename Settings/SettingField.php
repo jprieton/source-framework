@@ -286,7 +286,7 @@ class SettingField {
       }
 
       $label = Form::label( $label, [ 'for' => $item['id'] ] );
-      $input = Form::hidden( $item['name'], '_unset_' ) . Form::input( $item );
+      $input = Form::hidden( $item['name'], 'no' ) . Form::input( $item );
 
       echo sprintf( $label, $input ) . $desc;
     }

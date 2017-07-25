@@ -49,8 +49,7 @@ class SettingGroup {
   public function __construct( $setting_group ) {
     $this->setting_group_name = trim( $setting_group );
     $this->options            = (array) get_option( $this->setting_group_name, array() );
-    add_action( 'admin_init', array( $this, 'register_setting' ) );
-    add_filter( "pre_update_option_{$setting_group}", array( $this, 'pre_update_option' ), 10, 2 );
+    add_action( 'admin_init', array( &$this, 'register_setting' ) );
   }
 
   /**
@@ -133,7 +132,28 @@ class SettingGroup {
    * @since   1.0.0
    */
   public function register_setting() {
-    register_setting( $this->setting_group_name, $this->setting_group_name );
+    register_setting( $this->setting_group_name, $this->setting_group_name, [ $this, 'pre_update_option' ] );
+  }
+
+  /**
+   * Clean empty or _unset_ options
+   *
+   * @since   0.5.0
+   *
+   * @param   array     $new_value
+   * @return  array
+   */
+  private function _clean_options( $new_value ) {
+    foreach ( $new_value as $key => $value ) {
+      if ( is_array( $value ) ) {
+        $new_value[$key] = $this->_clean_options( $value );
+      }
+
+      if ( empty( $value ) || $value == '_unset_' ) {
+        unset( $new_value[$key] );
+      }
+    }
+    return $new_value;
   }
 
 }

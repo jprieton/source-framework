@@ -31,7 +31,8 @@ final class AdvancedPage extends SettingPage {
     $this->title = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
     parent::__construct( 'source-framework', 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-    // CDN Section
+    $this->fields = new SettingField( 'source-framework', 'source-framework' );
+    // General Section
     $this->general_section();
   }
 
@@ -41,7 +42,6 @@ final class AdvancedPage extends SettingPage {
    * @since 1.0.0
    */
   public function general_section() {
-    $this->fields = new SettingField( 'source-framework', 'source-framework' );
     $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
