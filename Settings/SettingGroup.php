@@ -48,7 +48,9 @@ class SettingGroup {
    */
   public function __construct( $setting_group ) {
     $this->setting_group_name = trim( $setting_group );
-    $this->options       = (array) get_option( $this->setting_group_name, array() );
+    $this->options            = (array) get_option( $this->setting_group_name, array() );
+    add_action( 'admin_init', array( $this, 'register_setting' ) );
+    add_filter( "pre_update_option_{$setting_group}", array( $this, 'pre_update_option' ), 10, 2 );
   }
 
   /**
@@ -79,7 +81,6 @@ class SettingGroup {
    */
   public function get_option( $option, $default = false ) {
     $value = isset( $this->options[$option] ) ? $this->options[$option] : $default;
-
     return $value;
   }
 
@@ -104,7 +105,6 @@ class SettingGroup {
    * @since   1.0.0
    *
    * @param   array     $new_value
-   * @param   array     $old_value
    * @return  array
    */
   public function pre_update_option( $new_value ) {
@@ -123,7 +123,17 @@ class SettingGroup {
         unset( $this->options[$key] );
       }
     }
+
     return $this->options;
+  }
+
+  /**
+   * Register a setting. Must be called in admin_init hook.
+   *
+   * @since   1.0.0
+   */
+  public function register_setting() {
+    register_setting( $this->setting_group_name, $this->setting_group_name );
   }
 
 }

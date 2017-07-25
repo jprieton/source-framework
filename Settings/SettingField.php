@@ -10,6 +10,7 @@ namespace SourceFramework\Settings;
 
 use SourceFramework\Settings\SettingGroup;
 use SourceFramework\Template\Tag;
+use SourceFramework\Template\Form;
 
 /**
  * SettingField class
@@ -152,7 +153,7 @@ class SettingField {
     ];
 
     $attributes = wp_parse_args( $field, $defaults );
-    $input      = Tag::html( 'input', null, $attributes );
+    $input      = Form::input( $attributes );
 
     echo $input . $description;
   }
@@ -211,6 +212,84 @@ class SettingField {
     $input      = Tag::html( 'textarea', $value, $attributes );
 
     echo $input . $description;
+  }
+
+  /**
+   * Render a checkbox field
+   *
+   * @since   0.5.0
+   *
+   * @param   array          $field
+   */
+  public function render_checkbox( $field ) {
+
+    $options = array();
+
+    $is_multiple = false;
+    if ( array_key_exists( 'options', $field ) ) {
+      $options     = $field['options'];
+      unset( $field['options'] );
+      $is_multiple = true;
+    }
+
+    if ( array_key_exists( 'input_class', $field ) ) {
+      $field['class'] = $field['input_class'];
+      unset( $field['input_class'] );
+    }
+
+    if ( empty( $options ) ) {
+      $options[] = $field;
+    }
+
+    $defaults = [
+        'id'    => false,
+        'name'  => false,
+        'value' => 'yes',
+        'type'  => 'checkbox'
+    ];
+
+
+    foreach ( $options as $item ) {
+      $item = wp_parse_args( $item, $defaults );
+
+      if ( $is_multiple && !$item['id'] && !$item['name'] ) {
+        $item['id']   = $field['id'] . '-' . substr( md5( $item['value'] ), 0, 8 );
+        $item['name'] = sprintf( "{$this->option_group}[%s][]", $field['id'] );
+      } else {
+        $is_multiple  = false;
+        $item['name'] = sprintf( "{$this->option_group}[%s]", $item['id'] );
+      }
+
+      if ( array_key_exists( 'label', $item ) ) {
+        $label = '%s ' . $item['label'];
+        unset( $item['label'] );
+      } else {
+        $label = '%s ';
+      }
+
+      if ( array_key_exists( 'desc', $item ) ) {
+        $desc = apply_filters( 'the_content', $item['desc'] );
+        $desc = str_replace( '<p>', '<p class="description">', $desc );
+        unset( $item['desc'] );
+      } else {
+        $desc = '<br />';
+      }
+
+      if ( $is_multiple ) {
+        $options = (array) $this->setting_group->get_option( $field['id'], array() );
+      } else {
+        $options = (bool) $this->setting_group->get_bool_option( $item['id'] );
+      }
+
+      if ( (is_bool( $options ) && $options) || (is_array( $options ) && in_array( $item['value'], $options )) ) {
+        $item['checked'] = 'checked';
+      }
+
+      $label = Form::label( $label, [ 'for' => $item['id'] ] );
+      $input = Form::hidden( $item['name'], '_unset_' ) . Form::input( $item );
+
+      echo sprintf( $label, $input ) . $desc;
+    }
   }
 
 }

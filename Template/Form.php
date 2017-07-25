@@ -53,11 +53,11 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public static function input( $type = 'text', $name = '', $value = '', $attributes = array() ) {
+  public static function input( $attributes = array() ) {
     $defaults   = array(
-        'name'  => $name,
-        'value' => $value,
-        'type'  => $type
+        'name'  => '',
+        'value' => '',
+        'type'  => 'text'
     );
     $attributes = wp_parse_args( $attributes, $defaults );
 
@@ -111,7 +111,9 @@ class Form {
    * @return  string
    */
   public static function hidden( $name, $value = '', $attributes = array() ) {
-    return static::input( 'hidden', $name, $value, $attributes );
+    $type       = 'hidden';
+    $attributes = array_merge( $attributes, compact( 'name', 'value', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
@@ -125,7 +127,9 @@ class Form {
    * @return  string
    */
   public static function text( $name, $value = '', $attributes = array() ) {
-    return static::input( 'text', $name, $value, $attributes );
+    $type       = 'text';
+    $attributes = array_merge( $attributes, compact( 'name', 'value', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
@@ -139,7 +143,9 @@ class Form {
    * @return  string
    */
   public static function email( $name, $value = '', $attributes = array() ) {
-    return static::input( 'email', $name, $value, $attributes );
+    $type       = 'email';
+    $attributes = array_merge( $attributes, compact( 'name', 'value', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
@@ -153,7 +159,9 @@ class Form {
    * @return  string
    */
   public static function url( $name, $value = '', $attributes = array() ) {
-    return static::input( 'url', $name, $value, $attributes );
+    $type       = 'url';
+    $attributes = array_merge( $attributes, compact( 'name', 'value', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
@@ -166,7 +174,9 @@ class Form {
    * @return  string
    */
   public static function password( $name, $attributes = array() ) {
-    return static::input( 'password', $name, null, $attributes );
+    $type       = 'password';
+    $attributes = array_merge( $attributes, compact( 'name', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
@@ -179,7 +189,9 @@ class Form {
    * @return  string
    */
   public static function file( $name, $attributes = array() ) {
-    return static::input( 'file', $name, null, $attributes );
+    $type       = 'file';
+    $attributes = array_merge( $attributes, compact( 'name', 'value', 'type' ) );
+    return static::input( $attributes );
   }
 
   /**
