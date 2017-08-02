@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
-use SourceFramework\Settings\Setting;
+use SourceFramework\Settings\SettingGroup;
 
 /**
  * Style class
@@ -29,6 +29,12 @@ class Style extends Singleton {
    * @var           SourceFrameworkPublic
    */
   protected static $instance;
+
+  /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $setting_group;
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -114,7 +120,11 @@ class Style extends Singleton {
         'autoload' => false
     ];
 
-    $use_cdn = Setting::get_bool_option( 'use_cdn' );
+    if ( empty( $this->setting_group ) ) {
+      $this->setting_group = new SettingGroup( 'source-framework' );
+    }
+
+    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
 
     foreach ( $styles as $handle => $style ) {
       $style = wp_parse_args( $style, $defaults );

@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
-use SourceFramework\Settings\Setting;
+use SourceFramework\Settings\SettingGroup;
 
 /**
  * Script class
@@ -29,6 +29,12 @@ class Script extends Singleton {
    * @var           SourceFrameworkPublic
    */
   protected static $instance;
+
+  /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $setting_group;
 
   /**
    * Array of handlers of scritps to add <code>async</code> property;
@@ -90,7 +96,7 @@ class Script extends Singleton {
             'autoload'  => is_admin(),
             'defer'     => true,
         ],
-        'source-framework'      => [
+        'source-framework'             => [
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => [ 'jquery', 'jquery-form' ],
             'ver'       => \SourceFramework\VERSION,
@@ -99,19 +105,19 @@ class Script extends Singleton {
             'defer'     => true,
         ],
         'modernizr'                    => [
-            'local'    => plugins_url( 'assets/js/modernizr.min.js' , \SourceFramework\PLUGIN_FILE ),
+            'local'    => plugins_url( 'assets/js/modernizr.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
             'ver'      => '3.3.1',
             'autoload' => false,
         ],
         'bootstrap'                    => [
-            'local'    => plugins_url( 'assets/js/bootstrap.min.js' , \SourceFramework\PLUGIN_FILE ),
+            'local'    => plugins_url( 'assets/js/bootstrap.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
             'ver'      => '3.3.7',
             'autoload' => false,
         ],
         'jquery-appear'                => [
-            'local'     => plugins_url( 'assets/js/jquery.appear.min.js' , \SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/jquery.appear.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
             'deps'      => [ 'jquery' ],
             'ver'       => '0.3.3',
@@ -119,7 +125,7 @@ class Script extends Singleton {
             'autoload'  => false
         ],
         'geodatasource-country-region' => [
-            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js' , \SourceFramework\PLUGIN_FILE ),
+            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
             'ver'       => '1.0.1',
             'in_footer' => true,
@@ -150,7 +156,11 @@ class Script extends Singleton {
         'defer'     => false,
     ];
 
-    $use_cdn = Setting::get_bool_option( 'use_cdn' );
+    if ( empty( $this->setting_group ) ) {
+      $this->setting_group = new SettingGroup( 'source-framework' );
+    }
+
+    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
 
     $scripts = $this->register_scripts();
     foreach ( $scripts as $handle => $script ) {

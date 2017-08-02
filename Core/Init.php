@@ -11,6 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
+use SourceFramework\Tools\FrontendHelper;
 
 /**
  * Init class
@@ -60,6 +61,12 @@ final class Init extends Singleton {
     $this->enable_cli_commands();
 
     /**
+     * This hook check if is enabled front end helper
+     * @since 1.0.0
+     */
+    $this->enable_frontend_helper();
+
+    /**
      * Add shortcodes
      * @since 1.0.0
      */
@@ -107,7 +114,7 @@ final class Init extends Singleton {
   private function enable_cli_commands() {
     // Check if SettingGroup is instanciated
     if ( empty( $this->setting_group ) ) {
-      $this->setting_group = new SettingGroup( 'source_framework' );
+      $this->setting_group = new SettingGroup( 'source-framework' );
     }
 
     // Check if is enabled
@@ -141,6 +148,23 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
+  }
+
+  /**
+   *
+   */
+  public function enable_frontend_helper() {
+    // Check if SettingGroup is instanciated
+    if ( empty( $this->setting_group ) ) {
+      $this->setting_group = new SettingGroup( 'source-framework' );
+    }
+
+    // Check if is enabled
+    if ( !$this->setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
+      return false;
+    }
+
+    new FrontendHelper();
   }
 
 }
