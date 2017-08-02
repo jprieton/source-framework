@@ -12,12 +12,12 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Settings\SettingGroup;
 
 /**
- *
+ * @since 1.0.0
  */
 class FrontendHelper {
 
   /**
-   *
+   * @since 1.0.0
    */
   public function __construct() {
     add_filter( 'source_framework_styles', [ $this, 'register_styles' ] );
@@ -26,6 +26,7 @@ class FrontendHelper {
   }
 
   /**
+   * @since 1.0.0
    *
    * @param array $styles
    * @return array
@@ -36,6 +37,7 @@ class FrontendHelper {
   }
 
   /**
+   * @since 1.0.0
    *
    * @param array $scripts
    * @return array
@@ -46,7 +48,7 @@ class FrontendHelper {
   }
 
   /**
-   * 
+   * @since 1.0.0
    */
   public function load_template() {
     include_once \SourceFramework\ABSPATH . '/partials/frontend-helper.php';

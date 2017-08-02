@@ -28,7 +28,7 @@ final class AdvancedPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
+    $this->title  = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
     parent::__construct( 'source-framework', 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->fields = new SettingField( 'source-framework', 'source-framework' );
@@ -43,6 +43,22 @@ final class AdvancedPage extends SettingPage {
    */
   public function general_section() {
     $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
+
+    $args = [
+        'type'    => 'checkbox',
+        'name'    => __( 'Featured Post', \SourceFramework\TEXTDOMAIN ),
+        'options' => []
+    ];
+
+    $post_types = get_post_types( [ 'show_ui' => true ], 'objects' );
+
+    foreach ( $post_types as $item ) {
+      $args['options'][] = [
+          'id'    => 'featured-' . $item->name,
+          'label' => $item->label
+      ];
+    }
+    $this->fields->add_field( $args );
 
     $args = [
         'type' => 'checkbox',
