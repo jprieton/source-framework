@@ -66,6 +66,12 @@ class Script extends Singleton {
      * Register and enqueue scripts
      * @since   1.0.0
      */
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+
+    /**
+     * Register and enqueue scripts
+     * @since   1.0.0
+     */
     add_action( 'wp_enqueue_scripts', [ $this, 'localize_scripts' ] );
 
     /**
@@ -108,12 +114,6 @@ class Script extends Singleton {
             'local'    => plugins_url( 'assets/js/modernizr.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'   => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
             'ver'      => '3.3.1',
-            'autoload' => false,
-        ],
-        'bootstrap'                    => [
-            'local'    => plugins_url( 'assets/js/bootstrap.min.js', \SourceFramework\PLUGIN_FILE ),
-            'remote'   => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-            'ver'      => '3.3.7',
             'autoload' => false,
         ],
         'jquery-appear'                => [

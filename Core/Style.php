@@ -91,6 +91,11 @@ class Style extends Singleton {
             'remote' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
             'ver'    => '3.3.7',
         ],
+        'bootstrap-extend'       => [
+            'local' => plugins_url( 'assets/css/bootstrap-extended.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'   => \SourceFramework\VERSION,
+            'deps'  => [ 'bootstrap' ],
+        ],
         'frontend-helper'        => [
             'local'    => plugins_url( 'assets/css/frontend-helper.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,

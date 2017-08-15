@@ -73,6 +73,13 @@ abstract class SettingPage {
   public $fields;
 
   /**
+   * The setting page have tabs?
+   * @var bool
+   * @since 1.0.0
+   */
+  private $have_tabs = false;
+
+  /**
    * Constructor
    *
    * @since   1.0.0
@@ -167,9 +174,9 @@ abstract class SettingPage {
 
   /**
    * Show page settings tabs
-   * 
+   *
    * @since   1.0.0
-   * 
+   *
    * @global array $wp_settings_sections
    */
   private function _show_tabs() {
@@ -187,14 +194,15 @@ abstract class SettingPage {
       }
 
       echo Tag::html( 'h2.nav-tab-wrapper.custom-nav-tab-wrapper', $tab_list );
+      $this->have_tabs = true;
     }
   }
 
   /**
    * Show page settings sections
-   * 
+   *
    * @since   1.0.0
-   * 
+   *
    * @global array $wp_settings_sections
    * @global array $wp_settings_fields
    */
@@ -202,7 +210,7 @@ abstract class SettingPage {
     global $wp_settings_sections, $wp_settings_fields;
 
     foreach ( (array) $wp_settings_sections[$this->submenu_slug] as $section ) {
-      if ( $section['title'] ) {
+      if ( $section['title'] && !$this->have_tabs ) {
         echo Tag::html( 'h2', $section['title'] );
       }
 

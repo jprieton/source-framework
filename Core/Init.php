@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
-use SourceFramework\Tools\FrontendHelper;
+use SourceFramework\Core\FrontEnd;
 
 /**
  * Init class
@@ -60,18 +60,6 @@ final class Init extends Singleton {
      */
     $this->enable_cli_commands();
 
-    /**
-     * This hook check if is enabled front end helper
-     * @since 1.0.0
-     */
-    $this->enable_frontend_helper();
-
-    /**
-     * Add shortcodes
-     * @since 1.0.0
-     */
-    $this->add_shortcodes();
-
     if ( is_admin() ) {
       /**
        * Initialize admin
@@ -83,6 +71,7 @@ final class Init extends Singleton {
        * Initialize public
        * @since   1.0.0
        */
+      FrontEnd::get_instance();
       SourceFrameworkPublic::get_instance();
     }
   }
@@ -140,31 +129,6 @@ final class Init extends Singleton {
   public function allowed_http_origin( $origin ) {
     $GLOBALS['_REQUEST']['action'] = 'source_framework_cli';
     return $origin;
-  }
-
-  public function add_shortcodes() {
-    /**
-     * Add an ofuscate mailto link to prevent spam-bots from sniffing it.
-     * @since 1.0.0
-     */
-    add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
-  }
-
-  /**
-   *
-   */
-  public function enable_frontend_helper() {
-    // Check if SettingGroup is instanciated
-    if ( empty( $this->setting_group ) ) {
-      $this->setting_group = new SettingGroup( 'source-framework' );
-    }
-
-    // Check if is enabled
-    if ( !$this->setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
-      return false;
-    }
-
-    new FrontendHelper();
   }
 
 }

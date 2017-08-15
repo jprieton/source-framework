@@ -34,6 +34,7 @@ final class AdvancedPage extends SettingPage {
     $this->fields = new SettingField( 'source-framework', 'source-framework' );
     // General Section
     $this->general_section();
+    $this->security_section();
   }
 
   /**
@@ -42,7 +43,7 @@ final class AdvancedPage extends SettingPage {
    * @since 1.0.0
    */
   public function general_section() {
-    $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
+    $this->add_setting_section( 'source-framework-advanced-general', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
         'type'    => 'checkbox',
@@ -62,11 +63,75 @@ final class AdvancedPage extends SettingPage {
 
     $args = [
         'type' => 'checkbox',
-        'name' => __( 'CDN', \SourceFramework\TEXTDOMAIN ),
+        'name' => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
         'id'   => 'cdn-enabled',
         'desc' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
     ];
     $this->fields->add_field( $args );
+  }
+
+  public function security_section() {
+    $this->add_setting_section( 'source-framework-advanced-security', __( 'Security', \SourceFramework\TEXTDOMAIN ) );
+
+    $this->fields->add_field( array(
+        'name'    => __( 'Header', \SourceFramework\TEXTDOMAIN ),
+        'type'    => 'checkbox',
+        'id'      => 'security-header',
+        'options' => array(
+            array(
+                'id'    => 'remove-wordpress-version',
+                'label' => __( 'Remove WordPress version number', \SourceFramework\TEXTDOMAIN ),
+                'desc'  => __( 'Remove WordPress version number from header, feed, styles and scripts.', \SourceFramework\TEXTDOMAIN ),
+            ),
+            array(
+                'id'    => 'remove-rsd-link',
+                'label' => __( 'Remove EditURI link', \SourceFramework\TEXTDOMAIN ),
+                'desc'  => __( 'Remove the EditURI/RSD link from your header. This option also removes the <b>Windows Live Writer</b> manifest link.', \SourceFramework\TEXTDOMAIN ),
+            ),
+        ),
+    ) );
+
+    $this->fields->add_field( array(
+        'name'    => 'XML-RPC',
+        'type'    => 'checkbox',
+        'id'      => 'security-xmlrcp',
+        'options' => array(
+            array(
+                'id'    => 'xmlrpc-pingback-disabled',
+                'label' => 'Disable XML-RPC Pingback',
+                'desc'  => __( 'If you uses XML-RPC in your theme/plugins check this for disable only pingback method.', \SourceFramework\TEXTDOMAIN ),
+            ),
+            array(
+                'id'    => 'xmlrpc-pingback-disabled',
+                'label' => 'Completely disable XML-RPC',
+                'desc'  => __( 'Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove EditURI link</b>. <a href="https://www.littlebizzy.com/blog/disable-xml-rpc" target="_blank">More info</a>.', \SourceFramework\TEXTDOMAIN ),
+            ),
+        ),
+    ) );
+
+    global $wp_roles;
+
+    if ( !isset( $wp_roles ) ) {
+      $wp_roles = new WP_Roles();
+    }
+
+    $_roles = $wp_roles->get_names();
+
+    $options = array();
+    foreach ( $_roles as $key => $label ) {
+      $options[] = array(
+          'label' => $label,
+          'value' => $key,
+      );
+    }
+
+    $this->fields->add_field( array(
+        'name'     => 'Admin Bar Disable',
+        'type'     => 'checkbox',
+        'id'       => 'admin-bar-disabled',
+        'multiple' => true,
+        'options'  => $options,
+    ) );
   }
 
 }

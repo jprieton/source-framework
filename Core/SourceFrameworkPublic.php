@@ -55,25 +55,6 @@ final class SourceFrameworkPublic extends Singleton {
      * @since 1.0.0
      */
     add_action( 'after_main_content', [ $this, 'singular_after_main_content' ] );
-
-    /**
-     * Add shortcodes
-     * @since 1.0.0
-     */
-    $this->add_shorcodes();
-  }
-
-  /**
-   * Add shortcodes
-   *
-   * @since 1.0.0
-   */
-  public function add_shorcodes() {
-    /**
-     * Add an ofuscate mailto link to prevent spam-bots from sniffing it.
-     * @since 1.0.0
-     */
-    add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
   }
 
   /**
