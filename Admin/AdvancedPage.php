@@ -41,6 +41,8 @@ final class AdvancedPage extends SettingPage {
     // General Section
     $this->general_section();
     $this->security_section();
+
+    do_action( 'advanced-setting-page', $this );
   }
 
   /**
