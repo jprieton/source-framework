@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\SettingPage;
-use WP_Roles;
+use SourceFramework\Settings\SettingField;
 
 /**
  * Analytics class
@@ -18,7 +18,7 @@ use WP_Roles;
  * @package        Admin
  * @subpackage     SettingPages
  * @since          1.0.0
- * @author         SMG Team |Javier Prieto <jprieton@gmail.com>
+ * @author         Javier Prieto <jprieton@gmail.com>
  */
 final class AnalyticsPage extends SettingPage {
 
@@ -36,6 +36,9 @@ final class AnalyticsPage extends SettingPage {
     $menu_slug   = apply_filters( 'source_framework_analytics_menu_slug', 'source-framework' );
 
     parent::__construct( $menu_slug, 'source-framework-analytics' );
+
+    $this->fields = new SettingField( 'analytics', 'analytics' );
+
     $this->add_submenu_page( __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->add_google_settings_section();
     $this->add_bing_settings_section();
@@ -72,7 +75,9 @@ final class AnalyticsPage extends SettingPage {
         'id'          => 'google-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => [
+            '<code>&lt;meta name="google-site-verification" content="<b>{' . _x( 'verification-code', 'settings', \SourceFramework\TEXTDOMAIN ) . '}</b>"&gt;</code>',
+            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ) ],
     ) );
   }
 
@@ -88,7 +93,9 @@ final class AnalyticsPage extends SettingPage {
         'id'          => 'bing-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => [
+            '<code>&lt;meta  name="msvalidate.01" content="<b>{' . _x( 'verification-code', 'settings', \SourceFramework\TEXTDOMAIN ) . '}</b>"&gt;</code>',
+            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ) ],
     ) );
   }
 

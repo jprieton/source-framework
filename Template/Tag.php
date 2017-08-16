@@ -146,7 +146,8 @@ class Tag {
 
     foreach ( (array) $attributes as $key => $value ) {
       if ( is_numeric( $key ) && !is_bool( $value ) ) {
-        $key = $value;
+        $key   = $value;
+        $value = null;
       }
 
       if ( is_bool( $value ) && $value ) {
@@ -163,6 +164,8 @@ class Tag {
 
       if ( !is_null( $value ) ) {
         $_attributes[] = sprintf( '%s="%s"', trim( esc_attr( $key ) ), trim( esc_attr( $value ) ) );
+      } else {
+        $_attributes[] = trim( esc_attr( $key ) );
       }
     }
 

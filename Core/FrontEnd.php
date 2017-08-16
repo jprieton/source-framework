@@ -12,6 +12,7 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
 use SourceFramework\Tools\FrontendHelper;
+use SourceFramework\Template\Tag;
 
 /**
  * Admin class
@@ -38,6 +39,12 @@ final class FrontEnd extends Singleton {
   private $setting_group;
 
   /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $analytics_setting_group;
+
+  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
@@ -45,13 +52,44 @@ final class FrontEnd extends Singleton {
   protected function __construct() {
     parent::__construct();
 
-    $this->setting_group = new SettingGroup( 'source-framework' );
+    $this->setting_group           = new SettingGroup( 'source-framework' );
+    $this->analytics_setting_group = new SettingGroup( 'analytics' );
 
     /**
      * Disable WordPress Admin Bar in frontend for specific roles.
      * @since 1.0.0
      */
     add_action( 'init', [ $this, 'disable_admin_bar_by_role' ] );
+
+    /**
+     * Shows Google Site Verification code
+     * @since 0.5.0
+     */
+    add_action( 'wp_head', [ $this, 'google_site_verification' ], 0 );
+
+    /**
+     * Shows Bing Site Verification code
+     * @since 0.5.0
+     */
+    add_action( 'wp_head', [ $this, 'bing_site_verification' ], 0 );
+
+    /**
+     * Shows Facebook Pixel code before the closing <head> tag.
+     * @since 0.5.0
+     */
+    add_action( 'wp_head', [ $this, 'facebook_pixel_code' ], 99 );
+
+    /**
+     * Shows Google Universal Analytics code before the closing <head> tag.
+     * @since 0.5.0
+     */
+    add_action( 'wp_head', [ $this, 'google_universal_analytics' ], 99 );
+
+    /**
+     * Shows Google Universal Analytics code before the closing <head> tag.
+     * @since 0.5.0
+     */
+    add_action( 'before_main_content', [ $this, 'google_tag_manager' ] );
 
     /**
      * Disable XML-RPC.
@@ -202,6 +240,83 @@ final class FrontEnd extends Singleton {
     }
 
     new FrontendHelper();
+  }
+
+  /**
+   * Shows Google Site Verification code
+   *
+   * @since 0.5.0
+   */
+  public function google_site_verification() {
+    // If is Yoast active do nothing;
+    if ( defined( 'WPSEO_VERSION' ) ) {
+      return;
+    }
+
+    $google_site_verification = $this->analytics_setting_group->get_option( 'google-site-verification', '' );
+    if ( !empty( $google_site_verification ) ) {
+      $google_site_verification = strip_tags( $google_site_verification );
+      echo Tag::html( 'meta', null, [ 'name' => 'google-site-verification', 'content' => $google_site_verification ] );
+      echo "\n";
+    }
+  }
+
+  /**
+   * Shows Bing Site Verification code
+   *
+   * @since 0.5.0
+   */
+  public function bing_site_verification() {
+    // If is Yoast active do nothing;
+    if ( defined( 'WPSEO_VERSION' ) ) {
+      return;
+    }
+
+    $bing_site_verification = $this->analytics_setting_group->get_option( 'bing-site-verification', '' );
+    if ( !empty( $bing_site_verification ) ) {
+      $bing_site_verification = strip_tags( $bing_site_verification );
+      echo Tag::html( 'meta', null, [ 'name' => 'msvalidate.01', 'content' => $bing_site_verification ] );
+      echo "\n";
+    }
+  }
+
+  /**
+   * Shows Facebook Pixel Code before the closing <head> tag.
+   *
+   * @since 0.5.0
+   */
+  public function facebook_pixel_code() {
+    $facebook_pixel_code = $this->analytics_setting_group->get_option( 'facebook-pixel-code', '' );
+    if ( !empty( $facebook_pixel_code ) ) {
+      echo (string) $facebook_pixel_code;
+      echo "\n";
+    }
+  }
+
+  /**
+   * Shows Google Tag Manager script
+   *
+   * @since 0.5.0
+   */
+  public function google_tag_manager() {
+    $google_tag_manager = $this->analytics_setting_group->get_option( 'google-tag-manager', '' );
+    if ( !empty( $google_tag_manager ) ) {
+      echo (string) $google_tag_manager;
+      echo "\n";
+    }
+  }
+
+  /**
+   * Shows Google Universal Analytics script
+   *
+   * @since 0.5.0
+   */
+  public function google_universal_analytics() {
+    $google_universal_analytics = $this->analytics_setting_group->get_option( 'google-universal-analytics', '' );
+    if ( !empty( $google_universal_analytics ) ) {
+      echo (string) $google_universal_analytics;
+      echo "\n";
+    }
   }
 
 }

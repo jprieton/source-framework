@@ -124,8 +124,7 @@ class SettingField {
     $default_value = '';
 
     if ( array_key_exists( 'desc', $field ) ) {
-      $description = apply_filters( 'the_content', $field['desc'] );
-      $description = str_replace( '<p>', '<p class="description">', $description );
+      $description = $this->_parse_description( $field['desc'] );
       unset( $field['desc'] );
     }
 
@@ -172,8 +171,7 @@ class SettingField {
     $raw           = false;
 
     if ( array_key_exists( 'desc', $field ) ) {
-      $description = apply_filters( 'the_content', $field['desc'] );
-      $description = str_replace( '<p>', '<p class="description">', $description );
+      $description = $this->_parse_description( $field['desc'] );
       unset( $field['desc'] );
     }
 
@@ -268,8 +266,7 @@ class SettingField {
       }
 
       if ( array_key_exists( 'desc', $item ) ) {
-        $desc = apply_filters( 'the_content', $item['desc'] );
-        $desc = str_replace( '<p>', '<p class="description">', $desc );
+        $desc = $this->_parse_description( $item['desc'] );
         unset( $item['desc'] );
       } else {
         $desc = '<br />';
@@ -290,6 +287,17 @@ class SettingField {
 
       echo sprintf( $label, $input ) . $desc;
     }
+  }
+
+  private function _parse_description( $description = '' ) {
+    if ( is_array( $description ) ) {
+      $description = implode( "\n\n", $description );
+    }
+
+    $description = apply_filters( 'the_content', $description );
+    $description = str_replace( '<p>', '<p class="description">', $description );
+
+    return $description;
   }
 
 }
