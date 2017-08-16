@@ -56,7 +56,7 @@ final class AnalyticsPage extends SettingPage {
         'raw'         => true,
         'rows'        => 6,
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted before the <code>&lt;/head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => __( 'This snippet is inserted before the closing <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
     ) );
     $this->fields->add_field( array(
         'name'        => 'Google Tag Manager',
@@ -65,14 +65,14 @@ final class AnalyticsPage extends SettingPage {
         'raw'         => true,
         'rows'        => 6,
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted immediately after the opening <code>&lt;/body&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => __( 'This snippet is inserted after the opening <code>&lt;body&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
     ) );
     $this->fields->add_field( array(
         'name'        => __( 'Site Verification Code', \SourceFramework\TEXTDOMAIN ),
         'id'          => 'google-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted immediately after the opening <code>&lt;/head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
     ) );
   }
 
@@ -88,7 +88,7 @@ final class AnalyticsPage extends SettingPage {
         'id'          => 'bing-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted immediately after the opening <code>&lt;/head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
     ) );
   }
 
@@ -106,7 +106,7 @@ final class AnalyticsPage extends SettingPage {
         'raw'         => true,
         'rows'        => 6,
         'input_class' => 'large-text code',
-        'desc'        => __( 'This snippet is inserted before the <code>&lt;/head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
+        'desc'        => __( 'This snippet is inserted before the closing <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ),
     ) );
   }
 
