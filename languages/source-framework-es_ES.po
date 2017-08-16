@@ -1,19 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-07-14 01:45-0400\n"
-"PO-Revision-Date: 2017-07-14 01:51-0400\n"
+"POT-Creation-Date: 2017-08-16 13:53-0400\n"
+"PO-Revision-Date: 2017-08-16 13:59-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -27,21 +26,105 @@ msgstr "Acerca de SourceFramework"
 msgid "About"
 msgstr "Acerca"
 
-#: ../Admin/AdvancedPage.php:30
+#: ../Admin/AdvancedPage.php:31
 msgid "Advanced Settings"
 msgstr "Ajustes avanzados"
 
-#: ../Admin/AdvancedPage.php:32
+#: ../Admin/AdvancedPage.php:39
 msgid "Advanced"
 msgstr "Avanzado"
+
+#: ../Admin/AdvancedPage.php:52 ../Admin/GeneralPage.php:33
+#: ../Admin/ToolsPage.php:51
+msgid "General"
+msgstr "General"
+
+#: ../Admin/AdvancedPage.php:56
+msgid "Featured Post"
+msgstr "Publicación destacada"
+
+#: ../Admin/AdvancedPage.php:72
+msgid "Enable CDN"
+msgstr "Habilitar CDN"
+
+#: ../Admin/AdvancedPage.php:74
+msgid ""
+"This option enables the use of CDN in plugin's registered scripts and styles."
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:80
+msgid "Security"
+msgstr "Seguridad"
+
+#: ../Admin/AdvancedPage.php:83
+msgid "Header"
+msgstr "Cabecera"
+
+#: ../Admin/AdvancedPage.php:89
+msgid "Remove WordPress version number"
+msgstr "Remover el número de versión de WordPress"
+
+#: ../Admin/AdvancedPage.php:90
+msgid "Remove WordPress version number from header, feed, styles and scripts."
+msgstr ""
+"Elimina el número de versión de WordPress de la cabecera, feed, estilos y "
+"scripts."
+
+#: ../Admin/AdvancedPage.php:94
+msgid "Remove EditURI link"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:95
+msgid ""
+"Remove the EditURI/RSD link from your header. This option also removes the "
+"<b>Windows Live Writer</b> manifest link."
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:108
+msgid ""
+"If you uses XML-RPC in your theme/plugins check this for disable only "
+"pingback method."
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:113
+msgid ""
+"Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC "
+"Pingback</b> and <b>Remove EditURI link</b>. <a href=\"https://www."
+"littlebizzy.com/blog/disable-xml-rpc\" target=\"_blank\">More info</a>."
+msgstr ""
+
+#: ../Admin/AnalyticsPage.php:31 ../Admin/AnalyticsPage.php:39
+msgid "Analytics &amp; SEO"
+msgstr "Analítica y SEO"
+
+#: ../Admin/AnalyticsPage.php:59 ../Admin/AnalyticsPage.php:109
+msgid ""
+"This snippet is inserted before the closing <code>&lt;head&gt;</code> tag."
+msgstr ""
+"Este fragmento de código se inserta antes del cierre de la etiqueta "
+"<code>&lt;head&gt</code>."
+
+#: ../Admin/AnalyticsPage.php:68
+msgid ""
+"This snippet is inserted after the opening <code>&lt;body&gt;</code> tag."
+msgstr ""
+"Este fragmento de código se inserta después de la apertura de la etiqueta "
+"<code>&lt;body&gt</code>."
+
+#: ../Admin/AnalyticsPage.php:71 ../Admin/AnalyticsPage.php:87
+msgid "Site Verification Code"
+msgstr ""
+
+#: ../Admin/AnalyticsPage.php:75 ../Admin/AnalyticsPage.php:91
+msgid ""
+"This snippet is inserted after the opening <code>&lt;head&gt;</code> tag."
+msgstr ""
+"Este fragmento de código se inserta después de la apertura de la etiqueta "
+"<code>&lt;head&gt</code>."
 
 #: ../Admin/GeneralPage.php:30 ../Admin/GeneralPage.php:32
 msgid "General Settings"
 msgstr "Ajustes generales"
-
-#: ../Admin/GeneralPage.php:33
-msgid "General"
-msgstr "General"
 
 #: ../Admin/Importer.php:45
 msgid "SourceFramework CSV Import"
@@ -55,51 +138,59 @@ msgstr "Importación mediante archivo CSV."
 msgid "Social Settings"
 msgstr ""
 
-#: ../Admin/SocialPage.php:51
+#: ../Admin/SocialPage.php:58
 msgid "Social"
 msgstr "Social"
 
-#: ../Admin/SocialPage.php:63
+#: ../Admin/SocialPage.php:70
 msgid "Links"
 msgstr "Enlaces"
 
-#: ../Admin/ToolsPage.php:30 ../Admin/ToolsPage.php:32
+#: ../Admin/ToolsPage.php:31 ../Admin/ToolsPage.php:39
 msgid "Tools"
 msgstr "Herramientas"
+
+#: ../Admin/ToolsPage.php:55
+msgid "Frontend Helper"
+msgstr "Frontend Helper"
+
+#: ../Admin/ToolsPage.php:57
+msgid "This option enables <strong>Frontend Helper</strong> feature."
+msgstr ""
 
 #: ../Core/PostImporter.php:31
 msgid "CSV Post Importer"
 msgstr "CSV Post Importer"
 
-#: ../Core/Script.php:192 ../Init/SourceFramework.php:191
+#: ../Core/Script.php:202
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../Core/Script.php:193 ../Init/SourceFramework.php:192
+#: ../Core/Script.php:203
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../Core/Script.php:194 ../Init/SourceFramework.php:193
+#: ../Core/Script.php:204
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../Core/Script.php:195 ../Init/SourceFramework.php:194
+#: ../Core/Script.php:205
 msgid "Send"
 msgstr "Enviar"
 
-#: ../Core/Script.php:196 ../Init/SourceFramework.php:195
+#: ../Core/Script.php:206
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../Core/Script.php:197 ../Init/SourceFramework.php:196
+#: ../Core/Script.php:207
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:198 ../Init/SourceFramework.php:197
+#: ../Core/Script.php:208
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:199 ../Init/SourceFramework.php:198
+#: ../Core/Script.php:209
 msgid "Sent!"
 msgstr "¡Enviado!"
 
@@ -111,7 +202,7 @@ msgstr "El archivo no existe.\n"
 msgid "Error on read file.\n"
 msgstr "Error al leer el archivo.\n"
 
-#: ../Template/Form.php:220 ../includes/forms/elements/class-select.php:42
+#: ../Template/Form.php:218 ../includes/forms/elements/class-select.php:42
 msgid "Select..."
 msgstr "Seleccione..."
 
