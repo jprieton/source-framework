@@ -47,7 +47,14 @@ final class SocialPage extends SettingGroupPage {
    */
   public function __construct() {
     $this->title = __( 'Social Settings', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-social' );
+
+    /**
+     * Allow override menu slug
+     * @since 1.0.0
+     */
+    $menu_slug = apply_filters( 'source_framework_social_menu_slug', 'source-framework' );
+
+    parent::__construct( $menu_slug, 'source-framework-social' );
     $this->add_submenu_page( __( 'Social', \SourceFramework\TEXTDOMAIN ), __( 'Social', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
 
     $this->add_social_links_section();
@@ -67,9 +74,9 @@ final class SocialPage extends SettingGroupPage {
 
     foreach ( $social_links as $key => $label ) {
       $this->fields->add_field( array(
-          'name'  => $label,
-          'id'    => $key,
-          'type'  => 'text',
+          'name'        => $label,
+          'id'          => $key,
+          'type'        => 'text',
           'input_class' => 'regular-text code',
       ) );
     }

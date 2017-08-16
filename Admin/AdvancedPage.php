@@ -28,8 +28,14 @@ final class AdvancedPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title  = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-advanced' );
+    $this->title = __( 'Advanced Settings', \SourceFramework\TEXTDOMAIN );
+    /**
+     * Allow override menu slug
+     * @since 1.0.0
+     */
+    $menu_slug   = apply_filters( 'source_framework_advanced_menu_slug', 'source-framework' );
+
+    parent::__construct( $menu_slug, 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->fields = new SettingField( 'source-framework', 'source-framework' );
     // General Section

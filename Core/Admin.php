@@ -16,6 +16,7 @@ use SourceFramework\Admin\SocialPage;
 use SourceFramework\Admin\AboutPage;
 use SourceFramework\Admin\AdvancedPage;
 use SourceFramework\Admin\ToolsPage;
+use SourceFramework\Admin\AnalyticsPage;
 
 /**
  * Admin class
@@ -53,7 +54,7 @@ final class Admin extends Singleton {
      * Add menu/submenu pages to admin panel's menu structure.
      * @since   1.0.0
      */
-    add_filter( 'admin_menu', [ $this, 'admin_menus' ] );
+    add_action( 'admin_menu', [ $this, 'admin_menus' ], 25 );
   }
 
   /**
@@ -73,6 +74,7 @@ final class Admin extends Singleton {
   public function admin_menus() {
     new GeneralPage();
     new SocialPage();
+    new AnalyticsPage();
     new ToolsPage();
     new AdvancedPage();
     new AboutPage();

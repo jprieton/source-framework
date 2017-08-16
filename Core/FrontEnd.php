@@ -51,7 +51,7 @@ final class FrontEnd extends Singleton {
      * Disable WordPress Admin Bar in frontend for specific roles.
      * @since 1.0.0
      */
-    $this->disable_admin_bar_by_role();
+    add_action( 'init', [ $this, 'disable_admin_bar_by_role' ] );
 
     /**
      * Disable XML-RPC.

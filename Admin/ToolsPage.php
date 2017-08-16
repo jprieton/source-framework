@@ -29,7 +29,13 @@ final class ToolsPage extends SettingPage {
    */
   public function __construct() {
     $this->title = __( 'Tools', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-tools' );
+    /**
+     * Allow override menu slug
+     * @since 1.0.0
+     */
+    $menu_slug   = apply_filters( 'source_framework_tools_menu_slug', 'source-framework' );
+
+    parent::__construct( $menu_slug, 'source-framework-tools' );
     $this->add_submenu_page( __( 'Tools', \SourceFramework\TEXTDOMAIN ), __( 'Tools', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->fields = new SettingField( 'source-framework', 'source-framework' );
     // General Section

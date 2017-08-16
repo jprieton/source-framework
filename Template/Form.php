@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Template\Tag;
+use WP_Locale;
 
 /**
  * Form class
@@ -204,27 +205,12 @@ class Form {
    * @param   array|string        $attributes
    * @return  string
    */
-  public static function select( $name, $options, $attributes = array() ) {
+  public static function select( $attributes = [], $options = [] ) {
     global $wp_locale;
 
-    $content     = '';
     $placeholder = '';
     $required    = false;
     $selected    = '';
-
-    switch ( $options ) {
-      case 'month':
-        $options = $wp_locale->month;
-        break;
-      case 'weekday':
-        $options = $wp_locale->weekday;
-        break;
-      default:
-        $options = (is_array( $options )) ? $options : (array) $options;
-        break;
-    }
-
-    $attributes = wp_parse_args( $attributes, compact( 'name' ) );
 
     if ( !empty( $attributes['placehonder'] ) && !is_bool( $attributes['placehonder'] ) ) {
       $placeholder = $attributes['placehonder'];
@@ -251,9 +237,7 @@ class Form {
 
     unset( $attributes['placehonder'], $attributes['selected'], $attributes['required'] );
 
-    $options .= self::options( $options, $selected );
-
-    return HtmlBuilder::tag( 'select', $content, $attributes );
+    return Tag::html( 'select', self::options( $options, $selected ), $attributes );
   }
 
   /**
@@ -261,11 +245,28 @@ class Form {
    *
    * @since 1.0.0
    *
-   * @param   array               $options
-   * @param   string              $selected
+   * @global WP_Locale            $wp_locale
+   *
+   * @param  array|string         $options
+   * @param  array                $selected
+   * @return string
    */
   public static function options( $options, $selected = '' ) {
+    global $wp_locale;
+
     $_options = '';
+
+    switch ( $options ) {
+      case 'month':
+        $options = $wp_locale->month;
+        break;
+      case 'weekday':
+        $options = $wp_locale->weekday;
+        break;
+      default:
+        $options = (is_array( $options )) ? $options : (array) $options;
+        break;
+    }
 
     foreach ( $options as $key => $value ) {
       if ( is_array( $value ) ) {
