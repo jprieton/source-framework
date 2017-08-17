@@ -14,6 +14,7 @@ use SourceFramework\Admin\Importer;
 use SourceFramework\Admin\GeneralPage;
 use SourceFramework\Admin\SocialPage;
 use SourceFramework\Admin\AboutPage;
+use SourceFramework\Admin\ApiPage;
 use SourceFramework\Admin\AdvancedPage;
 use SourceFramework\Admin\ToolsPage;
 use SourceFramework\Admin\AnalyticsPage;
@@ -76,6 +77,7 @@ final class Admin extends Singleton {
     new SocialPage();
     new AnalyticsPage();
     new ToolsPage();
+    new ApiPage();
     new AdvancedPage();
     new AboutPage();
   }

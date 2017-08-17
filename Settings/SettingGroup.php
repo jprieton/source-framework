@@ -99,6 +99,26 @@ class SettingGroup {
   }
 
   /**
+   * Get integer option value in option group.
+   *
+   * @since   1.0.0
+   *
+   * @param   string    $option   Name of option to retrieve. Expected to not be SQL-escaped.
+   * @param   int       $default  Optional. Default value to return if the option does not exist.
+   *
+   * @return  int
+   */
+  public function get_int_option( $option, $default = 0 ) {
+    $value = $this->get_option( $option, $default );
+
+    if ( !is_numeric( $value ) ) {
+      $value = $default;
+    }
+
+    return (int) $value;
+  }
+
+  /**
    * Merge options before saving
    *
    * @since   1.0.0
