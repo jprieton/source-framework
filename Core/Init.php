@@ -60,6 +60,16 @@ final class Init extends Singleton {
      */
     $this->enable_cli_commands();
 
+
+    add_action( 'after_setup_theme', [ $this, 'theme_support' ] );
+
+    /**
+     * Add Filter to allow to plugins/themes add/override social networks
+     * @since 1.0.0
+     */
+    add_filter( 'social_networks', [ $this, 'social_networks' ], 0 );
+
+
     if ( is_admin() ) {
       /**
        * Initialize admin
@@ -87,6 +97,26 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     load_plugin_textdomain( \SourceFramework\TEXTDOMAIN, FALSE, basename( dirname( \SourceFramework\BASENAME ) ) . '/languages/' );
+  }
+
+  public function theme_support() {
+    /**
+     * Add theme support for Featured Images
+     * @since 0.5.0
+     */
+    add_theme_support( 'post-thumbnails' );
+
+    /**
+     * Add theme support for document Title tag
+     * @since 0.5.0
+     */
+    add_theme_support( 'title-tag' );
+
+    /**
+     * To enable the use of a custom logo in your theme
+     * @since 0.5.0
+     */
+    add_theme_support( 'custom-logo' );
   }
 
   /**
@@ -129,6 +159,23 @@ final class Init extends Singleton {
   public function allowed_http_origin( $origin ) {
     $GLOBALS['_REQUEST']['action'] = 'source_framework_cli';
     return $origin;
+  }
+
+  public function social_networks() {
+    $networks = [
+        'social-email'       => 'Email',
+        'social-facebook'    => 'Facebook',
+        'social-dribbble'    => 'Dribble',
+        'social-google-plus' => 'Google+',
+        'social-instagram'   => 'Instagram',
+        'social-linkedin'    => 'LinkedIn',
+        'social-pinterest'   => 'Pinterest',
+        'social-rss'         => 'RSS',
+        'social-twitter'     => 'Twitter',
+        'social-yelp'        => 'Yelp',
+        'social-youtube'     => 'YouTube',
+    ];
+    return $networks;
   }
 
 }
