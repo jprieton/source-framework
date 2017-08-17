@@ -19,6 +19,7 @@ use SourceFramework\Settings\SettingGroup;
 class Instagram {
 
   private $client_id;
+  private $cache;
   private $access_token;
   private $api_url = 'https://api.instagram.com/v1';
 
@@ -119,7 +120,7 @@ class Instagram {
   function get_endpoint_transient( $endpoint, $args = array(), $expiration = NULL ) {
 
     if ( empty( $expiration ) ) {
-      $expiration = 12 * HOUR_IN_SECONDS;
+      $expiration = $this->cache;
     }
 
     $transient = 'instagram_' . md5( $this->_get_endpoint_url( $endpoint, $args ) );
