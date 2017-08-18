@@ -57,6 +57,7 @@ final class SocialPage extends SettingGroupPage {
     parent::__construct( $menu_slug, 'source-framework-social' );
     $this->add_submenu_page( __( 'Social', \SourceFramework\TEXTDOMAIN ), __( 'Social', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
 
+    $this->fields = new SettingField( 'social-links', 'social-links' );
     $this->add_social_links_section();
   }
 
@@ -66,7 +67,6 @@ final class SocialPage extends SettingGroupPage {
    * @since 1.0.0
    */
   public function add_social_links_section() {
-    $this->fields = new SettingField( 'social-links', 'social-links' );
     $this->add_setting_section( 'social_settings_section_links', __( 'Links', \SourceFramework\TEXTDOMAIN ) );
 
     // Filter to allow to plugins/themes add more social networks

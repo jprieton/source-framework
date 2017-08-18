@@ -37,9 +37,9 @@ final class ToolsPage extends SettingPage {
 
     parent::__construct( $menu_slug, 'source-framework-tools' );
     $this->add_submenu_page( __( 'Tools', \SourceFramework\TEXTDOMAIN ), __( 'Tools', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-    $this->fields = new SettingField( 'source-framework', 'source-framework' );
-    // General Section
-    $this->general_section();
+
+    $this->fields = new SettingField( 'tools', 'tools' );
+    $this->add_general_section();
   }
 
   /**
@@ -47,14 +47,14 @@ final class ToolsPage extends SettingPage {
    *
    * @since 1.0.0
    */
-  public function general_section() {
+  public function add_general_section() {
     $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
-        'type' => 'checkbox',
-        'name' => __( 'Frontend Helper', \SourceFramework\TEXTDOMAIN ),
-        'id'   => 'frontend-helper-enabled',
-        'desc' => __( 'This option enables <strong>Frontend Helper</strong> feature.', \SourceFramework\TEXTDOMAIN ),
+        'type'  => 'checkbox',
+        'name'  => __( 'Frontend Helper', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'frontend-helper-enabled',
+        'label' => __( 'This option enables <strong>Frontend Helper</strong> feature.', \SourceFramework\TEXTDOMAIN ),
     ];
     $this->fields->add_field( $args );
   }

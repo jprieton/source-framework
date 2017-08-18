@@ -157,19 +157,22 @@ final class AdvancedPage extends SettingPage {
     ];
 
     $post_types = [
-        'place'     => [
+        'office'      => [
+            'label' => __( 'Offices', \SourceFramework\TEXTDOMAIN ),
+        ],
+        'place'       => [
             'label' => __( 'Places', \SourceFramework\TEXTDOMAIN ),
         ],
-        'portfolio' => [
+        'portfolio'   => [
             'label' => __( 'Portfolios', \SourceFramework\TEXTDOMAIN ),
         ],
-        'product'   => [
+        'product'     => [
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
         ],
-        'review'    => [
+        'review'      => [
             'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
         ],
-        'service'   => [
+        'service'     => [
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
         ],
     ];

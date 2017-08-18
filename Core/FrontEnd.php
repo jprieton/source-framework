@@ -36,13 +36,19 @@ final class FrontEnd extends Singleton {
    * @since         1.0.0
    * @var           SettingGroup
    */
-  private $setting_group;
+  private $analytics_setting_group;
 
   /**
    * @since         1.0.0
    * @var           SettingGroup
    */
-  private $analytics_setting_group;
+  private $advanced_setting_group;
+
+  /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $tools_setting_group;
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -54,6 +60,7 @@ final class FrontEnd extends Singleton {
 
     $this->analytics_setting_group = new SettingGroup( 'analytics' );
     $this->advanced_setting_group  = new SettingGroup( 'advanced' );
+    $this->tools_setting_group     = new SettingGroup( 'tools' );
 
     /**
      * Disable WordPress Admin Bar in frontend for specific roles.
@@ -235,11 +242,9 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function enable_frontend_helper() {
-    if ( !$this->advanced_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
-      return;
+    if ( $this->tools_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
+      new FrontendHelper();
     }
-
-    new FrontendHelper();
   }
 
   /**

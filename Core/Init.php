@@ -187,17 +187,23 @@ final class Init extends Singleton {
   }
 
   /**
-   * 
+   *
    */
   public function register_custom_post_types() {
-    $advanced_setting_group   = new SettingGroup( 'advanced' );
-    $post_types               = $advanced_setting_group->get_option( 'post-types' );
+    $advanced_setting_group = new SettingGroup( 'advanced' );
+    $post_types             = $advanced_setting_group->get_option( 'post-types' );
+
+    if ( empty( $post_types ) ) {
+      return;
+    }
+
     $custom_post_type_classes = [
-        'portfolio' => 'SourceFramework\PostType\Portfolio',
-        'product'   => 'SourceFramework\PostType\Product',
-        'review'    => 'SourceFramework\PostType\Review',
-        'service'   => 'SourceFramework\PostType\Service',
-        'place'     => 'SourceFramework\PostType\Place',
+        'office'      => 'SourceFramework\PostType\Office',
+        'place'       => 'SourceFramework\PostType\Place',
+        'portfolio'   => 'SourceFramework\PostType\Portfolio',
+        'product'     => 'SourceFramework\PostType\Product',
+        'review'      => 'SourceFramework\PostType\Review',
+        'service'     => 'SourceFramework\PostType\Service',
     ];
 
     $custom_post_type_classes = apply_filters( 'custom_post_type_classes', $custom_post_type_classes );
