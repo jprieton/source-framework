@@ -246,6 +246,10 @@ class SettingField {
         'type'  => 'checkbox'
     ];
 
+    if ($is_multiple) {
+      echo Form::hidden( sprintf( "{$this->option_group}[%s][]", $field['id'] ), '' );
+    }
+
 
     foreach ( $options as $item ) {
       $item = wp_parse_args( $item, $defaults );
@@ -283,7 +287,12 @@ class SettingField {
       }
 
       $label = Form::label( $label, [ 'for' => $item['id'] ] );
-      $input = Form::hidden( $item['name'], 'no' ) . Form::input( $item );
+      if ( !$is_multiple ) {
+        $input = Form::hidden( $item['name'], 'no' );
+      } else {
+        $input = '';
+      }
+      $input .= Form::input( $item );
 
       echo sprintf( $label, $input ) . $desc;
     }

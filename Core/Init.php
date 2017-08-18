@@ -60,7 +60,6 @@ final class Init extends Singleton {
      */
     $this->enable_cli_commands();
 
-
     add_action( 'after_setup_theme', [ $this, 'theme_support' ] );
 
     /**
@@ -69,6 +68,11 @@ final class Init extends Singleton {
      */
     add_filter( 'social_networks', [ $this, 'social_networks' ], 0 );
 
+    /**
+     * Register custom post types
+     * @since 1.0.0
+     */
+    $this->register_custom_post_types();
 
     if ( is_admin() ) {
       /**
@@ -161,6 +165,10 @@ final class Init extends Singleton {
     return $origin;
   }
 
+  /**
+   *
+   * @return array
+   */
   public function social_networks() {
     $networks = [
         'social-email'       => 'Email',
@@ -176,6 +184,29 @@ final class Init extends Singleton {
         'social-youtube'     => 'YouTube',
     ];
     return $networks;
+  }
+
+  /**
+   * 
+   */
+  public function register_custom_post_types() {
+    $advanced_setting_group   = new SettingGroup( 'advanced' );
+    $post_types               = $advanced_setting_group->get_option( 'post-types' );
+    $custom_post_type_classes = [
+        'portfolio' => 'SourceFramework\PostType\Portfolio',
+        'product'   => 'SourceFramework\PostType\Product',
+        'review'    => 'SourceFramework\PostType\Review',
+        'service'   => 'SourceFramework\PostType\Service',
+        'place'     => 'SourceFramework\PostType\Place',
+    ];
+
+    $custom_post_type_classes = apply_filters( 'custom_post_type_classes', $custom_post_type_classes );
+
+    foreach ( $custom_post_type_classes as $key => $class_name ) {
+      if ( in_array( $key, $post_types ) ) {
+        new $class_name;
+      }
+    }
   }
 
 }

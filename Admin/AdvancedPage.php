@@ -37,10 +37,11 @@ final class AdvancedPage extends SettingPage {
 
     parent::__construct( $menu_slug, 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-    $this->fields = new SettingField( 'source-framework', 'source-framework' );
+    $this->fields = new SettingField( 'advanced', 'advanced' );
     // General Section
     $this->general_section();
     $this->security_section();
+    $this->custom_post_type_section();
 
     do_action( 'advanced-setting-page', $this );
   }
@@ -54,26 +55,28 @@ final class AdvancedPage extends SettingPage {
     $this->add_setting_section( 'source-framework-advanced-general', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
-        'type'    => 'checkbox',
-        'name'    => __( 'Featured Post', \SourceFramework\TEXTDOMAIN ),
-        'options' => []
+        'id'       => 'featured-posts',
+        'type'     => 'checkbox',
+        'name'     => __( 'Featured Post', \SourceFramework\TEXTDOMAIN ),
+        'multiple' => true,
+        'options'  => []
     ];
 
     $post_types = get_post_types( [ 'show_ui' => true ], 'objects' );
 
     foreach ( $post_types as $item ) {
       $args['options'][] = [
-          'id'    => 'featured-' . $item->name,
+          'value' => $item->name,
           'label' => $item->label
       ];
     }
     $this->fields->add_field( $args );
 
     $args = [
-        'type' => 'checkbox',
-        'name' => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
-        'id'   => 'cdn-enabled',
-        'desc' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
+        'type'  => 'checkbox',
+        'name'  => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'cdn-enabled',
+        'label' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
     ];
     $this->fields->add_field( $args );
   }
@@ -140,6 +143,45 @@ final class AdvancedPage extends SettingPage {
         'multiple' => true,
         'options'  => $options,
     ) );
+  }
+
+  public function custom_post_type_section() {
+    $this->add_setting_section( 'custom-post-type', __( 'Post Types', \SourceFramework\TEXTDOMAIN ) );
+
+    $args = [
+        'name'     => __( 'Post Types', \SourceFramework\TEXTDOMAIN ),
+        'type'     => 'checkbox',
+        'id'       => 'post-types',
+        'multiple' => true,
+        'options'  => []
+    ];
+
+    $post_types = [
+        'place'     => [
+            'label' => __( 'Places', \SourceFramework\TEXTDOMAIN ),
+        ],
+        'portfolio' => [
+            'label' => __( 'Portfolios', \SourceFramework\TEXTDOMAIN ),
+        ],
+        'product'   => [
+            'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
+        ],
+        'review'    => [
+            'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
+        ],
+        'service'   => [
+            'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
+        ],
+    ];
+
+    $post_types = apply_filters( 'custom_post_types', $post_types );
+
+    foreach ( $post_types as $key => $value ) {
+      $value['value']    = $key;
+      $args['options'][] = $value;
+    }
+
+    $this->fields->add_field( $args );
   }
 
 }

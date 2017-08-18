@@ -118,6 +118,8 @@ abstract class SettingPage {
 
     echo Tag::open( 'div.wrap' ) . Tag::html( 'h2', $this->title );
 
+    settings_errors();
+
     if ( !empty( $this->description ) ) {
       apply_filters( 'the_content', $this->description );
     }

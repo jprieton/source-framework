@@ -62,9 +62,14 @@ class Style extends Singleton {
             'ver'      => \SourceFramework\VERSION,
             'autoload' => is_admin()
         ],
+        'wordpress-core'         => [
+            'local' => plugins_url( 'assets/css/wordpress-core.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'   => \SourceFramework\VERSION,
+        ],
         'source-framework'       => [
             'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
+            'deps'     => [ 'wordpress-core' ],
             'autoload' => !is_admin()
         ],
         'fontawesome'            => [

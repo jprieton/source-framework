@@ -52,8 +52,8 @@ final class FrontEnd extends Singleton {
   protected function __construct() {
     parent::__construct();
 
-    $this->setting_group           = new SettingGroup( 'source-framework' );
     $this->analytics_setting_group = new SettingGroup( 'analytics' );
+    $this->advanced_setting_group  = new SettingGroup( 'advanced' );
 
     /**
      * Disable WordPress Admin Bar in frontend for specific roles.
@@ -141,7 +141,7 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function disable_admin_bar_by_role() {
-    $disabled_roles = (array) $this->setting_group->get_option( 'admin-bar-disabled', array() );
+    $disabled_roles = (array) $this->advanced_setting_group->get_option( 'admin-bar-disabled', array() );
     $user           = wp_get_current_user();
 
     // By default is enabled in all roles.
@@ -163,7 +163,7 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function remove_rsd_link() {
-    if ( !$this->setting_group->get_bool_option( 'remove-rsd-link' ) ) {
+    if ( !$this->advanced_setting_group->get_bool_option( 'remove-rsd-link' ) ) {
       return;
     }
 
@@ -181,7 +181,7 @@ final class FrontEnd extends Singleton {
    * @see https://www.littlebizzy.com/blog/disable-xml-rpc
    */
   public function disable_xmlrpc() {
-    if ( $this->setting_group->get_bool_option( 'xmlrpc-all-disabled' ) ) {
+    if ( $this->advanced_setting_group->get_bool_option( 'xmlrpc-all-disabled' ) ) {
       // Disable XML-RCP
       add_filter( 'xmlrpc_enabled', '__return_false' );
 
@@ -191,7 +191,7 @@ final class FrontEnd extends Singleton {
       return;
     }
 
-    if ( $this->setting_group->get_bool_option( 'xmlrpc-pingback-disabled' ) ) {
+    if ( $this->advanced_setting_group->get_bool_option( 'xmlrpc-pingback-disabled' ) ) {
       // Remove Pingback methods
       add_filter( 'xmlrpc_methods', function ( $methods ) {
         unset( $methods['pingback.ping'] );
@@ -213,7 +213,7 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function remove_wordpress_version() {
-    if ( !$this->setting_group->get_bool_option( 'remove-wordpress-version' ) ) {
+    if ( !$this->advanced_setting_group->get_bool_option( 'remove-wordpress-version' ) ) {
       return;
     }
 
@@ -235,7 +235,7 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function enable_frontend_helper() {
-    if ( !$this->setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
+    if ( !$this->advanced_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
       return;
     }
 
