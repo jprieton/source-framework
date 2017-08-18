@@ -47,71 +47,82 @@ class Style extends Singleton {
      * Register and enqueue styles
      * @since   1.0.0
      */
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
   }
 
   /**
-   * Register styles
+   * Register admin styles
    *
    * @since 1.0.0
    */
-  private function register_styles() {
+  private function register_admin_styles() {
     $styles = [
         'source-framework-admin' => [
             'local'    => plugins_url( 'assets/css/admin.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'autoload' => is_admin()
         ],
-        'wordpress-core'         => [
-            'local' => plugins_url( 'assets/css/wordpress-core.css', \SourceFramework\PLUGIN_FILE ),
-            'ver'   => \SourceFramework\VERSION,
+    ];
+
+    return apply_filters( 'register_admin_styles', $styles );
+  }
+
+  /**
+   * Register public styles
+   *
+   * @since 1.0.0
+   */
+  private function register_styles() {
+    $styles = [
+        'wordpress-core'   => [
+            'local'    => plugins_url( 'assets/css/wordpress-core.css', \SourceFramework\PLUGIN_FILE ),
+            'ver'      => \SourceFramework\VERSION,
+            'autoload' => !is_admin()
         ],
-        'source-framework'       => [
+        'source-framework' => [
             'local'    => plugins_url( 'assets/css/public.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'deps'     => [ 'wordpress-core' ],
             'autoload' => !is_admin()
         ],
-        'fontawesome'            => [
+        'fontawesome'      => [
             'remote' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
             'ver'    => '4.7.0',
         ],
-        'ionicons'               => [
+        'ionicons'         => [
             'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
             'ver'    => '2.0.1',
         ],
-        'animate'                => [
+        'animate'          => [
             'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
             'ver'    => '3.5.2',
             'media'  => 'screen',
         ],
-        'hover'                  => [
+        'hover'            => [
             'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
             'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
             'ver'    => '2.1.0',
             'media'  => 'screen',
         ],
-        'bootstrap'              => [
+        'bootstrap'        => [
             'remote' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
             'ver'    => '3.3.7',
         ],
-        'bootstrap-extend'       => [
+        'bootstrap-extend' => [
             'local' => plugins_url( 'assets/css/bootstrap-extended.css', \SourceFramework\PLUGIN_FILE ),
             'ver'   => \SourceFramework\VERSION,
             'deps'  => [ 'bootstrap' ],
         ],
-        'frontend-helper'        => [
+        'frontend-helper'  => [
             'local'    => plugins_url( 'assets/css/frontend-helper.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'media'    => 'screen',
             'autoload' => false,
         ],
     ];
-
-    $filter = is_admin() ? 'source_framework_admin_styles' : 'source_framework_styles';
-
-    return apply_filters( $filter, $styles );
+    return apply_filters( 'register_styles', $styles );
   }
 
   /**
@@ -120,7 +131,7 @@ class Style extends Singleton {
    * @since   1.0.0
    */
   public function enqueue_styles( $styles ) {
-    $styles   = $this->register_styles();
+    $styles   = is_admin() ? $this->register_admin_styles() : $this->register_styles();
     $defaults = [
         'local'    => '',
         'remote'   => '',

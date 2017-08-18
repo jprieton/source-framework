@@ -88,26 +88,38 @@ class Script extends Singleton {
   }
 
   /**
-   * Register scripts
+   * Register admin scripts
+   *
+   * @since 1.0.0
+   */
+  private function register_admin_scripts() {
+    $scripts = [
+        'source-framework-admin' => [
+            'local'     => plugins_url( 'assets/js/admin.js', \SourceFramework\PLUGIN_FILE ),
+            'deps'      => [ 'jquery' ],
+            'ver'       => \SourceFramework\VERSION,
+            'in_footer' => true,
+            'autoload'  => true,
+            'defer'     => true,
+        ]
+    ];
+
+    return apply_filters( 'register_admin_scripts', $scripts );
+  }
+
+  /**
+   * Register public scripts
    *
    * @since 1.0.0
    */
   private function register_scripts() {
     $scripts = [
-        'source-framework-admin'       => [
-            'local'     => plugins_url( 'assets/js/admin.js', \SourceFramework\PLUGIN_FILE ),
-            'deps'      => [ 'jquery' ],
-            'ver'       => \SourceFramework\VERSION,
-            'in_footer' => true,
-            'autoload'  => is_admin(),
-            'defer'     => true,
-        ],
         'source-framework'             => [
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
             'deps'      => [ 'jquery', 'jquery-form' ],
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
-            'autoload'  => !is_admin(),
+            'autoload'  => true,
             'defer'     => true,
         ],
         'modernizr'                    => [
@@ -134,9 +146,7 @@ class Script extends Singleton {
         ]
     ];
 
-    $filter = is_admin() ? 'source_framework_admin_scripts' : 'source_framework_scripts';
-
-    return apply_filters( $filter, $scripts );
+    return apply_filters( 'register_scripts', $scripts );
   }
 
   /**
@@ -162,7 +172,8 @@ class Script extends Singleton {
 
     $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
 
-    $scripts = $this->register_scripts();
+    $scripts = is_admin() ? $this->register_admin_scripts() : $this->register_scripts();
+
     foreach ( $scripts as $handle => $script ) {
       $script = wp_parse_args( $script, $defaults );
 
