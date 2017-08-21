@@ -198,12 +198,13 @@ final class Init extends Singleton {
     }
 
     $custom_post_type_classes = [
-        'office'    => 'SourceFramework\PostType\Office',
-        'place'     => 'SourceFramework\PostType\Place',
-        'portfolio' => 'SourceFramework\PostType\Portfolio',
-        'product'   => 'SourceFramework\PostType\Product',
-        'review'    => 'SourceFramework\PostType\Review',
-        'service'   => 'SourceFramework\PostType\Service',
+        'office'      => 'SourceFramework\PostType\Office',
+        'place'       => 'SourceFramework\PostType\Place',
+        'portfolio'   => 'SourceFramework\PostType\Portfolio',
+        'product'     => 'SourceFramework\PostType\Product',
+        'review'      => 'SourceFramework\PostType\Review',
+        'service'     => 'SourceFramework\PostType\Service',
+        'testimonial' => 'SourceFramework\PostType\Testimonial',
     ];
 
     if ( function_exists( 'WC' ) ) {
