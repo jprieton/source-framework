@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-08-18 15:18-0400\n"
-"PO-Revision-Date: 2017-08-18 16:15-0400\n"
+"POT-Creation-Date: 2017-08-21 10:44-0400\n"
+"PO-Revision-Date: 2017-08-21 10:46-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -178,6 +178,18 @@ msgstr ""
 msgid "Cache"
 msgstr "Caché"
 
+#: ../Admin/FeaturedPost.php:56
+msgid "Featured"
+msgstr "Descatado"
+
+#: ../Admin/FeaturedPost.php:75
+msgid "You are not authorized to perform this action."
+msgstr "No estás autorizado para realizar esta acción."
+
+#: ../Admin/FeaturedPost.php:82 ../Admin/FeaturedPost.php:89
+msgid "The data that you entered is invalid."
+msgstr "Los datos que ha ingresado son inválidos."
+
 #: ../Admin/GeneralPage.php:30 ../Admin/GeneralPage.php:32
 msgid "General Settings"
 msgstr "Ajustes generales"
@@ -218,35 +230,35 @@ msgstr ""
 msgid "CSV Post Importer"
 msgstr "CSV Post Importer"
 
-#: ../Core/Script.php:202
+#: ../Core/Script.php:213
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../Core/Script.php:203
+#: ../Core/Script.php:214
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../Core/Script.php:204
+#: ../Core/Script.php:215
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../Core/Script.php:205
+#: ../Core/Script.php:216
 msgid "Send"
 msgstr "Enviar"
 
-#: ../Core/Script.php:206
+#: ../Core/Script.php:217
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../Core/Script.php:207
+#: ../Core/Script.php:218
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:208
+#: ../Core/Script.php:219
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:209
+#: ../Core/Script.php:220
 msgid "Sent!"
 msgstr "¡Enviado!"
 
@@ -676,7 +688,7 @@ msgstr "Portafolio"
 
 #: ../PostType/Portfolio.php:45
 msgid "All Portfolios"
-msgstr ""
+msgstr "Todos los portafolios"
 
 #: ../PostType/Portfolio.php:46
 msgid "Add New Portfolio"
@@ -713,7 +725,7 @@ msgstr ""
 #: ../PostType/Portfolio.php:62
 msgctxt "post_type slug"
 msgid "portfolio"
-msgstr ""
+msgstr "portafolio"
 
 #: ../PostType/Portfolio.php:69
 msgid "Site portfolio."
@@ -722,7 +734,7 @@ msgstr ""
 #: ../PostType/Portfolio.php:82
 msgctxt "post_type archive_slug"
 msgid "portfolio"
-msgstr ""
+msgstr "portafolio"
 
 #: ../PostType/Portfolio.php:98
 msgid "Portfolio Categories"
@@ -854,7 +866,7 @@ msgstr ""
 #: ../PostType/Product.php:62
 msgctxt "post_type slug"
 msgid "product"
-msgstr ""
+msgstr "producto"
 
 #: ../PostType/Product.php:69
 msgid "Site product."
@@ -863,7 +875,7 @@ msgstr ""
 #: ../PostType/Product.php:82
 msgctxt "post_type archive_slug"
 msgid "product"
-msgstr ""
+msgstr "producto"
 
 #: ../PostType/Product.php:98
 msgid "Product Categories"
@@ -1128,7 +1140,7 @@ msgstr ""
 #: ../PostType/Service.php:62
 msgctxt "post_type slug"
 msgid "service"
-msgstr ""
+msgstr "servicio"
 
 #: ../PostType/Service.php:69
 msgid "Site service."
@@ -1137,7 +1149,7 @@ msgstr ""
 #: ../PostType/Service.php:82
 msgctxt "post_type archive_slug"
 msgid "service"
-msgstr ""
+msgstr "servicio"
 
 #: ../PostType/Service.php:98
 msgid "Service Categories"
