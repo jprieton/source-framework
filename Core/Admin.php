@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
+use SourceFramework\Settings\SettingGroup;
 use SourceFramework\Admin\Importer;
 use SourceFramework\Admin\GeneralPage;
 use SourceFramework\Admin\SocialPage;
@@ -38,12 +39,20 @@ final class Admin extends Singleton {
   protected static $instance;
 
   /**
+   * @since         1.0.0
+   * @var           SettingGroup
+   */
+  private $advanced_setting_group;
+
+  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
    */
   protected function __construct() {
     parent::__construct();
+
+    $this->advanced_setting_group = new SettingGroup( 'advanced' );
 
     /**
      * Enable csv importer
@@ -56,6 +65,13 @@ final class Admin extends Singleton {
      * @since   1.0.0
      */
     add_action( 'admin_menu', [ $this, 'admin_menus' ], 25 );
+
+    /**
+     * Add  featured posts backend funcionality.
+     * @since   1.0.0
+     */
+    add_action( 'current_screen', [ $this, 'featured_posts_column' ] );
+    add_action( 'wp_ajax_toggle_featured_post', [ 'SourceFramework\Admin\FeaturedPost', 'toggle_featured_post' ] );
   }
 
   /**
@@ -80,6 +96,22 @@ final class Admin extends Singleton {
     new ApiPage();
     new AdvancedPage();
     new AboutPage();
+  }
+
+  /**
+   * Init featured posts backend funcionality
+   *
+   * @since 0.5.0
+   */
+  public function featured_posts_column() {
+    $post_types_enabled = $this->advanced_setting_group->get_option( 'featured-posts' );
+    $screen             = get_current_screen();
+    if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
+      add_action( 'manage_posts_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
+      add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
+      add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
+      add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
+    }
   }
 
 }
