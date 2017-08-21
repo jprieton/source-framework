@@ -1,12 +1,13 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace SourceFramework\Settings;
+
+/**
+ * If this file is called directly, abort.
+ */
+if ( !defined( 'ABSPATH' ) ) {
+  die( 'Direct access is forbidden.' );
+}
 
 use SourceFramework\Settings\SettingGroup;
 use SourceFramework\Template\Tag;
@@ -246,10 +247,9 @@ class SettingField {
         'type'  => 'checkbox'
     ];
 
-    if ($is_multiple) {
+    if ( $is_multiple ) {
       echo Form::hidden( sprintf( "{$this->option_group}[%s][]", $field['id'] ), '' );
     }
-
 
     foreach ( $options as $item ) {
       $item = wp_parse_args( $item, $defaults );

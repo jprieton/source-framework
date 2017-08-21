@@ -74,6 +74,12 @@ class Style extends Singleton {
    * @since 1.0.0
    */
   private function register_styles() {
+    global $tools_setting_group;
+
+    if ( empty( $tools_setting_group ) ) {
+      $tools_setting_group = new SettingGroup( 'tools-settings' );
+    }
+
     $styles = [
         'wordpress-core'   => [
             'local'    => plugins_url( 'assets/css/wordpress-core.css', \SourceFramework\PLUGIN_FILE ),
@@ -119,7 +125,7 @@ class Style extends Singleton {
             'local'    => plugins_url( 'assets/css/frontend-helper.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'media'    => 'screen',
-            'autoload' => false,
+            'autoload' => $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ),
         ],
     ];
     return apply_filters( 'register_styles', $styles );

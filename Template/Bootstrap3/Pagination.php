@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Template\Bootstrap;
+namespace SourceFramework\Template\Bootstrap3;
 
 /**
  * If this file is called directly, abort.

@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace SourceFramework\Abstracts;
 
 /**
@@ -40,6 +34,5 @@ abstract class SettingGroupPage extends SettingPage {
   public function __construct( $menu_slug, $submenu_slug = '' ) {
     parent::__construct( $menu_slug, $submenu_slug );
   }
-
 
 }
