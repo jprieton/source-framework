@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Template\Bootstrap3;
+namespace SourceFramework\Template\Bootstrap4;
 
 /**
  * If this file is called directly, abort.
@@ -15,10 +15,10 @@ use SourceFramework\Template\Tag;
  * Pagination class
  *
  * @package        Template
- * @subpackage     Bootstrap3
+ * @subpackage     Bootstrap4
  *
- * @since          0.5.0
- * @see            http://getbootstrap.com/docs/3.3/components/#pagination
+ * @since          1.0.0
+ * @see            http://getbootstrap.com/docs/4.0/components/pagination/
  *
  * @author         Javier Prieto <jprieton@gmail.com>
  */
@@ -46,11 +46,13 @@ class Pagination {
     $paginate   = paginate_links( $args );
     $search     = [
         "<ul class='page-numbers'>",
-        "<li><span class='page-numbers current'>"
+        "<li><span class='page-numbers current'>",
+        "<li>",
     ];
     $replace    = [
         sprintf( "<ul class='page-numbers %s'>", trim( 'paginate ' . $args['class'] ) ),
-        "<li class='active'><span class='page-numbers current'>"
+        "<li class='page-item active'><span class='page-numbers current'>",
+        "<li class='page-item'>"
     ];
     $paginate   = str_replace( $search, $replace, $paginate );
     $pagination = Tag::html( 'nav', $paginate, [
