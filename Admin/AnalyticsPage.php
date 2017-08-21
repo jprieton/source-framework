@@ -37,7 +37,7 @@ final class AnalyticsPage extends SettingPage {
 
     parent::__construct( $menu_slug, 'source-framework-analytics' );
 
-    $this->fields = new SettingField( 'analytics', 'analytics' );
+    $this->fields = new SettingField( 'analytics_settings', 'analytics_settings' );
 
     $this->add_submenu_page( __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->add_google_settings_section();

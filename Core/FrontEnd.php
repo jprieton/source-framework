@@ -36,12 +36,6 @@ final class FrontEnd extends Singleton {
    * @since         1.0.0
    * @var           SettingGroup
    */
-  private $analytics_setting_group;
-
-  /**
-   * @since         1.0.0
-   * @var           SettingGroup
-   */
   private $advanced_setting_group;
 
   /**
@@ -52,8 +46,7 @@ final class FrontEnd extends Singleton {
   protected function __construct() {
     parent::__construct();
 
-    $this->analytics_setting_group = new SettingGroup( 'analytics' );
-    $this->advanced_setting_group  = new SettingGroup( 'advanced' );
+    $this->advanced_setting_group = new SettingGroup( 'advanced' );
 
     /**
      * Disable WordPress Admin Bar in frontend for specific roles.
@@ -257,7 +250,13 @@ final class FrontEnd extends Singleton {
       return;
     }
 
-    $google_site_verification = $this->analytics_setting_group->get_option( 'google-site-verification', '' );
+    global $analytics_setting_group;
+
+    if ( empty( $analytics_setting_group ) ) {
+      $analytics_setting_group = new SettingGroup( 'analytics_settings' );
+    }
+
+    $google_site_verification = $analytics_setting_group->get_option( 'google-site-verification', '' );
     if ( !empty( $google_site_verification ) ) {
       $google_site_verification = strip_tags( $google_site_verification );
       echo Tag::html( 'meta', null, [ 'name' => 'google-site-verification', 'content' => $google_site_verification ] );
@@ -276,7 +275,13 @@ final class FrontEnd extends Singleton {
       return;
     }
 
-    $bing_site_verification = $this->analytics_setting_group->get_option( 'bing-site-verification', '' );
+    global $analytics_setting_group;
+
+    if ( empty( $analytics_setting_group ) ) {
+      $analytics_setting_group = new SettingGroup( 'analytics_settings' );
+    }
+
+    $bing_site_verification = $analytics_setting_group->get_option( 'bing-site-verification', '' );
     if ( !empty( $bing_site_verification ) ) {
       $bing_site_verification = strip_tags( $bing_site_verification );
       echo Tag::html( 'meta', null, [ 'name' => 'msvalidate.01', 'content' => $bing_site_verification ] );
@@ -290,7 +295,13 @@ final class FrontEnd extends Singleton {
    * @since 0.5.0
    */
   public function facebook_pixel_code() {
-    $facebook_pixel_code = $this->analytics_setting_group->get_option( 'facebook-pixel-code', '' );
+    global $analytics_setting_group;
+
+    if ( empty( $analytics_setting_group ) ) {
+      $analytics_setting_group = new SettingGroup( 'analytics_settings' );
+    }
+
+    $facebook_pixel_code = $analytics_setting_group->get_option( 'facebook-pixel-code', '' );
     if ( !empty( $facebook_pixel_code ) ) {
       echo (string) $facebook_pixel_code;
       echo "\n";
@@ -303,7 +314,13 @@ final class FrontEnd extends Singleton {
    * @since 0.5.0
    */
   public function google_tag_manager() {
-    $google_tag_manager = $this->analytics_setting_group->get_option( 'google-tag-manager', '' );
+    global $analytics_setting_group;
+
+    if ( empty( $analytics_setting_group ) ) {
+      $analytics_setting_group = new SettingGroup( 'analytics_settings' );
+    }
+
+    $google_tag_manager = $analytics_setting_group->get_option( 'google-tag-manager', '' );
     if ( !empty( $google_tag_manager ) ) {
       echo (string) $google_tag_manager;
       echo "\n";
@@ -316,7 +333,13 @@ final class FrontEnd extends Singleton {
    * @since 0.5.0
    */
   public function google_universal_analytics() {
-    $google_universal_analytics = $this->analytics_setting_group->get_option( 'google-universal-analytics', '' );
+    global $analytics_setting_group;
+
+    if ( empty( $analytics_setting_group ) ) {
+      $analytics_setting_group = new SettingGroup( 'analytics_settings' );
+    }
+
+    $google_universal_analytics = $analytics_setting_group->get_option( 'google-universal-analytics', '' );
     if ( !empty( $google_universal_analytics ) ) {
       echo (string) $google_universal_analytics;
       echo "\n";
