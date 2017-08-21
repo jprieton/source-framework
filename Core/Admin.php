@@ -107,6 +107,11 @@ final class Admin extends Singleton {
     $post_types_enabled = $this->advanced_setting_group->get_option( 'featured-posts' );
     $screen             = get_current_screen();
     if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
+
+      if ( function_exists( 'WC' ) && 'product' == $screen->post_type ) {
+        return;
+      }
+
       add_action( 'manage_posts_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
       add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
       add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );

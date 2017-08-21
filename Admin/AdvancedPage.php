@@ -65,11 +65,16 @@ final class AdvancedPage extends SettingPage {
     $post_types = get_post_types( [ 'show_ui' => true ], 'objects' );
 
     foreach ( $post_types as $item ) {
-      $args['options'][] = [
+      $args['options'][$item->name] = [
           'value' => $item->name,
           'label' => $item->label
       ];
     }
+
+    if ( function_exists( 'WC' ) ) {
+      unset( $args['options']['product'] );
+    }
+
     $this->fields->add_field( $args );
 
     $args = [
@@ -157,22 +162,22 @@ final class AdvancedPage extends SettingPage {
     ];
 
     $post_types = [
-        'office'      => [
+        'office'    => [
             'label' => __( 'Offices', \SourceFramework\TEXTDOMAIN ),
         ],
-        'place'       => [
+        'place'     => [
             'label' => __( 'Places', \SourceFramework\TEXTDOMAIN ),
         ],
-        'portfolio'   => [
+        'portfolio' => [
             'label' => __( 'Portfolios', \SourceFramework\TEXTDOMAIN ),
         ],
-        'product'     => [
+        'product'   => [
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
         ],
-        'review'      => [
+        'review'    => [
             'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
         ],
-        'service'     => [
+        'service'   => [
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
         ],
     ];
