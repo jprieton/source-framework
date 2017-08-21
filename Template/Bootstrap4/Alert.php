@@ -52,7 +52,159 @@ class Alert {
     }
     unset( $attr['dismiss'] );
 
-    return Tag::html( 'div', $icon . $dismiss . $content, $attr );
+    return Tag::html( 'div', $dismiss . $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap primary alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function primary( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-primary',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap secondary alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function secondary( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-secondary',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap success alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function success( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-success',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap danger alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function danger( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-danger',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap warning alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function warning( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-warning',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap info alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function info( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-info',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap light alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function light( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-light',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
+  }
+
+  /**
+   * Retrieve a Bootstrap dark alert component
+   *
+   * @since 1.0.0
+   *
+   * @param   string              $content
+   * @param   string|array        $attr
+   *
+   * @return  string
+   */
+  public static function dark( $content, $attr = array() ) {
+    $defaults   = array(
+        'class' => 'alert-dark',
+    );
+    $attr = wp_parse_args( $attr, $defaults );
+
+    return self::alert( $content, $attr );
   }
 
 }
