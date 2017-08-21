@@ -38,7 +38,7 @@ final class ToolsPage extends SettingPage {
     parent::__construct( $menu_slug, 'source-framework-tools' );
     $this->add_submenu_page( __( 'Tools', \SourceFramework\TEXTDOMAIN ), __( 'Tools', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
 
-    $this->fields = new SettingField( 'tools-settings', 'tools-settings' );
+    $this->fields = new SettingField( 'tools_settings', 'tools_settings' );
     $this->add_general_section();
   }
 

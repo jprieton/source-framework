@@ -238,7 +238,7 @@ final class FrontEnd extends Singleton {
     global $tools_setting_group;
 
     if ( empty( $tools_setting_group ) ) {
-      $tools_setting_group = new SettingGroup( 'tools-settings' );
+      $tools_setting_group = new SettingGroup( 'tools_settings' );
     }
 
     if ( $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
