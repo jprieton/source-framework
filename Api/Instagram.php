@@ -37,7 +37,11 @@ class Instagram {
    * @param array $args
    */
   public function __construct( $args = array() ) {
-    $this->setting_group = new SettingGroup( 'api' );
+    global $api_setting_group;
+
+    if ( empty( $api_setting_group ) ) {
+      $api_setting_group = new SettingGroup( 'api_settings' );
+    }
 
     $defaults = [
         'client_id'    => $this->setting_group->get_option( 'instagram-client-id' ),
@@ -129,7 +133,7 @@ class Instagram {
 
     if ( !$response ) {
       $response = $this->get_endpoint_response( $endpoint, $args );
-			set_transient( $transient, $response, $expiration );
+      set_transient( $transient, $response, $expiration );
     }
 
     return $response;

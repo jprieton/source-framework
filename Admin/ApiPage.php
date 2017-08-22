@@ -35,7 +35,7 @@ final class ApiPage extends SettingPage {
      */
     $menu_slug   = apply_filters( 'source_framework_apis_menu_slug', 'source-framework' );
 
-    $this->fields = new SettingField( 'api', 'api' );
+    $this->fields = new SettingField( 'api_settings', 'api_settings' );
 
     parent::__construct( $menu_slug, 'source-framework-api' );
     $this->add_submenu_page( __( 'APIs', \SourceFramework\TEXTDOMAIN ), __( 'APIs', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );

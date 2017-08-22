@@ -298,6 +298,58 @@ class SettingField {
     }
   }
 
+  /**
+   * Render a select field
+   *
+   * @since   1.0.0
+   *
+   * @param   array          $field
+   */
+  public function render_select( $field ) {
+    $defaults = [
+        'class'       => '',
+        'default'     => '',
+        'desc'        => '',
+        'options'     => [],
+        'placeholder' => '',
+    ];
+
+    $field = wp_parse_args( $field, $defaults );
+    unset( $field['type'] );
+
+    if ( array_key_exists( 'desc', $field ) ) {
+      $desc = $this->_parse_description( $field['desc'] );
+      unset( $field['desc'] );
+    } else {
+      $desc = '';
+    }
+
+    if ( array_key_exists( 'input_class', $field ) ) {
+      $field['class'] = $field['input_class'];
+      unset( $field['input_class'] );
+    }
+
+    if ( !empty( $this->setting_group ) ) {
+      $field['name'] = sprintf( "{$this->setting_group->setting_group_name}[%s]", $field['id'] );
+      $value         = $this->setting_group->get_option( $field['id'], $field['default'] );
+    } else {
+      $field['name'] = $field['id'];
+      $value         = get_option( $field['id'], $field['default'] );
+    }
+
+    $field['selected'] = $this->setting_group->get_option( $field['id'] );
+
+    if ( array_key_exists( 'default', $field ) && empty( $field['selected'] ) ) {
+      $field['selected'] = (string) $field['default'];
+      unset( $field['default'] );
+    }
+
+    $options = $field['options'];
+    unset( $field['options'] );
+
+    echo Form::select( $field, $options ) . $desc;
+  }
+
   private function _parse_description( $description = '' ) {
     if ( is_array( $description ) ) {
       $description = implode( "\n\n", $description );

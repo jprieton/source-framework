@@ -37,7 +37,7 @@ final class AdvancedPage extends SettingPage {
 
     parent::__construct( $menu_slug, 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-    $this->fields = new SettingField( 'advanced', 'advanced' );
+    $this->fields = new SettingField( 'advanced_settings', 'advanced_settings' );
     // General Section
     $this->general_section();
     $this->security_section();

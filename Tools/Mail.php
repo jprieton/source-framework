@@ -97,14 +97,19 @@ class Mail extends PHPMailer {
       return;
     }
 
-    $setting_group = new SettingGroup( 'social-links' );
+    global $social_links_group;
+
+    if ( empty( $social_links_group ) ) {
+
+      $social_links_group = new SettingGroup( 'social_links' );
+    }
 
     $social_networks = (array) apply_filters( 'social_networks', [] );
     $icon_path       = plugins_url( 'assets/images/social/', \SourceFramework\PLUGIN_FILE );
 
     $social_links = '';
     foreach ( $social_networks as $key => $label ) {
-      $link = $setting_group->get_option( $key );
+      $link = $social_links_group->get_option( $key );
       if ( empty( $link ) ) {
         continue;
       }

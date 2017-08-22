@@ -212,9 +212,9 @@ class Form {
     $required    = false;
     $selected    = '';
 
-    if ( !empty( $attributes['placehonder'] ) && !is_bool( $attributes['placehonder'] ) ) {
-      $placeholder = $attributes['placehonder'];
-    } elseif ( !empty( $attributes['placehonder'] ) && is_bool( $attributes['placehonder'] ) && $attributes['placehonder'] ) {
+    if ( !empty( $attributes['placeholder'] ) && !is_bool( $attributes['placeholder'] ) ) {
+      $placeholder = $attributes['placeholder'];
+    } elseif ( !empty( $attributes['placeholder'] ) && is_bool( $attributes['placeholder'] ) && $attributes['placeholder'] ) {
       $placeholder = __( 'Select...', \SourceFramework\TEXTDOMAIN );
     }
 
@@ -235,9 +235,9 @@ class Form {
       $placeholder = Tag::html( 'option', $placeholder, $atts );
     }
 
-    unset( $attributes['placehonder'], $attributes['selected'], $attributes['required'] );
+    unset( $attributes['placeholder'], $attributes['selected'], $attributes['required'] );
 
-    return Tag::html( 'select', self::options( $options, $selected ), $attributes );
+    return Tag::html( 'select', $placeholder . self::options( $options, $selected ), $attributes );
   }
 
   /**

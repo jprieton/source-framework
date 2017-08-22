@@ -39,20 +39,12 @@ final class Admin extends Singleton {
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @var           SettingGroup
-   */
-  private $advanced_setting_group;
-
-  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
    */
   protected function __construct() {
     parent::__construct();
-
-    $this->advanced_setting_group = new SettingGroup( 'advanced' );
 
     /**
      * Enable csv importer
@@ -104,7 +96,13 @@ final class Admin extends Singleton {
    * @since 0.5.0
    */
   public function featured_posts_column() {
-    $post_types_enabled = $this->advanced_setting_group->get_option( 'featured-posts' );
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $post_types_enabled = $advanced_setting_group->get_option( 'featured-posts' );
     $screen             = get_current_screen();
     if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
 
