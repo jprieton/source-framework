@@ -191,6 +191,7 @@ final class Init extends Singleton {
    */
   public function register_custom_post_types() {
     global $advanced_setting_group;
+
     if ( empty( $advanced_setting_group ) ) {
       $advanced_setting_group = new SettingGroup( 'advanced_settings' );
     }

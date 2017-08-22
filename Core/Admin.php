@@ -53,6 +53,12 @@ final class Admin extends Singleton {
     add_action( 'admin_init', [ $this, 'register_csv_importer' ] );
 
     /**
+     * Enable csv importer
+     * @since 1.0.0
+     */
+    add_action( 'admin_init', [ $this, 'admin_access_disabled' ] );
+
+    /**
      * Add menu/submenu pages to admin panel's menu structure.
      * @since   1.0.0
      */
@@ -114,6 +120,37 @@ final class Admin extends Singleton {
       add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
       add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
       add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
+    }
+  }
+
+  /**
+   * Disable access to admin side of WordPress
+   *
+   * @since 1.0.0
+   *
+   * @global SettingGroup $advanced_setting_group
+   */
+  public function admin_access_disabled() {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $roles_disabled = $advanced_setting_group->get_option( 'admin-access-disabled' );
+
+    // By default is enabled in all roles.
+    if ( empty( $roles_disabled ) || !is_user_logged_in() ) {
+      return;
+    }
+
+    $user = wp_get_current_user();
+
+    foreach ( $user->roles as $user_rol ) {
+      if ( in_array( $user_rol, $roles_disabled ) ) {
+        exit( wp_redirect( home_url( '/' ) ) );
+        break;
+      }
     }
   }
 

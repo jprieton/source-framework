@@ -135,7 +135,7 @@ final class AdvancedPage extends SettingPage {
 
     $options = array();
     foreach ( $_roles as $key => $label ) {
-      $options[] = array(
+      $options[$key] = array(
           'label' => $label,
           'value' => $key,
       );
@@ -147,6 +147,18 @@ final class AdvancedPage extends SettingPage {
         'id'       => 'admin-bar-disabled',
         'multiple' => true,
         'options'  => $options,
+        'desc'     => __( 'Disable the admin bar in frontend by role', \SourceFramework\TEXTDOMAIN ),
+    ) );
+
+    unset( $options['administrator'] );
+
+    $this->fields->add_field( array(
+        'name'     => 'Admin Access Disable',
+        'type'     => 'checkbox',
+        'id'       => 'admin-access-disabled',
+        'multiple' => true,
+        'options'  => $options,
+        'desc'     => __( 'Disable access to the wp-admin in by role', \SourceFramework\TEXTDOMAIN ),
     ) );
   }
 

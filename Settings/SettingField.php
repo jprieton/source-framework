@@ -121,11 +121,11 @@ class SettingField {
    * @param   array          $field
    */
   public function render_input( $field ) {
-    $description   = '';
+    $desc          = '';
     $default_value = '';
 
     if ( array_key_exists( 'desc', $field ) ) {
-      $description = $this->_parse_description( $field['desc'] );
+      $desc = $this->_parse_description( $field['desc'] );
       unset( $field['desc'] );
     }
 
@@ -155,7 +155,7 @@ class SettingField {
     $attributes = wp_parse_args( $field, $defaults );
     $input      = Form::input( $attributes );
 
-    echo $input . $description;
+    echo $input . $desc;
   }
 
   /**
@@ -166,13 +166,13 @@ class SettingField {
    * @param   array          $field
    */
   public function render_textarea( $field ) {
-    $description   = '';
+    $desc          = '';
     $default_value = '';
     $value         = '';
     $raw           = false;
 
     if ( array_key_exists( 'desc', $field ) ) {
-      $description = $this->_parse_description( $field['desc'] );
+      $desc = $this->_parse_description( $field['desc'] );
       unset( $field['desc'] );
     }
 
@@ -210,7 +210,7 @@ class SettingField {
     $attributes = wp_parse_args( $field, $defaults );
     $input      = Tag::html( 'textarea', $value, $attributes );
 
-    echo $input . $description;
+    echo $input . $desc;
   }
 
   /**
@@ -235,6 +235,7 @@ class SettingField {
       $field['class'] = $field['input_class'];
       unset( $field['input_class'] );
     }
+
 
     if ( empty( $options ) ) {
       $options[] = $field;
@@ -295,6 +296,12 @@ class SettingField {
       $input .= Form::input( $item );
 
       echo sprintf( $label, $input ) . $desc;
+    }
+
+    if ( array_key_exists( 'desc', $field ) ) {
+      $desc = $this->_parse_description( $field['desc'] );
+      unset( $field['desc'] );
+      echo $desc;
     }
   }
 

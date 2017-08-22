@@ -33,20 +33,12 @@ final class FrontEnd extends Singleton {
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @var           SettingGroup
-   */
-  private $advanced_setting_group;
-
-  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
    */
   protected function __construct() {
     parent::__construct();
-
-    $this->advanced_setting_group = new SettingGroup( 'advanced' );
 
     /**
      * Disable WordPress Admin Bar in frontend for specific roles.
@@ -134,13 +126,20 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function disable_admin_bar_by_role() {
-    $disabled_roles = (array) $this->advanced_setting_group->get_option( 'admin-bar-disabled', array() );
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $disabled_roles = (array) $advanced_setting_group->get_option( 'admin-bar-disabled', array() );
     $user           = wp_get_current_user();
 
     // By default is enabled in all roles.
     if ( empty( $disabled_roles ) || !$user ) {
       return;
     }
+
 
     foreach ( $user->roles as $user_rol ) {
       if ( in_array( $user_rol, $disabled_roles ) ) {
@@ -156,7 +155,13 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function remove_rsd_link() {
-    if ( !$this->advanced_setting_group->get_bool_option( 'remove-rsd-link' ) ) {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    if ( !$advanced_setting_group->get_bool_option( 'remove-rsd-link' ) ) {
       return;
     }
 
@@ -174,7 +179,13 @@ final class FrontEnd extends Singleton {
    * @see https://www.littlebizzy.com/blog/disable-xml-rpc
    */
   public function disable_xmlrpc() {
-    if ( $this->advanced_setting_group->get_bool_option( 'xmlrpc-all-disabled' ) ) {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    if ( $advanced_setting_group->get_bool_option( 'xmlrpc-all-disabled' ) ) {
       // Disable XML-RCP
       add_filter( 'xmlrpc_enabled', '__return_false' );
 
@@ -184,7 +195,7 @@ final class FrontEnd extends Singleton {
       return;
     }
 
-    if ( $this->advanced_setting_group->get_bool_option( 'xmlrpc-pingback-disabled' ) ) {
+    if ( $advanced_setting_group->get_bool_option( 'xmlrpc-pingback-disabled' ) ) {
       // Remove Pingback methods
       add_filter( 'xmlrpc_methods', function ( $methods ) {
         unset( $methods['pingback.ping'] );
@@ -206,7 +217,13 @@ final class FrontEnd extends Singleton {
    * @since 1.0.0
    */
   public function remove_wordpress_version() {
-    if ( !$this->advanced_setting_group->get_bool_option( 'remove-wordpress-version' ) ) {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    if ( !$advanced_setting_group->get_bool_option( 'remove-wordpress-version' ) ) {
       return;
     }
 
