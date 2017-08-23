@@ -121,8 +121,8 @@ class Style extends Singleton {
             'media'       => 'screen',
         ],
         'hover'            => [
-            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
-            'ver'         => '2.1.0',
+            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css',
+            'ver'         => '2.1.1',
             'integrity'   => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
             'crossorigin' => 'anonymous',
             'media'       => 'screen',
