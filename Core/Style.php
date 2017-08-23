@@ -58,7 +58,7 @@ class Style extends Singleton {
     add_action( 'wp_print_styles', [ $this, 'print_styles' ], 1 );
 
     /**
-     * Add <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
+     * Add <code>integrity</code>, <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
      * @since   1.0.0
      */
     add_action( 'style_loader_tag', [ $this, 'style_loader_tag' ], 20, 2 );
@@ -114,30 +114,26 @@ class Style extends Singleton {
             'ver'    => '2.0.1',
         ],
         'animate'          => [
-            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
-            'ver'         => '3.5.2',
-            'integrity'   => 'sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=',
-            'crossorigin' => 'anonymous',
-            'media'       => 'screen',
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+            'ver'       => '3.5.2',
+            'integrity' => 'sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=',
+            'media'     => 'screen',
         ],
         'hover'            => [
-            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css',
-            'ver'         => '2.1.1',
-            'integrity'   => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
-            'crossorigin' => 'anonymous',
-            'media'       => 'screen',
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css',
+            'ver'       => '2.1.1',
+            'integrity' => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
+            'media'     => 'screen',
         ],
         'bootstrap3'       => [
-            'remote'      => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-            'ver'         => '3.3.7',
-            'integrity'   => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u',
-            'crossorigin' => 'anonymous'
+            'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+            'ver'       => '3.3.7',
+            'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u',
         ],
         'bootstrap4'       => [
-            'remote'      => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
-            'ver'         => '4.0.0-beta',
-            'integrity'   => 'sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M',
-            'crossorigin' => 'anonymous'
+            'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
+            'ver'       => '4.0.0-beta',
+            'integrity' => 'sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M',
         ],
         'bootstrap-extend' => [
             'local' => plugins_url( 'assets/css/bootstrap-extended.css', \SourceFramework\PLUGIN_FILE ),
@@ -219,7 +215,7 @@ class Style extends Singleton {
   }
 
   /**
-   * Adds <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
+   * Adds <code>integrity</code> attribute to tag if is enabled
    *
    * @since   1.0.0
    *
