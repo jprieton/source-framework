@@ -11,6 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
+use SourceFramework\Template\Tag;
 
 /**
  * Script class
@@ -31,10 +32,16 @@ class Script extends Singleton {
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @var           SettingGroup
+   * Array of handlers of scritps to add <code>async</code> property;
+   * @var array
    */
-  private $setting_group;
+  private $scripts = [];
+
+  /**
+   * Array of handlers of scritps to add <code>integrity</code> property;
+   * @var array
+   */
+  private $script_integrity_handles = [];
 
   /**
    * Array of handlers of scritps to add <code>async</code> property;
@@ -61,11 +68,6 @@ class Script extends Singleton {
      * @since   1.0.0
      */
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-
-    /**
-     * Register and enqueue scripts
-     * @since   1.0.0
-     */
     add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
     /**
@@ -75,7 +77,7 @@ class Script extends Singleton {
     add_action( 'wp_enqueue_scripts', [ $this, 'localize_scripts' ] );
 
     /**
-     * Check handle names to add <code>async</code> and/or <code>defer</code> attributes;
+     * Check handle names to add <code>integrity</code>, <code>async</code> and/or <code>defer</code> attributes;
      * @since   1.0.0
      */
     add_action( 'wp_print_scripts', [ $this, 'print_scripts' ], 1 );
@@ -119,7 +121,7 @@ class Script extends Singleton {
             'deps'      => [ 'jquery', 'jquery-form' ],
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
-            'autoload'  => true,
+            'autoload'  => !is_admin(),
             'defer'     => true,
         ],
         'modernizr'                    => [
@@ -129,19 +131,17 @@ class Script extends Singleton {
             'autoload' => false,
         ],
         'jquery-appear'                => [
-            'local'     => plugins_url( 'assets/js/jquery.appear.min.js', \SourceFramework\PLUGIN_FILE ),
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
+            'integrity' => 'sha256-VjbcbgNl0a7ldRQNPhmkEpW0GxCHnr52pGVkVjpnfSM=',
             'deps'      => [ 'jquery' ],
             'ver'       => '0.3.3',
             'in_footer' => true,
-            'autoload'  => false
         ],
         'geodatasource-country-region' => [
-            'local'     => plugins_url( 'assets/js/geodatasource-cr.min.js', \SourceFramework\PLUGIN_FILE ),
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/country-region-dropdown-menu/1.0.1/geodatasource-cr.min.js',
-            'ver'       => '1.0.1',
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs//1.1.1/geodatasource-cr.min.js',
+            'integrity' => 'sha256-eGxmJXzH1UokaWuz4VhNlo4VeHPKf/XSJkagNdm4GFo=',
+            'ver'       => '1.1.1',
             'in_footer' => true,
-            'autoload'  => false,
             'defer'     => true,
         ]
     ];
@@ -156,25 +156,29 @@ class Script extends Singleton {
    */
   public function enqueue_scripts() {
     $defaults = [
-        'local'     => '',
-        'remote'    => '',
-        'deps'      => [],
-        'ver'       => null,
-        'in_footer' => false,
-        'autoload'  => false,
-        'async'     => false,
-        'defer'     => false,
+        'local'       => '',
+        'remote'      => '',
+        'integrity'   => '',
+        'crossorigin' => 'anonymous',
+        'deps'        => [],
+        'ver'         => null,
+        'in_footer'   => false,
+        'autoload'    => false,
+        'async'       => false,
+        'defer'       => false,
     ];
 
-    if ( empty( $this->setting_group ) ) {
-      $this->setting_group = new SettingGroup( 'source-framework' );
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
     }
 
-    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
+    $use_cdn = $advanced_setting_group->get_bool_option( 'cdn-enabled' );
 
-    $scripts = is_admin() ? $this->register_admin_scripts() : $this->register_scripts();
+    $this->scripts = is_admin() ? $this->register_admin_scripts() : $this->register_scripts();
 
-    foreach ( $scripts as $handle => $script ) {
+    foreach ( $this->scripts as $handle => &$script ) {
       $script = wp_parse_args( $script, $defaults );
 
       if ( ($use_cdn && !empty( $script['remote'] )) || empty( $script['local'] ) ) {
@@ -193,12 +197,17 @@ class Script extends Singleton {
         $this->script_defer_handles[] = $handle;
       }
 
+      if ( !empty( $script['integrity'] ) ) {
+        $this->script_integrity_handles[] = $handle;
+      }
+
       wp_register_script( $handle, $src, (array) $script['deps'], $script['ver'], (bool) $script['in_footer'] );
 
       if ( $script['autoload'] ) {
         wp_enqueue_script( $handle );
       }
     }
+    unset( $script );
   }
 
   /**
@@ -226,11 +235,18 @@ class Script extends Singleton {
   }
 
   /**
-   * Filter handle names to add <code>async</code> and/or <code>defer</code> attributes
+   * Filter handle names to add <code>integrity</code>, <code>async</code> and/or <code>defer</code> attributes
    *
    * @since   1.0.0
    */
   public function print_scripts() {
+    /**
+     * Filter handle names of scripts to add <code>integrity</code> attribute;
+     * @since   1.0.0
+     */
+    $script_integrity_handles       = (array) apply_filters( 'filter_integrity_scripts', $this->script_integrity_handles );
+    $this->script_integrity_handles = array_unique( $script_integrity_handles );
+
     /**
      * Filter handle names of scripts to add <code>async</code> attribute;
      * @since   1.0.0
@@ -256,6 +272,14 @@ class Script extends Singleton {
    * @return  string
    */
   public function script_loader_tag( $tag, $handle ) {
+    if ( in_array( $handle, $this->script_integrity_handles ) ) {
+      $attr = [
+          'integrity'   => $this->scripts[$handle]['integrity'],
+          'crossorigin' => $this->scripts[$handle]['crossorigin'],
+      ];
+      $tag  = str_replace( '></script>', ' ' . Tag::parse_attributes( $attr ) . '></script>', $tag );
+    }
+
     if ( in_array( $handle, $this->script_async_handles ) ) {
       $tag = str_replace( '></script>', ' async></script>', $tag );
     }

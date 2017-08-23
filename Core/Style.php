@@ -11,6 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
+use SourceFramework\Template\Tag;
 
 /**
  * Style class
@@ -31,10 +32,10 @@ class Style extends Singleton {
   protected static $instance;
 
   /**
-   * @since         1.0.0
-   * @var           SettingGroup
+   * Array of handlers of styles to add <code>integrity</code> property;
+   * @var array
    */
-  private $setting_group;
+  private $style_integrity_handles = [];
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -49,6 +50,18 @@ class Style extends Singleton {
      */
     add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+
+    /**
+     * Check handle names to add <code>integrity</code>, <code>async</code> and/or <code>defer</code> attributes;
+     * @since   1.0.0
+     */
+    add_action( 'wp_print_styles', [ $this, 'print_styles' ], 1 );
+
+    /**
+     * Add <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
+     * @since   1.0.0
+     */
+    add_action( 'style_loader_tag', [ $this, 'style_loader_tag' ], 20, 2 );
   }
 
   /**
@@ -101,20 +114,30 @@ class Style extends Singleton {
             'ver'    => '2.0.1',
         ],
         'animate'          => [
-            'local'  => plugins_url( 'assets/css/animate.min.css', \SourceFramework\PLUGIN_FILE ),
-            'remote' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
-            'ver'    => '3.5.2',
-            'media'  => 'screen',
+            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+            'ver'         => '3.5.2',
+            'integrity'   => 'sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=',
+            'crossorigin' => 'anonymous',
+            'media'       => 'screen',
         ],
         'hover'            => [
-            'local'  => plugins_url( 'assets/css/hover.min.css', \SourceFramework\PLUGIN_FILE ),
-            'remote' => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
-            'ver'    => '2.1.0',
-            'media'  => 'screen',
+            'remote'      => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css',
+            'ver'         => '2.1.0',
+            'integrity'   => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
+            'crossorigin' => 'anonymous',
+            'media'       => 'screen',
         ],
-        'bootstrap'        => [
-            'remote' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-            'ver'    => '3.3.7',
+        'bootstrap3'       => [
+            'remote'      => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+            'ver'         => '3.3.7',
+            'integrity'   => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u',
+            'crossorigin' => 'anonymous'
+        ],
+        'bootstrap4'       => [
+            'remote'      => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
+            'ver'         => '4.0.0-beta',
+            'integrity'   => 'sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M',
+            'crossorigin' => 'anonymous'
         ],
         'bootstrap-extend' => [
             'local' => plugins_url( 'assets/css/bootstrap-extended.css', \SourceFramework\PLUGIN_FILE ),
@@ -137,23 +160,27 @@ class Style extends Singleton {
    * @since   1.0.0
    */
   public function enqueue_styles( $styles ) {
-    $styles   = is_admin() ? $this->register_admin_styles() : $this->register_styles();
-    $defaults = [
-        'local'    => '',
-        'remote'   => '',
-        'deps'     => [],
-        'ver'      => null,
-        'media'    => 'all',
-        'autoload' => false
+    $this->styles = is_admin() ? $this->register_admin_styles() : $this->register_styles();
+    $defaults     = [
+        'local'       => '',
+        'remote'      => '',
+        'integrity'   => '',
+        'crossorigin' => 'anonymous',
+        'deps'        => [],
+        'ver'         => null,
+        'media'       => 'all',
+        'autoload'    => false
     ];
 
-    if ( empty( $this->setting_group ) ) {
-      $this->setting_group = new SettingGroup( 'source-framework' );
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
     }
 
-    $use_cdn = $this->setting_group->get_bool_option( 'cdn-enabled' );
+    $use_cdn = $advanced_setting_group->get_bool_option( 'cdn-enabled' );
 
-    foreach ( $styles as $handle => $style ) {
+    foreach ( $this->styles as $handle => &$style ) {
       $style = wp_parse_args( $style, $defaults );
 
       if ( ($use_cdn && !empty( $style['remote'] )) || empty( $style['local'] ) ) {
@@ -164,12 +191,52 @@ class Style extends Singleton {
         continue;
       }
 
+      if ( !empty( $style['integrity'] ) ) {
+        $this->style_integrity_handles[] = $handle;
+      }
+
       wp_register_style( $handle, $src, (array) $style['deps'], $style['ver'], $style['media'] );
 
       if ( $style['autoload'] ) {
         wp_enqueue_style( $handle );
       }
     }
+    unset( $style );
+  }
+
+  /**
+   * Filter handle names to add <code>integrity</code> attribute
+   *
+   * @since   1.0.0
+   */
+  public function print_styles() {
+    /**
+     * Filter handle names of scripts to add <code>integrity</code> attribute;
+     * @since   1.0.0
+     */
+    $style_integrity_handles       = (array) apply_filters( 'style_integrity_handless', $this->style_integrity_handles );
+    $this->style_integrity_handles = array_unique( $style_integrity_handles );
+  }
+
+  /**
+   * Adds <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
+   *
+   * @since   1.0.0
+   *
+   * @param   string    $tag
+   * @param   string    $handle
+   * @return  string
+   */
+  public function style_loader_tag( $tag, $handle ) {
+    if ( in_array( $handle, $this->style_integrity_handles ) ) {
+      $attr = [
+          'integrity'   => $this->styles[$handle]['integrity'],
+          'crossorigin' => $this->styles[$handle]['crossorigin'],
+      ];
+      $tag  = str_replace( ' />', ' ' . Tag::parse_attributes( $attr ) . ' />', $tag );
+    }
+
+    return $tag;
   }
 
 }
