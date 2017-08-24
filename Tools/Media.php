@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Core;
+namespace SourceFramework\Tools;
 
 /**
  * If this file is called directly, abort.
@@ -27,29 +27,29 @@ class Media {
    * @param   array         $args
    * @return  int|WP_Error
    */
-  public function add_image( $field, $args = array() ) {
-    $overrides  = array(
+  public function add_image( $field, $args = [] ) {
+    $overrides  = [
         'test_form' => false,
-        'mimes'     => array(
+        'mimes'     => [
             'jpg'  => 'image/jpg',
             'jpeg' => 'image/jpeg',
             'gif'  => 'image/gif',
             'png'  => 'image/png'
-        )
-    );
+        ]
+    ];
     $image_data = wp_handle_upload( $_FILES[$field], $overrides );
 
     if ( isset( $image_data['error'] ) || isset( $image_data['upload_error_handler'] ) ) {
-      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ) );
+      return WP_Error( [ 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ] );
     }
 
-    $defaults = array(
+    $defaults = [
         'width'  => 1024,
         'height' => 768,
-        'crop'   => FALSE,
-        'rename' => FALSE,
+        'crop'   => false,
+        'rename' => false,
         'prefix' => '',
-    );
+    ];
 
     $args = wp_parse_args( $args, $defaults );
 
@@ -84,7 +84,7 @@ class Media {
           break;
       }
     } catch ( Exception $e ) {
-      return WP_Error( array( 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ) );
+      return WP_Error( [ 'upload_error', __( 'Invalid or empty file', \SourceFramework\TEXTDOMAIN ) ] );
     }
 
     $post_title = preg_replace( '/\.[^.]+$/', '', basename( $image_data['file'] ) );
@@ -99,13 +99,13 @@ class Media {
       $image_data['file'] = str_replace( $_old_filename, $_new_filename, $image_data['file'] );
     }
 
-    $attachment = array(
+    $attachment = [
         'post_mime_type' => $image_data['type'],
         'post_title'     => $post_title,
         'post_content'   => '',
         'post_status'    => 'inherit',
         'guid'           => $image_data['url']
-    );
+    ];
 
     if ( !function_exists( 'wp_generate_attachment_metadata' ) ) {
       require_once(ABSPATH . 'wp-admin/includes/image.php');
@@ -130,7 +130,7 @@ class Media {
    * @return  array
    */
   private function image_resize_dimensions( $orig_w, $orig_h ) {
-    return array( $orig_w, $orig_h, 0, 0, $orig_w, $orig_h, $orig_w, $orig_h );
+    return [ $orig_w, $orig_h, 0, 0, $orig_w, $orig_h, $orig_w, $orig_h ];
   }
 
 }
