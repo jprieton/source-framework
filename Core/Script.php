@@ -115,6 +115,12 @@ class Script extends Singleton {
    * @since 1.0.0
    */
   private function register_scripts() {
+    global $tools_setting_group;
+
+    if ( empty( $tools_setting_group ) ) {
+      $tools_setting_group = new SettingGroup( 'tools_settings' );
+    }
+
     $scripts = [
         'source-framework'             => [
             'local'     => plugins_url( 'assets/js/public.js', \SourceFramework\PLUGIN_FILE ),
@@ -125,10 +131,16 @@ class Script extends Singleton {
             'defer'     => true,
         ],
         'modernizr'                    => [
-            'local'    => plugins_url( 'assets/js/modernizr.min.js', \SourceFramework\PLUGIN_FILE ),
-            'remote'   => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
-            'ver'      => '3.3.1',
-            'autoload' => false,
+            'remote'    => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
+            'integrity' => 'sha256-65rhSmwPSQGe83K1p6cudTQxfiMNutuHCIB0n8CqvF4=',
+            'ver'       => '3.3.1',
+            'autoload'  => $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ),
+        ],
+        'bootstrap3'                   => [
+            'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+            'integrity' => 'sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa',
+            'deps'      => [ 'jquery' ],
+            'ver'       => '3.3.7',
         ],
         'jquery-appear'                => [
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',

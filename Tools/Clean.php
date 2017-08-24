@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Misc;
+namespace SourceFramework\Tools;
 
 /**
  * If this file is called directly, abort.
@@ -15,7 +15,7 @@ use wpdb;
  * Clean class
  *
  * @package        SourceFramework
- * @subpackage     Misc
+ * @subpackage     Tools
  * @since          1.0.0
  * @author         Javier Prieto <jprieton@gmail.com>
  */

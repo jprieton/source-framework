@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceFramework\Misc;
+namespace SourceFramework\Tools;
 
 /**
  * If this file is called directly, abort.
@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Color conversion class class
  *
  * @package     SourceFramework
- * @subpackage  Misc
+ * @subpackage  Tools
  *
  * @author      Javier Prieto <jprieton@gmail.com>
  * @copyright	  Copyright (c) 2017, Javier Prieto
