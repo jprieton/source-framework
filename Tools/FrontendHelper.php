@@ -9,8 +9,6 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Settings\SettingGroup;
-
 /**
  * @since 1.0.0
  */
@@ -51,7 +49,7 @@ class FrontendHelper {
    * @since 1.0.0
    */
   public function load_template() {
-    include_once \SourceFramework\ABSPATH . '/partials/frontend-helper.php';
+    include_once plugin_dir_path( \SourceFramework\PLUGIN_FILE ) . '/partials/frontend-helper.php';
   }
 
 }

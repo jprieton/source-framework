@@ -142,6 +142,18 @@ class Script extends Singleton {
             'deps'      => [ 'jquery' ],
             'ver'       => '3.3.7',
         ],
+        'popper'                       => [
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js',
+            'integrity' => 'sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4',
+            'deps'      => [ 'jquery' ],
+            'ver'       => '1.11.0',
+        ],
+        'bootstrap4'                   => [
+            'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js',
+            'integrity' => 'sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1',
+            'deps'      => [ 'jquery', 'popper' ],
+            'ver'       => '4.0.0-beta',
+        ],
         'jquery-appear'                => [
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
             'integrity' => 'sha256-VjbcbgNl0a7ldRQNPhmkEpW0GxCHnr52pGVkVjpnfSM=',

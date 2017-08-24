@@ -78,15 +78,3 @@ spl_autoload_register( function($class_name) {
  * @since 1.0.0
  */
 SourceFramework\Core\Init::get_instance();
-
-/**
- * Initialize Script API
- * @since 1.0.0
- */
-SourceFramework\Core\Script::get_instance();
-
-/**
- * Initialize Style API
- * @since 1.0.0
- */
-SourceFramework\Core\Style::get_instance();

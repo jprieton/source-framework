@@ -12,6 +12,8 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingGroup;
 use SourceFramework\Core\FrontEnd;
+use SourceFramework\Core\Script;
+use SourceFramework\Core\Style;
 
 /**
  * Init class
@@ -73,6 +75,20 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     $this->register_custom_post_types();
+
+
+    /**
+     * Initialize Script API
+     * @since 1.0.0
+     */
+    Script::get_instance();
+
+    /**
+     * Initialize Style API
+     * @since 1.0.0
+     */
+    Style::get_instance();
+
 
     if ( is_admin() ) {
       /**
