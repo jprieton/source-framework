@@ -66,7 +66,6 @@ class Testimonial {
     );
     $args    = array(
         'label'               => __( 'Testimonial', \SourceFramework\TEXTDOMAIN ),
-        'description'         => __( 'Site testimonial.', \SourceFramework\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'testimonial_cat', 'testimonial_tag' ),

@@ -192,6 +192,9 @@ final class AdvancedPage extends SettingPage {
         'service'     => [
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
         ],
+        'slider'     => [
+            'label' => __( 'Slider', \SourceFramework\TEXTDOMAIN ),
+        ],
         'testimonial' => [
             'label' => __( 'Testimonials', \SourceFramework\TEXTDOMAIN ),
         ],

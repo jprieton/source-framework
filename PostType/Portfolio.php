@@ -66,7 +66,6 @@ class Portfolio {
     );
     $args    = array(
         'label'               => __( 'Portfolio', \SMGTools\TEXTDOMAIN ),
-        'description'         => __( 'Site portfolio.', \SMGTools\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'portfolio_cat', 'portfolio_tag' ),

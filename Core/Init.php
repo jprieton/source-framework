@@ -209,6 +209,7 @@ final class Init extends Singleton {
         'product'     => 'SourceFramework\PostType\Product',
         'review'      => 'SourceFramework\PostType\Review',
         'service'     => 'SourceFramework\PostType\Service',
+        'slider'      => 'SourceFramework\PostType\Slider',
         'testimonial' => 'SourceFramework\PostType\Testimonial',
     ];
 

@@ -66,7 +66,6 @@ class Place {
     );
     $args    = array(
         'label'               => __( 'Place', \SourceFramework\TEXTDOMAIN ),
-        'description'         => __( 'Site place.', \SourceFramework\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'place_cat', 'place_tag' ),

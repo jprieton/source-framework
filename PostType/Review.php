@@ -66,7 +66,6 @@ class Review {
     );
     $args    = array(
         'label'               => __( 'Review', \SourceFramework\TEXTDOMAIN ),
-        'description'         => __( 'Site review.', \SourceFramework\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'review_cat', 'review_tag' ),

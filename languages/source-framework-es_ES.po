@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-08-21 10:44-0400\n"
-"PO-Revision-Date: 2017-08-21 10:46-0400\n"
+"POT-Creation-Date: 2017-08-24 11:54-0400\n"
+"PO-Revision-Date: 2017-08-24 11:55-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -43,78 +43,86 @@ msgstr "General"
 msgid "Featured Post"
 msgstr "Publicación destacada"
 
-#: ../Admin/AdvancedPage.php:77
+#: ../Admin/AdvancedPage.php:82
 msgid "Enable CDN"
 msgstr "Habilitar CDN"
 
-#: ../Admin/AdvancedPage.php:79
+#: ../Admin/AdvancedPage.php:84
 msgid ""
 "This option enables the use of CDN in plugin's registered scripts and styles."
 msgstr ""
 "Esta opción permite el uso de CDN en estilos y scripts registrados del "
 "plugin."
 
-#: ../Admin/AdvancedPage.php:85
+#: ../Admin/AdvancedPage.php:90
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../Admin/AdvancedPage.php:88
+#: ../Admin/AdvancedPage.php:93
 msgid "Header"
 msgstr "Cabecera"
 
-#: ../Admin/AdvancedPage.php:94
+#: ../Admin/AdvancedPage.php:99
 msgid "Remove WordPress version number"
 msgstr "Remover el número de versión de WordPress"
 
-#: ../Admin/AdvancedPage.php:95
+#: ../Admin/AdvancedPage.php:100
 msgid "Remove WordPress version number from header, feed, styles and scripts."
 msgstr ""
 "Elimina el número de versión de WordPress de la cabecera, feed, estilos y "
 "scripts."
 
-#: ../Admin/AdvancedPage.php:99
+#: ../Admin/AdvancedPage.php:104
 msgid "Remove EditURI link"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:100
+#: ../Admin/AdvancedPage.php:105
 msgid ""
 "Remove the EditURI/RSD link from your header. This option also removes the "
 "<b>Windows Live Writer</b> manifest link."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:113
+#: ../Admin/AdvancedPage.php:118
 msgid ""
 "If you uses XML-RPC in your theme/plugins check this for disable only "
 "pingback method."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:118
+#: ../Admin/AdvancedPage.php:123
 msgid ""
 "Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC "
 "Pingback</b> and <b>Remove EditURI link</b>. <a href=\"https://www."
 "littlebizzy.com/blog/disable-xml-rpc\" target=\"_blank\">More info</a>."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:149 ../Admin/AdvancedPage.php:152
+#: ../Admin/AdvancedPage.php:150
+msgid "Disable the admin bar in frontend by role"
+msgstr "Desactivar la barra de admin en frontend por rol"
+
+#: ../Admin/AdvancedPage.php:161
+msgid "Disable access to the wp-admin in by role"
+msgstr "Desactivar el acceso al wp-admin por rol"
+
+#: ../Admin/AdvancedPage.php:166 ../Admin/AdvancedPage.php:169
 msgid "Post Types"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:161 ../PostType/Office.php:40
+#: ../Admin/AdvancedPage.php:178 ../PostType/Office.php:40
 #: ../PostType/Office.php:42
 msgid "Offices"
 msgstr "Oficinas"
 
-#: ../Admin/AdvancedPage.php:164 ../PostType/Place.php:40
+#: ../Admin/AdvancedPage.php:181 ../PostType/Place.php:40
 #: ../PostType/Place.php:42
 msgid "Places"
 msgstr "Lugares"
 
-#: ../Admin/AdvancedPage.php:167 ../PostType/Portfolio.php:40
+#: ../Admin/AdvancedPage.php:184 ../PostType/Portfolio.php:40
 #: ../PostType/Portfolio.php:42
 msgid "Portfolios"
 msgstr "Portafolios"
 
-#: ../Admin/AdvancedPage.php:170
+#: ../Admin/AdvancedPage.php:187
 msgid ""
 "Products <span class=\"description\">(This option has no effect when "
 "WooCommerce is actived)</span>"
@@ -122,15 +130,25 @@ msgstr ""
 "Productos <span class=\"description\">(Esta opción no tiene efecto cuando "
 "WooCommerce está activo)</span>"
 
-#: ../Admin/AdvancedPage.php:173 ../PostType/Review.php:40
+#: ../Admin/AdvancedPage.php:190 ../PostType/Review.php:40
 #: ../PostType/Review.php:42
 msgid "Reviews"
 msgstr "Opiniones"
 
-#: ../Admin/AdvancedPage.php:176 ../PostType/Service.php:40
+#: ../Admin/AdvancedPage.php:193 ../PostType/Service.php:40
 #: ../PostType/Service.php:42
 msgid "Services"
 msgstr "Servicios"
+
+#: ../Admin/AdvancedPage.php:196 ../PostType/Sllider.php:41
+#: ../PostType/Sllider.php:43 ../PostType/Sllider.php:68
+msgid "Slider"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:199 ../PostType/Testimonial.php:40
+#: ../PostType/Testimonial.php:42
+msgid "Testimonials"
+msgstr "Testimonios"
 
 #: ../Admin/AnalyticsPage.php:31 ../Admin/AnalyticsPage.php:42
 msgid "Analytics &amp; SEO"
@@ -172,21 +190,21 @@ msgstr ""
 
 #: ../Admin/ApiPage.php:41
 msgid "APIs"
-msgstr ""
+msgstr "APIs"
 
 #: ../Admin/ApiPage.php:68
 msgid "Cache"
 msgstr "Caché"
 
-#: ../Admin/FeaturedPost.php:56
+#: ../Admin/FeaturedPost.php:57
 msgid "Featured"
 msgstr "Descatado"
 
-#: ../Admin/FeaturedPost.php:75
+#: ../Admin/FeaturedPost.php:76
 msgid "You are not authorized to perform this action."
 msgstr "No estás autorizado para realizar esta acción."
 
-#: ../Admin/FeaturedPost.php:82 ../Admin/FeaturedPost.php:89
+#: ../Admin/FeaturedPost.php:83 ../Admin/FeaturedPost.php:90
 msgid "The data that you entered is invalid."
 msgstr "Los datos que ha ingresado son inválidos."
 
@@ -230,35 +248,35 @@ msgstr ""
 msgid "CSV Post Importer"
 msgstr "CSV Post Importer"
 
-#: ../Core/Script.php:213
+#: ../Core/Script.php:222
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../Core/Script.php:214
+#: ../Core/Script.php:223
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../Core/Script.php:215
+#: ../Core/Script.php:224
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../Core/Script.php:216
+#: ../Core/Script.php:225
 msgid "Send"
 msgstr "Enviar"
 
-#: ../Core/Script.php:217
+#: ../Core/Script.php:226
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../Core/Script.php:218
+#: ../Core/Script.php:227
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:219
+#: ../Core/Script.php:228
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:220
+#: ../Core/Script.php:229
 msgid "Sent!"
 msgstr "¡Enviado!"
 
@@ -278,6 +296,7 @@ msgstr "Oficina"
 #: ../PostType/Office.php:44 ../PostType/Place.php:44
 #: ../PostType/Portfolio.php:44 ../PostType/Product.php:44
 #: ../PostType/Review.php:44 ../PostType/Service.php:44
+#: ../PostType/Sllider.php:44 ../PostType/Testimonial.php:44
 msgid "Item Archives"
 msgstr ""
 
@@ -296,6 +315,7 @@ msgstr ""
 #: ../PostType/Office.php:48 ../PostType/Place.php:48
 #: ../PostType/Portfolio.php:48 ../PostType/Product.php:48
 #: ../PostType/Review.php:48 ../PostType/Service.php:48
+#: ../PostType/Sllider.php:48 ../PostType/Testimonial.php:48
 msgid "New Item"
 msgstr ""
 
@@ -326,42 +346,51 @@ msgstr ""
 #: ../PostType/Office.php:55 ../PostType/Place.php:55
 #: ../PostType/Portfolio.php:55 ../PostType/Product.php:55
 #: ../PostType/Review.php:55 ../PostType/Service.php:55
+#: ../PostType/Sllider.php:55 ../PostType/Testimonial.php:55
 msgid "Insert into item"
 msgstr ""
 
 #: ../PostType/Office.php:56 ../PostType/Place.php:56
 #: ../PostType/Portfolio.php:56 ../PostType/Product.php:56
 #: ../PostType/Review.php:56 ../PostType/Service.php:56
+#: ../PostType/Sllider.php:56 ../PostType/Testimonial.php:56
 msgid "Uploaded to this item"
 msgstr ""
 
-#: ../PostType/Office.php:57 ../PostType/Office.php:116
-#: ../PostType/Office.php:162 ../PostType/Place.php:57
-#: ../PostType/Place.php:116 ../PostType/Place.php:162
-#: ../PostType/Portfolio.php:57 ../PostType/Portfolio.php:116
-#: ../PostType/Portfolio.php:162 ../PostType/Product.php:57
-#: ../PostType/Product.php:116 ../PostType/Product.php:162
-#: ../PostType/Review.php:57 ../PostType/Review.php:116
-#: ../PostType/Review.php:162 ../PostType/Service.php:57
-#: ../PostType/Service.php:116 ../PostType/Service.php:162
+#: ../PostType/Office.php:57 ../PostType/Office.php:115
+#: ../PostType/Office.php:161 ../PostType/Place.php:57
+#: ../PostType/Place.php:115 ../PostType/Place.php:161
+#: ../PostType/Portfolio.php:57 ../PostType/Portfolio.php:115
+#: ../PostType/Portfolio.php:161 ../PostType/Product.php:57
+#: ../PostType/Product.php:115 ../PostType/Product.php:161
+#: ../PostType/Review.php:57 ../PostType/Review.php:115
+#: ../PostType/Review.php:161 ../PostType/Service.php:57
+#: ../PostType/Service.php:115 ../PostType/Service.php:161
+#: ../PostType/Sllider.php:57 ../PostType/Sllider.php:115
+#: ../PostType/Sllider.php:161 ../PostType/Testimonial.php:57
+#: ../PostType/Testimonial.php:115 ../PostType/Testimonial.php:161
 msgid "Items list"
 msgstr ""
 
-#: ../PostType/Office.php:58 ../PostType/Office.php:117
-#: ../PostType/Office.php:163 ../PostType/Place.php:58
-#: ../PostType/Place.php:117 ../PostType/Place.php:163
-#: ../PostType/Portfolio.php:58 ../PostType/Portfolio.php:117
-#: ../PostType/Portfolio.php:163 ../PostType/Product.php:58
-#: ../PostType/Product.php:117 ../PostType/Product.php:163
-#: ../PostType/Review.php:58 ../PostType/Review.php:117
-#: ../PostType/Review.php:163 ../PostType/Service.php:58
-#: ../PostType/Service.php:117 ../PostType/Service.php:163
+#: ../PostType/Office.php:58 ../PostType/Office.php:116
+#: ../PostType/Office.php:162 ../PostType/Place.php:58
+#: ../PostType/Place.php:116 ../PostType/Place.php:162
+#: ../PostType/Portfolio.php:58 ../PostType/Portfolio.php:116
+#: ../PostType/Portfolio.php:162 ../PostType/Product.php:58
+#: ../PostType/Product.php:116 ../PostType/Product.php:162
+#: ../PostType/Review.php:58 ../PostType/Review.php:116
+#: ../PostType/Review.php:162 ../PostType/Service.php:58
+#: ../PostType/Service.php:116 ../PostType/Service.php:162
+#: ../PostType/Sllider.php:58 ../PostType/Sllider.php:116
+#: ../PostType/Sllider.php:162 ../PostType/Testimonial.php:58
+#: ../PostType/Testimonial.php:116 ../PostType/Testimonial.php:162
 msgid "Items list navigation"
 msgstr ""
 
 #: ../PostType/Office.php:59 ../PostType/Place.php:59
 #: ../PostType/Portfolio.php:59 ../PostType/Product.php:59
 #: ../PostType/Review.php:59 ../PostType/Service.php:59
+#: ../PostType/Sllider.php:59 ../PostType/Testimonial.php:59
 msgid "Filter items list"
 msgstr ""
 
@@ -370,60 +399,70 @@ msgctxt "post_type slug"
 msgid "office"
 msgstr ""
 
-#: ../PostType/Office.php:69
-msgid "Site office."
-msgstr ""
-
-#: ../PostType/Office.php:82
+#: ../PostType/Office.php:81
 msgctxt "post_type archive_slug"
 msgid "office"
 msgstr ""
 
-#: ../PostType/Office.php:98
+#: ../PostType/Office.php:97
 msgid "Office Categories"
 msgstr ""
 
-#: ../PostType/Office.php:99
+#: ../PostType/Office.php:98
 msgid "Office Category"
 msgstr ""
 
-#: ../PostType/Office.php:100 ../PostType/Place.php:100
-#: ../PostType/Portfolio.php:100 ../PostType/Product.php:100
-#: ../PostType/Review.php:100 ../PostType/Service.php:100
+#: ../PostType/Office.php:99 ../PostType/Place.php:99
+#: ../PostType/Portfolio.php:99 ../PostType/Product.php:99
+#: ../PostType/Review.php:99 ../PostType/Service.php:99
+#: ../PostType/Sllider.php:99 ../PostType/Testimonial.php:99
 msgid "Categories"
 msgstr "Categorías"
 
-#: ../PostType/Office.php:101
+#: ../PostType/Office.php:100
 msgid "All Office Categories"
 msgstr ""
 
-#: ../PostType/Office.php:102
+#: ../PostType/Office.php:101
 msgid "Parent Office Categories"
 msgstr ""
 
-#: ../PostType/Office.php:103
+#: ../PostType/Office.php:102
 msgid "Parent Office Categories:"
 msgstr ""
 
-#: ../PostType/Office.php:104
+#: ../PostType/Office.php:103
 msgid "New Office Categories Name"
 msgstr ""
 
-#: ../PostType/Office.php:105 ../PostType/Office.php:151
-#: ../PostType/Place.php:105 ../PostType/Place.php:151
-#: ../PostType/Portfolio.php:105 ../PostType/Portfolio.php:151
-#: ../PostType/Product.php:105 ../PostType/Product.php:151
-#: ../PostType/Review.php:105 ../PostType/Review.php:151
-#: ../PostType/Service.php:105 ../PostType/Service.php:151
+#: ../PostType/Office.php:104 ../PostType/Office.php:150
+#: ../PostType/Place.php:104 ../PostType/Place.php:150
+#: ../PostType/Portfolio.php:104 ../PostType/Portfolio.php:150
+#: ../PostType/Product.php:104 ../PostType/Product.php:150
+#: ../PostType/Review.php:104 ../PostType/Review.php:150
+#: ../PostType/Service.php:104 ../PostType/Service.php:150
+#: ../PostType/Sllider.php:104 ../PostType/Sllider.php:150
+#: ../PostType/Testimonial.php:104 ../PostType/Testimonial.php:150
 msgid "Add New Item"
 msgstr ""
 
-#: ../PostType/Office.php:106
+#: ../PostType/Office.php:105
 msgid "Edit Office Categories"
 msgstr ""
 
-#: ../PostType/Office.php:107
+#: ../PostType/Office.php:106
 msgid "Update Office Categories"
+msgstr ""
+
+#: ../PostType/Office.php:107 ../PostType/Office.php:153
+#: ../PostType/Place.php:107 ../PostType/Place.php:153
+#: ../PostType/Portfolio.php:107 ../PostType/Portfolio.php:153
+#: ../PostType/Product.php:107 ../PostType/Product.php:153
+#: ../PostType/Review.php:107 ../PostType/Review.php:153
+#: ../PostType/Service.php:107 ../PostType/Service.php:153
+#: ../PostType/Sllider.php:107 ../PostType/Sllider.php:153
+#: ../PostType/Testimonial.php:107 ../PostType/Testimonial.php:153
+msgid "View Item"
 msgstr ""
 
 #: ../PostType/Office.php:108 ../PostType/Office.php:154
@@ -432,7 +471,9 @@ msgstr ""
 #: ../PostType/Product.php:108 ../PostType/Product.php:154
 #: ../PostType/Review.php:108 ../PostType/Review.php:154
 #: ../PostType/Service.php:108 ../PostType/Service.php:154
-msgid "View Item"
+#: ../PostType/Sllider.php:108 ../PostType/Sllider.php:154
+#: ../PostType/Testimonial.php:108 ../PostType/Testimonial.php:154
+msgid "Separate items with commas"
 msgstr ""
 
 #: ../PostType/Office.php:109 ../PostType/Office.php:155
@@ -441,7 +482,9 @@ msgstr ""
 #: ../PostType/Product.php:109 ../PostType/Product.php:155
 #: ../PostType/Review.php:109 ../PostType/Review.php:155
 #: ../PostType/Service.php:109 ../PostType/Service.php:155
-msgid "Separate items with commas"
+#: ../PostType/Sllider.php:109 ../PostType/Sllider.php:155
+#: ../PostType/Testimonial.php:109 ../PostType/Testimonial.php:155
+msgid "Add or remove items"
 msgstr ""
 
 #: ../PostType/Office.php:110 ../PostType/Office.php:156
@@ -450,7 +493,9 @@ msgstr ""
 #: ../PostType/Product.php:110 ../PostType/Product.php:156
 #: ../PostType/Review.php:110 ../PostType/Review.php:156
 #: ../PostType/Service.php:110 ../PostType/Service.php:156
-msgid "Add or remove items"
+#: ../PostType/Sllider.php:110 ../PostType/Sllider.php:156
+#: ../PostType/Testimonial.php:110 ../PostType/Testimonial.php:156
+msgid "Choose from the most used"
 msgstr ""
 
 #: ../PostType/Office.php:111 ../PostType/Office.php:157
@@ -459,21 +504,25 @@ msgstr ""
 #: ../PostType/Product.php:111 ../PostType/Product.php:157
 #: ../PostType/Review.php:111 ../PostType/Review.php:157
 #: ../PostType/Service.php:111 ../PostType/Service.php:157
-msgid "Choose from the most used"
-msgstr ""
-
-#: ../PostType/Office.php:112 ../PostType/Office.php:158
-#: ../PostType/Place.php:112 ../PostType/Place.php:158
-#: ../PostType/Portfolio.php:112 ../PostType/Portfolio.php:158
-#: ../PostType/Product.php:112 ../PostType/Product.php:158
-#: ../PostType/Review.php:112 ../PostType/Review.php:158
-#: ../PostType/Service.php:112 ../PostType/Service.php:158
+#: ../PostType/Sllider.php:111 ../PostType/Sllider.php:157
+#: ../PostType/Testimonial.php:111 ../PostType/Testimonial.php:157
 msgid "Popular Items"
 msgstr ""
 
-#: ../PostType/Office.php:113
+#: ../PostType/Office.php:112
 msgid "Search Office Categories"
 msgstr ""
+
+#: ../PostType/Office.php:113 ../PostType/Office.php:159
+#: ../PostType/Place.php:113 ../PostType/Place.php:159
+#: ../PostType/Portfolio.php:113 ../PostType/Portfolio.php:159
+#: ../PostType/Product.php:113 ../PostType/Product.php:159
+#: ../PostType/Review.php:113 ../PostType/Review.php:159
+#: ../PostType/Service.php:113 ../PostType/Service.php:159
+#: ../PostType/Sllider.php:113 ../PostType/Sllider.php:159
+#: ../PostType/Testimonial.php:113 ../PostType/Testimonial.php:159
+msgid "Not Found"
+msgstr "No encontrado"
 
 #: ../PostType/Office.php:114 ../PostType/Office.php:160
 #: ../PostType/Place.php:114 ../PostType/Place.php:160
@@ -481,66 +530,60 @@ msgstr ""
 #: ../PostType/Product.php:114 ../PostType/Product.php:160
 #: ../PostType/Review.php:114 ../PostType/Review.php:160
 #: ../PostType/Service.php:114 ../PostType/Service.php:160
-msgid "Not Found"
-msgstr ""
-
-#: ../PostType/Office.php:115 ../PostType/Office.php:161
-#: ../PostType/Place.php:115 ../PostType/Place.php:161
-#: ../PostType/Portfolio.php:115 ../PostType/Portfolio.php:161
-#: ../PostType/Product.php:115 ../PostType/Product.php:161
-#: ../PostType/Review.php:115 ../PostType/Review.php:161
-#: ../PostType/Service.php:115 ../PostType/Service.php:161
+#: ../PostType/Sllider.php:114 ../PostType/Sllider.php:160
+#: ../PostType/Testimonial.php:114 ../PostType/Testimonial.php:160
 msgid "No items"
 msgstr ""
 
-#: ../PostType/Office.php:120
+#: ../PostType/Office.php:119
 msgctxt "taxonomy slug"
 msgid "office-category"
 msgstr ""
 
-#: ../PostType/Office.php:144
+#: ../PostType/Office.php:143
 msgid "Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:145
+#: ../PostType/Office.php:144
 msgid "Office Tag"
 msgstr ""
 
-#: ../PostType/Office.php:146 ../PostType/Place.php:146
-#: ../PostType/Portfolio.php:146 ../PostType/Product.php:146
-#: ../PostType/Review.php:146 ../PostType/Service.php:146
+#: ../PostType/Office.php:145 ../PostType/Place.php:145
+#: ../PostType/Portfolio.php:145 ../PostType/Product.php:145
+#: ../PostType/Review.php:145 ../PostType/Service.php:145
+#: ../PostType/Sllider.php:145 ../PostType/Testimonial.php:145
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: ../PostType/Office.php:147
+#: ../PostType/Office.php:146
 msgid "All Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:148
+#: ../PostType/Office.php:147
 msgid "Parent Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:149
+#: ../PostType/Office.php:148
 msgid "Parent Office Tags:"
 msgstr ""
 
-#: ../PostType/Office.php:150
+#: ../PostType/Office.php:149
 msgid "New Office Tags Name"
 msgstr ""
 
-#: ../PostType/Office.php:152
+#: ../PostType/Office.php:151
 msgid "Edit Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:153
+#: ../PostType/Office.php:152
 msgid "Update Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:159
+#: ../PostType/Office.php:158
 msgid "Search Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:166
+#: ../PostType/Office.php:165
 msgctxt "taxonomy slug"
 msgid "office-tag"
 msgstr ""
@@ -590,93 +633,89 @@ msgctxt "post_type slug"
 msgid "place"
 msgstr ""
 
-#: ../PostType/Place.php:69
-msgid "Site place."
-msgstr ""
-
-#: ../PostType/Place.php:82
+#: ../PostType/Place.php:81
 msgctxt "post_type archive_slug"
 msgid "place"
 msgstr ""
 
-#: ../PostType/Place.php:98
+#: ../PostType/Place.php:97
 msgid "Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:99
+#: ../PostType/Place.php:98
 msgid "Place Category"
 msgstr ""
 
-#: ../PostType/Place.php:101
+#: ../PostType/Place.php:100
 msgid "All Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:102
+#: ../PostType/Place.php:101
 msgid "Parent Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:103
+#: ../PostType/Place.php:102
 msgid "Parent Place Categories:"
 msgstr ""
 
-#: ../PostType/Place.php:104
+#: ../PostType/Place.php:103
 msgid "New Place Categories Name"
 msgstr ""
 
-#: ../PostType/Place.php:106
+#: ../PostType/Place.php:105
 msgid "Edit Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:107
+#: ../PostType/Place.php:106
 msgid "Update Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:113
+#: ../PostType/Place.php:112
 msgid "Search Place Categories"
 msgstr ""
 
-#: ../PostType/Place.php:120
+#: ../PostType/Place.php:119
 msgctxt "taxonomy slug"
 msgid "place-category"
 msgstr ""
 
-#: ../PostType/Place.php:144
+#: ../PostType/Place.php:143
 msgid "Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:145
+#: ../PostType/Place.php:144
 msgid "Place Tag"
 msgstr ""
 
-#: ../PostType/Place.php:147
+#: ../PostType/Place.php:146
 msgid "All Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:148
+#: ../PostType/Place.php:147
 msgid "Parent Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:149
+#: ../PostType/Place.php:148
 msgid "Parent Place Tags:"
 msgstr ""
 
-#: ../PostType/Place.php:150
+#: ../PostType/Place.php:149
 msgid "New Place Tags Name"
 msgstr ""
 
-#: ../PostType/Place.php:152
+#: ../PostType/Place.php:151
 msgid "Edit Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:153
+#: ../PostType/Place.php:152
 msgid "Update Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:159
+#: ../PostType/Place.php:158
 msgid "Search Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:166
+#: ../PostType/Place.php:165
 msgctxt "taxonomy slug"
 msgid "place-tag"
 msgstr ""
@@ -727,93 +766,89 @@ msgctxt "post_type slug"
 msgid "portfolio"
 msgstr "portafolio"
 
-#: ../PostType/Portfolio.php:69
-msgid "Site portfolio."
-msgstr ""
-
-#: ../PostType/Portfolio.php:82
+#: ../PostType/Portfolio.php:81
 msgctxt "post_type archive_slug"
 msgid "portfolio"
 msgstr "portafolio"
 
-#: ../PostType/Portfolio.php:98
+#: ../PostType/Portfolio.php:97
 msgid "Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:99
+#: ../PostType/Portfolio.php:98
 msgid "Portfolio Category"
 msgstr ""
 
-#: ../PostType/Portfolio.php:101
+#: ../PostType/Portfolio.php:100
 msgid "All Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:102
+#: ../PostType/Portfolio.php:101
 msgid "Parent Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:103
+#: ../PostType/Portfolio.php:102
 msgid "Parent Portfolio Categories:"
 msgstr ""
 
-#: ../PostType/Portfolio.php:104
+#: ../PostType/Portfolio.php:103
 msgid "New Portfolio Categories Name"
 msgstr ""
 
-#: ../PostType/Portfolio.php:106
+#: ../PostType/Portfolio.php:105
 msgid "Edit Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:107
+#: ../PostType/Portfolio.php:106
 msgid "Update Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:113
+#: ../PostType/Portfolio.php:112
 msgid "Search Portfolio Categories"
 msgstr ""
 
-#: ../PostType/Portfolio.php:120
+#: ../PostType/Portfolio.php:119
 msgctxt "taxonomy slug"
 msgid "portfolio-category"
 msgstr ""
 
-#: ../PostType/Portfolio.php:144
+#: ../PostType/Portfolio.php:143
 msgid "Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:145
+#: ../PostType/Portfolio.php:144
 msgid "Portfolio Tag"
 msgstr ""
 
-#: ../PostType/Portfolio.php:147
+#: ../PostType/Portfolio.php:146
 msgid "All Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:148
+#: ../PostType/Portfolio.php:147
 msgid "Parent Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:149
+#: ../PostType/Portfolio.php:148
 msgid "Parent Portfolio Tags:"
 msgstr ""
 
-#: ../PostType/Portfolio.php:150
+#: ../PostType/Portfolio.php:149
 msgid "New Portfolio Tags Name"
 msgstr ""
 
-#: ../PostType/Portfolio.php:152
+#: ../PostType/Portfolio.php:151
 msgid "Edit Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:153
+#: ../PostType/Portfolio.php:152
 msgid "Update Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:159
+#: ../PostType/Portfolio.php:158
 msgid "Search Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:166
+#: ../PostType/Portfolio.php:165
 msgctxt "taxonomy slug"
 msgid "portfolio-tag"
 msgstr ""
@@ -868,93 +903,89 @@ msgctxt "post_type slug"
 msgid "product"
 msgstr "producto"
 
-#: ../PostType/Product.php:69
-msgid "Site product."
-msgstr ""
-
-#: ../PostType/Product.php:82
+#: ../PostType/Product.php:81
 msgctxt "post_type archive_slug"
 msgid "product"
 msgstr "producto"
 
-#: ../PostType/Product.php:98
+#: ../PostType/Product.php:97
 msgid "Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:99
+#: ../PostType/Product.php:98
 msgid "Product Category"
 msgstr ""
 
-#: ../PostType/Product.php:101
+#: ../PostType/Product.php:100
 msgid "All Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:102
+#: ../PostType/Product.php:101
 msgid "Parent Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:103
+#: ../PostType/Product.php:102
 msgid "Parent Product Categories:"
 msgstr ""
 
-#: ../PostType/Product.php:104
+#: ../PostType/Product.php:103
 msgid "New Product Categories Name"
 msgstr ""
 
-#: ../PostType/Product.php:106
+#: ../PostType/Product.php:105
 msgid "Edit Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:107
+#: ../PostType/Product.php:106
 msgid "Update Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:113
+#: ../PostType/Product.php:112
 msgid "Search Product Categories"
 msgstr ""
 
-#: ../PostType/Product.php:120
+#: ../PostType/Product.php:119
 msgctxt "taxonomy slug"
 msgid "product-category"
 msgstr ""
 
-#: ../PostType/Product.php:144
+#: ../PostType/Product.php:143
 msgid "Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:145
+#: ../PostType/Product.php:144
 msgid "Product Tag"
 msgstr ""
 
-#: ../PostType/Product.php:147
+#: ../PostType/Product.php:146
 msgid "All Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:148
+#: ../PostType/Product.php:147
 msgid "Parent Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:149
+#: ../PostType/Product.php:148
 msgid "Parent Product Tags:"
 msgstr ""
 
-#: ../PostType/Product.php:150
+#: ../PostType/Product.php:149
 msgid "New Product Tags Name"
 msgstr ""
 
-#: ../PostType/Product.php:152
+#: ../PostType/Product.php:151
 msgid "Edit Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:153
+#: ../PostType/Product.php:152
 msgid "Update Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:159
+#: ../PostType/Product.php:158
 msgid "Search Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:166
+#: ../PostType/Product.php:165
 msgctxt "taxonomy slug"
 msgid "product-tag"
 msgstr ""
@@ -1005,93 +1036,89 @@ msgctxt "post_type slug"
 msgid "review"
 msgstr ""
 
-#: ../PostType/Review.php:69
-msgid "Site review."
-msgstr ""
-
-#: ../PostType/Review.php:82
+#: ../PostType/Review.php:81
 msgctxt "post_type archive_slug"
 msgid "review"
 msgstr ""
 
-#: ../PostType/Review.php:98
+#: ../PostType/Review.php:97
 msgid "Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:99
+#: ../PostType/Review.php:98
 msgid "Review Category"
 msgstr ""
 
-#: ../PostType/Review.php:101
+#: ../PostType/Review.php:100
 msgid "All Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:102
+#: ../PostType/Review.php:101
 msgid "Parent Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:103
+#: ../PostType/Review.php:102
 msgid "Parent Review Categories:"
 msgstr ""
 
-#: ../PostType/Review.php:104
+#: ../PostType/Review.php:103
 msgid "New Review Categories Name"
 msgstr ""
 
-#: ../PostType/Review.php:106
+#: ../PostType/Review.php:105
 msgid "Edit Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:107
+#: ../PostType/Review.php:106
 msgid "Update Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:113
+#: ../PostType/Review.php:112
 msgid "Search Review Categories"
 msgstr ""
 
-#: ../PostType/Review.php:120
+#: ../PostType/Review.php:119
 msgctxt "taxonomy slug"
 msgid "review-category"
 msgstr ""
 
-#: ../PostType/Review.php:144
+#: ../PostType/Review.php:143
 msgid "Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:145
+#: ../PostType/Review.php:144
 msgid "Review Tag"
 msgstr ""
 
-#: ../PostType/Review.php:147
+#: ../PostType/Review.php:146
 msgid "All Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:148
+#: ../PostType/Review.php:147
 msgid "Parent Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:149
+#: ../PostType/Review.php:148
 msgid "Parent Review Tags:"
 msgstr ""
 
-#: ../PostType/Review.php:150
+#: ../PostType/Review.php:149
 msgid "New Review Tags Name"
 msgstr ""
 
-#: ../PostType/Review.php:152
+#: ../PostType/Review.php:151
 msgid "Edit Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:153
+#: ../PostType/Review.php:152
 msgid "Update Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:159
+#: ../PostType/Review.php:158
 msgid "Search Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:166
+#: ../PostType/Review.php:165
 msgctxt "taxonomy slug"
 msgid "review-tag"
 msgstr ""
@@ -1142,102 +1169,373 @@ msgctxt "post_type slug"
 msgid "service"
 msgstr "servicio"
 
-#: ../PostType/Service.php:69
-msgid "Site service."
-msgstr ""
-
-#: ../PostType/Service.php:82
+#: ../PostType/Service.php:81
 msgctxt "post_type archive_slug"
 msgid "service"
 msgstr "servicio"
 
-#: ../PostType/Service.php:98
+#: ../PostType/Service.php:97
 msgid "Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:99
+#: ../PostType/Service.php:98
 msgid "Service Category"
 msgstr ""
 
-#: ../PostType/Service.php:101
+#: ../PostType/Service.php:100
 msgid "All Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:102
+#: ../PostType/Service.php:101
 msgid "Parent Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:103
+#: ../PostType/Service.php:102
 msgid "Parent Service Categories:"
 msgstr ""
 
-#: ../PostType/Service.php:104
+#: ../PostType/Service.php:103
 msgid "New Service Categories Name"
 msgstr ""
 
-#: ../PostType/Service.php:106
+#: ../PostType/Service.php:105
 msgid "Edit Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:107
+#: ../PostType/Service.php:106
 msgid "Update Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:113
+#: ../PostType/Service.php:112
 msgid "Search Service Categories"
 msgstr ""
 
-#: ../PostType/Service.php:120
+#: ../PostType/Service.php:119
 msgctxt "taxonomy slug"
 msgid "service-category"
 msgstr ""
 
-#: ../PostType/Service.php:144
+#: ../PostType/Service.php:143
 msgid "Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:145
+#: ../PostType/Service.php:144
 msgid "Service Tag"
 msgstr ""
 
-#: ../PostType/Service.php:147
+#: ../PostType/Service.php:146
 msgid "All Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:148
+#: ../PostType/Service.php:147
 msgid "Parent Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:149
+#: ../PostType/Service.php:148
 msgid "Parent Service Tags:"
 msgstr ""
 
-#: ../PostType/Service.php:150
+#: ../PostType/Service.php:149
 msgid "New Service Tags Name"
 msgstr ""
 
-#: ../PostType/Service.php:152
+#: ../PostType/Service.php:151
 msgid "Edit Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:153
+#: ../PostType/Service.php:152
 msgid "Update Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:159
+#: ../PostType/Service.php:158
 msgid "Search Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:166
+#: ../PostType/Service.php:165
 msgctxt "taxonomy slug"
 msgid "service-tag"
 msgstr ""
 
-#: ../Template/Form.php:218 ../includes/forms/elements/class-select.php:42
+#: ../PostType/Sllider.php:40 ../PostType/Sllider.php:42
+msgid "Sliders"
+msgstr ""
+
+#: ../PostType/Sllider.php:45
+msgid "All Sliders"
+msgstr ""
+
+#: ../PostType/Sllider.php:46
+msgid "Add New Slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:47
+msgid "New Slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:49
+msgid "Edit Slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:50
+msgid "Update Slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:51
+msgid "View Slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:52
+msgid "Search slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:53
+msgid "No slider found"
+msgstr ""
+
+#: ../PostType/Sllider.php:54
+msgid "No slider found in Trash"
+msgstr ""
+
+#: ../PostType/Sllider.php:62
+msgctxt "post_type slug"
+msgid "slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:81
+msgctxt "post_type archive_slug"
+msgid "slider"
+msgstr ""
+
+#: ../PostType/Sllider.php:97
+msgid "Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:98
+msgid "Slider Category"
+msgstr ""
+
+#: ../PostType/Sllider.php:100
+msgid "All Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:101
+msgid "Parent Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:102
+msgid "Parent Slider Categories:"
+msgstr ""
+
+#: ../PostType/Sllider.php:103
+msgid "New Slider Categories Name"
+msgstr ""
+
+#: ../PostType/Sllider.php:105
+msgid "Edit Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:106
+msgid "Update Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:112
+msgid "Search Slider Categories"
+msgstr ""
+
+#: ../PostType/Sllider.php:119
+msgctxt "taxonomy slug"
+msgid "slider-category"
+msgstr ""
+
+#: ../PostType/Sllider.php:143
+msgid "Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:144
+msgid "Slider Tag"
+msgstr ""
+
+#: ../PostType/Sllider.php:146
+msgid "All Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:147
+msgid "Parent Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:148
+msgid "Parent Slider Tags:"
+msgstr ""
+
+#: ../PostType/Sllider.php:149
+msgid "New Slider Tags Name"
+msgstr ""
+
+#: ../PostType/Sllider.php:151
+msgid "Edit Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:152
+msgid "Update Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:158
+msgid "Search Slider Tags"
+msgstr ""
+
+#: ../PostType/Sllider.php:165
+msgctxt "taxonomy slug"
+msgid "slider-tag"
+msgstr ""
+
+#: ../PostType/Testimonial.php:41 ../PostType/Testimonial.php:43
+#: ../PostType/Testimonial.php:68
+msgid "Testimonial"
+msgstr "Testimonio"
+
+#: ../PostType/Testimonial.php:45
+msgid "All Testimonials"
+msgstr ""
+
+#: ../PostType/Testimonial.php:46
+msgid "Add New Testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:47
+msgid "New Testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:49
+msgid "Edit Testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:50
+msgid "Update Testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:51
+msgid "View Testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:52
+msgid "Search testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:53
+msgid "No testimonial found"
+msgstr ""
+
+#: ../PostType/Testimonial.php:54
+msgid "No testimonial found in Trash"
+msgstr ""
+
+#: ../PostType/Testimonial.php:62
+msgctxt "post_type slug"
+msgid "testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:81
+msgctxt "post_type archive_slug"
+msgid "testimonial"
+msgstr ""
+
+#: ../PostType/Testimonial.php:97
+msgid "Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:98
+msgid "Testimonial Category"
+msgstr ""
+
+#: ../PostType/Testimonial.php:100
+msgid "All Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:101
+msgid "Parent Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:102
+msgid "Parent Testimonial Categories:"
+msgstr ""
+
+#: ../PostType/Testimonial.php:103
+msgid "New Testimonial Categories Name"
+msgstr ""
+
+#: ../PostType/Testimonial.php:105
+msgid "Edit Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:106
+msgid "Update Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:112
+msgid "Search Testimonial Categories"
+msgstr ""
+
+#: ../PostType/Testimonial.php:119
+msgctxt "taxonomy slug"
+msgid "testimonial-category"
+msgstr ""
+
+#: ../PostType/Testimonial.php:143
+msgid "Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:144
+msgid "Testimonial Tag"
+msgstr ""
+
+#: ../PostType/Testimonial.php:146
+msgid "All Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:147
+msgid "Parent Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:148
+msgid "Parent Testimonial Tags:"
+msgstr ""
+
+#: ../PostType/Testimonial.php:149
+msgid "New Testimonial Tags Name"
+msgstr ""
+
+#: ../PostType/Testimonial.php:151
+msgid "Edit Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:152
+msgid "Update Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:158
+msgid "Search Testimonial Tags"
+msgstr ""
+
+#: ../PostType/Testimonial.php:165
+msgctxt "taxonomy slug"
+msgid "testimonial-tag"
+msgstr ""
+
+#: ../Template/Bootstrap3/Alert.php:159 ../Template/Bootstrap3/Modal.php:103
+#: ../Template/Bootstrap4/Alert.php:46 ../Template/Bootstrap4/Modal.php:103
+msgid "Close"
+msgstr "Cerrar"
+
+#: ../Template/Bootstrap3/Pagination.php:59
+#: ../Template/Bootstrap4/Pagination.php:61
+msgid "Page navigation"
+msgstr ""
+
+#: ../Template/Form.php:218
 msgid "Select..."
 msgstr "Seleccione..."
 
-#: ../includes/class-media.php:43 ../includes/class-media.php:87
+#: ../Tools/Media.php:43 ../Tools/Media.php:87
 msgid "Invalid or empty file"
 msgstr "Archivo no válido o vacío"
 
@@ -1279,9 +1577,8 @@ msgstr "Por favor ingrese una dirección de correo electrónico válida."
 msgid "An account is already registered with your email address."
 msgstr "Una cuenta ya está registrada con con este email."
 
-#: ../includes/settings/abstract-settings-page___option.php:376
-msgid "Default"
-msgstr "Predeterminado"
+#~ msgid "Default"
+#~ msgstr "Predeterminado"
 
 #~ msgid "Import data via csv file."
 #~ msgstr "Importación mediante archivo CSV"

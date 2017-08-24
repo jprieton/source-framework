@@ -66,7 +66,6 @@ class Product {
     );
     $args    = array(
         'label'               => __( 'Product', \SourceFramework\TEXTDOMAIN ),
-        'description'         => __( 'Site product.', \SourceFramework\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'product_cat', 'product_tag' ),

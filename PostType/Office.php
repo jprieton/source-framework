@@ -66,7 +66,6 @@ class Office {
     );
     $args    = array(
         'label'               => __( 'Office', \SourceFramework\TEXTDOMAIN ),
-        'description'         => __( 'Site office.', \SourceFramework\TEXTDOMAIN ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
         'taxonomies'          => array( 'office_cat', 'office_tag' ),
