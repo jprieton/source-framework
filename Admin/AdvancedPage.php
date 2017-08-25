@@ -79,6 +79,14 @@ final class AdvancedPage extends SettingPage {
 
     $args = [
         'type'  => 'checkbox',
+        'name'  => __( 'Favorite Post', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'favorite-post-enabled',
+        'label' => __( "This option enables to the user mark posts as favorite.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+    $args = [
+        'type'  => 'checkbox',
         'name'  => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'cdn-enabled',
         'label' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
@@ -192,7 +200,7 @@ final class AdvancedPage extends SettingPage {
         'service'     => [
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
         ],
-        'slider'     => [
+        'slider'      => [
             'label' => __( 'Slider', \SourceFramework\TEXTDOMAIN ),
         ],
         'testimonial' => [
