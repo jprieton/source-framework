@@ -20,6 +20,10 @@ class Breadcrumb extends \SourceFramework\Template\Breadcrumb {
   public function generate() {
     $breadcrumb = parent::generate();
 
+    if (empty($breadcrumb)) {
+      return '';
+    }
+
     $count = count( $breadcrumb );
     $list = [];
     $i    = 0;
