@@ -1,0 +1,130 @@
+@import "lesshat.less";
+@import "variables.less";
+
+/////////////////////////////////////////
+
+.flex-vertical-centered {
+  .display(flex);
+  .align-items(center);
+}
+
+@media (min-width: @lg) {
+  .flex-vertical-centered-lg {
+    .flex-vertical-centered;
+  }
+}
+@media (min-width: @md) and (max-width:(@lg - 1)){
+  .flex-vertical-centered-md {
+    .flex-vertical-centered;
+  }
+}
+@media (min-width: @sm) and (max-width:(@md - 1)){
+  .flex-vertical-centered-sm {
+    .flex-vertical-centered;
+  }
+}
+@media (min-width: @xs) and (max-width:(@sm - 1)){
+  .flex-vertical-centered-xs {
+    .flex-vertical-centered;
+  }
+}
+@media (max-width:(@xs - 1)){
+  .flex-vertical-centered-xxs {
+    .flex-vertical-centered;
+  }
+}
+
+/////////////////////////////////////////
+
+.flex-vertical-stretched {
+  .display(flex);
+  .align-items(stretch);
+}
+@media (min-width: @lg) {
+  .flex-vertical-stretched-lg {
+    .flex-vertical-stretched;
+  }
+}
+@media (min-width: @md) and (max-width:(@lg - 1)){
+  .flex-vertical-stretched-md {
+    .flex-vertical-stretched;
+  }
+}
+@media (min-width: @sm) and (max-width:(@md - 1)){
+  .flex-vertical-stretched-sm {
+    .flex-vertical-stretched;
+  }
+}
+@media (min-width: @xs) and (max-width:(@sm - 1)){
+  .flex-vertical-stretched-xs {
+    .flex-vertical-stretched;
+  }
+}
+@media (max-width:(@xs - 1)){
+  .flex-vertical-stretched-xxs {
+    .flex-vertical-stretched;
+  }
+}
+
+/////////////////////////////////////////
+
+.flex-column {
+  .display(flex);
+  .flex-direction(column);
+}
+@media (min-width: @lg) {
+  .flex-column-lg {
+    .flex-column;
+  }
+}
+@media (min-width: @md) and (max-width:(@lg - 1)){
+  .flex-column-md {
+    .flex-column;
+  }
+}
+@media (min-width: @sm) and (max-width:(@md - 1)){
+  .flex-column-sm {
+    .flex-column;
+  }
+}
+@media (min-width: @xs) and (max-width:(@sm - 1)){
+  .flex-column-xs {
+    .flex-column;
+  }
+}
+@media (max-width:(@xs - 1)){
+  .flex-column-xs {
+    .flex-column;
+  }
+}
+
+.flex-column-center{
+  .justify-content(center);
+}
+
+/////////////////////////////////////////
+
+.flex-row {
+  .display(flex);
+  .flex-direction(row);
+}
+@media (min-width: @lg) {
+  .flex-row-lg {
+    .flex-row;
+  }
+}
+@media (min-width: @md) and (max-width:(@lg - 1)){
+  .flex-row-md {
+    .flex-row;
+  }
+}
+@media (min-width: @sm) and (max-width:(@md - 1)){
+  .flex-row-sm {
+    .flex-row;
+  }
+}
+@media (min-width: @xs) and (max-width:(@sm - 1)){
+  .flex-row-xs {
+    .flex-row;
+  }
+}

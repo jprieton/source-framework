@@ -1,0 +1,95 @@
+.frontend-helper {
+  position: fixed;
+  z-index: 9999999;
+  left: 0;
+  bottom: 0;
+  color: black;
+  max-width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  line-height: 30px;
+  font-family: Helvetica, sans-serif;
+}
+.frontend-helper .fh-collapse,
+.frontend-helper .info-window,
+.frontend-helper .bs-breakpoint,
+.frontend-helper .modernizr-btn {
+  background-color: #333;
+  border-right: 1px solid #666;
+  color: white;
+  display: block;
+  float: left;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.65em;
+  height: 30px;
+}
+.frontend-helper .fh-collapse {
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.frontend-helper .fh-collapse > span:first-child {
+  display: none;
+}
+.frontend-helper .fh-collapse > span:last-child {
+  display: block;
+}
+.frontend-helper .fh-collapse.fh-collapsed {
+  content: '&laquo;';
+}
+.frontend-helper .fh-collapse.fh-collapsed > span:first-child {
+  display: block;
+}
+.frontend-helper .fh-collapse.fh-collapsed > span:last-child {
+  display: none;
+}
+.frontend-helper .info-window {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.frontend-helper .info-window > div {
+  text-align: left;
+}
+.frontend-helper .info-window .info2 {
+  line-height: 1.2em;
+}
+.frontend-helper .visible-xs,
+.frontend-helper .visible-xxs,
+.frontend-helper .visible-sm,
+.frontend-helper .visible-md,
+.frontend-helper .visible-lg {
+  width: 50px;
+}
+.frontend-helper .modernizr-btn {
+  padding-left: 10px;
+  position: relative;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.frontend-helper .modernizr-features {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  display: block;
+  font-size: 0.65em;
+  line-height: 1.3em;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 100%;
+  padding: 9.5px;
+  text-align: left;
+  white-space: initial;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+.frontend-helper.hidden,
+.frontend-helper .fh-collapse.hidden,
+.frontend-helper .info-window.hidden,
+.frontend-helper .bs-breakpoint.hidden,
+.frontend-helper .modernizr-btn.hidden,
+.frontend-helper .modernizr-features.hidden {
+  display: none !important;
+}
