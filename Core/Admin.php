@@ -65,6 +65,12 @@ final class Admin extends Singleton {
     add_action( 'admin_menu', [ $this, 'admin_menus' ], 25 );
 
     /**
+     * Add thumbnail column to list.
+     * @since   1.0.0
+     */
+    add_action( 'current_screen', [ $this, 'thumbnail_column' ] );
+
+    /**
      * Add  featured posts backend funcionality.
      * @since   1.0.0
      */
@@ -120,6 +126,34 @@ final class Admin extends Singleton {
       add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
       add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
       add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
+    }
+  }
+
+  /**
+   * Init featured posts backend funcionality
+   *
+   * @since 0.5.0
+   */
+  public function thumbnail_column() {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $post_types_enabled = $advanced_setting_group->get_option( 'thumbnail-column' );
+
+    $screen             = get_current_screen();
+    if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
+
+      if ( function_exists( 'WC' ) && 'product' == $screen->post_type ) {
+        return;
+      }
+
+      add_action( 'manage_posts_custom_column', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ], 10, 2 );
+      add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ], 10, 2 );
+      add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ], 10, 2 );
+      add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ], 10, 2 );
     }
   }
 

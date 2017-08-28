@@ -55,9 +55,9 @@ final class AdvancedPage extends SettingPage {
     $this->add_setting_section( 'source-framework-advanced-general', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
-        'id'       => 'featured-posts',
+        'id'       => 'thumbnail-column',
         'type'     => 'checkbox',
-        'name'     => __( 'Featured Post', \SourceFramework\TEXTDOMAIN ),
+        'name'     => __( 'Thumbnail Column', \SourceFramework\TEXTDOMAIN ),
         'multiple' => true,
         'options'  => []
     ];
@@ -71,9 +71,16 @@ final class AdvancedPage extends SettingPage {
       ];
     }
 
+    unset( $args['options']['attachment'] );
     if ( function_exists( 'WC' ) ) {
       unset( $args['options']['product'] );
     }
+
+    $this->fields->add_field( $args );
+
+    $args['id']   = 'featured-posts';
+    $args['name'] = __( 'Featured Posts', \SourceFramework\TEXTDOMAIN );
+
 
     $this->fields->add_field( $args );
 

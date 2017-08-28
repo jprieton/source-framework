@@ -12,11 +12,6 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Template\Tag;
 use WP_Error;
 
-/**
- * Description of FeaturedPost
- *
- * @author perseo
- */
 class FeaturedPost {
 
   /**
