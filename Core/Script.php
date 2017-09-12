@@ -115,10 +115,14 @@ class Script extends Singleton {
    * @since 1.0.0
    */
   private function register_scripts() {
-    global $tools_setting_group;
+    global $tools_setting_group, $api_setting_group;
 
     if ( empty( $tools_setting_group ) ) {
       $tools_setting_group = new SettingGroup( 'tools_settings' );
+    }
+
+    if ( empty( $api_setting_group ) ) {
+      $api_setting_group = new SettingGroup( 'api_settings' );
     }
 
     $scripts = [
@@ -135,6 +139,13 @@ class Script extends Singleton {
             'integrity' => 'sha256-65rhSmwPSQGe83K1p6cudTQxfiMNutuHCIB0n8CqvF4=',
             'ver'       => '3.3.1',
             'autoload'  => $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ),
+        ],
+        'recaptcha'                    => [
+            'remote'    => '//www.google.com/recaptcha/api.js',
+            'in_footer' => true,
+            'autoload'  => !empty( $api_setting_group->get_option( 'recaptcha-site-key' ) ),
+            'async'     => true,
+            'defer'     => true,
         ],
         'bootstrap3'                   => [
             'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',

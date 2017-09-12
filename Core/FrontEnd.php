@@ -118,6 +118,12 @@ final class FrontEnd extends Singleton {
      * @since 1.0.0
      */
     add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
+
+    /**
+     * Returns a reCAPTCHA div
+     * @since 1.1.0
+     */
+    add_shortcode( 'recaptcha', [ 'SourceFramework\Template\Shortcode', 'recaptcha' ] );
   }
 
   /**

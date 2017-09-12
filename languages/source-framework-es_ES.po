@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-08-24 11:54-0400\n"
-"PO-Revision-Date: 2017-08-24 11:55-0400\n"
+"POT-Creation-Date: 2017-08-29 13:14-0400\n"
+"PO-Revision-Date: 2017-08-29 13:17-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -40,89 +40,101 @@ msgid "General"
 msgstr "General"
 
 #: ../Admin/AdvancedPage.php:60
-msgid "Featured Post"
-msgstr "Publicación destacada"
+msgid "Thumbnail Column"
+msgstr "Columna de miniaturas"
 
 #: ../Admin/AdvancedPage.php:82
+msgid "Featured Posts"
+msgstr "Entradas Destacadas"
+
+#: ../Admin/AdvancedPage.php:89
+msgid "Favorite Post"
+msgstr "Entrada Favorita"
+
+#: ../Admin/AdvancedPage.php:91
+msgid "This option enables to the user mark posts as favorite."
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:97
 msgid "Enable CDN"
 msgstr "Habilitar CDN"
 
-#: ../Admin/AdvancedPage.php:84
+#: ../Admin/AdvancedPage.php:99
 msgid ""
 "This option enables the use of CDN in plugin's registered scripts and styles."
 msgstr ""
 "Esta opción permite el uso de CDN en estilos y scripts registrados del "
 "plugin."
 
-#: ../Admin/AdvancedPage.php:90
+#: ../Admin/AdvancedPage.php:105
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../Admin/AdvancedPage.php:93
+#: ../Admin/AdvancedPage.php:108
 msgid "Header"
 msgstr "Cabecera"
 
-#: ../Admin/AdvancedPage.php:99
+#: ../Admin/AdvancedPage.php:114
 msgid "Remove WordPress version number"
 msgstr "Remover el número de versión de WordPress"
 
-#: ../Admin/AdvancedPage.php:100
+#: ../Admin/AdvancedPage.php:115
 msgid "Remove WordPress version number from header, feed, styles and scripts."
 msgstr ""
 "Elimina el número de versión de WordPress de la cabecera, feed, estilos y "
 "scripts."
 
-#: ../Admin/AdvancedPage.php:104
+#: ../Admin/AdvancedPage.php:119
 msgid "Remove EditURI link"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:105
+#: ../Admin/AdvancedPage.php:120
 msgid ""
 "Remove the EditURI/RSD link from your header. This option also removes the "
 "<b>Windows Live Writer</b> manifest link."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:118
+#: ../Admin/AdvancedPage.php:133
 msgid ""
 "If you uses XML-RPC in your theme/plugins check this for disable only "
 "pingback method."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:123
+#: ../Admin/AdvancedPage.php:138
 msgid ""
 "Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC "
 "Pingback</b> and <b>Remove EditURI link</b>. <a href=\"https://www."
 "littlebizzy.com/blog/disable-xml-rpc\" target=\"_blank\">More info</a>."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:150
+#: ../Admin/AdvancedPage.php:165
 msgid "Disable the admin bar in frontend by role"
 msgstr "Desactivar la barra de admin en frontend por rol"
 
-#: ../Admin/AdvancedPage.php:161
+#: ../Admin/AdvancedPage.php:176
 msgid "Disable access to the wp-admin in by role"
 msgstr "Desactivar el acceso al wp-admin por rol"
 
-#: ../Admin/AdvancedPage.php:166 ../Admin/AdvancedPage.php:169
+#: ../Admin/AdvancedPage.php:181 ../Admin/AdvancedPage.php:184
 msgid "Post Types"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:178 ../PostType/Office.php:40
+#: ../Admin/AdvancedPage.php:193 ../PostType/Office.php:40
 #: ../PostType/Office.php:42
 msgid "Offices"
 msgstr "Oficinas"
 
-#: ../Admin/AdvancedPage.php:181 ../PostType/Place.php:40
+#: ../Admin/AdvancedPage.php:196 ../PostType/Place.php:40
 #: ../PostType/Place.php:42
 msgid "Places"
 msgstr "Lugares"
 
-#: ../Admin/AdvancedPage.php:184 ../PostType/Portfolio.php:40
+#: ../Admin/AdvancedPage.php:199 ../PostType/Portfolio.php:40
 #: ../PostType/Portfolio.php:42
 msgid "Portfolios"
 msgstr "Portafolios"
 
-#: ../Admin/AdvancedPage.php:187
+#: ../Admin/AdvancedPage.php:202
 msgid ""
 "Products <span class=\"description\">(This option has no effect when "
 "WooCommerce is actived)</span>"
@@ -130,22 +142,22 @@ msgstr ""
 "Productos <span class=\"description\">(Esta opción no tiene efecto cuando "
 "WooCommerce está activo)</span>"
 
-#: ../Admin/AdvancedPage.php:190 ../PostType/Review.php:40
+#: ../Admin/AdvancedPage.php:205 ../PostType/Review.php:40
 #: ../PostType/Review.php:42
 msgid "Reviews"
 msgstr "Opiniones"
 
-#: ../Admin/AdvancedPage.php:193 ../PostType/Service.php:40
+#: ../Admin/AdvancedPage.php:208 ../PostType/Service.php:40
 #: ../PostType/Service.php:42
 msgid "Services"
 msgstr "Servicios"
 
-#: ../Admin/AdvancedPage.php:196 ../PostType/Sllider.php:41
+#: ../Admin/AdvancedPage.php:211 ../PostType/Sllider.php:41
 #: ../PostType/Sllider.php:43 ../PostType/Sllider.php:68
 msgid "Slider"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:199 ../PostType/Testimonial.php:40
+#: ../Admin/AdvancedPage.php:214 ../PostType/Testimonial.php:40
 #: ../PostType/Testimonial.php:42
 msgid "Testimonials"
 msgstr "Testimonios"
@@ -196,15 +208,15 @@ msgstr "APIs"
 msgid "Cache"
 msgstr "Caché"
 
-#: ../Admin/FeaturedPost.php:57
+#: ../Admin/FeaturedPost.php:52 ../Admin/ThumbnailColumn.php:46
 msgid "Featured"
 msgstr "Descatado"
 
-#: ../Admin/FeaturedPost.php:76
+#: ../Admin/FeaturedPost.php:71
 msgid "You are not authorized to perform this action."
 msgstr "No estás autorizado para realizar esta acción."
 
-#: ../Admin/FeaturedPost.php:83 ../Admin/FeaturedPost.php:90
+#: ../Admin/FeaturedPost.php:78 ../Admin/FeaturedPost.php:85
 msgid "The data that you entered is invalid."
 msgstr "Los datos que ha ingresado son inválidos."
 
@@ -232,6 +244,10 @@ msgstr "Social"
 msgid "Links"
 msgstr "Enlaces"
 
+#: ../Admin/ThumbnailColumn.php:46
+msgid "Thumbnail"
+msgstr "Miniatura"
+
 #: ../Admin/ToolsPage.php:31 ../Admin/ToolsPage.php:39
 msgid "Tools"
 msgstr "Herramientas"
@@ -248,35 +264,35 @@ msgstr ""
 msgid "CSV Post Importer"
 msgstr "CSV Post Importer"
 
-#: ../Core/Script.php:222
+#: ../Core/Script.php:246
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../Core/Script.php:223
+#: ../Core/Script.php:247
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../Core/Script.php:224
+#: ../Core/Script.php:248
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../Core/Script.php:225
+#: ../Core/Script.php:249
 msgid "Send"
 msgstr "Enviar"
 
-#: ../Core/Script.php:226
+#: ../Core/Script.php:250
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../Core/Script.php:227
+#: ../Core/Script.php:251
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:228
+#: ../Core/Script.php:252
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../Core/Script.php:229
+#: ../Core/Script.php:253
 msgid "Sent!"
 msgstr "¡Enviado!"
 
@@ -1531,6 +1547,30 @@ msgstr "Cerrar"
 msgid "Page navigation"
 msgstr ""
 
+#: ../Template/Breadcrumb.php:93
+msgid "Error 404"
+msgstr ""
+
+#: ../Template/Breadcrumb.php:191
+#, php-format
+msgid "Posts tagged &ldquo;%s&rdquo;"
+msgstr "Posts etiquetados &ldquo;%s&rdquo;"
+
+#: ../Template/Breadcrumb.php:232
+#, php-format
+msgid "Author: %s"
+msgstr "Autor: %s"
+
+#: ../Template/Breadcrumb.php:259
+#, php-format
+msgid "Search results for &ldquo;%s&rdquo;"
+msgstr "Resultados de búsqueda para &ldquo;%s&rdquo;"
+
+#: ../Template/Breadcrumb.php:268
+#, php-format
+msgid "Page %d"
+msgstr "Página %d"
+
 #: ../Template/Form.php:218
 msgid "Select..."
 msgstr "Seleccione..."
@@ -1539,43 +1579,38 @@ msgstr "Seleccione..."
 msgid "Invalid or empty file"
 msgstr "Archivo no válido o vacío"
 
-#: ../includes/class-user.php:32 ../includes/class-user.php:39
-#: ../includes/class-user.php:109 ../includes/class-user.php:116
-msgid "Action disabled"
-msgstr "Acción deshabilitada"
+#~ msgid "Featured Post"
+#~ msgstr "Publicación destacada"
 
-#: ../includes/class-user.php:50
-msgid "Please enter a valid account username."
-msgstr "Por favor ingrese un nombre de usuario válido."
+#~ msgid "Action disabled"
+#~ msgstr "Acción deshabilitada"
 
-#: ../includes/class-user.php:53
-msgid ""
-"An account is already registered with that username. Please choose another."
-msgstr "Una cuenta ya está registrada con ese nombre de usuario. Elija otro."
+#~ msgid "Please enter a valid account username."
+#~ msgstr "Por favor ingrese un nombre de usuario válido."
 
-#: ../includes/class-user.php:68
-msgid "Empty password"
-msgstr "Contraseña vacía"
+#~ msgid ""
+#~ "An account is already registered with that username. Please choose "
+#~ "another."
+#~ msgstr ""
+#~ "Una cuenta ya está registrada con ese nombre de usuario. Elija otro."
 
-#: ../includes/class-user.php:74 ../includes/class-user.php:127
-msgid "Password does not match the confirm password."
-msgstr "La contraseña no coincide con la contraseña de confirmación."
+#~ msgid "Empty password"
+#~ msgstr "Contraseña vacía"
 
-#: ../includes/class-user.php:94
-msgid "User created successfully"
-msgstr "Usuario creado correctamente"
+#~ msgid "Password does not match the confirm password."
+#~ msgstr "La contraseña no coincide con la contraseña de confirmación."
 
-#: ../includes/class-user.php:149
-msgid "User updated successfully"
-msgstr "Usuario actualizado correctamente"
+#~ msgid "User created successfully"
+#~ msgstr "Usuario creado correctamente"
 
-#: ../includes/class-user.php:169
-msgid "Please provide a valid email address."
-msgstr "Por favor ingrese una dirección de correo electrónico válida."
+#~ msgid "User updated successfully"
+#~ msgstr "Usuario actualizado correctamente"
 
-#: ../includes/class-user.php:173
-msgid "An account is already registered with your email address."
-msgstr "Una cuenta ya está registrada con con este email."
+#~ msgid "Please provide a valid email address."
+#~ msgstr "Por favor ingrese una dirección de correo electrónico válida."
+
+#~ msgid "An account is already registered with your email address."
+#~ msgstr "Una cuenta ya está registrada con con este email."
 
 #~ msgid "Default"
 #~ msgstr "Predeterminado"
