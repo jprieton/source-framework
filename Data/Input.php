@@ -25,11 +25,11 @@ class Input {
    *
    * @see http://php.net/manual/es/filter.filters.php
    *
-   * @param string $field
+   * @param string|array $field
    * @param mixed $default
    * @param array $args
    *
-   * @return string
+   * @return mixed
    */
   public static function get( $field, $default = '', $args = [] ) {
     $defaults = [
@@ -38,14 +38,21 @@ class Input {
         'options'  => []
     ];
     $args     = wp_parse_args( $args, $defaults );
-    $value    = filter_input( INPUT_GET, $field, $args['filter'], $args['options'] );
 
-    if ( empty( $value ) ) {
-      return $default;
-    }
+    if ( is_array( $field ) ) {
+      foreach ( $field as $_field ) {
+        $value['field'] = self::get( $_field, $default, $args );
+      }
+    } else {
+      $value = filter_input( INPUT_GET, $field, $args['filter'], $args['options'] );
 
-    if ( !empty( $args['callback'] ) ) {
-      $value = self::_callback( $value, $args['callback'] );
+      if ( empty( $value ) ) {
+        return $default;
+      }
+
+      if ( !empty( $args['callback'] ) ) {
+        $value = self::_callback( $value, $args['callback'] );
+      }
     }
 
     return $value;
@@ -58,7 +65,7 @@ class Input {
    *
    * @see http://php.net/manual/es/filter.filters.php
    *
-   * @param string $field
+   * @param string|array $field
    * @param mixed $default
    * @param array $args
    *
@@ -71,14 +78,21 @@ class Input {
         'options'  => []
     ];
     $args     = wp_parse_args( $args, $defaults );
-    $value    = filter_input( INPUT_POST, $field, $args['filter'], $args['options'] );
 
-    if ( empty( $value ) ) {
-      return $default;
-    }
+    if ( is_array( $field ) ) {
+      foreach ( $field as $_field ) {
+        $value['field'] = self::post( $_field, $default, $args );
+      }
+    } else {
+      $value = filter_input( INPUT_POST, $field, $args['filter'], $args['options'] );
 
-    if ( !empty( $args['callback'] ) ) {
-      $value = self::_callback( $value, $args['callback'] );
+      if ( empty( $value ) ) {
+        return $default;
+      }
+
+      if ( !empty( $args['callback'] ) ) {
+        $value = self::_callback( $value, $args['callback'] );
+      }
     }
 
     return $value;
@@ -91,7 +105,7 @@ class Input {
    *
    * @see http://php.net/manual/es/filter.filters.php
    *
-   * @param string $field
+   * @param string|array $field
    * @param mixed $default
    * @param array $args
    *
@@ -104,14 +118,21 @@ class Input {
         'options'  => []
     ];
     $args     = wp_parse_args( $args, $defaults );
-    $value    = filter_input( INPUT_SERVER, $field, $args['filter'], $args['options'] );
 
-    if ( empty( $value ) ) {
-      return $default;
-    }
+    if ( is_array( $field ) ) {
+      foreach ( $field as $_field ) {
+        $value['field'] = self::server( $_field, $default, $args );
+      }
+    } else {
+      $value = filter_input( INPUT_SERVER, $field, $args['filter'], $args['options'] );
 
-    if ( !empty( $args['callback'] ) ) {
-      $value = self::_callback( $value, $args['callback'] );
+      if ( empty( $value ) ) {
+        return $default;
+      }
+
+      if ( !empty( $args['callback'] ) ) {
+        $value = self::_callback( $value, $args['callback'] );
+      }
     }
 
     return $value;
@@ -124,7 +145,7 @@ class Input {
    *
    * @see http://php.net/manual/es/filter.filters.php
    *
-   * @param string $field
+   * @param string|array $field
    * @param mixed $default
    * @param array $args
    *
@@ -137,14 +158,21 @@ class Input {
         'options'  => []
     ];
     $args     = wp_parse_args( $args, $defaults );
-    $value    = filter_input( INPUT_COOKIE, $field, $args['filter'], $args['options'] );
 
-    if ( empty( $value ) ) {
-      return $default;
-    }
+    if ( is_array( $field ) ) {
+      foreach ( $field as $_field ) {
+        $value['field'] = self::cookie( $_field, $default, $args );
+      }
+    } else {
+      $value = filter_input( INPUT_COOKIE, $field, $args['filter'], $args['options'] );
 
-    if ( !empty( $args['callback'] ) ) {
-      $value = self::_callback( $value, $args['callback'] );
+      if ( empty( $value ) ) {
+        return $default;
+      }
+
+      if ( !empty( $args['callback'] ) ) {
+        $value = self::_callback( $value, $args['callback'] );
+      }
     }
 
     return $value;
