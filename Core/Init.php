@@ -151,12 +151,6 @@ final class Init extends Singleton {
     add_theme_support( 'title-tag' );
 
     /**
-     * Enables Selective Refresh for Widgets being managed within the Customizer.
-     * @since 0.5.0
-     */
-    add_theme_support( 'customize-selective-refresh-widgets' );
-
-    /**
      * To enable the use of a custom logo in your theme
      * @since 0.5.0
      */

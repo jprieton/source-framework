@@ -43,7 +43,7 @@ class ThumbnailColumn {
   public static function manage_columns( $posts_columns, $post_type ) {
     $new = array(
         'cb'        => $posts_columns['cb'],
-        'thumbnail' => '<span class="dashicons dashicons-format-image" title="' . __( 'Thumbnail', \SourceFramework\TEXTDOMAIN ) . '"><span class="screen-reader-text">' . __( 'Featured', \SourceFramework\TEXTDOMAIN ) . '</span></span>'
+        'thumbnail' =>  __( 'Thumbnail', \SourceFramework\TEXTDOMAIN )
     );
 
     $posts_columns = array_merge( $new, $posts_columns );
