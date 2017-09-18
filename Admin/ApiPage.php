@@ -81,7 +81,7 @@ final class ApiPage extends SettingPage {
    * @since   1.1.0
    */
   private function add_recatpcha_settings_section() {
-    $this->add_setting_section( 'source-framework-api-recaptcha', 'reCAPTCHA' );
+    $this->add_setting_section( 'source-framework-api-recaptcha', 'Google reCAPTCHA' );
 
     $this->fields->add_field( array(
         'name'        => 'Site Key',

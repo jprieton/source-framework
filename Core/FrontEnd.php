@@ -257,7 +257,7 @@ final class FrontEnd extends Singleton {
       $tools_setting_group = new SettingGroup( 'tools_settings' );
     }
 
-    if ( $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
+    if ( in_array( $tools_setting_group->get_option( 'frontend-helper-enabled' ), [ 'bootstrap3x', 'bootstrap4x' ] ) ) {
       new FrontendHelper();
     }
   }

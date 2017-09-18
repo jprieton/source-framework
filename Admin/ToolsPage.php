@@ -51,10 +51,15 @@ final class ToolsPage extends SettingPage {
     $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
-        'type'  => 'checkbox',
-        'name'  => __( 'Frontend Helper', \SourceFramework\TEXTDOMAIN ),
-        'id'    => 'frontend-helper-enabled',
-        'label' => __( 'This option enables <strong>Frontend Helper</strong> feature.', \SourceFramework\TEXTDOMAIN ),
+        'type'    => 'select',
+        'name'    => __( 'Frontend Helper', \SourceFramework\TEXTDOMAIN ),
+        'id'      => 'frontend-helper-enabled',
+        'desc'    => __( 'This option enables <strong>Frontend Helper</strong> feature.', \SourceFramework\TEXTDOMAIN ),
+        'options' => [
+            'no'          => __( 'Disabled', \SourceFramework\TEXTDOMAIN ),
+            'bootstrap3x' => 'Bootstrap 3.x',
+            'bootstrap4x' => 'Bootstrap 4.x',
+        ]
     ];
     $this->fields->add_field( $args );
   }

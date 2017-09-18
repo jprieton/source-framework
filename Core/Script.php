@@ -115,11 +115,7 @@ class Script extends Singleton {
    * @since 1.0.0
    */
   private function register_scripts() {
-    global $tools_setting_group, $api_setting_group;
-
-    if ( empty( $tools_setting_group ) ) {
-      $tools_setting_group = new SettingGroup( 'tools_settings' );
-    }
+    global $api_setting_group;
 
     if ( empty( $api_setting_group ) ) {
       $api_setting_group = new SettingGroup( 'api_settings' );
@@ -138,7 +134,7 @@ class Script extends Singleton {
             'remote'    => '//cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js',
             'integrity' => 'sha256-65rhSmwPSQGe83K1p6cudTQxfiMNutuHCIB0n8CqvF4=',
             'ver'       => '3.3.1',
-            'autoload'  => $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ),
+            'autoload'  => false,
         ],
         'recaptcha'                    => [
             'remote'    => '//www.google.com/recaptcha/api.js',

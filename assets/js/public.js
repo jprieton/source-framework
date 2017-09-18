@@ -75,7 +75,7 @@
    * @since 1.0.0
    */
   $('.select-to-url').on('change', function () {
-    var url = $(this).val();
+    let url = $(this).val();
     window.location = url;
   });
 
