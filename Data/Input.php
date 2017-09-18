@@ -26,6 +26,7 @@ class Input {
    * @since          1.1.0
    *
    * @see http://php.net/manual/es/filter.filters.php
+   * @see https://developer.wordpress.org/reference/functions/sanitize_text_field/
    *
    * @param string|array $field
    * @param mixed $default
@@ -66,6 +67,7 @@ class Input {
    * @since          1.1.0
    *
    * @see http://php.net/manual/es/filter.filters.php
+   * @see https://developer.wordpress.org/reference/functions/sanitize_text_field/
    *
    * @param string|array $field
    * @param mixed $default
@@ -106,6 +108,7 @@ class Input {
    * @since          1.1.0
    *
    * @see http://php.net/manual/es/filter.filters.php
+   * @see https://developer.wordpress.org/reference/functions/sanitize_text_field/
    *
    * @param string|array $field
    * @param mixed $default
@@ -146,6 +149,7 @@ class Input {
    * @since          1.1.0
    *
    * @see http://php.net/manual/es/filter.filters.php
+   * @see https://developer.wordpress.org/reference/functions/sanitize_text_field/
    *
    * @param string|array $field
    * @param mixed $default
@@ -247,6 +251,21 @@ class Input {
    */
   public function user_agent() {
     return self::server( 'HTTP_USER_AGENT' );
+  }
+
+  /**
+   * Generate URL-encoded query string for method request
+   *
+   * @since          1.1.0
+   *
+   * @param string $method Request method
+   * @param array $override Overrides method query data
+   * @return string
+   */
+  public function query_string( $method = 'get', $override = [] ) {
+    $method     = '_' . strtoupper( $method );
+    $query_data = wp_parse_args( $override, ${$method} );
+    return http_build_query( $query_data );
   }
 
 }
