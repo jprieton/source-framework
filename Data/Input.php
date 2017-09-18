@@ -12,6 +12,8 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Input class
  *
+ * Access form data (POST, GET, SERVER, COOKIE)
+ *
  * @package        Data
  * @since          1.1.0
  * @author         Javier Prieto <jprieton@gmail.com>
@@ -195,6 +197,56 @@ class Input {
       }
     }
     return $value;
+  }
+
+  /**
+   * Is AJAX request?
+   *
+   * Test to see if a request contains the HTTP_X_REQUESTED_WITH header.
+   *
+   * @since          1.1.0
+   *
+   * @return 	bool
+   */
+  public function is_ajax_request() {
+    return (self::server( 'HTTP_X_REQUESTED_WITH' ) === 'xmlhttprequest');
+  }
+
+  /**
+   * Is CLI?
+   *
+   * Test to see if a request was made from the command line.
+   *
+   * @since          1.1.0
+   *
+   * @return 	bool
+   */
+  public function is_cli_request() {
+    return (PHP_SAPI === 'cli' OR defined( 'STDIN' ));
+  }
+
+  /**
+   * Get Request Method
+   *
+   * Return the request method
+   *
+   * @since          1.1.0
+   *
+   * @return 	string
+   */
+  public function method() {
+    return self::server( 'REQUEST_METHOD' );
+  }
+
+  /**
+   * Fetch User Agent string
+   *
+   * @since          1.1.0
+   *
+   * @return	string|null	User Agent string or NULL if it doesn't exist
+   */
+  public function user_agent() {
+    return self::server( 'HTTP_USER_AGENT', null );
   }
 
 }
