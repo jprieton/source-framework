@@ -243,10 +243,10 @@ class Input {
    *
    * @since          1.1.0
    *
-   * @return	string|null	User Agent string or NULL if it doesn't exist
+   * @return	string	User Agent string or empty if it doesn't exist
    */
   public function user_agent() {
-    return self::server( 'HTTP_USER_AGENT', null );
+    return self::server( 'HTTP_USER_AGENT' );
   }
 
 }
