@@ -47,6 +47,12 @@ final class Admin extends Singleton {
     parent::__construct();
 
     /**
+     * Enables the Excerpt meta box in Page edit screen.
+     * @since 1.2.0
+     */
+    add_action( 'init', [ $this, 'add_excerpt_support_for_pages' ] );
+
+    /**
      * Enable csv importer
      * @since 1.0.0
      */
@@ -76,6 +82,15 @@ final class Admin extends Singleton {
      */
     add_action( 'current_screen', [ $this, 'featured_posts_column' ] );
     add_action( 'wp_ajax_toggle_featured_post', [ 'SourceFramework\Admin\FeaturedPost', 'toggle_featured_post' ] );
+  }
+
+  /**
+   * Enables the Excerpt meta box in Page edit screen.
+   *
+   * @since   1.2.0
+   */
+  public function add_excerpt_support_for_pages() {
+    add_post_type_support( 'page', 'excerpt' );
   }
 
   /**
@@ -143,7 +158,7 @@ final class Admin extends Singleton {
 
     $post_types_enabled = $advanced_setting_group->get_option( 'thumbnail-column' );
 
-    $screen             = get_current_screen();
+    $screen = get_current_screen();
     if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
 
       if ( function_exists( 'WC' ) && 'product' == $screen->post_type ) {
