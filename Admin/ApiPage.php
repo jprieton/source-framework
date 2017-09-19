@@ -40,15 +40,16 @@ final class ApiPage extends SettingPage {
     parent::__construct( $menu_slug, 'source-framework-api' );
     $this->add_submenu_page( __( 'APIs', \SourceFramework\TEXTDOMAIN ), __( 'APIs', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->add_instagram_settings_section();
+    $this->add_recatpcha_settings_section();
   }
 
   /**
    * Add Instagram API Section
    *
-   * @since   0.5.0
+   * @since   1.0.0
    */
   private function add_instagram_settings_section() {
-    $this->add_setting_section( 'smgdevtools_api_settings_section_instagram', 'Instagram' );
+    $this->add_setting_section( 'source-framework-api-instagram', 'Instagram' );
 
     $this->fields->add_field( array(
         'name'        => 'Client ID',
@@ -71,6 +72,29 @@ final class ApiPage extends SettingPage {
         'input_class' => 'regular-text code',
         'placeholder' => 60 * MINUTE_IN_SECONDS,
         'desc'        => 'Set data cache of requests in seconds',
+    ) );
+  }
+
+  /**
+   * Add reCAPTCHA API Section
+   *
+   * @since   1.1.0
+   */
+  private function add_recatpcha_settings_section() {
+    $this->add_setting_section( 'source-framework-api-recaptcha', 'Google reCAPTCHA' );
+
+    $this->fields->add_field( array(
+        'name'        => 'Site Key',
+        'id'          => 'recaptcha-site-key',
+        'type'        => 'text',
+        'input_class' => 'regular-text code',
+    ) );
+
+    $this->fields->add_field( array(
+        'name'        => 'Secret Key',
+        'id'          => 'recaptcha-secret-key',
+        'type'        => 'text',
+        'input_class' => 'regular-text code',
     ) );
   }
 

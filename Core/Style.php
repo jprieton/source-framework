@@ -144,7 +144,7 @@ class Style extends Singleton {
             'local'    => plugins_url( 'assets/css/frontend-helper.css', \SourceFramework\PLUGIN_FILE ),
             'ver'      => \SourceFramework\VERSION,
             'media'    => 'screen',
-            'autoload' => $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ),
+            'autoload' => in_array( $tools_setting_group->get_option( 'frontend-helper-enabled' ), [ 'bootstrap3x', 'bootstrap4x' ] ),
         ],
     ];
     return apply_filters( 'register_styles', $styles );

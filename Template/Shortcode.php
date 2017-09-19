@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Template\Tag;
+use SourceFramework\Settings\SettingGroup;
 
 /**
  * Shortcode class
@@ -57,6 +58,31 @@ class Shortcode {
     }
 
     return Tag::mailto( $email, $content, $attributes );
+  }
+
+  /**
+   * Returns a reCAPTCHA div
+   *
+   * @since 1.1.0
+   *
+   * @global SettingGroup $api_setting_group
+   * @param array $attributes
+   * @return string
+   */
+  public static function recaptcha( $attributes ) {
+    global $api_setting_group;
+
+    if ( empty( $api_setting_group ) ) {
+      $api_setting_group = new SettingGroup( 'api_settings' );
+    }
+
+    $defaults = [
+        'class'        => 'g-recaptcha',
+        'data-sitekey' => $api_setting_group->get_option( 'recaptcha-site-key' )
+    ];
+
+    $attributes = wp_parse_args( $attributes, $defaults );
+    return Tag::html( 'div', null, $attributes );
   }
 
 }

@@ -132,7 +132,7 @@ class Mail extends PHPMailer {
    *
    * @param string $text
    */
-  public function set_content_powered( $text = 'Powered by SMG | DIGITAL MARKETING AGENCY' ) {
+  public function set_content_powered( $text = '' ) {
     if ( !empty( $text ) ) {
       $this->mail_powered = Tag::html( 'div', $text, [ 'style' => 'text-align: center; padding: 0 0 5px 0; font-weight: bold; font-size: 0.6em; color: #888888;' ] );
     }

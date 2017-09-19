@@ -54,11 +54,7 @@
 .frontend-helper .info-window .info2 {
   line-height: 1.2em;
 }
-.frontend-helper .visible-xs,
-.frontend-helper .visible-xxs,
-.frontend-helper .visible-sm,
-.frontend-helper .visible-md,
-.frontend-helper .visible-lg {
+.frontend-helper .bs-breakpoint > div {
   width: 50px;
 }
 .frontend-helper .modernizr-btn {

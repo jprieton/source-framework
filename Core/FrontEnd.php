@@ -118,6 +118,12 @@ final class FrontEnd extends Singleton {
      * @since 1.0.0
      */
     add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
+
+    /**
+     * Returns a reCAPTCHA div
+     * @since 1.1.0
+     */
+    add_shortcode( 'recaptcha', [ 'SourceFramework\Template\Shortcode', 'recaptcha' ] );
   }
 
   /**
@@ -251,7 +257,7 @@ final class FrontEnd extends Singleton {
       $tools_setting_group = new SettingGroup( 'tools_settings' );
     }
 
-    if ( $tools_setting_group->get_bool_option( 'frontend-helper-enabled' ) ) {
+    if ( in_array( $tools_setting_group->get_option( 'frontend-helper-enabled' ), [ 'bootstrap3x', 'bootstrap4x' ] ) ) {
       new FrontendHelper();
     }
   }

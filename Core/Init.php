@@ -127,6 +127,24 @@ final class Init extends Singleton {
     add_theme_support( 'post-thumbnails' );
 
     /**
+     * Enables Post Formats support for a theme.
+     * @since 0.5.0
+     */
+    add_theme_support( 'post-formats' );
+
+    /**
+     * Enables Automatic Feed Links for post and comment in the head
+     * @since 0.5.0
+     */
+    add_theme_support( 'automatic-feed-links' );
+
+    /**
+     * This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
+     * @since 0.5.0
+     */
+    add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
+    /**
      * Add theme support for document Title tag
      * @since 0.5.0
      */
