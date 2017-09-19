@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Plugin Name:    SourceFramework
  * Description:    An extensible framework for WordPress themes and plugins
- * Version:        1.0.0
+ * Version:        1.1.0
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3
  * License URI:    http://www.gnu.org/licenses/gpl-3.0.txt
@@ -35,7 +35,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Define plugin constants
  * @since 1.0.0
  */
-define( 'SourceFramework\VERSION', '1.0.0' );
+define( 'SourceFramework\VERSION', '1.1.0' );
 define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
