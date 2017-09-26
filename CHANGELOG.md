@@ -11,3 +11,6 @@ Starting with version 1.1, the SourceFramework follows [SemVer](http://semver.or
   - reCAPTCHA API
   - Input, User and Error classes
   - Added FrontEnd Helper compatibility with Boostrap 4.x 
+
+- 1.2.0
+  - Enables the Excerpt meta box in Page edit screen.
