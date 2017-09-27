@@ -48,7 +48,10 @@ class Tag {
    * @return  string
    */
   public static function open( $tag, $attributes = array() ) {
-    $tag        = esc_attr( $tag );
+    $tag = esc_attr( $tag );
+    if ( empty( $tag ) ) {
+      return '';
+    }
     static::parse_shorthand( $tag, $attributes );
     $attributes = static::parse_attributes( $attributes );
 
@@ -64,6 +67,9 @@ class Tag {
    * @return  string
    */
   public static function close( $tag ) {
+    if ( empty( $tag ) ) {
+      return '';
+    }
     return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
   }
 
