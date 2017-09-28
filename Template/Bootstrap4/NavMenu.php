@@ -32,11 +32,38 @@ use SourceFramework\Template\Tag;
  *
  * @extends Walker_Nav_Menu
  */
+
+/**
+ * NavMenu class
+ *
+ * @package        Template
+ * @subpackage     Bootstrap4
+ *
+ * @since          1.2.0
+ * @see            https://getbootstrap.com/docs/4.0/components/navbar/
+ * @extends        Walker_Nav_Menu
+ * @author         Javier Prieto <jprieton@gmail.com>
+ */
 class NavMenu extends Walker_Nav_Menu {
 
-  private $i        = 0;
+  /**
+   * @since       1.2.0
+   * @access      public
+   * @var type    bool
+   */
   private $dropdown = false;
 
+  /**
+   * Starts the list before the elements are added.
+   *
+   * @since       1.2.0
+   *
+   * @see Walker::start_lvl()
+   *
+   * @param string   $output Passed by reference. Used to append additional content.
+   * @param int      $depth  Depth of menu item. Used for padding.
+   * @param stdClass $args   An object of wp_nav_menu() arguments.
+   */
   public function start_lvl( &$output, $depth = 0, $args = array() ) {
     if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
       $t = '';
@@ -50,6 +77,17 @@ class NavMenu extends Walker_Nav_Menu {
     $output         .= $n . str_repeat( $t, $depth ) . '<div class="dropdown-menu" role="menu">' . $n;
   }
 
+  /**
+   * Ends the list of after the elements are added.
+   *
+   * @since       1.2.0
+   *
+   * @see Walker::end_lvl()
+   *
+   * @param string   $output Passed by reference. Used to append additional content.
+   * @param int      $depth  Depth of menu item. Used for padding.
+   * @param stdClass $args   An object of wp_nav_menu() arguments.
+   */
   public function end_lvl( &$output, $depth = 0, $args = array() ) {
     if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
       $t = '';
@@ -63,6 +101,19 @@ class NavMenu extends Walker_Nav_Menu {
     $output         .= $n . str_repeat( $t, $depth ) . '</div>' . $n;
   }
 
+    /**
+     * Starts the element output.
+     *
+     * @since 1.2.0
+     *
+     * @see Walker::start_el()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param WP_Post  $item   Menu item data object.
+     * @param int      $depth  Depth of menu item. Used for padding.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     * @param int      $id     Current item ID.
+     */
   public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
       $t = '';
@@ -74,6 +125,14 @@ class NavMenu extends Walker_Nav_Menu {
 
     $indent = str_repeat( $t, $depth );
 
+    if ( 0 === strcasecmp( $item->attr_title, 'divider' ) && $this->dropdown ) {
+      $output .= $indent . '<div class="dropdown-divider"></div>' . $n;
+      return;
+    } elseif ( 0 === strcasecmp( $item->title, 'divider' ) && $this->dropdown ) {
+      $output .= $indent . '<div class="dropdown-divider"></div>' . $n;
+      return;
+    }
+
     $classes   = empty( $item->classes ) ? [] : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
     $classes[] = 'nav-item';
@@ -84,6 +143,14 @@ class NavMenu extends Walker_Nav_Menu {
 
     if ( 0 < $depth ) {
       $classes[] = 'dropdown-menu';
+    }
+
+    if ( in_array( 'current-menu-parent', $classes ) ) {
+      $classes[] = 'active';
+    }
+
+    if ( in_array( 'current_page_item', $classes ) ) {
+      $classes[] = 'active';
     }
 
     /**
@@ -217,6 +284,18 @@ class NavMenu extends Walker_Nav_Menu {
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
   }
 
+    /**
+     * Ends the element output, if needed.
+     *
+     * @since 1.2.0
+     *
+     * @see Walker::end_el()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param WP_Post  $item   Page data object. Not used.
+     * @param int      $depth  Depth of page. Not Used.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     */
   public function end_el( &$output, $item, $depth = 0, $args = array() ) {
     if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
       $t = '';
