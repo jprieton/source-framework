@@ -12,6 +12,13 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Template\Tag;
 use WP_Error;
 
+/**
+ * Importer class
+ *
+ * @package        Admin
+ * @since          1.0.0
+ * @author         Javier Prieto <jprieton@gmail.com>
+ */
 class FeaturedPost {
 
   /**

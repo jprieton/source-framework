@@ -135,6 +135,8 @@ class Script extends Singleton {
             'integrity' => 'sha256-65rhSmwPSQGe83K1p6cudTQxfiMNutuHCIB0n8CqvF4=',
             'ver'       => '3.3.1',
             'autoload'  => false,
+            'async'     => true,
+            'defer'     => true,
         ],
         'recaptcha'                    => [
             'remote'    => '//www.google.com/recaptcha/api.js',
@@ -148,6 +150,11 @@ class Script extends Singleton {
             'integrity' => 'sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa',
             'deps'      => [ 'jquery' ],
             'ver'       => '3.3.7',
+        ],
+        'owl-carousel'                 => [
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js',
+            'ver'       => '2.2.1',
+            'integrity' => 'sha256-s5TTOyp+xlSmsDfr/aZhg0Gz+JejYr5iTJI8JxG1SkM=',
         ],
         'popper'                       => [
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js',

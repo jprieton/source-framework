@@ -80,8 +80,6 @@ final class AdvancedPage extends SettingPage {
 
     $args['id']   = 'featured-posts';
     $args['name'] = __( 'Featured Posts', \SourceFramework\TEXTDOMAIN );
-
-
     $this->fields->add_field( $args );
 
     $args = [
@@ -89,6 +87,14 @@ final class AdvancedPage extends SettingPage {
         'name'  => __( 'Favorite Post', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'favorite-post-enabled',
         'label' => __( "This option enables to the user mark posts as favorite.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+    $args = [
+        'type'  => 'checkbox',
+        'name'  => __( 'Rich text editor in excerpts', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'excerpt-rich-editor-enabled',
+        'label' => __( "This option enables the rich text editor in excerpts.", \SourceFramework\TEXTDOMAIN ),
     ];
     $this->fields->add_field( $args );
 

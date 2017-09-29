@@ -77,6 +77,12 @@ final class Admin extends Singleton {
     add_action( 'current_screen', [ $this, 'thumbnail_column' ] );
 
     /**
+     * Replaces the default excerpt editor with TinyMCE
+     * @since   1.2.0
+     */
+    add_action( 'add_meta_boxes', [ $this, 'excerpt_rich_editor' ] );
+
+    /**
      * Add  featured posts backend funcionality.
      * @since   1.0.0
      */
@@ -200,6 +206,24 @@ final class Admin extends Singleton {
         exit( wp_redirect( home_url( '/' ) ) );
         break;
       }
+    }
+  }
+
+  /**
+   * Replaces the default excerpt editor with TinyMCE
+   * @since   1.2.0
+   */
+  public function excerpt_rich_editor() {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $is_enabled = $advanced_setting_group->get_bool_option( 'excerpt-rich-editor-enabled' );
+
+    if ( $is_enabled ) {
+      add_action( 'add_meta_boxes', array( 'SourceFramework\Admin\ExcerptRichEditor', 'switch_metabox' ), 99 );
     }
   }
 
