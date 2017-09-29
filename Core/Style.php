@@ -125,6 +125,11 @@ class Style extends Singleton {
             'integrity' => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
             'media'     => 'screen',
         ],
+        'owl-carousel'            => [
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css',
+            'ver'       => '2.2.1',
+            'integrity' => 'sha256-AWqwvQ3kg5aA5KcXpX25sYKowsX97sTCTbeo33Yfyk0=',
+        ],
         'bootstrap3'       => [
             'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
             'ver'       => '3.3.7',
