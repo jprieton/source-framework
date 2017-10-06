@@ -59,7 +59,7 @@ class Review {
         'filter_items_list'     => __( 'Filter items list', \SourceFramework\TEXTDOMAIN ),
     );
     $rewrite = array(
-        'slug'       => _x( 'review', 'post_type slug', \SourceFramework\TEXTDOMAIN ),
+        'slug'       => _x( 'review', 'post_type single_slug', \SourceFramework\TEXTDOMAIN ),
         'with_front' => true,
         'pages'      => true,
         'feeds'      => true,
@@ -78,7 +78,7 @@ class Review {
         'show_in_admin_bar'   => true,
         'show_in_nav_menus'   => true,
         'can_export'          => true,
-        'has_archive'         => _x( 'review', 'post_type archive_slug', \SourceFramework\TEXTDOMAIN ),
+        'has_archive'         => _x( 'reviews', 'post_type archive_slug', \SourceFramework\TEXTDOMAIN ),
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'rewrite'             => $rewrite,

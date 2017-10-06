@@ -244,7 +244,6 @@ final class Init extends Singleton {
         'review'      => 'SourceFramework\PostType\Review',
         'service'     => 'SourceFramework\PostType\Service',
         'slider'      => 'SourceFramework\PostType\Slider',
-        'testimonial' => 'SourceFramework\PostType\Testimonial',
     ];
 
     if ( function_exists( 'WC' ) ) {

@@ -216,9 +216,6 @@ final class AdvancedPage extends SettingPage {
         'slider'      => [
             'label' => __( 'Slider', \SourceFramework\TEXTDOMAIN ),
         ],
-        'testimonial' => [
-            'label' => __( 'Testimonials', \SourceFramework\TEXTDOMAIN ),
-        ],
     ];
 
     $post_types = apply_filters( 'custom_post_types', $post_types );

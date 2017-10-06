@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-10-06 11:37-0400\n"
-"PO-Revision-Date: 2017-10-06 11:40-0400\n"
+"POT-Creation-Date: 2017-10-06 15:26-0400\n"
+"PO-Revision-Date: 2017-10-06 15:28-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -164,11 +164,6 @@ msgstr "Servicios"
 #: ../PostType/Slider.php:43 ../PostType/Slider.php:68
 msgid "Slider"
 msgstr ""
-
-#: ../Admin/AdvancedPage.php:220 ../PostType/Testimonial.php:40
-#: ../PostType/Testimonial.php:42
-msgid "Testimonials"
-msgstr "Testimonios"
 
 #: ../Admin/AnalyticsPage.php:31 ../Admin/AnalyticsPage.php:42
 msgid "Analytics &amp; SEO"
@@ -336,7 +331,7 @@ msgstr "Oficina"
 #: ../PostType/Office.php:44 ../PostType/Place.php:44
 #: ../PostType/Portfolio.php:44 ../PostType/Product.php:44
 #: ../PostType/Review.php:44 ../PostType/Service.php:44
-#: ../PostType/Slider.php:44 ../PostType/Testimonial.php:44
+#: ../PostType/Slider.php:44
 msgid "Item Archives"
 msgstr ""
 
@@ -355,7 +350,7 @@ msgstr ""
 #: ../PostType/Office.php:48 ../PostType/Place.php:48
 #: ../PostType/Portfolio.php:48 ../PostType/Product.php:48
 #: ../PostType/Review.php:48 ../PostType/Service.php:48
-#: ../PostType/Slider.php:48 ../PostType/Testimonial.php:48
+#: ../PostType/Slider.php:48
 msgid "New Item"
 msgstr ""
 
@@ -386,14 +381,14 @@ msgstr ""
 #: ../PostType/Office.php:55 ../PostType/Place.php:55
 #: ../PostType/Portfolio.php:55 ../PostType/Product.php:55
 #: ../PostType/Review.php:55 ../PostType/Service.php:55
-#: ../PostType/Slider.php:55 ../PostType/Testimonial.php:55
+#: ../PostType/Slider.php:55
 msgid "Insert into item"
 msgstr ""
 
 #: ../PostType/Office.php:56 ../PostType/Place.php:56
 #: ../PostType/Portfolio.php:56 ../PostType/Product.php:56
 #: ../PostType/Review.php:56 ../PostType/Service.php:56
-#: ../PostType/Slider.php:56 ../PostType/Testimonial.php:56
+#: ../PostType/Slider.php:56
 msgid "Uploaded to this item"
 msgstr ""
 
@@ -407,8 +402,7 @@ msgstr ""
 #: ../PostType/Review.php:155 ../PostType/Service.php:57
 #: ../PostType/Service.php:112 ../PostType/Service.php:155
 #: ../PostType/Slider.php:57 ../PostType/Slider.php:112
-#: ../PostType/Slider.php:155 ../PostType/Testimonial.php:57
-#: ../PostType/Testimonial.php:112 ../PostType/Testimonial.php:155
+#: ../PostType/Slider.php:155
 msgid "Items list"
 msgstr ""
 
@@ -422,15 +416,14 @@ msgstr ""
 #: ../PostType/Review.php:156 ../PostType/Service.php:58
 #: ../PostType/Service.php:113 ../PostType/Service.php:156
 #: ../PostType/Slider.php:58 ../PostType/Slider.php:113
-#: ../PostType/Slider.php:156 ../PostType/Testimonial.php:58
-#: ../PostType/Testimonial.php:113 ../PostType/Testimonial.php:156
+#: ../PostType/Slider.php:156
 msgid "Items list navigation"
 msgstr ""
 
 #: ../PostType/Office.php:59 ../PostType/Place.php:59
 #: ../PostType/Portfolio.php:59 ../PostType/Product.php:59
 #: ../PostType/Review.php:59 ../PostType/Service.php:59
-#: ../PostType/Slider.php:59 ../PostType/Testimonial.php:59
+#: ../PostType/Slider.php:59
 msgid "Filter items list"
 msgstr ""
 
@@ -455,7 +448,7 @@ msgstr ""
 #: ../PostType/Office.php:99 ../PostType/Place.php:99
 #: ../PostType/Portfolio.php:99 ../PostType/Product.php:99
 #: ../PostType/Review.php:99 ../PostType/Service.php:99
-#: ../PostType/Slider.php:99 ../PostType/Testimonial.php:99
+#: ../PostType/Slider.php:99
 msgid "Categories"
 msgstr "Categorías"
 
@@ -478,7 +471,6 @@ msgstr ""
 #: ../PostType/Review.php:103 ../PostType/Review.php:146
 #: ../PostType/Service.php:103 ../PostType/Service.php:146
 #: ../PostType/Slider.php:103 ../PostType/Slider.php:146
-#: ../PostType/Testimonial.php:103 ../PostType/Testimonial.php:146
 msgid "Add New Item"
 msgstr ""
 
@@ -497,7 +489,6 @@ msgstr ""
 #: ../PostType/Review.php:106 ../PostType/Review.php:149
 #: ../PostType/Service.php:106 ../PostType/Service.php:149
 #: ../PostType/Slider.php:106 ../PostType/Slider.php:149
-#: ../PostType/Testimonial.php:106 ../PostType/Testimonial.php:149
 msgid "View Item"
 msgstr ""
 
@@ -508,7 +499,6 @@ msgstr ""
 #: ../PostType/Review.php:107 ../PostType/Review.php:150
 #: ../PostType/Service.php:107 ../PostType/Service.php:150
 #: ../PostType/Slider.php:107 ../PostType/Slider.php:150
-#: ../PostType/Testimonial.php:107 ../PostType/Testimonial.php:150
 msgid "Add or remove items"
 msgstr ""
 
@@ -519,7 +509,6 @@ msgstr ""
 #: ../PostType/Review.php:108 ../PostType/Review.php:151
 #: ../PostType/Service.php:108 ../PostType/Service.php:151
 #: ../PostType/Slider.php:108 ../PostType/Slider.php:151
-#: ../PostType/Testimonial.php:108 ../PostType/Testimonial.php:151
 msgid "Popular Items"
 msgstr ""
 
@@ -534,7 +523,6 @@ msgstr ""
 #: ../PostType/Review.php:110 ../PostType/Review.php:153
 #: ../PostType/Service.php:110 ../PostType/Service.php:153
 #: ../PostType/Slider.php:110 ../PostType/Slider.php:153
-#: ../PostType/Testimonial.php:110 ../PostType/Testimonial.php:153
 msgid "Not Found"
 msgstr "No encontrado"
 
@@ -545,7 +533,6 @@ msgstr "No encontrado"
 #: ../PostType/Review.php:111 ../PostType/Review.php:154
 #: ../PostType/Service.php:111 ../PostType/Service.php:154
 #: ../PostType/Slider.php:111 ../PostType/Slider.php:154
-#: ../PostType/Testimonial.php:111 ../PostType/Testimonial.php:154
 msgid "No items"
 msgstr ""
 
@@ -565,7 +552,7 @@ msgstr ""
 #: ../PostType/Office.php:142 ../PostType/Place.php:142
 #: ../PostType/Portfolio.php:142 ../PostType/Product.php:142
 #: ../PostType/Review.php:142 ../PostType/Service.php:142
-#: ../PostType/Slider.php:142 ../PostType/Testimonial.php:142
+#: ../PostType/Slider.php:142
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -995,7 +982,7 @@ msgstr ""
 
 #: ../PostType/Review.php:49
 msgid "Edit Review"
-msgstr ""
+msgstr "Editar opinión"
 
 #: ../PostType/Review.php:50
 msgid "Update Review"
@@ -1003,7 +990,7 @@ msgstr ""
 
 #: ../PostType/Review.php:51
 msgid "View Review"
-msgstr ""
+msgstr "Ver Opinión"
 
 #: ../PostType/Review.php:52
 msgid "Search review"
@@ -1018,14 +1005,14 @@ msgid "No review found in Trash"
 msgstr ""
 
 #: ../PostType/Review.php:62
-msgctxt "post_type slug"
+msgctxt "post_type single_slug"
 msgid "review"
-msgstr ""
+msgstr "opinion"
 
 #: ../PostType/Review.php:81
 msgctxt "post_type archive_slug"
-msgid "review"
-msgstr ""
+msgid "reviews"
+msgstr "opiniones"
 
 #: ../PostType/Review.php:97
 msgid "Review Categories"
@@ -1350,131 +1337,6 @@ msgctxt "taxonomy slug"
 msgid "slider-tag"
 msgstr ""
 
-#: ../PostType/Testimonial.php:41 ../PostType/Testimonial.php:43
-#: ../PostType/Testimonial.php:68
-msgid "Testimonial"
-msgstr "Testimonio"
-
-#: ../PostType/Testimonial.php:45
-msgid "All Testimonials"
-msgstr ""
-
-#: ../PostType/Testimonial.php:46
-msgid "Add New Testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:47
-msgid "New Testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:49
-msgid "Edit Testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:50
-msgid "Update Testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:51
-msgid "View Testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:52
-msgid "Search testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:53
-msgid "No testimonial found"
-msgstr ""
-
-#: ../PostType/Testimonial.php:54
-msgid "No testimonial found in Trash"
-msgstr ""
-
-#: ../PostType/Testimonial.php:62
-msgctxt "post_type slug"
-msgid "testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:81
-msgctxt "post_type archive_slug"
-msgid "testimonial"
-msgstr ""
-
-#: ../PostType/Testimonial.php:97
-msgid "Testimonial Categories"
-msgstr ""
-
-#: ../PostType/Testimonial.php:98
-msgid "Testimonial Category"
-msgstr ""
-
-#: ../PostType/Testimonial.php:100
-msgid "Parent Testimonial Categories"
-msgstr ""
-
-#: ../PostType/Testimonial.php:101
-msgid "Parent Testimonial Categories:"
-msgstr ""
-
-#: ../PostType/Testimonial.php:102
-msgid "New Testimonial Categories Name"
-msgstr ""
-
-#: ../PostType/Testimonial.php:104
-msgid "Edit Testimonial Categories"
-msgstr ""
-
-#: ../PostType/Testimonial.php:105
-msgid "Update Testimonial Categories"
-msgstr ""
-
-#: ../PostType/Testimonial.php:109
-msgid "Search Testimonial Categories"
-msgstr ""
-
-#: ../PostType/Testimonial.php:116
-msgctxt "taxonomy slug"
-msgid "testimonial-category"
-msgstr ""
-
-#: ../PostType/Testimonial.php:140
-msgid "Testimonial Tags"
-msgstr ""
-
-#: ../PostType/Testimonial.php:141
-msgid "Testimonial Tag"
-msgstr ""
-
-#: ../PostType/Testimonial.php:143
-msgid "Parent Testimonial Tags"
-msgstr ""
-
-#: ../PostType/Testimonial.php:144
-msgid "Parent Testimonial Tags:"
-msgstr ""
-
-#: ../PostType/Testimonial.php:145
-msgid "New Testimonial Tags Name"
-msgstr ""
-
-#: ../PostType/Testimonial.php:147
-msgid "Edit Testimonial Tags"
-msgstr ""
-
-#: ../PostType/Testimonial.php:148
-msgid "Update Testimonial Tags"
-msgstr ""
-
-#: ../PostType/Testimonial.php:152
-msgid "Search Testimonial Tags"
-msgstr ""
-
-#: ../PostType/Testimonial.php:159
-msgctxt "taxonomy slug"
-msgid "testimonial-tag"
-msgstr ""
-
 #: ../Template/Bootstrap3/Alert.php:159 ../Template/Bootstrap3/Modal.php:103
 #: ../Template/Bootstrap4/Alert.php:46 ../Template/Bootstrap4/Modal.php:103
 msgid "Close"
@@ -1520,3 +1382,9 @@ msgstr "Seleccione..."
 #: ../Tools/Media.php:43 ../Tools/Media.php:87
 msgid "Invalid or empty file"
 msgstr "Archivo no válido o vacío"
+
+#~ msgid "Testimonials"
+#~ msgstr "Testimonios"
+
+#~ msgid "Testimonial"
+#~ msgstr "Testimonio"
