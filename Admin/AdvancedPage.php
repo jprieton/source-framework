@@ -187,6 +187,53 @@ final class AdvancedPage extends SettingPage {
     $this->add_setting_section( 'custom-post-type', __( 'Post Types', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
+        'name'     => __( 'Post Formats', \SourceFramework\TEXTDOMAIN ),
+        'type'     => 'checkbox',
+        'id'       => 'post-formats',
+        'multiple' => true,
+        'options'  => []
+    ];
+
+    $post_types = [
+        'aside'   => [
+            'label' => __( 'Aside' ),
+        ],
+        'gallery' => [
+            'label' => __( 'Gallery' ),
+        ],
+        'link'    => [
+            'label' => __( 'Link' ),
+        ],
+        'product' => [
+            'label' => __( 'Image' ),
+        ],
+        'quote'   => [
+            'label' => __( 'Quote' ),
+        ],
+        'status'  => [
+            'label' => __( 'Status' ),
+        ],
+        'video'   => [
+            'label' => __( 'Video' ),
+        ],
+        'audio'   => [
+            'label' => __( 'Audio' ),
+        ],
+        'chat'    => [
+            'label' => __( 'Chat' ),
+        ],
+    ];
+
+    $post_types = apply_filters( 'custom_post_types', $post_types );
+
+    foreach ( $post_types as $key => $value ) {
+      $value['value']    = $key;
+      $args['options'][] = $value;
+    }
+
+    $this->fields->add_field( $args );
+
+    $args = [
         'name'     => __( 'Post Types', \SourceFramework\TEXTDOMAIN ),
         'type'     => 'checkbox',
         'id'       => 'post-types',
@@ -195,25 +242,25 @@ final class AdvancedPage extends SettingPage {
     ];
 
     $post_types = [
-        'office'      => [
+        'office'    => [
             'label' => __( 'Offices', \SourceFramework\TEXTDOMAIN ),
         ],
-        'place'       => [
+        'place'     => [
             'label' => __( 'Places', \SourceFramework\TEXTDOMAIN ),
         ],
-        'portfolio'   => [
+        'portfolio' => [
             'label' => __( 'Portfolios', \SourceFramework\TEXTDOMAIN ),
         ],
-        'product'     => [
+        'product'   => [
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
         ],
-        'review'      => [
+        'review'    => [
             'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
         ],
-        'service'     => [
+        'service'   => [
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
         ],
-        'slider'      => [
+        'slider'    => [
             'label' => __( 'Slider', \SourceFramework\TEXTDOMAIN ),
         ],
     ];
