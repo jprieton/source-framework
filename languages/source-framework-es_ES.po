@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-10-06 15:26-0400\n"
-"PO-Revision-Date: 2017-10-06 15:28-0400\n"
+"POT-Creation-Date: 2017-10-09 11:12-0400\n"
+"PO-Revision-Date: 2017-10-09 11:13-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -123,26 +123,67 @@ msgstr "Desactivar la barra de admin en frontend por rol"
 msgid "Disable access to the wp-admin in by role"
 msgstr "Desactivar el acceso al wp-admin por rol"
 
-#: ../Admin/AdvancedPage.php:187 ../Admin/AdvancedPage.php:190
+#: ../Admin/AdvancedPage.php:187 ../Admin/AdvancedPage.php:237
 msgid "Post Types"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:199 ../PostType/Office.php:40
+#: ../Admin/AdvancedPage.php:190
+msgid "Post Formats"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:199
+msgid "Aside"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:202
+msgid "Gallery"
+msgstr "Galería"
+
+#: ../Admin/AdvancedPage.php:205
+msgid "Link"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:208
+msgid "Image"
+msgstr "Imagen"
+
+#: ../Admin/AdvancedPage.php:211 ../PostType/Quote.php:41
+#: ../PostType/Quote.php:43 ../PostType/Quote.php:68
+msgid "Quote"
+msgstr "Cita"
+
+#: ../Admin/AdvancedPage.php:214
+msgid "Status"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:217
+msgid "Video"
+msgstr ""
+
+#: ../Admin/AdvancedPage.php:220
+msgid "Audio"
+msgstr "Audio"
+
+#: ../Admin/AdvancedPage.php:223
+msgid "Chat"
+msgstr "Chat"
+
+#: ../Admin/AdvancedPage.php:246 ../PostType/Office.php:40
 #: ../PostType/Office.php:42
 msgid "Offices"
 msgstr "Oficinas"
 
-#: ../Admin/AdvancedPage.php:202 ../PostType/Place.php:40
+#: ../Admin/AdvancedPage.php:249 ../PostType/Place.php:40
 #: ../PostType/Place.php:42
 msgid "Places"
 msgstr "Lugares"
 
-#: ../Admin/AdvancedPage.php:205 ../PostType/Portfolio.php:40
+#: ../Admin/AdvancedPage.php:252 ../PostType/Portfolio.php:40
 #: ../PostType/Portfolio.php:42
 msgid "Portfolios"
 msgstr "Portafolios"
 
-#: ../Admin/AdvancedPage.php:208
+#: ../Admin/AdvancedPage.php:255
 msgid ""
 "Products <span class=\"description\">(This option has no effect when "
 "WooCommerce is actived)</span>"
@@ -150,17 +191,22 @@ msgstr ""
 "Productos <span class=\"description\">(Esta opción no tiene efecto cuando "
 "WooCommerce está activo)</span>"
 
-#: ../Admin/AdvancedPage.php:211 ../PostType/Review.php:40
+#: ../Admin/AdvancedPage.php:258 ../PostType/Quote.php:40
+#: ../PostType/Quote.php:42
+msgid "Quotes"
+msgstr "Citas"
+
+#: ../Admin/AdvancedPage.php:261 ../PostType/Review.php:40
 #: ../PostType/Review.php:42
 msgid "Reviews"
 msgstr "Opiniones"
 
-#: ../Admin/AdvancedPage.php:214 ../PostType/Service.php:40
+#: ../Admin/AdvancedPage.php:264 ../PostType/Service.php:40
 #: ../PostType/Service.php:42
 msgid "Services"
 msgstr "Servicios"
 
-#: ../Admin/AdvancedPage.php:217 ../PostType/Slider.php:41
+#: ../Admin/AdvancedPage.php:267 ../PostType/Slider.php:41
 #: ../PostType/Slider.php:43 ../PostType/Slider.php:68
 msgid "Slider"
 msgstr ""
@@ -269,7 +315,7 @@ msgstr ""
 
 #: ../Admin/ToolsPage.php:59
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivado"
 
 #: ../Core/Error.php:30
 msgid "This action isn't supported"
@@ -330,8 +376,8 @@ msgstr "Oficina"
 
 #: ../PostType/Office.php:44 ../PostType/Place.php:44
 #: ../PostType/Portfolio.php:44 ../PostType/Product.php:44
-#: ../PostType/Review.php:44 ../PostType/Service.php:44
-#: ../PostType/Slider.php:44
+#: ../PostType/Quote.php:44 ../PostType/Review.php:44
+#: ../PostType/Service.php:44 ../PostType/Slider.php:44
 msgid "Item Archives"
 msgstr ""
 
@@ -349,8 +395,8 @@ msgstr ""
 
 #: ../PostType/Office.php:48 ../PostType/Place.php:48
 #: ../PostType/Portfolio.php:48 ../PostType/Product.php:48
-#: ../PostType/Review.php:48 ../PostType/Service.php:48
-#: ../PostType/Slider.php:48
+#: ../PostType/Quote.php:48 ../PostType/Review.php:48
+#: ../PostType/Service.php:48 ../PostType/Slider.php:48
 msgid "New Item"
 msgstr ""
 
@@ -380,15 +426,15 @@ msgstr ""
 
 #: ../PostType/Office.php:55 ../PostType/Place.php:55
 #: ../PostType/Portfolio.php:55 ../PostType/Product.php:55
-#: ../PostType/Review.php:55 ../PostType/Service.php:55
-#: ../PostType/Slider.php:55
+#: ../PostType/Quote.php:55 ../PostType/Review.php:55
+#: ../PostType/Service.php:55 ../PostType/Slider.php:55
 msgid "Insert into item"
 msgstr ""
 
 #: ../PostType/Office.php:56 ../PostType/Place.php:56
 #: ../PostType/Portfolio.php:56 ../PostType/Product.php:56
-#: ../PostType/Review.php:56 ../PostType/Service.php:56
-#: ../PostType/Slider.php:56
+#: ../PostType/Quote.php:56 ../PostType/Review.php:56
+#: ../PostType/Service.php:56 ../PostType/Slider.php:56
 msgid "Uploaded to this item"
 msgstr ""
 
@@ -398,6 +444,7 @@ msgstr ""
 #: ../PostType/Portfolio.php:57 ../PostType/Portfolio.php:112
 #: ../PostType/Portfolio.php:155 ../PostType/Product.php:57
 #: ../PostType/Product.php:112 ../PostType/Product.php:155
+#: ../PostType/Quote.php:57 ../PostType/Quote.php:112 ../PostType/Quote.php:155
 #: ../PostType/Review.php:57 ../PostType/Review.php:112
 #: ../PostType/Review.php:155 ../PostType/Service.php:57
 #: ../PostType/Service.php:112 ../PostType/Service.php:155
@@ -412,6 +459,7 @@ msgstr ""
 #: ../PostType/Portfolio.php:58 ../PostType/Portfolio.php:113
 #: ../PostType/Portfolio.php:156 ../PostType/Product.php:58
 #: ../PostType/Product.php:113 ../PostType/Product.php:156
+#: ../PostType/Quote.php:58 ../PostType/Quote.php:113 ../PostType/Quote.php:156
 #: ../PostType/Review.php:58 ../PostType/Review.php:113
 #: ../PostType/Review.php:156 ../PostType/Service.php:58
 #: ../PostType/Service.php:113 ../PostType/Service.php:156
@@ -422,8 +470,8 @@ msgstr ""
 
 #: ../PostType/Office.php:59 ../PostType/Place.php:59
 #: ../PostType/Portfolio.php:59 ../PostType/Product.php:59
-#: ../PostType/Review.php:59 ../PostType/Service.php:59
-#: ../PostType/Slider.php:59
+#: ../PostType/Quote.php:59 ../PostType/Review.php:59
+#: ../PostType/Service.php:59 ../PostType/Slider.php:59
 msgid "Filter items list"
 msgstr ""
 
@@ -447,8 +495,8 @@ msgstr ""
 
 #: ../PostType/Office.php:99 ../PostType/Place.php:99
 #: ../PostType/Portfolio.php:99 ../PostType/Product.php:99
-#: ../PostType/Review.php:99 ../PostType/Service.php:99
-#: ../PostType/Slider.php:99
+#: ../PostType/Quote.php:99 ../PostType/Review.php:99
+#: ../PostType/Service.php:99 ../PostType/Slider.php:99
 msgid "Categories"
 msgstr "Categorías"
 
@@ -468,6 +516,7 @@ msgstr ""
 #: ../PostType/Place.php:103 ../PostType/Place.php:146
 #: ../PostType/Portfolio.php:103 ../PostType/Portfolio.php:146
 #: ../PostType/Product.php:103 ../PostType/Product.php:146
+#: ../PostType/Quote.php:103 ../PostType/Quote.php:146
 #: ../PostType/Review.php:103 ../PostType/Review.php:146
 #: ../PostType/Service.php:103 ../PostType/Service.php:146
 #: ../PostType/Slider.php:103 ../PostType/Slider.php:146
@@ -486,6 +535,7 @@ msgstr ""
 #: ../PostType/Place.php:106 ../PostType/Place.php:149
 #: ../PostType/Portfolio.php:106 ../PostType/Portfolio.php:149
 #: ../PostType/Product.php:106 ../PostType/Product.php:149
+#: ../PostType/Quote.php:106 ../PostType/Quote.php:149
 #: ../PostType/Review.php:106 ../PostType/Review.php:149
 #: ../PostType/Service.php:106 ../PostType/Service.php:149
 #: ../PostType/Slider.php:106 ../PostType/Slider.php:149
@@ -496,6 +546,7 @@ msgstr ""
 #: ../PostType/Place.php:107 ../PostType/Place.php:150
 #: ../PostType/Portfolio.php:107 ../PostType/Portfolio.php:150
 #: ../PostType/Product.php:107 ../PostType/Product.php:150
+#: ../PostType/Quote.php:107 ../PostType/Quote.php:150
 #: ../PostType/Review.php:107 ../PostType/Review.php:150
 #: ../PostType/Service.php:107 ../PostType/Service.php:150
 #: ../PostType/Slider.php:107 ../PostType/Slider.php:150
@@ -506,6 +557,7 @@ msgstr ""
 #: ../PostType/Place.php:108 ../PostType/Place.php:151
 #: ../PostType/Portfolio.php:108 ../PostType/Portfolio.php:151
 #: ../PostType/Product.php:108 ../PostType/Product.php:151
+#: ../PostType/Quote.php:108 ../PostType/Quote.php:151
 #: ../PostType/Review.php:108 ../PostType/Review.php:151
 #: ../PostType/Service.php:108 ../PostType/Service.php:151
 #: ../PostType/Slider.php:108 ../PostType/Slider.php:151
@@ -520,6 +572,7 @@ msgstr ""
 #: ../PostType/Place.php:110 ../PostType/Place.php:153
 #: ../PostType/Portfolio.php:110 ../PostType/Portfolio.php:153
 #: ../PostType/Product.php:110 ../PostType/Product.php:153
+#: ../PostType/Quote.php:110 ../PostType/Quote.php:153
 #: ../PostType/Review.php:110 ../PostType/Review.php:153
 #: ../PostType/Service.php:110 ../PostType/Service.php:153
 #: ../PostType/Slider.php:110 ../PostType/Slider.php:153
@@ -530,6 +583,7 @@ msgstr "No encontrado"
 #: ../PostType/Place.php:111 ../PostType/Place.php:154
 #: ../PostType/Portfolio.php:111 ../PostType/Portfolio.php:154
 #: ../PostType/Product.php:111 ../PostType/Product.php:154
+#: ../PostType/Quote.php:111 ../PostType/Quote.php:154
 #: ../PostType/Review.php:111 ../PostType/Review.php:154
 #: ../PostType/Service.php:111 ../PostType/Service.php:154
 #: ../PostType/Slider.php:111 ../PostType/Slider.php:154
@@ -551,8 +605,8 @@ msgstr ""
 
 #: ../PostType/Office.php:142 ../PostType/Place.php:142
 #: ../PostType/Portfolio.php:142 ../PostType/Product.php:142
-#: ../PostType/Review.php:142 ../PostType/Service.php:142
-#: ../PostType/Slider.php:142
+#: ../PostType/Quote.php:142 ../PostType/Review.php:142
+#: ../PostType/Service.php:142 ../PostType/Slider.php:142
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -865,11 +919,11 @@ msgstr ""
 
 #: ../PostType/Product.php:51
 msgid "View Product"
-msgstr ""
+msgstr "Ver producto"
 
 #: ../PostType/Product.php:52
 msgid "Search product"
-msgstr ""
+msgstr "Buscar producto"
 
 #: ../PostType/Product.php:53
 msgid "No product found"
@@ -961,6 +1015,126 @@ msgstr ""
 #: ../PostType/Product.php:159
 msgctxt "taxonomy slug"
 msgid "product-tag"
+msgstr ""
+
+#: ../PostType/Quote.php:45
+msgid "All Quotes"
+msgstr ""
+
+#: ../PostType/Quote.php:46
+msgid "Add New Quote"
+msgstr ""
+
+#: ../PostType/Quote.php:47
+msgid "New Quote"
+msgstr ""
+
+#: ../PostType/Quote.php:49
+msgid "Edit Quote"
+msgstr ""
+
+#: ../PostType/Quote.php:50
+msgid "Update Quote"
+msgstr ""
+
+#: ../PostType/Quote.php:51
+msgid "View Quote"
+msgstr "Ver cita"
+
+#: ../PostType/Quote.php:52
+msgid "Search quote"
+msgstr "Buscar cita"
+
+#: ../PostType/Quote.php:53
+msgid "No quote found"
+msgstr ""
+
+#: ../PostType/Quote.php:54
+msgid "No quote found in Trash"
+msgstr ""
+
+#: ../PostType/Quote.php:62
+msgctxt "post_type slug"
+msgid "quote"
+msgstr "cita"
+
+#: ../PostType/Quote.php:81
+msgctxt "post_type archive_slug"
+msgid "quotes"
+msgstr "citas"
+
+#: ../PostType/Quote.php:97
+msgid "Quote Categories"
+msgstr ""
+
+#: ../PostType/Quote.php:98
+msgid "Quote Category"
+msgstr ""
+
+#: ../PostType/Quote.php:100
+msgid "Parent Quote Categories"
+msgstr ""
+
+#: ../PostType/Quote.php:101
+msgid "Parent Quote Categories:"
+msgstr ""
+
+#: ../PostType/Quote.php:102
+msgid "New Quote Categories Name"
+msgstr ""
+
+#: ../PostType/Quote.php:104
+msgid "Edit Quote Categories"
+msgstr ""
+
+#: ../PostType/Quote.php:105
+msgid "Update Quote Categories"
+msgstr ""
+
+#: ../PostType/Quote.php:109
+msgid "Search Quote Categories"
+msgstr ""
+
+#: ../PostType/Quote.php:116
+msgctxt "taxonomy slug"
+msgid "quote-category"
+msgstr ""
+
+#: ../PostType/Quote.php:140
+msgid "Quote Tags"
+msgstr ""
+
+#: ../PostType/Quote.php:141
+msgid "Quote Tag"
+msgstr ""
+
+#: ../PostType/Quote.php:143
+msgid "Parent Quote Tags"
+msgstr ""
+
+#: ../PostType/Quote.php:144
+msgid "Parent Quote Tags:"
+msgstr ""
+
+#: ../PostType/Quote.php:145
+msgid "New Quote Tags Name"
+msgstr ""
+
+#: ../PostType/Quote.php:147
+msgid "Edit Quote Tags"
+msgstr ""
+
+#: ../PostType/Quote.php:148
+msgid "Update Quote Tags"
+msgstr ""
+
+#: ../PostType/Quote.php:152
+msgid "Search Quote Tags"
+msgstr ""
+
+#: ../PostType/Quote.php:159
+msgctxt "taxonomy slug"
+msgid "quote-tag"
 msgstr ""
 
 #: ../PostType/Review.php:41 ../PostType/Review.php:43
@@ -1111,7 +1285,7 @@ msgstr "Editar servicio"
 
 #: ../PostType/Service.php:50
 msgid "Update Service"
-msgstr ""
+msgstr "Actualizar servicio"
 
 #: ../PostType/Service.php:51
 msgid "View Service"
@@ -1119,7 +1293,7 @@ msgstr "Ver servicio"
 
 #: ../PostType/Service.php:52
 msgid "Search service"
-msgstr ""
+msgstr "Buscar servicio"
 
 #: ../PostType/Service.php:53
 msgid "No service found"
@@ -1349,7 +1523,7 @@ msgstr ""
 
 #: ../Template/Bootstrap4/NavMenu.php:334
 msgid "Add a menu"
-msgstr "Agrega un Menu"
+msgstr "Agrega un menú"
 
 #: ../Template/Breadcrumb.php:93
 msgid "Error 404"
@@ -1382,6 +1556,14 @@ msgstr "Seleccione..."
 #: ../Tools/Media.php:43 ../Tools/Media.php:87
 msgid "Invalid or empty file"
 msgstr "Archivo no válido o vacío"
+
+#~ msgctxt "post_type singular_slug"
+#~ msgid "quote"
+#~ msgstr "cita"
+
+#~ msgctxt "post_type archive_slug"
+#~ msgid "quote"
+#~ msgstr "cita"
 
 #~ msgid "Testimonials"
 #~ msgstr "Testimonios"

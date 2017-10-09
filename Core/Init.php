@@ -251,6 +251,7 @@ final class Init extends Singleton {
         'place'     => 'SourceFramework\PostType\Place',
         'portfolio' => 'SourceFramework\PostType\Portfolio',
         'product'   => 'SourceFramework\PostType\Product',
+        'quote'     => 'SourceFramework\PostType\Quote',
         'review'    => 'SourceFramework\PostType\Review',
         'service'   => 'SourceFramework\PostType\Service',
         'slider'    => 'SourceFramework\PostType\Slider',

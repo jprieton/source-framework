@@ -254,6 +254,9 @@ final class AdvancedPage extends SettingPage {
         'product'   => [
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
         ],
+        'quote'    => [
+            'label' => __( 'Quotes', \SourceFramework\TEXTDOMAIN ),
+        ],
         'review'    => [
             'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
         ],
