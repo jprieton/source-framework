@@ -150,7 +150,6 @@ class Office {
         'add_or_remove_items'        => __( 'Add or remove items', \SourceFramework\TEXTDOMAIN ),
         'popular_items'              => __( 'Popular Items', \SourceFramework\TEXTDOMAIN ),
         'search_items'               => __( 'Search Office Tags', \SourceFramework\TEXTDOMAIN ),
-        'not_found'                  => __( 'Not Found', \SourceFramework\TEXTDOMAIN ),
         'no_terms'                   => __( 'No items', \SourceFramework\TEXTDOMAIN ),
         'items_list'                 => __( 'Items list', \SourceFramework\TEXTDOMAIN ),
         'items_list_navigation'      => __( 'Items list navigation', \SourceFramework\TEXTDOMAIN ),
