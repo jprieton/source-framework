@@ -23,24 +23,6 @@ use SourceFramework\Settings\SettingField;
 final class SocialPage extends SettingGroupPage {
 
   /**
-   * Default social networks
-   * @var type
-   */
-  private $social_networks = [
-      'social-email'       => 'Email',
-      'social-facebook'    => 'Facebook',
-      'social-dribbble'    => 'Dribble',
-      'social-google-plus' => 'Google+',
-      'social-instagram'   => 'Instagram',
-      'social-linkedin'    => 'LinkedIn',
-      'social-pinterest'   => 'Pinterest',
-      'social-rss'         => 'RSS',
-      'social-twitter'     => 'Twitter',
-      'social-yelp'        => 'Yelp',
-      'social-youtube'     => 'YouTube',
-  ];
-
-  /**
    * Constructor
    *
    * @since 1.0.0
@@ -70,7 +52,7 @@ final class SocialPage extends SettingGroupPage {
     $this->add_setting_section( 'social_settings_section_links', __( 'Links', \SourceFramework\TEXTDOMAIN ) );
 
     // Filter to allow to plugins/themes add more social networks
-    $social_links = apply_filters( 'social_networks', $this->social_networks );
+    $social_links = apply_filters( 'social_networks', [] );
 
     foreach ( $social_links as $key => $label ) {
       $this->fields->add_field( array(

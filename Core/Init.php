@@ -210,7 +210,7 @@ final class Init extends Singleton {
   }
 
   /**
-   *
+   * Default social networks
    * @return array
    */
   public function social_networks() {
@@ -223,6 +223,7 @@ final class Init extends Singleton {
         'social-linkedin'    => 'LinkedIn',
         'social-pinterest'   => 'Pinterest',
         'social-rss'         => 'RSS',
+        'social-skype'       => 'Skype',
         'social-twitter'     => 'Twitter',
         'social-yelp'        => 'Yelp',
         'social-youtube'     => 'YouTube',

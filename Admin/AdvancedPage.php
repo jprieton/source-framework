@@ -55,6 +55,39 @@ final class AdvancedPage extends SettingPage {
     $this->add_setting_section( 'source-framework-advanced-general', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
     $args = [
+        'type'  => 'checkbox',
+        'name'  => __( 'Shortcode in widgets', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'shortcode-widgets-enabled',
+        'label' => __( "This option enables shortcodes in text widgets.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+    $args = [
+        'type'  => 'checkbox',
+        'name'  => __( 'Favorite Post', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'favorite-post-enabled',
+        'label' => __( "This option enables to the user mark posts as favorite.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+    $args = [
+        'type'  => 'checkbox',
+        'name'  => __( 'Rich text editor in excerpts', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'excerpt-rich-editor-enabled',
+        'label' => __( "This option enables the rich text editor in excerpts.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+    $args = [
+        'type'  => 'checkbox',
+        'name'  => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'cdn-enabled',
+        'label' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
+    ];
+    $this->fields->add_field( $args );
+
+
+    $args = [
         'id'       => 'thumbnail-column',
         'type'     => 'checkbox',
         'name'     => __( 'Thumbnail Column', \SourceFramework\TEXTDOMAIN ),
@@ -80,30 +113,6 @@ final class AdvancedPage extends SettingPage {
 
     $args['id']   = 'featured-posts';
     $args['name'] = __( 'Featured Posts', \SourceFramework\TEXTDOMAIN );
-    $this->fields->add_field( $args );
-
-    $args = [
-        'type'  => 'checkbox',
-        'name'  => __( 'Favorite Post', \SourceFramework\TEXTDOMAIN ),
-        'id'    => 'favorite-post-enabled',
-        'label' => __( "This option enables to the user mark posts as favorite.", \SourceFramework\TEXTDOMAIN ),
-    ];
-    $this->fields->add_field( $args );
-
-    $args = [
-        'type'  => 'checkbox',
-        'name'  => __( 'Rich text editor in excerpts', \SourceFramework\TEXTDOMAIN ),
-        'id'    => 'excerpt-rich-editor-enabled',
-        'label' => __( "This option enables the rich text editor in excerpts.", \SourceFramework\TEXTDOMAIN ),
-    ];
-    $this->fields->add_field( $args );
-
-    $args = [
-        'type'  => 'checkbox',
-        'name'  => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
-        'id'    => 'cdn-enabled',
-        'label' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
-    ];
     $this->fields->add_field( $args );
   }
 
@@ -254,7 +263,7 @@ final class AdvancedPage extends SettingPage {
         'product'   => [
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
         ],
-        'quote'    => [
+        'quote'     => [
             'label' => __( 'Quotes', \SourceFramework\TEXTDOMAIN ),
         ],
         'review'    => [
