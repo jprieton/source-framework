@@ -56,7 +56,7 @@ final class AdvancedPage extends SettingPage {
 
     $args = [
         'type'  => 'checkbox',
-        'name'  => __( 'Shortcode in widgets', \SourceFramework\TEXTDOMAIN ),
+        'name'  => __( 'Shortcodes in widgets', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'shortcode-widgets-enabled',
         'label' => __( "This option enables shortcodes in text widgets.", \SourceFramework\TEXTDOMAIN ),
     ];
