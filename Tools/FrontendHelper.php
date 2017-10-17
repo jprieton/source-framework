@@ -22,9 +22,9 @@ class FrontendHelper {
    * @since 1.0.0
    */
   public function __construct() {
-    add_filter( 'register_styles', [ $this, 'registerStyles' ] );
-    add_filter( 'register_scripts', [ $this, 'registerScripts' ] );
-    add_action( 'wp_footer', [ $this, 'loadTtemplate' ], 999 );
+    add_filter( 'register_styles', [ $this, 'register_styles' ] );
+    add_filter( 'register_scripts', [ $this, 'register_scripts' ] );
+    add_action( 'wp_footer', [ $this, 'load_template' ], 999 );
   }
 
   /**
@@ -33,7 +33,7 @@ class FrontendHelper {
    * @param array $styles
    * @return array
    */
-  public function registerStyles( $styles ) {
+  public function register_styles( $styles ) {
     $styles['frontend-helper']['autoload'] = true;
     return $styles;
   }
@@ -44,7 +44,7 @@ class FrontendHelper {
    * @param array $scripts
    * @return array
    */
-  public function registerScripts( $scripts ) {
+  public function register_scripts( $scripts ) {
     $scripts['modernizr']['autoload'] = true;
     $this->version                    = $scripts['modernizr']['ver'];
     return $scripts;
@@ -54,7 +54,7 @@ class FrontendHelper {
    * Load FrontEnd Helper template
    * @since 1.0.0
    */
-  public function loadLemplate() {
+  public function load_template() {
     global $tools_setting_group;
 
     if ( empty( $tools_setting_group ) ) {

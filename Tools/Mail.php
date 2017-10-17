@@ -29,7 +29,6 @@ class Mail extends PHPMailer
   private $mail_content = false;
   private $mail_social  = false;
   private $mail_powered = false;
-  private $mail_subject = false;
 
   /**
    * @since 1.0.0
@@ -55,8 +54,8 @@ class Mail extends PHPMailer
       return;
     }
 
-    $image           = Tag::img( $logo_url, [ 'style' => 'max-width: 600px; max-height: 75px; width:auto; height:auto', 'alt' => 'Logo' ] );
-    $link            = Tag::a( get_home_url(), $image );
+    $image           = Tag::img( $logo_url, [ 'style' => 'display:block; max-width: 600px; max-height: 75px; width:auto; height:auto;margin: auto;', 'alt' => 'Logo' ] );
+    $link            = Tag::a( get_home_url(), $image, [ 'style' => 'display:block;margin-left: 15px;margin-right: 15px;' ] );
     $this->mail_logo = Tag::html( 'div', $link, [ 'style' => 'max-width: 600px; margin: auto; text-align: center; padding-top: 30px;' ] );
   }
 
@@ -118,8 +117,8 @@ class Mail extends PHPMailer
         continue;
       }
 
-      $icon  = apply_filters( "{$key}-icon-path", $icon_path . str_replace( 'social-', '', $key ) . '.svg' );
-      $image = Tag::img( $icon, [ 'height' => '25', 'width' => '25', 'style' => 'margin: 0px 4px;', 'alt' => $label ] );
+      $icon  = apply_filters( "{$key}-icon-path", $icon_path . str_replace( 'social-', '', $key ) . '.png' );
+      $image = Tag::img( $icon, [ 'height' => '28', 'width' => '24', 'style' => 'margin: 0px 4px;', 'alt' => $label ] );
 
       $social_links .= Tag::a( $link, $image, [ 'title' => $label ] );
     }
@@ -195,7 +194,6 @@ class Mail extends PHPMailer
     }
 
     $this->isHTML();
-    $this->Subject = $this->mail_subject;
     $this->CharSet = 'utf-8';
 
     if ( empty( $this->From ) ) {
