@@ -21,7 +21,7 @@ if ( !class_exists( 'PHPMailer' ) ) {
  *
  * @author perseo
  */
-class Mail extends PHPMailer
+class Email extends PHPMailer
 {
 
   private $mail_logo    = false;
