@@ -21,7 +21,8 @@ if ( !class_exists( 'PHPMailer' ) ) {
  *
  * @author perseo
  */
-class Mail extends PHPMailer {
+class Mail extends PHPMailer
+{
 
   private $mail_logo    = false;
   private $mail_header  = false;
@@ -35,7 +36,8 @@ class Mail extends PHPMailer {
    *
    * @param bool $disabled
    */
-  public function setContentLogo( $disabled = false ) {
+  public function setContentLogo( $disabled = false )
+  {
     if ( $disabled ) {
       $this->mail_logo = '';
       return;
@@ -65,7 +67,8 @@ class Mail extends PHPMailer {
    * @param string $background_color
    * @param string $font_color
    */
-  public function setContentHeader( $text = '', $background_color = 'default', $font_color = 'white' ) {
+  public function setContentHeader( $text = '', $background_color = 'default', $font_color = 'white' )
+  {
     $background_colors = [
         'primary' => '#337ab7',
         'success' => '#5cb85c',
@@ -91,7 +94,8 @@ class Mail extends PHPMailer {
    *
    * @param bool $disabled
    */
-  public function setContentSocial( $disabled = false ) {
+  public function setContentSocial( $disabled = false )
+  {
     if ( $disabled ) {
       $this->mail_social = '';
       return;
@@ -132,7 +136,8 @@ class Mail extends PHPMailer {
    *
    * @param string $text
    */
-  public function setContentPowered( $text = '' ) {
+  public function setContentPowered( $text = '' )
+  {
     if ( !empty( $text ) ) {
       $this->mail_powered = Tag::html( 'div', $text, [ 'style' => 'text-align: center; padding: 0 0 5px 0; font-weight: bold; font-size: 0.6em; color: #888888;' ] );
     }
@@ -143,12 +148,14 @@ class Mail extends PHPMailer {
    *
    * @param string $content
    */
-  public function setContentBody( $content = '' ) {
+  public function setContentBody( $content = '' )
+  {
     $content            = apply_filters( 'the_content', $content );
     $this->mail_content = Tag::html( 'div', $content, [ 'style' => 'background-color: white; padding: 15px 15px 30px 15px; border-radius: 0px 0px 5px 5px; color: #666666' ] );
   }
 
-  public function renderBody( $template_name = 'default' ) {
+  public function renderBody( $template_name = 'default' )
+  {
     $path     = apply_filters( "mail_{$template_name}_template", plugin_dir_path( \SourceFramework\PLUGIN_FILE ) . "partials/mail-{$template_name}.php" );
     $template = file_get_contents( $path );
 
@@ -181,7 +188,8 @@ class Mail extends PHPMailer {
    *
    * @return bool
    */
-  public function send() {
+  public function send()
+  {
     if ( empty( $this->Body ) ) {
       $this->renderBody();
     }
