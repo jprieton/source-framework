@@ -27,4 +27,11 @@
     });
   });
 
+  // Widget class shortcut
+  $(document).on('click', '.widget-class-shortcut > a', function (e) {
+    e.preventDefault();
+    var input = $(this).parents('p').find('input');
+    jQuery(input).val($(this).text())
+  });
+
 })(jQuery);

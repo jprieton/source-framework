@@ -21,21 +21,22 @@ if ( !class_exists( 'PHPMailer' ) ) {
  *
  * @author perseo
  */
-class Mail extends PHPMailer {
+class Mail extends PHPMailer
+{
 
   private $mail_logo    = false;
   private $mail_header  = false;
   private $mail_content = false;
   private $mail_social  = false;
   private $mail_powered = false;
-  private $mail_subject = false;
 
   /**
    * @since 1.0.0
    *
    * @param bool $disabled
    */
-  public function set_content_logo( $disabled = false ) {
+  public function setContentLogo( $disabled = false )
+  {
     if ( $disabled ) {
       $this->mail_logo = '';
       return;
@@ -53,8 +54,8 @@ class Mail extends PHPMailer {
       return;
     }
 
-    $image           = Tag::img( $logo_url, [ 'style' => 'max-width: 600px; max-height: 75px;', 'alt' => 'Logo' ] );
-    $link            = Tag::a( get_home_url(), $image );
+    $image           = Tag::img( $logo_url, [ 'style' => 'display:block; max-width: 600px; max-height: 75px; width:auto; height:auto;margin: auto;', 'alt' => 'Logo' ] );
+    $link            = Tag::a( get_home_url(), $image, [ 'style' => 'display:block;margin-left: 15px;margin-right: 15px;' ] );
     $this->mail_logo = Tag::html( 'div', $link, [ 'style' => 'max-width: 600px; margin: auto; text-align: center; padding-top: 30px;' ] );
   }
 
@@ -65,7 +66,8 @@ class Mail extends PHPMailer {
    * @param string $background_color
    * @param string $font_color
    */
-  public function set_content_header( $text = '', $background_color = 'default', $font_color = 'white' ) {
+  public function setContentHeader( $text = '', $background_color = 'default', $font_color = 'white' )
+  {
     $background_colors = [
         'primary' => '#337ab7',
         'success' => '#5cb85c',
@@ -91,7 +93,8 @@ class Mail extends PHPMailer {
    *
    * @param bool $disabled
    */
-  public function set_content_social( $disabled = false ) {
+  public function setContentSocial( $disabled = false )
+  {
     if ( $disabled ) {
       $this->mail_social = '';
       return;
@@ -114,8 +117,8 @@ class Mail extends PHPMailer {
         continue;
       }
 
-      $icon  = apply_filters( "{$key}-icon-path", $icon_path . str_replace( 'social-', '', $key ) . '.svg' );
-      $image = Tag::img( $icon, [ 'height' => '25', 'width' => '25', 'style' => 'margin: 0px 4px;', 'alt' => $label ] );
+      $icon  = apply_filters( "{$key}-icon-path", $icon_path . str_replace( 'social-', '', $key ) . '.png' );
+      $image = Tag::img( $icon, [ 'height' => '28', 'width' => '24', 'style' => 'margin: 0px 4px;', 'alt' => $label ] );
 
       $social_links .= Tag::a( $link, $image, [ 'title' => $label ] );
     }
@@ -132,7 +135,8 @@ class Mail extends PHPMailer {
    *
    * @param string $text
    */
-  public function set_content_powered( $text = '' ) {
+  public function setContentPowered( $text = '' )
+  {
     if ( !empty( $text ) ) {
       $this->mail_powered = Tag::html( 'div', $text, [ 'style' => 'text-align: center; padding: 0 0 5px 0; font-weight: bold; font-size: 0.6em; color: #888888;' ] );
     }
@@ -143,25 +147,27 @@ class Mail extends PHPMailer {
    *
    * @param string $content
    */
-  public function set_content_body( $content = '' ) {
+  public function setContentBody( $content = '' )
+  {
     $content            = apply_filters( 'the_content', $content );
     $this->mail_content = Tag::html( 'div', $content, [ 'style' => 'background-color: white; padding: 15px 15px 30px 15px; border-radius: 0px 0px 5px 5px; color: #666666' ] );
   }
 
-  public function render_body( $template_name = 'default' ) {
+  public function renderBody( $template_name = 'default' )
+  {
     $path     = apply_filters( "mail_{$template_name}_template", plugin_dir_path( \SourceFramework\PLUGIN_FILE ) . "partials/mail-{$template_name}.php" );
     $template = file_get_contents( $path );
 
     if ( $this->mail_social === false ) {
-      $this->set_content_social();
+      $this->setContentSocial();
     }
 
     if ( $this->mail_logo === false ) {
-      $this->set_content_logo();
+      $this->setContentLogo();
     }
 
     if ( $this->mail_powered === false ) {
-      $this->set_content_powered();
+      $this->setContentPowered();
     }
 
     $mail_data = [
@@ -181,13 +187,13 @@ class Mail extends PHPMailer {
    *
    * @return bool
    */
-  public function send() {
+  public function send()
+  {
     if ( empty( $this->Body ) ) {
-      $this->render_body();
+      $this->renderBody();
     }
 
     $this->isHTML();
-    $this->Subject = $this->mail_subject;
     $this->CharSet = 'utf-8';
 
     if ( empty( $this->From ) ) {

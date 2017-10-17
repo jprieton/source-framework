@@ -227,4 +227,22 @@ final class Admin extends Singleton {
     }
   }
 
+  /**
+   * Enables shortcodes in text widgets
+   * @since   1.3.0
+   */
+  public function shortcode_widgets() {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $is_enabled = $advanced_setting_group->get_bool_option( 'shortcode-widgets-enabled' );
+
+    if ( $is_enabled ) {
+      add_filter( 'widget_text', 'do_shortcode' );
+    }
+  }
+
 }

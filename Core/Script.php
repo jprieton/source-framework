@@ -151,11 +151,6 @@ class Script extends Singleton {
             'deps'      => [ 'jquery' ],
             'ver'       => '3.3.7',
         ],
-        'owl-carousel'                 => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js',
-            'ver'       => '2.2.1',
-            'integrity' => 'sha256-s5TTOyp+xlSmsDfr/aZhg0Gz+JejYr5iTJI8JxG1SkM=',
-        ],
         'popper'                       => [
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js',
             'integrity' => 'sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4',
@@ -167,6 +162,11 @@ class Script extends Singleton {
             'integrity' => 'sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1',
             'deps'      => [ 'jquery', 'popper' ],
             'ver'       => '4.0.0-beta',
+        ],
+        'owl-carousel'                 => [
+            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js',
+            'ver'       => '2.2.1',
+            'integrity' => 'sha256-s5TTOyp+xlSmsDfr/aZhg0Gz+JejYr5iTJI8JxG1SkM=',
         ],
         'jquery-appear'                => [
             'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',

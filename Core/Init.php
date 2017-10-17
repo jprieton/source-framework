@@ -120,17 +120,27 @@ final class Init extends Singleton {
   }
 
   public function theme_support() {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+    }
+
+    $post_formats = $advanced_setting_group->get_option( 'post-formats' );
+
     /**
      * Add theme support for Featured Images
      * @since 0.5.0
      */
     add_theme_support( 'post-thumbnails' );
 
-    /**
-     * Enables Post Formats support for a theme.
-     * @since 0.5.0
-     */
-    add_theme_support( 'post-formats' );
+    if ( !empty( $post_formats ) ) {
+      /**
+       * Enables Post Formats support for a theme.
+       * @since 0.5.0
+       */
+      add_theme_support( 'post-formats', $post_formats );
+    }
 
     /**
      * Enables Automatic Feed Links for post and comment in the head
@@ -200,7 +210,7 @@ final class Init extends Singleton {
   }
 
   /**
-   *
+   * Default social networks
    * @return array
    */
   public function social_networks() {
@@ -213,6 +223,7 @@ final class Init extends Singleton {
         'social-linkedin'    => 'LinkedIn',
         'social-pinterest'   => 'Pinterest',
         'social-rss'         => 'RSS',
+        'social-skype'       => 'Skype',
         'social-twitter'     => 'Twitter',
         'social-yelp'        => 'Yelp',
         'social-youtube'     => 'YouTube',
@@ -237,14 +248,14 @@ final class Init extends Singleton {
     }
 
     $custom_post_type_classes = [
-        'office'      => 'SourceFramework\PostType\Office',
-        'place'       => 'SourceFramework\PostType\Place',
-        'portfolio'   => 'SourceFramework\PostType\Portfolio',
-        'product'     => 'SourceFramework\PostType\Product',
-        'review'      => 'SourceFramework\PostType\Review',
-        'service'     => 'SourceFramework\PostType\Service',
-        'slider'      => 'SourceFramework\PostType\Slider',
-        'testimonial' => 'SourceFramework\PostType\Testimonial',
+        'office'    => 'SourceFramework\PostType\Office',
+        'place'     => 'SourceFramework\PostType\Place',
+        'portfolio' => 'SourceFramework\PostType\Portfolio',
+        'product'   => 'SourceFramework\PostType\Product',
+        'quote'     => 'SourceFramework\PostType\Quote',
+        'review'    => 'SourceFramework\PostType\Review',
+        'service'   => 'SourceFramework\PostType\Service',
+        'slider'    => 'SourceFramework\PostType\Slider',
     ];
 
     if ( function_exists( 'WC' ) ) {
