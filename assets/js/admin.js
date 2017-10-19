@@ -6,7 +6,7 @@
     e.preventDefault();
     $('.data-tab').hide();
     $('.nav-tab-wrapper a').removeClass('nav-tab-active');
-    var tabContent = $(this).data('target');
+    let tabContent = $(this).data('target');
     $(tabContent).stop().show();
     $(this).addClass('nav-tab-active');
   });
@@ -15,8 +15,8 @@
   // Toggle featured posts
   $('.toggle-featured').click(function (e) {
     e.preventDefault();
-    var postId = $(this).data('id');
-    var item = this;
+    let postId = $(this).data('id');
+    let item = this;
     $(item).addClass('hidden').removeClass('dashicons-star-empty dashicons-star-filled');
     $.post(ajaxurl, {action: 'toggle_featured_post', post_id: postId}, function (response) {
       if (response.data.featured) {
@@ -30,7 +30,7 @@
   // Widget class shortcut
   $(document).on('click', '.widget-class-shortcut > a', function (e) {
     e.preventDefault();
-    var input = $(this).parents('p').find('input');
+    let input = $(this).parents('p').find('input');
     jQuery(input).val($(this).text())
   });
 
