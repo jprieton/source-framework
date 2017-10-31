@@ -45,7 +45,6 @@ class Product {
         'all_items'             => __( 'All Products', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Product', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Product', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Product', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Product', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Product', \SourceFramework\TEXTDOMAIN ),

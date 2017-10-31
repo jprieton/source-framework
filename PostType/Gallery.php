@@ -45,7 +45,6 @@ class Gallery {
         'all_items'             => __( 'All Galleries', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Gallery', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Gallery', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Gallery', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Gallery', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Gallery', \SourceFramework\TEXTDOMAIN ),

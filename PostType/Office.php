@@ -45,7 +45,6 @@ class Office {
         'all_items'             => __( 'All Offices', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Office', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Office', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Office', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Office', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Office', \SourceFramework\TEXTDOMAIN ),
