@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2017-10-09 11:12-0400\n"
-"PO-Revision-Date: 2017-10-09 11:13-0400\n"
+"POT-Creation-Date: 2017-10-31 11:46-0400\n"
+"PO-Revision-Date: 2017-10-31 11:50-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../Admin/AboutPage.php:30
+#: ../Admin/AboutPage.php:34
 msgid "About SourceFramework"
 msgstr "Acerca de SourceFramework"
 
-#: ../Admin/AboutPage.php:32
+#: ../Admin/AboutPage.php:36
 msgid "About"
 msgstr "Acerca"
 
@@ -34,156 +34,164 @@ msgstr "Ajustes avanzados"
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../Admin/AdvancedPage.php:55 ../Admin/GeneralPage.php:33
+#: ../Admin/AdvancedPage.php:55 ../Admin/GeneralPage.php:37
 #: ../Admin/ToolsPage.php:51
 msgid "General"
 msgstr "General"
 
-#: ../Admin/AdvancedPage.php:60
-msgid "Thumbnail Column"
-msgstr "Columna de miniaturas"
+#: ../Admin/AdvancedPage.php:59
+msgid "Shortcodes in widgets"
+msgstr "Shortcodes en Widgets"
 
-#: ../Admin/AdvancedPage.php:82
-msgid "Featured Posts"
-msgstr "Entradas Destacadas"
+#: ../Admin/AdvancedPage.php:61
+msgid "This option enables shortcodes in text widgets."
+msgstr ""
 
-#: ../Admin/AdvancedPage.php:87
+#: ../Admin/AdvancedPage.php:67
 msgid "Favorite Post"
 msgstr "Entrada Favorita"
 
-#: ../Admin/AdvancedPage.php:89
+#: ../Admin/AdvancedPage.php:69
 msgid "This option enables to the user mark posts as favorite."
-msgstr ""
+msgstr "Esta opción permite al usuario marcar posts como favorito."
 
-#: ../Admin/AdvancedPage.php:95
+#: ../Admin/AdvancedPage.php:75
 msgid "Rich text editor in excerpts"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:97
+#: ../Admin/AdvancedPage.php:77
 msgid "This option enables the rich text editor in excerpts."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:103
+#: ../Admin/AdvancedPage.php:83
 msgid "Enable CDN"
 msgstr "Habilitar CDN"
 
-#: ../Admin/AdvancedPage.php:105
+#: ../Admin/AdvancedPage.php:85
 msgid ""
 "This option enables the use of CDN in plugin's registered scripts and styles."
 msgstr ""
 "Esta opción permite el uso de CDN en estilos y scripts registrados del "
 "plugin."
 
-#: ../Admin/AdvancedPage.php:111
+#: ../Admin/AdvancedPage.php:93
+msgid "Thumbnail Column"
+msgstr "Columna de miniaturas"
+
+#: ../Admin/AdvancedPage.php:115
+msgid "Featured Posts"
+msgstr "Entradas Destacadas"
+
+#: ../Admin/AdvancedPage.php:120
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../Admin/AdvancedPage.php:114
+#: ../Admin/AdvancedPage.php:123
 msgid "Header"
 msgstr "Cabecera"
 
-#: ../Admin/AdvancedPage.php:120
+#: ../Admin/AdvancedPage.php:129
 msgid "Remove WordPress version number"
 msgstr "Remover el número de versión de WordPress"
 
-#: ../Admin/AdvancedPage.php:121
+#: ../Admin/AdvancedPage.php:130
 msgid "Remove WordPress version number from header, feed, styles and scripts."
 msgstr ""
 "Elimina el número de versión de WordPress de la cabecera, feed, estilos y "
 "scripts."
 
-#: ../Admin/AdvancedPage.php:125
+#: ../Admin/AdvancedPage.php:134
 msgid "Remove EditURI link"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:126
+#: ../Admin/AdvancedPage.php:135
 msgid ""
 "Remove the EditURI/RSD link from your header. This option also removes the "
 "<b>Windows Live Writer</b> manifest link."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:139
+#: ../Admin/AdvancedPage.php:148
 msgid ""
 "If you uses XML-RPC in your theme/plugins check this for disable only "
 "pingback method."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:144
+#: ../Admin/AdvancedPage.php:153
 msgid ""
 "Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC "
 "Pingback</b> and <b>Remove EditURI link</b>. <a href=\"https://www."
 "littlebizzy.com/blog/disable-xml-rpc\" target=\"_blank\">More info</a>."
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:171
+#: ../Admin/AdvancedPage.php:180
 msgid "Disable the admin bar in frontend by role"
 msgstr "Desactivar la barra de admin en frontend por rol"
 
-#: ../Admin/AdvancedPage.php:182
+#: ../Admin/AdvancedPage.php:191
 msgid "Disable access to the wp-admin in by role"
 msgstr "Desactivar el acceso al wp-admin por rol"
 
-#: ../Admin/AdvancedPage.php:187 ../Admin/AdvancedPage.php:237
+#: ../Admin/AdvancedPage.php:196 ../Admin/AdvancedPage.php:246
 msgid "Post Types"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:190
+#: ../Admin/AdvancedPage.php:199
 msgid "Post Formats"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:199
+#: ../Admin/AdvancedPage.php:208
 msgid "Aside"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:202
+#: ../Admin/AdvancedPage.php:211
 msgid "Gallery"
 msgstr "Galería"
 
-#: ../Admin/AdvancedPage.php:205
+#: ../Admin/AdvancedPage.php:214
 msgid "Link"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:208
+#: ../Admin/AdvancedPage.php:217
 msgid "Image"
 msgstr "Imagen"
 
-#: ../Admin/AdvancedPage.php:211 ../PostType/Quote.php:41
+#: ../Admin/AdvancedPage.php:220 ../PostType/Quote.php:41
 #: ../PostType/Quote.php:43 ../PostType/Quote.php:68
 msgid "Quote"
 msgstr "Cita"
 
-#: ../Admin/AdvancedPage.php:214
+#: ../Admin/AdvancedPage.php:223
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
-#: ../Admin/AdvancedPage.php:217
+#: ../Admin/AdvancedPage.php:226
 msgid "Video"
 msgstr ""
 
-#: ../Admin/AdvancedPage.php:220
+#: ../Admin/AdvancedPage.php:229
 msgid "Audio"
 msgstr "Audio"
 
-#: ../Admin/AdvancedPage.php:223
+#: ../Admin/AdvancedPage.php:232
 msgid "Chat"
 msgstr "Chat"
 
-#: ../Admin/AdvancedPage.php:246 ../PostType/Office.php:40
+#: ../Admin/AdvancedPage.php:255 ../PostType/Office.php:40
 #: ../PostType/Office.php:42
 msgid "Offices"
 msgstr "Oficinas"
 
-#: ../Admin/AdvancedPage.php:249 ../PostType/Place.php:40
+#: ../Admin/AdvancedPage.php:258 ../PostType/Place.php:40
 #: ../PostType/Place.php:42
 msgid "Places"
 msgstr "Lugares"
 
-#: ../Admin/AdvancedPage.php:252 ../PostType/Portfolio.php:40
+#: ../Admin/AdvancedPage.php:261 ../PostType/Portfolio.php:40
 #: ../PostType/Portfolio.php:42
 msgid "Portfolios"
 msgstr "Portafolios"
 
-#: ../Admin/AdvancedPage.php:255
+#: ../Admin/AdvancedPage.php:264
 msgid ""
 "Products <span class=\"description\">(This option has no effect when "
 "WooCommerce is actived)</span>"
@@ -191,22 +199,22 @@ msgstr ""
 "Productos <span class=\"description\">(Esta opción no tiene efecto cuando "
 "WooCommerce está activo)</span>"
 
-#: ../Admin/AdvancedPage.php:258 ../PostType/Quote.php:40
+#: ../Admin/AdvancedPage.php:267 ../PostType/Quote.php:40
 #: ../PostType/Quote.php:42
 msgid "Quotes"
 msgstr "Citas"
 
-#: ../Admin/AdvancedPage.php:261 ../PostType/Review.php:40
+#: ../Admin/AdvancedPage.php:270 ../PostType/Review.php:40
 #: ../PostType/Review.php:42
 msgid "Reviews"
 msgstr "Opiniones"
 
-#: ../Admin/AdvancedPage.php:264 ../PostType/Service.php:40
+#: ../Admin/AdvancedPage.php:273 ../PostType/Service.php:40
 #: ../PostType/Service.php:42
 msgid "Services"
 msgstr "Servicios"
 
-#: ../Admin/AdvancedPage.php:267 ../PostType/Slider.php:41
+#: ../Admin/AdvancedPage.php:276 ../PostType/Slider.php:41
 #: ../PostType/Slider.php:43 ../PostType/Slider.php:68
 msgid "Slider"
 msgstr ""
@@ -273,7 +281,7 @@ msgstr "No estás autorizado para realizar esta acción."
 msgid "The data that you entered is invalid."
 msgstr "Los datos que ha ingresado son inválidos."
 
-#: ../Admin/GeneralPage.php:30 ../Admin/GeneralPage.php:32
+#: ../Admin/GeneralPage.php:34 ../Admin/GeneralPage.php:36
 msgid "General Settings"
 msgstr "Ajustes generales"
 
@@ -285,15 +293,15 @@ msgstr "SourceFramework CSV Import"
 msgid "Import data via CSV file."
 msgstr "Importación mediante archivo CSV."
 
-#: ../Admin/SocialPage.php:49
+#: ../Admin/SocialPage.php:31
 msgid "Social Settings"
 msgstr ""
 
-#: ../Admin/SocialPage.php:58
+#: ../Admin/SocialPage.php:40
 msgid "Social"
 msgstr "Social"
 
-#: ../Admin/SocialPage.php:70
+#: ../Admin/SocialPage.php:52
 msgid "Links"
 msgstr "Enlaces"
 
@@ -319,11 +327,11 @@ msgstr "Desactivado"
 
 #: ../Core/Error.php:30
 msgid "This action isn't supported"
-msgstr ""
+msgstr "Esta acción no está soportada"
 
 #: ../Core/Error.php:40
 msgid "You must logged in to perform this action"
-msgstr ""
+msgstr "Debes iniciar sesión para realizar esta acción"
 
 #: ../Core/PostImporter.php:31
 msgid "CSV Post Importer"
@@ -439,32 +447,32 @@ msgid "Uploaded to this item"
 msgstr ""
 
 #: ../PostType/Office.php:57 ../PostType/Office.php:112
-#: ../PostType/Office.php:155 ../PostType/Place.php:57
-#: ../PostType/Place.php:112 ../PostType/Place.php:155
+#: ../PostType/Office.php:154 ../PostType/Place.php:57
+#: ../PostType/Place.php:112 ../PostType/Place.php:154
 #: ../PostType/Portfolio.php:57 ../PostType/Portfolio.php:112
-#: ../PostType/Portfolio.php:155 ../PostType/Product.php:57
-#: ../PostType/Product.php:112 ../PostType/Product.php:155
-#: ../PostType/Quote.php:57 ../PostType/Quote.php:112 ../PostType/Quote.php:155
+#: ../PostType/Portfolio.php:154 ../PostType/Product.php:57
+#: ../PostType/Product.php:112 ../PostType/Product.php:154
+#: ../PostType/Quote.php:57 ../PostType/Quote.php:112 ../PostType/Quote.php:154
 #: ../PostType/Review.php:57 ../PostType/Review.php:112
-#: ../PostType/Review.php:155 ../PostType/Service.php:57
-#: ../PostType/Service.php:112 ../PostType/Service.php:155
+#: ../PostType/Review.php:154 ../PostType/Service.php:57
+#: ../PostType/Service.php:112 ../PostType/Service.php:154
 #: ../PostType/Slider.php:57 ../PostType/Slider.php:112
-#: ../PostType/Slider.php:155
+#: ../PostType/Slider.php:154
 msgid "Items list"
 msgstr ""
 
 #: ../PostType/Office.php:58 ../PostType/Office.php:113
-#: ../PostType/Office.php:156 ../PostType/Place.php:58
-#: ../PostType/Place.php:113 ../PostType/Place.php:156
+#: ../PostType/Office.php:155 ../PostType/Place.php:58
+#: ../PostType/Place.php:113 ../PostType/Place.php:155
 #: ../PostType/Portfolio.php:58 ../PostType/Portfolio.php:113
-#: ../PostType/Portfolio.php:156 ../PostType/Product.php:58
-#: ../PostType/Product.php:113 ../PostType/Product.php:156
-#: ../PostType/Quote.php:58 ../PostType/Quote.php:113 ../PostType/Quote.php:156
+#: ../PostType/Portfolio.php:155 ../PostType/Product.php:58
+#: ../PostType/Product.php:113 ../PostType/Product.php:155
+#: ../PostType/Quote.php:58 ../PostType/Quote.php:113 ../PostType/Quote.php:155
 #: ../PostType/Review.php:58 ../PostType/Review.php:113
-#: ../PostType/Review.php:156 ../PostType/Service.php:58
-#: ../PostType/Service.php:113 ../PostType/Service.php:156
+#: ../PostType/Review.php:155 ../PostType/Service.php:58
+#: ../PostType/Service.php:113 ../PostType/Service.php:155
 #: ../PostType/Slider.php:58 ../PostType/Slider.php:113
-#: ../PostType/Slider.php:156
+#: ../PostType/Slider.php:155
 msgid "Items list navigation"
 msgstr ""
 
@@ -568,25 +576,21 @@ msgstr ""
 msgid "Search Office Categories"
 msgstr ""
 
-#: ../PostType/Office.php:110 ../PostType/Office.php:153
-#: ../PostType/Place.php:110 ../PostType/Place.php:153
-#: ../PostType/Portfolio.php:110 ../PostType/Portfolio.php:153
-#: ../PostType/Product.php:110 ../PostType/Product.php:153
-#: ../PostType/Quote.php:110 ../PostType/Quote.php:153
-#: ../PostType/Review.php:110 ../PostType/Review.php:153
-#: ../PostType/Service.php:110 ../PostType/Service.php:153
-#: ../PostType/Slider.php:110 ../PostType/Slider.php:153
+#: ../PostType/Office.php:110 ../PostType/Place.php:110
+#: ../PostType/Portfolio.php:110 ../PostType/Product.php:110
+#: ../PostType/Quote.php:110 ../PostType/Review.php:110
+#: ../PostType/Service.php:110 ../PostType/Slider.php:110
 msgid "Not Found"
 msgstr "No encontrado"
 
-#: ../PostType/Office.php:111 ../PostType/Office.php:154
-#: ../PostType/Place.php:111 ../PostType/Place.php:154
-#: ../PostType/Portfolio.php:111 ../PostType/Portfolio.php:154
-#: ../PostType/Product.php:111 ../PostType/Product.php:154
-#: ../PostType/Quote.php:111 ../PostType/Quote.php:154
-#: ../PostType/Review.php:111 ../PostType/Review.php:154
-#: ../PostType/Service.php:111 ../PostType/Service.php:154
-#: ../PostType/Slider.php:111 ../PostType/Slider.php:154
+#: ../PostType/Office.php:111 ../PostType/Office.php:153
+#: ../PostType/Place.php:111 ../PostType/Place.php:153
+#: ../PostType/Portfolio.php:111 ../PostType/Portfolio.php:153
+#: ../PostType/Product.php:111 ../PostType/Product.php:153
+#: ../PostType/Quote.php:111 ../PostType/Quote.php:153
+#: ../PostType/Review.php:111 ../PostType/Review.php:153
+#: ../PostType/Service.php:111 ../PostType/Service.php:153
+#: ../PostType/Slider.php:111 ../PostType/Slider.php:153
 msgid "No items"
 msgstr ""
 
@@ -634,7 +638,7 @@ msgstr ""
 msgid "Search Office Tags"
 msgstr ""
 
-#: ../PostType/Office.php:159
+#: ../PostType/Office.php:158
 msgctxt "taxonomy slug"
 msgid "office-tag"
 msgstr ""
@@ -758,7 +762,7 @@ msgstr ""
 msgid "Search Place Tags"
 msgstr ""
 
-#: ../PostType/Place.php:159
+#: ../PostType/Place.php:158
 msgctxt "taxonomy slug"
 msgid "place-tag"
 msgstr ""
@@ -883,7 +887,7 @@ msgstr ""
 msgid "Search Portfolio Tags"
 msgstr ""
 
-#: ../PostType/Portfolio.php:159
+#: ../PostType/Portfolio.php:158
 msgctxt "taxonomy slug"
 msgid "portfolio-tag"
 msgstr ""
@@ -1012,7 +1016,7 @@ msgstr ""
 msgid "Search Product Tags"
 msgstr ""
 
-#: ../PostType/Product.php:159
+#: ../PostType/Product.php:158
 msgctxt "taxonomy slug"
 msgid "product-tag"
 msgstr ""
@@ -1132,7 +1136,7 @@ msgstr ""
 msgid "Search Quote Tags"
 msgstr ""
 
-#: ../PostType/Quote.php:159
+#: ../PostType/Quote.php:158
 msgctxt "taxonomy slug"
 msgid "quote-tag"
 msgstr ""
@@ -1257,7 +1261,7 @@ msgstr ""
 msgid "Search Review Tags"
 msgstr ""
 
-#: ../PostType/Review.php:159
+#: ../PostType/Review.php:158
 msgctxt "taxonomy slug"
 msgid "review-tag"
 msgstr ""
@@ -1382,7 +1386,7 @@ msgstr ""
 msgid "Search Service Tags"
 msgstr ""
 
-#: ../PostType/Service.php:159
+#: ../PostType/Service.php:158
 msgctxt "taxonomy slug"
 msgid "service-tag"
 msgstr ""
@@ -1506,7 +1510,7 @@ msgstr ""
 msgid "Search Slider Tags"
 msgstr ""
 
-#: ../PostType/Slider.php:159
+#: ../PostType/Slider.php:158
 msgctxt "taxonomy slug"
 msgid "slider-tag"
 msgstr ""
@@ -1556,17 +1560,3 @@ msgstr "Seleccione..."
 #: ../Tools/Media.php:43 ../Tools/Media.php:87
 msgid "Invalid or empty file"
 msgstr "Archivo no válido o vacío"
-
-#~ msgctxt "post_type singular_slug"
-#~ msgid "quote"
-#~ msgstr "cita"
-
-#~ msgctxt "post_type archive_slug"
-#~ msgid "quote"
-#~ msgstr "cita"
-
-#~ msgid "Testimonials"
-#~ msgstr "Testimonios"
-
-#~ msgid "Testimonial"
-#~ msgstr "Testimonio"
