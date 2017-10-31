@@ -45,7 +45,6 @@ class Slider {
         'all_items'             => __( 'All Sliders', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Slider', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Slider', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Slider', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Slider', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Slider', \SourceFramework\TEXTDOMAIN ),

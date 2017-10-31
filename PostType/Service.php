@@ -45,7 +45,6 @@ class Service {
         'all_items'             => __( 'All Services', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Service', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Service', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Service', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Service', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Service', \SourceFramework\TEXTDOMAIN ),

@@ -45,7 +45,6 @@ class Portfolio {
         'all_items'             => __( 'All Portfolios', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Portfolio', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Portfolio', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Portfolio', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Portfolio', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Portfolio', \SourceFramework\TEXTDOMAIN ),

@@ -45,7 +45,6 @@ class Place {
         'all_items'             => __( 'All Places', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Place', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Place', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Place', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Place', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Place', \SourceFramework\TEXTDOMAIN ),

@@ -45,7 +45,6 @@ class Quote {
         'all_items'             => __( 'All Quotes', \SourceFramework\TEXTDOMAIN ),
         'add_new_item'          => __( 'Add New Quote', \SourceFramework\TEXTDOMAIN ),
         'add_new'               => __( 'New Quote', \SourceFramework\TEXTDOMAIN ),
-        'new_item'              => __( 'New Item', \SourceFramework\TEXTDOMAIN ),
         'edit_item'             => __( 'Edit Quote', \SourceFramework\TEXTDOMAIN ),
         'update_item'           => __( 'Update Quote', \SourceFramework\TEXTDOMAIN ),
         'view_item'             => __( 'View Quote', \SourceFramework\TEXTDOMAIN ),
