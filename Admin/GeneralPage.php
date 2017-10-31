@@ -27,10 +27,15 @@ final class GeneralPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title = __( 'General Settings', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework' );
-    $this->add_menu_page( __( 'General Settings', \SourceFramework\TEXTDOMAIN ), 'SourceFramework', 'activate_plugins' );
-    $this->add_submenu_page( __( 'General', \SourceFramework\TEXTDOMAIN ), __( 'General', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+
+    $enabled = apply_filters( 'source_framework_enable_general_page', true );
+
+    if ( $enabled ) {
+      $this->title = __( 'General Settings', \SourceFramework\TEXTDOMAIN );
+      parent::__construct( 'source-framework', 'source-framework' );
+      $this->add_menu_page( __( 'General Settings', \SourceFramework\TEXTDOMAIN ), 'SourceFramework', 'activate_plugins' );
+      $this->add_submenu_page( __( 'General', \SourceFramework\TEXTDOMAIN ), __( 'General', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+    }
   }
 
 }

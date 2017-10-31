@@ -21,8 +21,7 @@ if ( !class_exists( 'PHPMailer' ) ) {
  *
  * @author perseo
  */
-class Mail extends PHPMailer
-{
+class Email extends PHPMailer {
 
   private $mail_logo    = false;
   private $mail_header  = false;
@@ -35,8 +34,7 @@ class Mail extends PHPMailer
    *
    * @param bool $disabled
    */
-  public function setContentLogo( $disabled = false )
-  {
+  public function set_content_logo( $disabled = false ) {
     if ( $disabled ) {
       $this->mail_logo = '';
       return;
@@ -66,8 +64,7 @@ class Mail extends PHPMailer
    * @param string $background_color
    * @param string $font_color
    */
-  public function setContentHeader( $text = '', $background_color = 'default', $font_color = 'white' )
-  {
+  public function set_content_header( $text = '', $background_color = 'default', $font_color = 'white' ) {
     $background_colors = [
         'primary' => '#337ab7',
         'success' => '#5cb85c',
@@ -93,8 +90,7 @@ class Mail extends PHPMailer
    *
    * @param bool $disabled
    */
-  public function setContentSocial( $disabled = false )
-  {
+  public function set_content_social( $disabled = false ) {
     if ( $disabled ) {
       $this->mail_social = '';
       return;
@@ -113,7 +109,7 @@ class Mail extends PHPMailer
     $social_links = '';
     foreach ( $social_networks as $key => $label ) {
       $link = $social_links_group->get_option( $key );
-      if ( empty( $link ) ) {
+      if ( empty( $link ) || '#' == $link ) {
         continue;
       }
 
@@ -135,8 +131,7 @@ class Mail extends PHPMailer
    *
    * @param string $text
    */
-  public function setContentPowered( $text = '' )
-  {
+  public function set_content_powered( $text = '' ) {
     if ( !empty( $text ) ) {
       $this->mail_powered = Tag::html( 'div', $text, [ 'style' => 'text-align: center; padding: 0 0 5px 0; font-weight: bold; font-size: 0.6em; color: #888888;' ] );
     }
@@ -147,27 +142,25 @@ class Mail extends PHPMailer
    *
    * @param string $content
    */
-  public function setContentBody( $content = '' )
-  {
+  public function set_content_body( $content = '' ) {
     $content            = apply_filters( 'the_content', $content );
     $this->mail_content = Tag::html( 'div', $content, [ 'style' => 'background-color: white; padding: 15px 15px 30px 15px; border-radius: 0px 0px 5px 5px; color: #666666' ] );
   }
 
-  public function renderBody( $template_name = 'default' )
-  {
+  public function render_body( $template_name = 'default' ) {
     $path     = apply_filters( "mail_{$template_name}_template", plugin_dir_path( \SourceFramework\PLUGIN_FILE ) . "partials/mail-{$template_name}.php" );
     $template = file_get_contents( $path );
 
     if ( $this->mail_social === false ) {
-      $this->setContentSocial();
+      $this->set_content_social();
     }
 
     if ( $this->mail_logo === false ) {
-      $this->setContentLogo();
+      $this->set_content_logo();
     }
 
     if ( $this->mail_powered === false ) {
-      $this->setContentPowered();
+      $this->set_content_powered();
     }
 
     $mail_data = [
@@ -187,10 +180,9 @@ class Mail extends PHPMailer
    *
    * @return bool
    */
-  public function send()
-  {
+  public function send() {
     if ( empty( $this->Body ) ) {
-      $this->renderBody();
+      $this->render_body();
     }
 
     $this->isHTML();
