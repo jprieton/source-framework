@@ -251,6 +251,9 @@ final class AdvancedPage extends SettingPage {
     ];
 
     $post_types = [
+        'gallery'    => [
+            'label' => __( 'Galleries', \SourceFramework\TEXTDOMAIN ),
+        ],
         'office'    => [
             'label' => __( 'Offices', \SourceFramework\TEXTDOMAIN ),
         ],

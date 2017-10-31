@@ -248,6 +248,7 @@ final class Init extends Singleton {
     }
 
     $custom_post_type_classes = [
+        'gallery'   => 'SourceFramework\PostType\Gallery',
         'office'    => 'SourceFramework\PostType\Office',
         'place'     => 'SourceFramework\PostType\Place',
         'portfolio' => 'SourceFramework\PostType\Portfolio',
