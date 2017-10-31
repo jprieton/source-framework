@@ -27,9 +27,14 @@ final class AboutPage extends SettingPage {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->title = __( 'About SourceFramework', \SourceFramework\TEXTDOMAIN );
-    parent::__construct( 'source-framework', 'source-framework-about' );
-    $this->add_submenu_page( __( 'About', \SourceFramework\TEXTDOMAIN ), __( 'About', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+
+    $enabled = apply_filters( 'source_framework_enable_about_page', true );
+
+    if ( $enabled ) {
+      $this->title = __( 'About SourceFramework', \SourceFramework\TEXTDOMAIN );
+      parent::__construct( 'source-framework', 'source-framework-about' );
+      $this->add_submenu_page( __( 'About', \SourceFramework\TEXTDOMAIN ), __( 'About', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
+    }
   }
 
 }
