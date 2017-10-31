@@ -74,7 +74,7 @@ class Gallery {
         'show_ui'             => true,
         'show_in_menu'        => true,
         'menu_position'       => 20,
-        'menu_icon'           => 'dashicons-format-image',
+        'menu_icon'           => 'dashicons-format-gallery',
         'show_in_admin_bar'   => true,
         'show_in_nav_menus'   => true,
         'can_export'          => true,
