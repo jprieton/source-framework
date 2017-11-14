@@ -104,8 +104,6 @@ final class AdvancedPage extends SettingPage {
       ];
     }
 
-    var_dump($args);
-
     unset( $args['options']['attachment'] );
     if ( function_exists( 'WC' ) ) {
       unset( $args['options']['product'] );
