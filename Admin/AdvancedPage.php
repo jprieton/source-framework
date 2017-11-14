@@ -104,9 +104,14 @@ final class AdvancedPage extends SettingPage {
       ];
     }
 
+    var_dump($args);
+
     unset( $args['options']['attachment'] );
     if ( function_exists( 'WC' ) ) {
       unset( $args['options']['product'] );
+      unset( $args['options']['shop_order'] );
+      unset( $args['options']['shop_coupon'] );
+      unset( $args['options']['shop_webhook'] );
     }
 
     $this->fields->add_field( $args );
