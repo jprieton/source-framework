@@ -34,7 +34,7 @@ class Pagination {
    * @param   array         $args
    * @return  string
    */
-  public static function paginate_links( $args = [] ) {
+  public static function paginate_links( $args = array() ) {
     $defaults   = array(
         'nav_class' => 'text-center',
         'class'     => '',
@@ -44,23 +44,23 @@ class Pagination {
     );
     $args       = wp_parse_args( $args, $defaults );
     $paginate   = paginate_links( $args );
-    $search     = [
+    $search     = array(
         "<ul class='page-numbers'>",
         "<li><span class='page-numbers current'>",
         "<li>",
-    ];
-    $replace    = [
+    );
+    $replace    = array(
         sprintf( "<ul class='page-numbers %s'>", trim( 'paginate ' . $args['class'] ) ),
         "<li class='page-item active'><span class='page-numbers current'>",
         "<li class='page-item'>"
-    ];
+    );
     $paginate   = str_replace( $search, $replace, $paginate );
-    $pagination = Tag::html( 'nav', $paginate, [
+    $pagination = Tag::html( 'nav', $paginate, array(
                 'itemscope',
                 'itemtype'   => 'http://schema.org/SiteNavigationElement',
                 'aria-label' => __( 'Page navigation', \SourceFramework\TEXTDOMAIN ),
                 'class'      => $args['nav_class'],
-            ] );
+            ) );
 
     return $pagination;
   }

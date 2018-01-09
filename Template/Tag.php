@@ -33,10 +33,10 @@ class Tag {
    * @var array List of void elements.
    * @since   1.0.0
    */
-  private static $void = [
+  private static $void = array(
       'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
       'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'
-  ];
+  );
 
   /**
    * Retrieve a HTML open tag

@@ -30,29 +30,29 @@ class Alert {
    * @since 0.5.0
    *
    * @param   string              $content
-   * @param   string|array        $attr
+   * @param   string|array        $atts
    *
    * @return  string
    */
-  public static function alert( $content, $attr = array() ) {
-    $defaults = [
+  public static function alert( $content, $atts = array() ) {
+    $defaults = array(
         'dismiss' => true,
         'role'    => 'alert',
         'class'   => 'alert ',
-    ];
-    $attr     = wp_parse_args( $attr, $defaults );
+    );
+    $atts     = wp_parse_args( $atts, $defaults );
 
-    if ( $attr['dismiss'] ) {
+    if ( $atts['dismiss'] ) {
       $dismiss       = '<button type="button" class="close" data-dismiss="alert" aria-label="' . __( 'Close', \SourceFramework\TEXTDOMAIN ) . '">'
               . '<span aria-hidden="true">&times;</span>'
               . '</button>';
-      $attr['class'] .= ' alert-dismissible ';
+      $atts['class'] .= ' alert-dismissible ';
     } else {
       $dismiss = '';
     }
-    unset( $attr['dismiss'] );
+    unset( $atts['dismiss'] );
 
-    return Tag::html( 'div', $dismiss . $content, $attr );
+    return Tag::html( 'div', $dismiss . $content, $atts );
   }
 
   /**
