@@ -10,28 +10,6 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use Walker_Nav_Menu;
-use SourceFramework\Template\Tag;
-
-/**
- * Class Name: WP_Bootstrap_Navwalker
- * Plugin Name: WP Bootstrap Navwalker
- * Plugin URI:  https://github.com/wp-bootstrap/wp-bootstrap-navwalker
- * Description: A custom WordPress nav walker class to implement the Bootstrap 3 navigation style in a custom theme using the WordPress built in menu manager.
- * Author: Edward McIntyre - @twittem, WP Bootstrap
- * Version: 2.0.5
- * Author URI: https://github.com/wp-bootstrap
- * GitHub Plugin URI: https://github.com/wp-bootstrap/wp-bootstrap-navwalker
- * GitHub Branch: master
- * License: GPL-3.0+
- * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- */
-/* Check if Class Exists. */
-
-/**
- * WP_Bootstrap_Navwalker class.
- *
- * @extends Walker_Nav_Menu
- */
 
 /**
  * NavMenu class
@@ -133,7 +111,7 @@ class NavMenu extends Walker_Nav_Menu {
       return;
     }
 
-    $classes   = empty( $item->classes ) ? [] : (array) $item->classes;
+    $classes   = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
     $classes[] = 'nav-item';
 
@@ -251,7 +229,7 @@ class NavMenu extends Walker_Nav_Menu {
      */
     $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
-    $item_classes = [ 'nav-link' ];
+    $item_classes = array( 'nav-link' );
 
     if ( $args->walker->has_children ) {
       $item_classes[] = 'dropdown-toggle';
@@ -318,13 +296,13 @@ class NavMenu extends Walker_Nav_Menu {
   public static function fallback( $args ) {
     if ( current_user_can( 'edit_theme_options' ) ) {
 
-      $defaults = [
+      $defaults = array(
           'container'       => 'div',
           'container_id'    => false,
           'container_class' => false,
           'menu_class'      => 'menu',
           'menu_id'         => false,
-      ];
+      );
       $args     = wp_parse_args( $args, $defaults );
       if ( !empty( $args['container'] ) ) {
         echo sprintf( '<%s id="%s" class="%s">', $args['container'], $args['container_id'], $args['container_class'] );

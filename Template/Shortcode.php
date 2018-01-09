@@ -40,9 +40,9 @@ class Shortcode {
       $attributes['href'] = $content;
     }
 
-    $defaults = [
+    $defaults = array(
         'href' => ''
-    ];
+    );
 
     $attributes = wp_parse_args( $attributes, $defaults );
 
@@ -76,10 +76,10 @@ class Shortcode {
       $api_setting_group = new SettingGroup( 'api_settings' );
     }
 
-    $defaults = [
+    $defaults = array(
         'class'        => 'g-recaptcha',
         'data-sitekey' => $api_setting_group->get_option( 'recaptcha-site-key' )
-    ];
+    );
 
     $attributes = wp_parse_args( $attributes, $defaults );
     return Tag::html( 'div', null, $attributes );
