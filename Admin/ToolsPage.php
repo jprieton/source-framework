@@ -39,6 +39,8 @@ final class ToolsPage extends SettingPage {
     $this->add_submenu_page( __( 'Tools', \SourceFramework\TEXTDOMAIN ), __( 'Tools', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
 
     $this->fields = new SettingField( 'tools_settings', 'tools_settings' );
+
+    // Sections
     $this->add_general_section();
   }
 
@@ -50,17 +52,17 @@ final class ToolsPage extends SettingPage {
   public function add_general_section() {
     $this->add_setting_section( 'source-framework-tools', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
-    $args = [
+    $args = array(
         'type'    => 'select',
         'name'    => __( 'Frontend Helper', \SourceFramework\TEXTDOMAIN ),
         'id'      => 'frontend-helper-enabled',
         'desc'    => __( 'This option enables <strong>Frontend Helper</strong> feature.', \SourceFramework\TEXTDOMAIN ),
-        'options' => [
+        'options' => array(
             'no'          => __( 'Disabled', \SourceFramework\TEXTDOMAIN ),
             'bootstrap3x' => 'Bootstrap 3.x',
             'bootstrap4x' => 'Bootstrap 4.x',
-        ]
-    ];
+        )
+    );
     $this->fields->add_field( $args );
   }
 

@@ -40,6 +40,8 @@ final class SocialPage extends SettingGroupPage {
     $this->add_submenu_page( __( 'Social', \SourceFramework\TEXTDOMAIN ), __( 'Social', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
 
     $this->fields = new SettingField( 'social_links', 'social_links' );
+
+    // Sections
     $this->add_social_links_section();
   }
 

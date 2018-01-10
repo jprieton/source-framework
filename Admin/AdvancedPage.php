@@ -38,7 +38,8 @@ final class AdvancedPage extends SettingPage {
     parent::__construct( $menu_slug, 'source-framework-advanced' );
     $this->add_submenu_page( __( 'Advanced', \SourceFramework\TEXTDOMAIN ), __( 'Advanced', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
     $this->fields = new SettingField( 'advanced_settings', 'advanced_settings' );
-    // General Section
+
+    // Sections
     $this->general_section();
     $this->security_section();
     $this->custom_post_type_section();
@@ -54,54 +55,54 @@ final class AdvancedPage extends SettingPage {
   public function general_section() {
     $this->add_setting_section( 'source-framework-advanced-general', __( 'General', \SourceFramework\TEXTDOMAIN ) );
 
-    $args = [
+    $args = array(
         'type'  => 'checkbox',
         'name'  => __( 'Shortcodes in widgets', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'shortcode-widgets-enabled',
         'label' => __( "This option enables shortcodes in text widgets.", \SourceFramework\TEXTDOMAIN ),
-    ];
+    );
     $this->fields->add_field( $args );
 
-    $args = [
+    $args = array(
         'type'  => 'checkbox',
         'name'  => __( 'Favorite Post', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'favorite-post-enabled',
         'label' => __( "This option enables to the user mark posts as favorite.", \SourceFramework\TEXTDOMAIN ),
-    ];
+    );
     $this->fields->add_field( $args );
 
-    $args = [
+    $args = array(
         'type'  => 'checkbox',
         'name'  => __( 'Rich text editor in excerpts', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'excerpt-rich-editor-enabled',
         'label' => __( "This option enables the rich text editor in excerpts.", \SourceFramework\TEXTDOMAIN ),
-    ];
+    );
     $this->fields->add_field( $args );
 
-    $args = [
+    $args = array(
         'type'  => 'checkbox',
         'name'  => __( 'Enable CDN', \SourceFramework\TEXTDOMAIN ),
         'id'    => 'cdn-enabled',
         'label' => __( "This option enables the use of CDN in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
-    ];
+    );
     $this->fields->add_field( $args );
 
 
-    $args = [
+    $args = array(
         'id'       => 'thumbnail-column',
         'type'     => 'checkbox',
         'name'     => __( 'Thumbnail Column', \SourceFramework\TEXTDOMAIN ),
         'multiple' => true,
-        'options'  => []
-    ];
+        'options'  => array()
+    );
 
-    $post_types = get_post_types( [ 'show_ui' => true ], 'objects' );
+    $post_types = get_post_types( array( 'show_ui' => true ), 'objects' );
 
     foreach ( $post_types as $item ) {
-      $args['options'][$item->name] = [
+      $args['options'][$item->name] = array(
           'value' => $item->name,
           'label' => $item->label
-      ];
+      );
     }
 
     unset( $args['options']['attachment'] );
@@ -198,43 +199,43 @@ final class AdvancedPage extends SettingPage {
   public function custom_post_type_section() {
     $this->add_setting_section( 'custom-post-type', __( 'Post Types', \SourceFramework\TEXTDOMAIN ) );
 
-    $args = [
+    $args = array(
         'name'     => __( 'Post Formats', \SourceFramework\TEXTDOMAIN ),
         'type'     => 'checkbox',
         'id'       => 'post-formats',
         'multiple' => true,
-        'options'  => []
-    ];
+        'options'  => array()
+    );
 
-    $post_types = [
-        'aside'   => [
+    $post_types = array(
+        'aside'   => array(
             'label' => __( 'Aside' ),
-        ],
-        'gallery' => [
+        ),
+        'gallery' => array(
             'label' => __( 'Gallery' ),
-        ],
-        'link'    => [
+        ),
+        'link'    => array(
             'label' => __( 'Link' ),
-        ],
-        'product' => [
+        ),
+        'product' => array(
             'label' => __( 'Image' ),
-        ],
-        'quote'   => [
+        ),
+        'quote'   => array(
             'label' => __( 'Quote' ),
-        ],
-        'status'  => [
+        ),
+        'status'  => array(
             'label' => __( 'Status' ),
-        ],
-        'video'   => [
+        ),
+        'video'   => array(
             'label' => __( 'Video' ),
-        ],
-        'audio'   => [
+        ),
+        'audio'   => array(
             'label' => __( 'Audio' ),
-        ],
-        'chat'    => [
+        ),
+        'chat'    => array(
             'label' => __( 'Chat' ),
-        ],
-    ];
+        ),
+    );
 
     $post_types = apply_filters( 'custom_post_types', $post_types );
 
@@ -245,43 +246,43 @@ final class AdvancedPage extends SettingPage {
 
     $this->fields->add_field( $args );
 
-    $args = [
+    $args = array(
         'name'     => __( 'Post Types', \SourceFramework\TEXTDOMAIN ),
         'type'     => 'checkbox',
         'id'       => 'post-types',
         'multiple' => true,
-        'options'  => []
-    ];
+        'options'  => array()
+    );
 
-    $post_types = [
-        'gallery'    => [
+    $post_types = array(
+        'gallery'   => array(
             'label' => __( 'Galleries', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'office'    => [
+        ),
+        'office'    => array(
             'label' => __( 'Offices', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'place'     => [
+        ),
+        'place'     => array(
             'label' => __( 'Places', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'portfolio' => [
+        ),
+        'portfolio' => array(
             'label' => __( 'Portfolios', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'product'   => [
+        ),
+        'product'   => array(
             'label' => __( 'Products <span class="description">(This option has no effect when WooCommerce is actived)</span>', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'quote'     => [
+        ),
+        'quote'     => array(
             'label' => __( 'Quotes', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'review'    => [
+        ),
+        'review'    => array(
             'label' => __( 'Reviews', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'service'   => [
+        ),
+        'service'   => array(
             'label' => __( 'Services', \SourceFramework\TEXTDOMAIN ),
-        ],
-        'slider'    => [
+        ),
+        'slider'    => array(
             'label' => __( 'Slider', \SourceFramework\TEXTDOMAIN ),
-        ],
-    ];
+        ),
+    );
 
     $post_types = apply_filters( 'custom_post_types', $post_types );
 

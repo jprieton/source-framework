@@ -54,7 +54,7 @@ final class Init extends Singleton {
      * This hook is called once any activated plugins have been loaded
      * @since 1.0.0
      */
-    add_action( 'plugins_loaded', [ $this, 'load_plugin_textdomain' ] );
+    add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
 
     /**
      * This hook check if is enabled cli and filter hook action
@@ -62,7 +62,11 @@ final class Init extends Singleton {
      */
     $this->enable_cli_commands();
 
-    add_action( 'after_setup_theme', [ $this, 'theme_support' ] );
+    /**
+     * Adds theme features support
+     * @since 1.0.0
+     */
+    add_action( 'after_setup_theme', array( $this, 'theme_support' ) );
 
     /**
      * Add Filter to allow to plugins/themes add/override social networks
@@ -119,6 +123,10 @@ final class Init extends Singleton {
     load_plugin_textdomain( \SourceFramework\TEXTDOMAIN, FALSE, basename( dirname( \SourceFramework\BASENAME ) ) . '/languages/' );
   }
 
+  /**
+   * Adds theme features support
+   * @since 1.0.0
+   */
   public function theme_support() {
     global $advanced_setting_group;
 
@@ -130,39 +138,39 @@ final class Init extends Singleton {
 
     /**
      * Add theme support for Featured Images
-     * @since 0.5.0
+     * @since 1.0.0
      */
     add_theme_support( 'post-thumbnails' );
 
     if ( !empty( $post_formats ) ) {
       /**
        * Enables Post Formats support for a theme.
-       * @since 0.5.0
+       * @since 1.0.0
        */
       add_theme_support( 'post-formats', $post_formats );
     }
 
     /**
      * Enables Automatic Feed Links for post and comment in the head
-     * @since 0.5.0
+     * @since 1.0.0
      */
     add_theme_support( 'automatic-feed-links' );
 
     /**
      * This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
-     * @since 0.5.0
+     * @since 1.0.0
      */
     add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 
     /**
      * Add theme support for document Title tag
-     * @since 0.5.0
+     * @since 1.0.0
      */
     add_theme_support( 'title-tag' );
 
     /**
      * To enable the use of a custom logo in your theme
-     * @since 0.5.0
+     * @since 1.0.0
      */
     add_theme_support( 'custom-logo' );
   }
@@ -214,7 +222,7 @@ final class Init extends Singleton {
    * @return array
    */
   public function social_networks() {
-    $networks = [
+    $networks = array(
         'social-email'       => 'Email',
         'social-facebook'    => 'Facebook',
         'social-dribbble'    => 'Dribble',
@@ -227,7 +235,7 @@ final class Init extends Singleton {
         'social-twitter'     => 'Twitter',
         'social-yelp'        => 'Yelp',
         'social-youtube'     => 'YouTube',
-    ];
+    );
     return $networks;
   }
 

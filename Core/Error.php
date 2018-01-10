@@ -12,7 +12,9 @@ if ( !defined( 'ABSPATH' ) ) {
 use WP_Error;
 
 /**
- * Admin class
+ * Error class
+ *
+ * Shorthands for common errors messages
  *
  * @package        Core
  * @since          1.1.0
@@ -36,8 +38,8 @@ class Error {
    * @param mixed $data
    * @return WP_Error
    */
-  public static function user_not_logged( $data = '' ) {
-    return new WP_Error( 'user_not_logged', __( 'You must logged in to perform this action', \SourceFramework\TEXTDOMAIN ), $data );
+  public static function user_not_authenticated( $data = '' ) {
+    return new WP_Error( 'user_not_authenticated', __( 'You must logged in to perform this action', \SourceFramework\TEXTDOMAIN ), $data );
   }
 
 }

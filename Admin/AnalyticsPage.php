@@ -40,9 +40,11 @@ final class AnalyticsPage extends SettingPage {
     $this->fields = new SettingField( 'analytics_settings', 'analytics_settings' );
 
     $this->add_submenu_page( __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), __( 'Analytics &amp; SEO', \SourceFramework\TEXTDOMAIN ), 'activate_plugins' );
-    $this->add_google_settings_section();
-    $this->add_bing_settings_section();
-    $this->add_facebook_pixel_settings_section();
+
+    // Sections
+    $this->google_settings_section();
+    $this->bing_settings_section();
+    $this->facebook_pixel_settings_section();
   }
 
   /**
@@ -50,7 +52,7 @@ final class AnalyticsPage extends SettingPage {
    *
    * @since   0.5.0
    */
-  private function add_google_settings_section() {
+  private function google_settings_section() {
     $this->add_setting_section( 'source-framework-analytics-google', 'Google' );
     $this->fields->add_field( array(
         'name'        => 'Google Universal Analytics',
@@ -75,9 +77,10 @@ final class AnalyticsPage extends SettingPage {
         'id'          => 'google-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => [
+        'desc'        => array(
             '<code>&lt;meta name="google-site-verification" content="<b>{' . _x( 'verification-code', 'settings', \SourceFramework\TEXTDOMAIN ) . '}</b>"&gt;</code>',
-            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ) ],
+            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN )
+        ),
     ) );
   }
 
@@ -86,16 +89,17 @@ final class AnalyticsPage extends SettingPage {
    *
    * @since   0.5.0
    */
-  private function add_bing_settings_section() {
+  private function bing_settings_section() {
     $this->add_setting_section( 'source-framework-analytics-bing', 'Bing' );
     $this->fields->add_field( array(
         'name'        => __( 'Site Verification Code', \SourceFramework\TEXTDOMAIN ),
         'id'          => 'bing-site-verification',
         'type'        => 'text',
         'input_class' => 'large-text code',
-        'desc'        => [
+        'desc'        => array(
             '<code>&lt;meta  name="msvalidate.01" content="<b>{' . _x( 'verification-code', 'settings', \SourceFramework\TEXTDOMAIN ) . '}</b>"&gt;</code>',
-            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN ) ],
+            __( 'This snippet is inserted after the opening <code>&lt;head&gt;</code> tag.', \SourceFramework\TEXTDOMAIN )
+        ),
     ) );
   }
 
@@ -104,7 +108,7 @@ final class AnalyticsPage extends SettingPage {
    *
    * @since   0.5.0
    */
-  private function add_facebook_pixel_settings_section() {
+  private function facebook_pixel_settings_section() {
     $this->add_setting_section( 'source-framework-analytics-facebook', 'Facebook' );
     $this->fields->add_field( array(
         'name'        => 'Facebook Pixel Code',

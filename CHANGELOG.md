@@ -4,6 +4,16 @@ Starting with version 1.1, the SourceFramework follows [SemVer](http://semver.or
 
 ## 1.x
 
+- 1.4.0
+  - Disable thumbnail column and favorite posts in WooCommerce post types
+  - Rollback to standard syntax array declaration
+  - Added Bootstrap 4.x Dropdown component
+
+- 1.3.1
+  - Update translations
+  - Added filter to disable base menus
+  - Added Gallery post type
+
 - 1.3.0
   - Change some strings to default translations
   - Post Formats

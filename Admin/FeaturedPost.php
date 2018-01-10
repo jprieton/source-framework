@@ -13,7 +13,7 @@ use SourceFramework\Template\Tag;
 use WP_Error;
 
 /**
- * Importer class
+ * FeaturedPost class
  *
  * @package        Admin
  * @since          1.0.0
@@ -38,9 +38,9 @@ class FeaturedPost {
 
     $featured = get_post_meta( $post_id, '_featured', true );
     if ( in_array( $featured, array( 'yes', 1 ) ) ) {
-      echo Tag::html( 'a.dashicons.dashicons-star-filled.toggle-featured', '', [ 'data-id' => $post_id ] );
+      echo Tag::html( 'a.dashicons.dashicons-star-filled.toggle-featured', '', array( 'data-id' => $post_id ) );
     } else {
-      echo Tag::html( 'a.dashicons.dashicons-star-empty.toggle-featured', '', [ 'data-id' => $post_id ] );
+      echo Tag::html( 'a.dashicons.dashicons-star-empty.toggle-featured', '', array( 'data-id' => $post_id ) );
     }
   }
 

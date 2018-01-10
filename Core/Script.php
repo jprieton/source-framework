@@ -67,26 +67,26 @@ class Script extends Singleton {
      * Register and enqueue scripts
      * @since   1.0.0
      */
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+    add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
     /**
      * Register and enqueue scripts
      * @since   1.0.0
      */
-    add_action( 'wp_enqueue_scripts', [ $this, 'localize_scripts' ] );
+    add_action( 'wp_enqueue_scripts', array( $this, 'localize_scripts' ) );
 
     /**
      * Check handle names to add <code>integrity</code>, <code>async</code> and/or <code>defer</code> attributes;
      * @since   1.0.0
      */
-    add_action( 'wp_print_scripts', [ $this, 'print_scripts' ], 1 );
+    add_action( 'wp_print_scripts', array( $this, 'print_scripts' ), 1 );
 
     /**
      * Add <code>async</code> and/or <code>defer</code> attributes to tag if is enabled
      * @since   1.0.0
      */
-    add_action( 'script_loader_tag', [ $this, 'script_loader_tag' ], 20, 2 );
+    add_action( 'script_loader_tag', array( $this, 'script_loader_tag' ), 20, 2 );
   }
 
   /**
@@ -95,16 +95,16 @@ class Script extends Singleton {
    * @since 1.0.0
    */
   private function register_admin_scripts() {
-    $scripts = [
-        'source-framework-admin' => [
+    $scripts = array(
+        'source-framework-admin' => array(
             'local'     => plugins_url( 'assets/js/admin.js', \SourceFramework\PLUGIN_FILE ),
-            'deps'      => [ 'jquery' ],
+            'deps'      => array( 'jquery' ),
             'ver'       => \SourceFramework\VERSION,
             'in_footer' => true,
             'autoload'  => true,
             'defer'     => true,
-        ]
-    ];
+        )
+    );
 
     return apply_filters( 'register_admin_scripts', $scripts );
   }

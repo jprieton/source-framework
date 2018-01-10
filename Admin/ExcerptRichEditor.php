@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Importer class
+ * FeaturedPost class
  *
  * @package        Admin
  * @since          1.0.0
@@ -30,20 +30,8 @@ class ExcerptRichEditor {
       return;
     }
 
-    remove_meta_box(
-            'postexcerpt' // ID
-            , ''            // Screen, empty to support all post types
-            , 'normal'      // Context
-    );
-
-    add_meta_box(
-            'postexcerpt2'     // Reusing just 'postexcerpt' doesn't work.
-            , __( 'Excerpt' )    // Title
-            , array( __CLASS__, 'show' ) // Display function
-            , null              // Screen, we use all screens with meta boxes.
-            , 'normal'          // Context
-            , 'core'            // Priority
-    );
+    remove_meta_box( 'postexcerpt', '', 'normal' );
+    add_meta_box( 'postexcerpt2', __( 'Excerpt' ), array( __CLASS__, 'metabox' ), null, 'normal', 'core' );
   }
 
   /**
@@ -54,7 +42,7 @@ class ExcerptRichEditor {
    * @param  object $post
    * @return void
    */
-  public static function show( $post ) {
+  public static function metabox( $post ) {
     ?>
     <label class="screen-reader-text" for="excerpt"><?php _e( 'Excerpt' ) ?></label>
     <?php
@@ -62,10 +50,10 @@ class ExcerptRichEditor {
             self::unescape( $post->post_excerpt ),
             'excerpt',
             array(
-                'textarea_rows' => 15
-                , 'media_buttons' => false
-                , 'teeny'         => true
-                , 'tinymce'       => true
+                'textarea_rows' => 15,
+                'media_buttons' => false,
+                'teeny'         => true,
+                'tinymce'       => true
             )
     );
   }
@@ -79,11 +67,10 @@ class ExcerptRichEditor {
    * @return string
    */
   public static function unescape( $str ) {
-    return str_replace(
-            array( '&lt;', '&gt;', '&quot;', '&amp;', '&nbsp;', '&amp;nbsp;' )
-            , array( '<', '>', '"', '&', ' ', ' ' )
-            , $str
-    );
+    $search  = array( '&lt;', '&gt;', '&quot;', '&amp;', '&nbsp;', '&amp;nbsp;' );
+    $replace = array( '<', '>', '"', '&', ' ', ' ' );
+
+    return str_replace( $search, $replace, $str );
   }
 
 }

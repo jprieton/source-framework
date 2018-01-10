@@ -10,8 +10,15 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Template\Tag;
-use WP_Error;
 
+/**
+ * ThumbnailColumn class
+ *
+ * @package        Admin
+ * @subpackage     SettingPages
+ * @since          1.0.0
+ * @author         Javier Prieto <jprieton@gmail.com>
+ */
 class ThumbnailColumn {
 
   /**
@@ -24,11 +31,14 @@ class ThumbnailColumn {
    * @return  null
    */
   public static function manage_custom_columns( $column_name, $post_id ) {
-
     if ( 'thumbnail' != $column_name ) {
       return;
     }
-    echo Tag::html( 'span.media-icon.image-icon', get_the_post_thumbnail( $post_id, 'thumbnail', [ 'class' => 'attachment-60x60 size-60x60' ] ) );
+
+    echo Tag::html(
+            'span.media-icon.image-icon',
+            get_the_post_thumbnail( $post_id, 'thumbnail', array( 'class' => 'attachment-60x60 size-60x60' )
+    ) );
   }
 
   /**
@@ -43,7 +53,7 @@ class ThumbnailColumn {
   public static function manage_columns( $posts_columns, $post_type ) {
     $new = array(
         'cb'        => $posts_columns['cb'],
-        'thumbnail' =>  __( 'Thumbnail', \SourceFramework\TEXTDOMAIN )
+        'thumbnail' => __( 'Thumbnail', \SourceFramework\TEXTDOMAIN )
     );
 
     $posts_columns = array_merge( $new, $posts_columns );

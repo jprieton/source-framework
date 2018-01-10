@@ -43,11 +43,11 @@ class Instagram {
       $api_setting_group = new SettingGroup( 'api_settings' );
     }
 
-    $defaults = [
+    $defaults = array(
         'client_id'    => $this->setting_group->get_option( 'instagram-client-id' ),
         'access_token' => $this->setting_group->get_option( 'instagram-token' ),
         'cache'        => $this->setting_group->get_int_option( 'instagram-timeout-cache', 3600 ),
-    ];
+    );
     $args     = wp_parse_args( $args, $defaults );
 
     $this->set_client_id( $args['client_id'] );

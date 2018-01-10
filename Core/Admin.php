@@ -50,44 +50,44 @@ final class Admin extends Singleton {
      * Enables the Excerpt meta box in Page edit screen.
      * @since 1.2.0
      */
-    add_action( 'init', [ $this, 'add_excerpt_support_for_pages' ] );
+    add_action( 'init', array( $this, 'add_excerpt_support_for_pages' ) );
 
     /**
      * Enable csv importer
      * @since 1.0.0
      */
-    add_action( 'admin_init', [ $this, 'register_csv_importer' ] );
+    add_action( 'admin_init', array( $this, 'register_csv_importer' ) );
 
     /**
      * Enable csv importer
      * @since 1.0.0
      */
-    add_action( 'admin_init', [ $this, 'admin_access_disabled' ] );
+    add_action( 'admin_init', array( $this, 'admin_access_disabled' ) );
 
     /**
      * Add menu/submenu pages to admin panel's menu structure.
      * @since   1.0.0
      */
-    add_action( 'admin_menu', [ $this, 'admin_menus' ], 25 );
+    add_action( 'admin_menu', array( $this, 'admin_menus' ), 25 );
 
     /**
      * Add thumbnail column to list.
      * @since   1.0.0
      */
-    add_action( 'current_screen', [ $this, 'thumbnail_column' ] );
+    add_action( 'current_screen', array( $this, 'thumbnail_column' ) );
 
     /**
      * Replaces the default excerpt editor with TinyMCE
      * @since   1.2.0
      */
-    add_action( 'add_meta_boxes', [ $this, 'excerpt_rich_editor' ] );
+    add_action( 'add_meta_boxes', array( $this, 'excerpt_rich_editor' ) );
 
     /**
      * Add  featured posts backend funcionality.
      * @since   1.0.0
      */
-    add_action( 'current_screen', [ $this, 'featured_posts_column' ] );
-    add_action( 'wp_ajax_toggle_featured_post', [ 'SourceFramework\Admin\FeaturedPost', 'toggle_featured_post' ] );
+    add_action( 'current_screen', array( $this, 'featured_posts_column' ) );
+    add_action( 'wp_ajax_toggle_featured_post', array( 'SourceFramework\Admin\FeaturedPost', 'toggle_featured_post' ) );
   }
 
   /**
@@ -136,17 +136,17 @@ final class Admin extends Singleton {
     }
 
     $post_types_enabled = $advanced_setting_group->get_option( 'featured-posts' );
-    $screen             = get_current_screen();
-    if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
 
-      if ( function_exists( 'WC' ) && 'product' == $screen->post_type ) {
-        return;
-      }
+    if ( empty( $post_types_enabled ) ) {
+      return;
+    }
 
-      add_action( 'manage_posts_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
-      add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ], 10, 2 );
-      add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
-      add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ], 10, 2 );
+    $screen = get_current_screen();
+    if ( in_array( $screen->post_type, $post_types_enabled ) && !( function_exists( 'WC' ) && 'product' == $screen->post_type ) ) {
+      add_action( 'manage_posts_custom_column', array( 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ), 10, 2 );
+      add_action( 'manage_pages_custom_column', array( 'SourceFramework\Admin\FeaturedPost', 'manage_custom_columns' ), 10, 2 );
+      add_action( 'manage_posts_columns', array( 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ), 10, 2 );
+      add_action( 'manage_pages_columns', array( 'SourceFramework\Admin\FeaturedPost', 'manage_columns' ), 10, 2 );
     }
   }
 
@@ -164,17 +164,16 @@ final class Admin extends Singleton {
 
     $post_types_enabled = $advanced_setting_group->get_option( 'thumbnail-column' );
 
+    if ( empty( $post_types_enabled ) ) {
+      return;
+    }
+
     $screen = get_current_screen();
-    if ( !empty( $post_types_enabled ) && in_array( $screen->post_type, $post_types_enabled ) ) {
-
-      if ( function_exists( 'WC' ) && 'product' == $screen->post_type ) {
-        return;
-      }
-
-      add_action( 'manage_posts_custom_column', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ], 10, 2 );
-      add_action( 'manage_pages_custom_column', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ], 10, 2 );
-      add_action( 'manage_posts_columns', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ], 10, 2 );
-      add_action( 'manage_pages_columns', [ 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ], 10, 2 );
+    if ( in_array( $screen->post_type, $post_types_enabled ) && !( function_exists( 'WC' ) && 'product' == $screen->post_type ) ) {
+      add_action( 'manage_posts_custom_column', array( 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ), 10, 2 );
+      add_action( 'manage_pages_custom_column', array( 'SourceFramework\Admin\ThumbnailColumn', 'manage_custom_columns' ), 10, 2 );
+      add_action( 'manage_posts_columns', array( 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ), 10, 2 );
+      add_action( 'manage_pages_columns', array( 'SourceFramework\Admin\ThumbnailColumn', 'manage_columns' ), 10, 2 );
     }
   }
 
