@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Plugin Name:    SourceFramework
  * Description:    An extensible framework for WordPress themes and plugins
- * Version:        1.4.0
+ * Version:        1.5.0
  * Author:         Javier Prieto <jprieton@gmail.com>
  * License:        GPL3
  * License URI:    http://www.gnu.org/licenses/gpl-3.0.txt
@@ -36,7 +36,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 define( 'SourceFramework\VERSION', '1.4.0' );
-define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
+define( 'SourceFramework\FILE', __FILE__ );
 define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
 define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
 
@@ -44,10 +44,10 @@ define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
  * Path to the plugin directory or phar package
  * @since 1.0.0
  */
-if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' ) ) {
-  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' );
+if ( file_exists( plugin_dir_path( SourceFramework\FILE ) . 'source-framework.phar' ) ) {
+  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( SourceFramework\FILE ) . 'source-framework.phar' );
 } else {
-  define( 'SourceFramework\ABSPATH', plugin_dir_path( SourceFramework\PLUGIN_FILE ) );
+  define( 'SourceFramework\ABSPATH', plugin_dir_path( SourceFramework\FILE ) );
 }
 
 /**
@@ -70,8 +70,23 @@ spl_autoload_register( function($class_name) {
   }
 } );
 
-/**
- * Initialize SourceFramework
- * @since 1.0.0
- */
-SourceFramework\Core\Init::get_instance();
+if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
+
+  /**
+   * Show notice for min PHP version requiriments for SourceFramework
+   * @since 1.0.0
+   */
+  function source_framework_min_php_error() {
+    $message = __( 'SourceFramework requires PHP version 5.4 or later.', SourceFramework\TEXTDOMAIN );
+    printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', esc_html( $message ) );
+  }
+
+  add_action( 'admin_notices', 'source_framework_min_php_error' );
+} else {
+
+  /**
+   * Initialize SourceFramework
+   * @since 1.0.0
+   */
+  SourceFramework\Core\Init::init();
+}

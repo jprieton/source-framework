@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Template\Tag;
+use SourceFramework\Template\Html;
 
 /**
  * Microdata class
@@ -34,13 +34,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WebPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -52,13 +52,13 @@ class Microdata {
    * @return  string
    */
   public static function search_results_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/SearchResultsPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_search_results_page_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -70,13 +70,13 @@ class Microdata {
    * @return  string
    */
   public static function about_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/AboutPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_about_page_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -88,13 +88,13 @@ class Microdata {
    * @return  string
    */
   public static function contact_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/ContactPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_contact_page_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -106,14 +106,13 @@ class Microdata {
    * @return  string
    */
   public static function faq_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/QAPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_faq_page_attributes', $default );
 
-
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -125,13 +124,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page_header() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WPHeader'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_header_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -143,14 +142,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page_footer() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WPFooter'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_footer_attributes', $default );
 
-
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -162,13 +160,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page_sidebar() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WPSideBar'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_sidebar_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -180,14 +178,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page_ad_block() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WPAdBlock'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_ad_block_attributes', $default );
 
-
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -199,13 +196,13 @@ class Microdata {
    * @return  string
    */
   public static function web_page_element() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/WebPageElement'
-    );
+    ];
     $attributes = apply_filters( 'microdata_web_page_element_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -217,14 +214,14 @@ class Microdata {
    * @return  string
    */
   public static function site_navigation_element() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/SiteNavigationElement'
-    );
+    ];
     $attributes = apply_filters( 'microdata_site_navigation_element_attributes', $default );
 
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -236,13 +233,13 @@ class Microdata {
    * @return  string
    */
   public static function main_content() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/mainContentOfPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_main_content_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -254,14 +251,13 @@ class Microdata {
    * @return  string
    */
   public static function item_page() {
-    $default    = array(
+    $default    = [
         'itemscope',
         'itemtype' => 'http://schema.org/ItemPage'
-    );
+    ];
     $attributes = apply_filters( 'microdata_item_page_attributes', $default );
 
-
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -273,14 +269,14 @@ class Microdata {
    * @return  string
    */
   public static function search_action() {
-    $default    = array(
+    $default    = [
         'itemprop' => 'potentialAction',
         'itemscope',
         'itemtype' => 'http://schema.org/SearchAction'
-    );
+    ];
     $attributes = apply_filters( 'microdata_search_action_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -292,15 +288,14 @@ class Microdata {
    * @return  string
    */
   public static function subscribe_action() {
-    $default    = array(
+    $default    = [
         'itemprop' => 'potentialAction',
         'itemscope',
         'itemtype' => 'http://schema.org/SubscribeAction'
-    );
+    ];
     $attributes = apply_filters( 'microdata_subscribe_action_attributes', $default );
 
-
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
   /**
@@ -312,14 +307,14 @@ class Microdata {
    * @return  string
    */
   public static function register_action() {
-    $default    = array(
+    $default    = [
         'itemprop' => 'potentialAction',
         'itemscope',
         'itemtype' => 'http://schema.org/RegisterAction'
-    );
+    ];
     $attributes = apply_filters( 'microdata_register_action_attributes', $default );
 
-    return Tag::parse_attributes( $attributes );
+    return Html::parse_attributes( $attributes );
   }
 
 }

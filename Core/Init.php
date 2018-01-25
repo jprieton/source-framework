@@ -51,6 +51,18 @@ final class Init extends Singleton {
     parent::__construct();
 
     /**
+     * Adds plugin cron jobs
+     * @since 1.5.0
+     */
+    Cron::init();
+
+    /**
+     * Load styles and scripts
+     * @since 1.5.0
+     */
+    Assets::init();
+
+    /**
      * This hook is called once any activated plugins have been loaded
      * @since 1.0.0
      */
@@ -79,20 +91,6 @@ final class Init extends Singleton {
      * @since 1.0.0
      */
     $this->register_custom_post_types();
-
-
-    /**
-     * Initialize Script API
-     * @since 1.0.0
-     */
-    Script::get_instance();
-
-    /**
-     * Initialize Style API
-     * @since 1.0.0
-     */
-    Style::get_instance();
-
 
     if ( is_admin() ) {
       /**

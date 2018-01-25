@@ -104,7 +104,7 @@ class Email extends PHPMailer {
     }
 
     $social_networks = (array) apply_filters( 'social_networks', [] );
-    $icon_path       = plugins_url( 'assets/images/social/', \SourceFramework\PLUGIN_FILE );
+    $icon_path       = plugins_url( 'assets/images/social/', \SourceFramework\FILE );
 
     $social_links = '';
     foreach ( $social_networks as $key => $label ) {
@@ -148,7 +148,7 @@ class Email extends PHPMailer {
   }
 
   public function render_body( $template_name = 'default' ) {
-    $path     = apply_filters( "mail_{$template_name}_template", plugin_dir_path( \SourceFramework\PLUGIN_FILE ) . "partials/mail-{$template_name}.php" );
+    $path     = apply_filters( "mail_{$template_name}_template", plugin_dir_path( \SourceFramework\FILE ) . "partials/mail-{$template_name}.php" );
     $template = file_get_contents( $path );
 
     if ( $this->mail_social === false ) {

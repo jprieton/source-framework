@@ -36,12 +36,23 @@ abstract class Singleton {
   }
 
   /**
+   * Aliases for get_instance();
+   *
+   * @since         1.5.0
+   *
+   * @return static
+   */
+  public static function &init() {
+    return static::get_instance();
+  }
+
+  /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
    *
    * @since         1.0.0
    */
   protected function __construct() {
-    
+
   }
 
   /**
@@ -50,7 +61,7 @@ abstract class Singleton {
    * @since         1.0.0
    */
   private function __clone() {
-    
+
   }
 
   /**
@@ -59,7 +70,7 @@ abstract class Singleton {
    * @since         1.0.0
    */
   private function __wakeup() {
-    
+
   }
 
   /**
@@ -68,7 +79,7 @@ abstract class Singleton {
    * @since         1.0.0
    */
   protected function __sleep() {
-    
+
   }
 
   /**

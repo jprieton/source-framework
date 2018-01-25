@@ -120,6 +120,12 @@ final class FrontEnd extends Singleton {
     add_shortcode( 'mailto', [ 'SourceFramework\Template\Shortcode', 'mailto' ] );
 
     /**
+     * Add a Bootstrap styled button.
+     * @since 1.0.0
+     */
+    add_shortcode( 'button', [ 'SourceFramework\Template\Shortcode', 'button' ] );
+
+    /**
      * Returns a reCAPTCHA div
      * @since 1.1.0
      */

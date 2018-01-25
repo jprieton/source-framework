@@ -87,6 +87,14 @@ final class AdvancedPage extends SettingPage {
     );
     $this->fields->add_field( $args );
 
+    $args = array(
+        'type'  => 'checkbox',
+        'name'  => __( 'Enable SRI', \SourceFramework\TEXTDOMAIN ),
+        'id'    => 'sri-enabled',
+        'label' => __( "This option enables the use of subresource integrity in plugin's registered scripts and styles.", \SourceFramework\TEXTDOMAIN ),
+    );
+    $this->fields->add_field( $args );
+
 
     $args = array(
         'id'       => 'thumbnail-column',
@@ -99,6 +107,11 @@ final class AdvancedPage extends SettingPage {
     $post_types = get_post_types( array( 'show_ui' => true ), 'objects' );
 
     foreach ( $post_types as $item ) {
+      if ( !post_type_supports( $item->name, 'thumbnail' ) ) {
+        continue;
+      }
+
+      $item instanceof \WP_Post_Type;
       $args['options'][$item->name] = array(
           'value' => $item->name,
           'label' => $item->label

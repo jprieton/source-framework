@@ -30,16 +30,16 @@ class Clean {
     global $wpdb;
 
     // postmeta
-    $wpdb->query( "DELETE FROM {$wpdb->postmeta} WHERE post_id NOT IN ( SELECT ID AS post_id FROM {$wpdb->posts} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->postmeta}` WHERE `post_id` NOT IN ( SELECT `ID` AS `post_id` FROM `{$wpdb->posts}` )" );
 
     // usermeta
-    $wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE user_id NOT IN ( SELECT ID AS user_id FROM {$wpdb->users} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->usermeta}` WHERE `user_id` NOT IN ( SELECT `ID` AS `user_id` FROM `{$wpdb->users}` )" );
 
     // termmeta
-    $wpdb->query( "DELETE FROM {$wpdb->termmeta} WHERE term_id NOT IN ( SELECT term_id FROM {$wpdb->terms} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->termmeta}` WHERE `term_id` NOT IN ( SELECT `term_id` FROM `{$wpdb->terms}` )" );
 
     // commentmeta
-    $wpdb->query( "DELETE FROM {$wpdb->commentmeta} WHERE comment_id NOT IN ( SELECT comment_ID AS comment_id FROM {$wpdb->comments} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->commentmeta}` WHERE `comment_id` NOT IN ( SELECT `comment_ID` AS `comment_id` FROM `{$wpdb->comments}` )" );
   }
 
   /**
@@ -51,10 +51,10 @@ class Clean {
     global $wpdb;
 
     // comments
-    $wpdb->query( "DELETE FROM {$wpdb->comments} WHERE comment_post_ID NOT IN ( SELECT ID AS comment_post_ID FROM {$wpdb->posts} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->comments}` WHERE `comment_post_ID` NOT IN ( SELECT `ID` AS `comment_post_ID` FROM `{$wpdb->posts}` )" );
 
     // commentmeta
-    $wpdb->query( "DELETE FROM {$wpdb->commentmeta} WHERE comment_id NOT IN ( SELECT comment_ID as comment_id FROM {$wpdb->comments} )" );
+    $wpdb->query( "DELETE FROM `{$wpdb->commentmeta}` WHERE `comment_id` NOT IN ( SELECT `comment_ID` as `comment_id` FROM `{$wpdb->comments}` )" );
   }
 
 }

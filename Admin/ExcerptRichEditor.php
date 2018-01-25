@@ -50,9 +50,9 @@ class ExcerptRichEditor {
             self::unescape( $post->post_excerpt ),
             'excerpt',
             array(
-                'textarea_rows' => 15,
+                'editor_height' => 300,
                 'media_buttons' => false,
-                'teeny'         => true,
+                'quicktags'     => true,
                 'tinymce'       => true
             )
     );
