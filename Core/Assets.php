@@ -175,33 +175,33 @@ class Assets extends Singleton {
             'autoload' => !is_admin()
         ],
         'font-awesome'     => [
-            'remote'    => 'https//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+            'remote'    => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
             'ver'       => '4.7.0',
             'integrity' => 'sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN',
         ],
         'ionicons'         => [
-            'remote' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
+            'remote' => 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
             'ver'    => '2.0.1',
         ],
         'animate'          => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
             'ver'       => '3.5.2',
             'integrity' => 'sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=',
             'media'     => 'screen',
         ],
         'hover'            => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css',
+            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css',
             'ver'       => '2.1.1',
             'integrity' => 'sha256-JdAl3R4Di+wuzDEa1a878QE+aqnlP4KeHc5z1qAzQa4=',
             'media'     => 'screen',
         ],
         'owl-carousel'     => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css',
+            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css',
             'ver'       => '2.2.1',
             'integrity' => 'sha256-AWqwvQ3kg5aA5KcXpX25sYKowsX97sTCTbeo33Yfyk0=',
         ],
         'bootstrap3'       => [
-            'remote'    => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
             'ver'       => '3.3.7',
             'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u',
         ],
@@ -363,7 +363,7 @@ class Assets extends Singleton {
             'defer'     => true,
         ],
         'recaptcha'                    => [
-            'remote'    => '//www.google.com/recaptcha/api.js',
+            'remote'    => 'http://www.google.com/recaptcha/api.js',
             'in_footer' => true,
             'autoload'  => !empty( $api_setting_group->get_option( 'recaptcha-site-key' ) ),
             'async'     => true,
@@ -382,12 +382,12 @@ class Assets extends Singleton {
             'ver'       => '4.0.0',
         ],
         'owl-carousel'                 => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js',
+            'remote'    => 'http://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js',
             'ver'       => '2.2.1',
             'integrity' => 'sha256-s5TTOyp+xlSmsDfr/aZhg0Gz+JejYr5iTJI8JxG1SkM=',
         ],
         'jquery-appear'                => [
-            'remote'    => '//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
+            'remote'    => 'http://cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js',
             'integrity' => 'sha256-VjbcbgNl0a7ldRQNPhmkEpW0GxCHnr52pGVkVjpnfSM=',
             'deps'      => [ 'jquery' ],
             'ver'       => '0.3.3',
