@@ -48,8 +48,8 @@ final class SecurityPage extends SettingsPage {
   public function __construct() {
     $this->option_page          = 'source-framework-security';
     $this->option_group         = 'source-framework-security';
-    $this->option_name          = 'security-options';
-    $this->settings_group_field = new SettingsGroupField( 'security-options' );
+    $this->option_name          = 'security_options';
+    $this->settings_group_field = new SettingsGroupField( $this->option_name );
 
     parent::__construct( 'options-general.php', $this->option_page );
 
@@ -107,12 +107,12 @@ final class SecurityPage extends SettingsPage {
         'type'    => 'checkbox',
         'options' => [
             [
-                'id'    => 'xmlrpc-pingback-disabled',
+                'id'    => 'disable-xmlrpc-pingback',
                 'label' => 'Disable XML-RPC Pingback',
                 'desc'  => __( 'If you uses XML-RPC in your theme/plugins check this for disable only pingback method.', SF_TEXTDOMAIN ),
             ],
             [
-                'id'    => 'xmlrpc-all-disabled',
+                'id'    => 'disable-all-xmlrpc',
                 'label' => 'Completely disable XML-RPC',
                 'desc'  => sprintf( __( 'Disable XML-RPC completely. This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove EditURI link</b>. <a href="%s" target="_blank">More info</a>.', SF_TEXTDOMAIN ), 'https://www.littlebizzy.com/blog/disable-xml-rpc' ),
             ],

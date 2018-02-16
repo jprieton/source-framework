@@ -46,6 +46,9 @@ final class Init extends Singleton {
     // Initialize ajax actions
     AjaxActions::instance();
 
+    // Initialize security
+    Security::instance();
+
     // Initialize admin menus
     add_action( 'init', [ $this, 'add_admin_pages' ] );
 
