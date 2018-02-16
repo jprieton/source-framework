@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Core\Cron;
-use SourceFramework\Admin\SupportPage;
+use SourceFramework\Admin\SecurityPage;
 
 /**
  * Class to initialize plugin
@@ -47,7 +47,7 @@ final class Init extends Singleton {
     AjaxActions::instance();
 
     // Initialize admin menus
-    add_action( 'admin_menu', [ $this, 'add_admin_menus' ], 25 );
+    add_action( 'init', [ $this, 'add_admin_pages' ] );
 
     // Add theme supports
     add_action( 'after_setup_theme', [ $this, 'add_theme_supports' ], 25 );
@@ -56,10 +56,10 @@ final class Init extends Singleton {
   /**
    * Add menu/submenu pages to admin panel's menu structure.
    *
-   * @since   1.0.0
+   * @since   2.0.0
    */
-  public function add_admin_menus() {
-    new SupportPage();
+  public function add_admin_pages() {
+    new SecurityPage();
   }
 
   /**
