@@ -1,21 +1,14 @@
 <?php
 
-/**
- * If this file is called directly, abort.
- */
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
-
-/**
- * Plugin Name:    SourceFramework
- * Description:    An extensible framework for WordPress themes and plugins
- * Version:        1.4.0
- * Author:         Javier Prieto <jprieton@gmail.com>
- * License:        GPL3
- * License URI:    http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:    source-framework
- * Domain Path:    /languages
+/*
+ * Plugin Name:   SourceFramework
+ * Plugin URI:    https://github.com/jprieton/source-framework
+ * Description:   An extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.
+ * Version:       2.0.0
+ * Author:        Javier Prieto
+ * Author URI:    https://github.com/jprieton
+ * Text Domain:   source-framework
+ * Domain Path:   /languages/
  *
  * SourceFramework is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,25 +22,32 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * You should have received a copy of the GNU General Public License
  * along with SourceFramework. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
+ *
+ * @package SourceFramework
  */
+
+// If this file is called directly, abort.
+if ( !defined( 'ABSPATH' ) ) {
+  die( 'Direct access is forbidden.' );
+}
 
 /**
  * Define plugin constants
  * @since 1.0.0
  */
-define( 'SourceFramework\VERSION', '1.4.0' );
-define( 'SourceFramework\PLUGIN_FILE', __FILE__ );
-define( 'SourceFramework\BASENAME', plugin_basename( __FILE__ ) );
-define( 'SourceFramework\TEXTDOMAIN', 'source-framework' );
+define( 'SF_VERSION', '2.0.0' );
+define( 'SF_FILENAME', __FILE__ );
+define( 'SF_BASENAME', plugin_basename( __FILE__ ) );
+define( 'SF_TEXTDOMAIN', 'source-framework' );
 
 /**
- * Path to the plugin directory or phar package
+ * Absolute path to the plugin or phar package
  * @since 1.0.0
  */
-if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' ) ) {
-  define( 'SourceFramework\ABSPATH', 'phar://' . plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-framework.phar' );
+if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' ) ) {
+  define( 'SF_ABSPATH', 'phar://' . plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' );
 } else {
-  define( 'SourceFramework\ABSPATH', plugin_dir_path( SourceFramework\PLUGIN_FILE ) );
+  define( 'SF_ABSPATH', plugin_dir_path( SF_FILENAME ) . 'includes' );
 }
 
 /**
@@ -55,23 +55,41 @@ if ( file_exists( plugin_dir_path( SourceFramework\PLUGIN_FILE ) . 'source-frame
  * @since 1.0.0
  */
 spl_autoload_register( function($class_name) {
-
   $namespace = explode( '\\', $class_name );
 
   if ( $namespace[0] != 'SourceFramework' ) {
     return false;
   }
 
-  $namespace[0] = SourceFramework\ABSPATH;
-  $filename     = implode( DIRECTORY_SEPARATOR, $namespace ) . '.php';
+  $namespace[0] = SF_ABSPATH;
+  $filename     = implode( '/', $namespace ) . '.php';
 
   if ( file_exists( $filename ) ) {
     include $filename;
   }
 } );
 
-/**
- * Initialize SourceFramework
- * @since 1.0.0
- */
-SourceFramework\Core\Init::get_instance();
+// This hook load the plugin textdomain
+add_action( 'plugins_loaded', [ 'SourceFramework\Core\TextDomain', 'load_plugin_textdomain' ] );
+
+// This hook adds tanslation to plugin description
+add_action( 'all_plugins', [ 'SourceFramework\Core\TextDomain', 'modify_plugin_description' ] );
+
+// Check if the minimum requirements are met
+if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
+
+  /**
+   * Show notice for minimum PHP version required for SourceFramework
+   * @since 1.0.0
+   */
+  function source_framework_min_php_error() {
+    $message = __( 'SourceFramework requires PHP version 5.4 or later.', SF_TEXTDOMAIN );
+    printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', esc_html( $message ) );
+  }
+
+  add_action( 'admin_notices', 'source_framework_min_php_error' );
+} else {
+
+  // Initialize SourceFramework
+  SourceFramework\Core\Init::instance();
+}

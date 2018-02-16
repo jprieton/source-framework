@@ -1,8 +1,8 @@
-html.hidden {
-  display: block !important;
-}
-.background-fixed {
+.not-available-en-cover {
+  background: no-repeat center url(../images/image-not-available-en.svg);
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+}
+.not-available-es-cover {
+  background: no-repeat center url(../images/image-not-available-es.svg);
+  background-size: cover;
 }
