@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
-use SourceFramework\Settings\SettingGroup;
+use SourceFramework\Settings\SettingsGroup;
 use SourceFramework\Template\Html;
 
 /**
@@ -125,7 +125,7 @@ class Assets extends Singleton {
     global $tools_setting_group;
 
     if ( empty( $tools_setting_group ) ) {
-      $tools_setting_group = new SettingGroup( 'tools_settings' );
+      $tools_setting_group = new SettingsGroup( 'tools_settings' );
     }
 
     $styles = [
@@ -160,7 +160,7 @@ class Assets extends Singleton {
     global $advanced_setting_group;
 
     if ( empty( $advanced_setting_group ) ) {
-      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+      $advanced_setting_group = new SettingsGroup( 'advanced_settings' );
     }
 
     $use_cdn = $advanced_setting_group->get_bool_option( 'cdn-enabled' );
@@ -254,7 +254,7 @@ class Assets extends Singleton {
     global $api_setting_group;
 
     if ( empty( $api_setting_group ) ) {
-      $api_setting_group = new SettingGroup( 'api_settings' );
+      $api_setting_group = new SettingsGroup( 'api_settings' );
     }
 
     $scripts = [
@@ -293,7 +293,7 @@ class Assets extends Singleton {
     global $advanced_setting_group;
 
     if ( empty( $advanced_setting_group ) ) {
-      $advanced_setting_group = new SettingGroup( 'advanced_settings' );
+      $advanced_setting_group = new SettingsGroup( 'advanced_settings' );
     }
 
     $use_cdn = $advanced_setting_group->get_bool_option( 'cdn-enabled' );
