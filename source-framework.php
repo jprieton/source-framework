@@ -50,10 +50,7 @@ if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.ph
   define( 'SF_ABSPATH', plugin_dir_path( SF_FILENAME ) . 'includes' );
 }
 
-/**
- * Registering an autoload implementation
- * @since 1.0.0
- */
+//Registering an autoload implementation
 spl_autoload_register( function($class_name) {
   $namespace = explode( '\\', $class_name );
 
@@ -80,7 +77,7 @@ if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
 
   /**
    * Show notice for minimum PHP version required for SourceFramework
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function source_framework_min_php_error() {
     $message = __( 'SourceFramework requires PHP version 5.4 or later.', SF_TEXTDOMAIN );
