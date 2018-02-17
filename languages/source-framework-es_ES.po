@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2018-02-15 00:42-0400\n"
-"PO-Revision-Date: 2018-02-15 00:43-0400\n"
+"POT-Creation-Date: 2018-02-17 04:15-0400\n"
+"PO-Revision-Date: 2018-02-17 04:15-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -19,21 +19,93 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/Admin/AboutPage.php:28
-msgid "About SourceFramework"
-msgstr "Acerca de SourceFramework"
+#: ../includes/Admin/SecurityPage.php:70
+msgid "Security"
+msgstr "Seguridad"
 
-#: ../includes/Admin/AboutPage.php:30
-msgid "About"
-msgstr "Acerca"
+#: ../includes/Admin/SecurityPage.php:81
+msgid "Header"
+msgstr "Encabezado"
 
-#: ../includes/Admin/GeneralPage.php:28 ../includes/Admin/GeneralPage.php:30
-msgid "General Settings"
-msgstr "Ajustes generales"
+#: ../includes/Admin/SecurityPage.php:86
+msgid "Remove WordPress version number"
+msgstr "Eliminar el número de versión de WordPress"
 
-#: ../includes/Admin/GeneralPage.php:31
-msgid "General"
-msgstr "General"
+#: ../includes/Admin/SecurityPage.php:90
+msgid "Remove the EditURI/RSD link from your header"
+msgstr "Elimina el enlace EditURI/RSD del encabezado."
+
+#: ../includes/Admin/SecurityPage.php:91
+msgid "This option also removes the <b>Windows Live Writer</b> manifest link."
+msgstr ""
+"Esta opción también elimina el enlace al manifiesto de <b>Windows Live "
+"Writer</b>."
+
+#: ../includes/Admin/SecurityPage.php:112
+msgid "Disable XML-RPC Pingback"
+msgstr "Desactivar Pingback XML-RPC"
+
+#: ../includes/Admin/SecurityPage.php:113
+msgid ""
+"If you uses XML-RPC in your theme/plugin check this for disable only "
+"pingback method."
+msgstr ""
+"Si usas XML-RPC en tu tema/plugin marca esto para desactivar solo el método "
+"de pingback."
+
+#: ../includes/Admin/SecurityPage.php:117
+msgid "Completely disable XML-RPC"
+msgstr "Desactivar XML-RPC completamente"
+
+#: ../includes/Admin/SecurityPage.php:118
+#, php-format
+msgid ""
+"This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove "
+"EditURI link</b>. <a href=\"%s\" target=\"_blank\">More info</a>."
+msgstr ""
+"Esta configuración implica la <b>Desactivar Pingback XML-RPC</b> y "
+"<b>Eliminar el enlace EditURI</b>. <a href=\"%s\" target=\"_blank\"> Más "
+"información </a>."
+
+#: ../includes/Admin/SecurityPage.php:150
+msgid "Hide Admin Bar"
+msgstr ""
+
+#: ../includes/Admin/SecurityPage.php:153
+msgid "Hides the admin bar to user roles."
+msgstr "Oculta la barra de administración a los roles de usuario."
+
+#: ../includes/Admin/SecurityPage.php:187
+msgid "Disable Dashboard"
+msgstr ""
+
+#: ../includes/Admin/SecurityPage.php:190
+msgid "Disable access to the dashboard to user roles."
+msgstr "Deshabilita el acceso al escritorio a los roles de usuario."
+
+#: ../includes/Admin/SecurityPage.php:207
+msgid "Block critical files"
+msgstr ""
+
+#: ../includes/Admin/SecurityPage.php:211
+msgid "Disable TRACE/TRACK methods"
+msgstr ""
+
+#: ../includes/Admin/SecurityPage.php:215
+msgid "Disable directory index"
+msgstr ""
+
+#: ../includes/Ajax/UserActions.php:52
+msgid "Password successfully updated."
+msgstr "Contraseña actualizada correctamente"
+
+#: ../includes/Ajax/UserActions.php:84
+msgid "Your username or password are incorrect."
+msgstr "Tu usuario o contraseña son incorrectos."
+
+#: ../includes/Ajax/UserActions.php:89
+msgid "You have successfully logged in."
+msgstr "Has iniciado sesión correctamente."
 
 #: ../includes/Core/Assets.php:344
 msgid "Success!"
@@ -107,9 +179,36 @@ msgstr ""
 msgid "Select..."
 msgstr "Seleccione..."
 
-#: ../source-framework.php:86
+#: ../source-framework.php:83
 msgid "SourceFramework requires PHP version 5.4 or later."
 msgstr "SourceFramework requiere PHP versión 5.4 o superior."
+
+#~ msgid "Disable Access"
+#~ msgstr "Deshabilitar acceso"
+
+#~ msgid ""
+#~ "Disable access to the admin side to user roles, however, they can still "
+#~ "log in."
+#~ msgstr "Deshabilita el acceso al escritorio a los roles de usuarios."
+
+#~ msgid ""
+#~ "Remove your WordPress version number from your header, RSS feeds, styles "
+#~ "and scripts."
+#~ msgstr ""
+#~ "Elimina el número de versión de WordPress del encabezado, fuentes RSS, "
+#~ "estilos y scripts."
+
+#~ msgid "About SourceFramework"
+#~ msgstr "Acerca de SourceFramework"
+
+#~ msgid "About"
+#~ msgstr "Acerca"
+
+#~ msgid "General Settings"
+#~ msgstr "Ajustes generales"
+
+#~ msgid "General"
+#~ msgstr "General"
 
 #~ msgid "This action isn't supported"
 #~ msgstr "Esta acción no esta soportada"

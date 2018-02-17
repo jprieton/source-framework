@@ -81,7 +81,7 @@ class UserActions {
 
     if ( is_wp_error( $response ) ) {
       // Overrides the default response
-      $data = new WP_Error( 'user_authenticate_error', __( 'Your username or password are incorect.', SF_TEXTDOMAIN ) );
+      $data = new WP_Error( 'user_authenticate_error', __( 'Your username or password are incorrect.', SF_TEXTDOMAIN ) );
       wp_send_json_error( $data );
     } else {
       $data = array(

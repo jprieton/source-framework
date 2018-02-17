@@ -9,6 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\SettingsGroup;
+use WP_Rewrite;
 
 /**
  * Assets class
@@ -60,10 +61,14 @@ class Security extends Singleton {
       $this->disable_all_xmlrpc();
     }
 
-    add_action( 'admin_init', [ $this, 'disable_admin_bar' ] );
+    add_action( 'wp_loaded', [ $this, 'disable_admin_bar' ] );
+    add_action( 'wp_loaded', [ $this, 'disable_dashboard' ] );
+    add_filter( 'mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
   }
 
   /**
+   * Completely remove your WordPress version number from both your head file and RSS feeds.
+   * 
    * @since     2.0.0
    */
   public function remove_wordpress_version() {
@@ -133,7 +138,7 @@ class Security extends Singleton {
       $security_options = new SettingsGroup( 'security_options' );
     }
 
-    $disabled_roles = (array) $security_options->get_option( 'admin-bar-disabled', array() );
+    $disabled_roles = (array) $security_options->get_option( 'admin-bar-disabled', [] );
     $user           = wp_get_current_user();
 
     // By default is enabled in all roles.
@@ -156,14 +161,14 @@ class Security extends Singleton {
    *
    * @global SettingGroup $advanced_setting_group
    */
-  public function disable_admin_access() {
+  public function disable_dashboard() {
     global $security_options;
 
     if ( empty( $security_options ) ) {
       $security_options = new SettingsGroup( 'security_options' );
     }
 
-    $disabled_roles = (array) $security_options->get_option( 'admin-bar-disabled', array() );
+    $disabled_roles = (array) $security_options->get_option( 'dashboard-disabled', array() );
 
     // By default is enabled in all roles.
     if ( empty( $disabled_roles ) || !is_user_logged_in() ) {
@@ -178,6 +183,46 @@ class Security extends Singleton {
         break;
       }
     }
+  }
+
+  /**
+   * 
+   * @global SettingsGroup $security_options
+   * @global WP_Rewrite $wp_rewrite
+   */
+  public function mod_rewrite_rules( $rules ) {
+    global $security_options, $wp_rewrite;
+
+    if ( empty( $security_options ) ) {
+      $security_options = new SettingsGroup( 'security_options' );
+    }
+
+    $filenames = apply_filters( 'htaccess_blocked_filenames', [] );
+    $filenames = [ '.htaccess', 'wp-config.php', 'xmlrpc.php', 'readme.html' ];
+
+    if ( !empty( $filenames ) && $security_options->get_bool_option( 'htaccess-block-files' ) ) {
+      $rules = sprintf( "<FilesMatch %s>\n"
+                      . "Order Deny,Allow\n"
+                      . "Deny from all\n"
+                      . "</FilesMatch>\n"
+                      . "\n", implode( '|', $filenames ) ) . $rules;
+    }
+
+    if ( $security_options->get_bool_option( 'htaccess-disable-methods' ) ) {
+      $rules = "<IfModule mod_rewrite.c>\n"
+              . "RewriteEngine On\n"
+              . "RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)\n"
+              . "RewriteRule .* - [F]\n"
+              . "</IfModule>\n"
+              . "\n"
+              . $rules;
+    }
+
+    if ( $security_options->get_bool_option( 'htacces-disable-directory-index' ) ) {
+      $rules = "Options All -Indexes\n" . $rules;
+    }
+
+    return $rules;
   }
 
 }

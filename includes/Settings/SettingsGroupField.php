@@ -185,8 +185,9 @@ class SettingsGroupField extends SettingsGroup {
    * @param   array          $field
    */
   public function render_checkbox( $field ) {
+    echo '<fieldset>';
     $options        = (array) $field['options'];
-    $is_multiple    = !empty( $options );
+    $is_multiple    = isset( $field['multiple'] ) ? $field['multiple'] : false;
     $field['class'] = $field['input_class'];
 
     unset( $field['options'], $field['input_class'] );
@@ -201,6 +202,10 @@ class SettingsGroupField extends SettingsGroup {
         'value' => 'yes',
         'type'  => 'checkbox'
     ];
+
+    if ( $is_multiple ) {
+      echo Form::hidden( sprintf( "{$this->setting_group_name}[%s][]", $field['id'] ), '' );
+    }
 
     foreach ( $options as $item ) {
       $item = wp_parse_args( $item, $defaults );
@@ -253,6 +258,7 @@ class SettingsGroupField extends SettingsGroup {
       unset( $field['desc'] );
       echo $desc;
     }
+    echo '</fieldset>';
   }
 
   /**
@@ -307,14 +313,17 @@ class SettingsGroupField extends SettingsGroup {
     echo Form::select( $field, $options ) . $desc;
   }
 
-  private function _parse_description( $description = '' ) {
-    if ( is_array( $description ) ) {
-      $description = implode( "\n\n", $description );
-    }
-
-    $description = apply_filters( 'the_content', $description );
+  /**
+   * Parses the description text and adds class <code>description</code>
+   * 
+   * @since     2.0.0
+   * 
+   * @param     string    $description
+   * @return    string
+   */
+  private function _parse_description( $description ) {
+    $description = apply_filters( 'the_content', trim( $description ) );
     $description = str_replace( '<p>', '<p class="description">', $description );
-
     return $description;
   }
 
