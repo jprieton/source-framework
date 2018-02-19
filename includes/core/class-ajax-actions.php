@@ -42,8 +42,8 @@ class Ajax_Actions extends Singleton {
    * @since 2.0.0
    */
   public function add_user_actions() {
-    add_action( 'wp_ajax_user_change_password', [ 'SourceFramework\Ajax\UserActions', 'change_password' ] );
-    add_action( 'wp_ajax_nopriv_user_authenticate', [ 'SourceFramework\Ajax\UserActions', 'authenticate' ] );
+    add_action( 'wp_ajax_user_change_password', [ 'SourceFramework\Ajax\User_Actions', 'change_password' ] );
+    add_action( 'wp_ajax_nopriv_user_authenticate', [ 'SourceFramework\Ajax\User_Actions', 'authenticate' ] );
   }
 
 }
