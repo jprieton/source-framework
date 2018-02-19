@@ -81,7 +81,6 @@ spl_autoload_register( function($class_name) {
   $namespace[0] = SF_ABSPATH;
   $namespace[]  = $class_filename;
 
-
   $filename = implode( DIRECTORY_SEPARATOR, $namespace ) . '.php';
 
   if ( file_exists( $filename ) ) {

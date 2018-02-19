@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @author         Javier Prieto
 
  */
-class RestApi {
+class Rest_Api_Client {
 
   /**
    * Base URL of API
