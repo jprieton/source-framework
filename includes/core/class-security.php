@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 use SourceFramework\Abstracts\Singleton;
-use SourceFramework\Settings\SettingsGroup;
+use SourceFramework\Settings\Settings_Group;
 use WP_Rewrite;
 
 /**
@@ -34,7 +34,7 @@ class Security extends Singleton {
    *
    * @since     2.0.0
    *
-   * @global    SettingsGroup     $security_options
+   * @global    Settings_Group     $security_options
    */
   protected function __construct() {
     parent::__construct();
@@ -42,7 +42,7 @@ class Security extends Singleton {
     global $security_options;
 
     if ( empty( $security_options ) ) {
-      $security_options = new SettingsGroup( 'security_options' );
+      $security_options = new Settings_Group( 'security_options' );
     }
 
     if ( $security_options->get_bool_option( 'remove-wordpress-version' ) ) {
@@ -133,13 +133,13 @@ class Security extends Singleton {
    *
    * @since     2.0.0
    *
-   * @global    SettingsGroup     $security_options
+   * @global    Settings_Group     $security_options
    */
   public function disable_admin_bar() {
     global $security_options;
 
     if ( empty( $security_options ) ) {
-      $security_options = new SettingsGroup( 'security_options' );
+      $security_options = new Settings_Group( 'security_options' );
     }
 
     $disabled_roles = (array) $security_options->get_option( 'admin-bar-disabled', [] );
@@ -169,7 +169,7 @@ class Security extends Singleton {
     global $security_options;
 
     if ( empty( $security_options ) ) {
-      $security_options = new SettingsGroup( 'security_options' );
+      $security_options = new Settings_Group( 'security_options' );
     }
 
     $disabled_roles = (array) $security_options->get_option( 'dashboard-disabled', array() );
@@ -191,14 +191,14 @@ class Security extends Singleton {
 
   /**
    *
-   * @global SettingsGroup $security_options
+   * @global Settings_Group $security_options
    * @global WP_Rewrite $wp_rewrite
    */
   public function mod_rewrite_rules( $rules ) {
     global $security_options, $wp_rewrite;
 
     if ( empty( $security_options ) ) {
-      $security_options = new SettingsGroup( 'security_options' );
+      $security_options = new Settings_Group( 'security_options' );
     }
 
     $filenames = apply_filters( 'htaccess_blocked_filenames', [] );

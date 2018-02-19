@@ -22,7 +22,14 @@ abstract class MenuPage {
    * @since   1.0.0
    * @var     string
    */
-  protected $title;
+  protected $title = '';
+
+  /**
+   * Page description
+   * @since   1.0.0
+   * @var     string
+   */
+  protected $description = '';
 
   /**
    * Page menu slug
@@ -91,6 +98,12 @@ abstract class MenuPage {
       <h2><?php echo $this->title ?></h2>
 
       <?php settings_errors() ?>
+
+      <?php
+      if ( !empty( $this->description ) ) {
+        echo apply_filters( 'the_content', $this->description );
+      }
+      ?>
 
     </div>
     <?php

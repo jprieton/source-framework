@@ -7,18 +7,18 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Abstracts\SettingsPage;
-use SourceFramework\Settings\SettingsGroupField;
+use SourceFramework\Abstracts\Settings_Page;
+use SourceFramework\Settings\Settings_Group_Field;
 
 /**
- * SecurityPage class
+ * Security_Page class
  *
  * @package        SourceFramework
  * @subpackage     Admin
  * @since          2.0.0
  * @author         Javier Prieto
  */
-final class SecurityPage extends SettingsPage {
+final class Security_Page extends Settings_Page {
 
   /**
    * Option group
@@ -36,7 +36,7 @@ final class SecurityPage extends SettingsPage {
 
   /**
    *
-   * @var SettingsGroupField
+   * @var Settings_Group_Field
    */
   private $settings_group_field;
 
@@ -49,7 +49,7 @@ final class SecurityPage extends SettingsPage {
     $this->option_page          = 'security-options';
     $this->option_group         = 'security-options';
     $this->option_name          = 'security_options';
-    $this->settings_group_field = new SettingsGroupField( $this->option_name );
+    $this->settings_group_field = new Settings_Group_Field( $this->option_name );
 
     parent::__construct( 'options-general.php', $this->option_page );
 

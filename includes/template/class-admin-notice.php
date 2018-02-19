@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @since          1.5.0
  * @author         Javier Prieto
  */
-class AdminNotice {
+class Admin_Notice {
 
   /**
    * Admin notice message

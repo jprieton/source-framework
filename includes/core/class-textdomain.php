@@ -15,11 +15,11 @@ if ( !defined( 'ABSPATH' ) ) {
  * @since          2.0.0
  * @author         Javier Prieto
  */
-class TextDomain {
+class Textdomain {
 
   /**
    * Load plugin textdomain
-   * 
+   *
    * @since     1.1.0
    */
   public static function load_plugin_textdomain() {

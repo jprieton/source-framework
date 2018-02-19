@@ -11,11 +11,11 @@ namespace SourceFramework\Core;
 use SourceFramework\Abstracts\Singleton;
 
 /**
- * Description of AjaxActions
+ * Description of Ajax_Actions
  *
  * @author perseo
  */
-class AjaxActions extends Singleton {
+class Ajax_Actions extends Singleton {
 
   /**
    * Single instance of this class

@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Template\Html;
 use SourceFramework\Template\Form;
-use SourceFramework\Settings\SettingsGroup;
+use SourceFramework\Settings\Settings_Group;
 
 /**
  * SettingField class
@@ -22,7 +22,7 @@ use SourceFramework\Settings\SettingsGroup;
  * @copyright	  Copyright (c) 2017, SMG | Javier Prieto
  * @since          1.0.0
  */
-class SettingsGroupField extends SettingsGroup {
+class Settings_Group_Field extends Settings_Group {
 
   /**
    * Constructor
@@ -315,9 +315,9 @@ class SettingsGroupField extends SettingsGroup {
 
   /**
    * Parses the description text and adds class <code>description</code>
-   * 
+   *
    * @since     2.0.0
-   * 
+   *
    * @param     string    $description
    * @return    string
    */

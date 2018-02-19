@@ -19,7 +19,7 @@ use WP_Error;
  * @since         1.1.0
  * @author        Javier Prieto
  */
-class ErrorMessage {
+class Error_Message {
 
   /**
    * Error "Action not supported"

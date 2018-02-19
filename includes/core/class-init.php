@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Core\Cron;
-use SourceFramework\Admin\SecurityPage;
+use SourceFramework\Admin\Security_Page;
 
 /**
  * Class to initialize plugin
@@ -44,7 +44,7 @@ final class Init extends Singleton {
     Assets::instance();
 
     // Initialize ajax actions
-    AjaxActions::instance();
+    Ajax_Actions::instance();
 
     // Initialize security
     Security::instance();
@@ -62,7 +62,7 @@ final class Init extends Singleton {
    * @since   2.0.0
    */
   public function add_admin_pages() {
-    new SecurityPage();
+    new Security_Page();
   }
 
   /**

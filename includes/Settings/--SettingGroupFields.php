@@ -8,11 +8,11 @@
 
 namespace SourceFramework\Settings;
 
-use SourceFramework\Settings\SettingGroup;
+use SourceFramework\Settings\Settings_Group;
 use SourceFramework\Template\Form;
 
 /**
- * SettingGroup class
+ * Settings_Group class
  *
  * @package       SMGTools
  * @subpackage    Settings
@@ -20,7 +20,7 @@ use SourceFramework\Template\Form;
  * @author        Javier Prieto
  * @license       http://www.gnu.org/licenses/gpl-3.0.txt
  */
-class SettingGroupFields extends SettingGroup {
+class Settings_Group_Fields extends Settings_Group {
 
   /**
    * Render a textarea field

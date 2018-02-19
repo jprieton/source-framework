@@ -40,15 +40,17 @@ define( 'SF_FILENAME', __FILE__ );
 define( 'SF_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SF_TEXTDOMAIN', 'source-framework' );
 
+if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' ) ) {
+  $abspath = 'phar://' . plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar';
+} else {
+  $abspath = plugin_dir_path( SF_FILENAME ) . 'includes';
+}
+
 /**
  * Absolute path to the plugin or phar package
  * @since 1.0.0
  */
-if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' ) ) {
-  define( 'SF_ABSPATH', 'phar://' . plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' );
-} else {
-  define( 'SF_ABSPATH', plugin_dir_path( SF_FILENAME ) . 'includes' );
-}
+define( 'SF_ABSPATH', $abspath );
 
 //Registering an autoload implementation
 spl_autoload_register( function($class_name) {
@@ -58,19 +60,43 @@ spl_autoload_register( function($class_name) {
     return false;
   }
 
+  $namespace = array_map( 'strtolower', $namespace );
+
+  if ( in_array( 'abstracts', $namespace ) ) {
+    $class_filename = 'abstract-class-' . str_replace( '_', '-', end( $namespace ) );
+    array_pop( $namespace );
+    array_pop( $namespace );
+    $namespace[]    = 'core';
+  } elseif ( in_array( 'settings', $namespace ) ) {
+    $class_filename = 'class-' . str_replace( '_', '-', end( $namespace ) );
+    array_pop( $namespace );
+    array_pop( $namespace );
+    $namespace[]    = 'core';
+  } else {
+    $class_filename = 'class-' . str_replace( '_', '-', end( $namespace ) );
+    array_pop( $namespace );
+  }
+
+
   $namespace[0] = SF_ABSPATH;
-  $filename     = implode( '/', $namespace ) . '.php';
+  $namespace[]  = $class_filename;
+
+
+  $filename = implode( DIRECTORY_SEPARATOR, $namespace ) . '.php';
 
   if ( file_exists( $filename ) ) {
     include $filename;
+  } else {
+    var_dump( $filename );
+    die;
   }
 } );
 
 // This hook load the plugin textdomain
-add_action( 'plugins_loaded', [ 'SourceFramework\Core\TextDomain', 'load_plugin_textdomain' ] );
+add_action( 'plugins_loaded', [ 'SourceFramework\Core\Textdomain', 'load_plugin_textdomain' ] );
 
 // This hook adds tanslation to plugin description
-add_action( 'all_plugins', [ 'SourceFramework\Core\TextDomain', 'modify_plugin_description' ] );
+add_action( 'all_plugins', [ 'SourceFramework\Core\Textdomain', 'modify_plugin_description' ] );
 
 // Check if the minimum requirements are met
 if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
