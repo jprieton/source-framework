@@ -46,8 +46,8 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function __construct() {
-    $this->option_page          = 'source-framework-security';
-    $this->option_group         = 'source-framework-security';
+    $this->option_page          = 'security-options';
+    $this->option_group         = 'security-options';
     $this->option_name          = 'security_options';
     $this->settings_group_field = new SettingsGroupField( $this->option_name );
 
@@ -76,10 +76,10 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_file_edit_settings_section() {
-    $this->add_settings_section( 'source-framework-security-file-edit' );
+    $this->add_settings_section( 'section-security-file-edit' );
 
     $fields = [
-        'title'   => __( 'Core', SF_TEXTDOMAIN ),
+        'title'   => __( 'General', SF_TEXTDOMAIN ),
         'type'    => 'checkbox',
         'options' => [
             [
@@ -89,7 +89,7 @@ final class SecurityPage extends SettingsPage {
         ],
     ];
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-file-edit', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-file-edit', $fields );
   }
 
   /**
@@ -97,7 +97,7 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_header_settings_section() {
-    $this->add_settings_section( 'source-framework-security-header' );
+    $this->add_settings_section( 'section-security-header' );
 
     $fields = [
         'title'   => __( 'Header', SF_TEXTDOMAIN ),
@@ -115,7 +115,7 @@ final class SecurityPage extends SettingsPage {
         ],
     ];
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-header', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-header', $fields );
   }
 
   /**
@@ -123,7 +123,7 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_xmlrpc_settings_section() {
-    $this->add_settings_section( 'source-framework-security-xmlrpc' );
+    $this->add_settings_section( 'section-security-xmlrpc' );
 
     $fields = [
         'title'   => 'XML-RPC',
@@ -142,7 +142,7 @@ final class SecurityPage extends SettingsPage {
         ],
     ];
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-xmlrpc', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-xmlrpc', $fields );
   }
 
   /**
@@ -150,7 +150,7 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_admin_bar_settings_section() {
-    $this->add_settings_section( 'source-framework-security-admin-bar' );
+    $this->add_settings_section( 'section-security-admin-bar' );
 
     global $wp_roles;
 
@@ -177,7 +177,7 @@ final class SecurityPage extends SettingsPage {
         'options'  => $options,
     ];
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-admin-bar', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-admin-bar', $fields );
   }
 
   /**
@@ -185,7 +185,7 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_dashboard_settings_section() {
-    $this->add_settings_section( 'source-framework-security-dashboard' );
+    $this->add_settings_section( 'section-security-dashboard' );
 
     global $wp_roles;
 
@@ -214,7 +214,7 @@ final class SecurityPage extends SettingsPage {
         'options'  => $options,
     );
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-dashboard', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-dashboard', $fields );
   }
 
   /**
@@ -222,7 +222,7 @@ final class SecurityPage extends SettingsPage {
    * @since 2.0.0
    */
   public function add_htaccess_settings_section() {
-    $this->add_settings_section( 'source-framework-security-htaccess' );
+    $this->add_settings_section( 'section-security-htaccess' );
 
     $options = [
         [
@@ -248,7 +248,7 @@ final class SecurityPage extends SettingsPage {
         'options' => $options,
     );
 
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-htaccess', $fields );
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-htaccess', $fields );
   }
 
 }
