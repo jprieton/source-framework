@@ -54,6 +54,7 @@ final class SecurityPage extends SettingsPage {
     parent::__construct( 'options-general.php', $this->option_page );
 
     add_action( 'admin_menu', [ $this, 'add_security_page' ] );
+    add_action( 'admin_init', [ $this, 'add_file_edit_settings_section' ] );
     add_action( 'admin_init', [ $this, 'add_header_settings_section' ] );
     add_action( 'admin_init', [ $this, 'add_xmlrpc_settings_section' ] );
     add_action( 'admin_init', [ $this, 'add_admin_bar_settings_section' ] );
@@ -68,6 +69,27 @@ final class SecurityPage extends SettingsPage {
    */
   public function add_security_page() {
     parent::add_submenu_page( __( 'Security', SF_TEXTDOMAIN ), __( 'Security', SF_TEXTDOMAIN ), 'activate_plugins' );
+  }
+
+  /**
+   *
+   * @since 2.0.0
+   */
+  public function add_file_edit_settings_section() {
+    $this->add_settings_section( 'source-framework-security-file-edit' );
+
+    $fields = [
+        'title'   => __( 'Core', SF_TEXTDOMAIN ),
+        'type'    => 'checkbox',
+        'options' => [
+            [
+                'id'    => 'disallow-file-edit',
+                'label' => __( 'Disable the Plugin and Theme Editor', SF_TEXTDOMAIN ),
+            ],
+        ],
+    ];
+
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'source-framework-security-file-edit', $fields );
   }
 
   /**

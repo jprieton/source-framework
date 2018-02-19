@@ -49,6 +49,10 @@ class Security extends Singleton {
       add_action( 'wp_head', [ $this, 'remove_wordpress_version' ], -1 );
     }
 
+    if ( $security_options->get_bool_option( 'disallow-file-edit' ) && !defined( 'DISALLOW_FILE_EDIT' ) ) {
+      define( 'DISALLOW_FILE_EDIT', true );
+    }
+
     if ( $security_options->get_bool_option( 'remove_rsd_link' ) ) {
       add_action( 'wp_head', [ $this, 'remove_rsd_link' ] );
     }
@@ -68,7 +72,7 @@ class Security extends Singleton {
 
   /**
    * Completely remove your WordPress version number from both your head file and RSS feeds.
-   * 
+   *
    * @since     2.0.0
    */
   public function remove_wordpress_version() {
@@ -186,7 +190,7 @@ class Security extends Singleton {
   }
 
   /**
-   * 
+   *
    * @global SettingsGroup $security_options
    * @global WP_Rewrite $wp_rewrite
    */
