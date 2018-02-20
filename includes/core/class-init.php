@@ -10,6 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
+use SourceFramework\Admin\Advanced_Page;
 
 /**
  * Class to initialize plugin
@@ -62,6 +63,7 @@ final class Init extends Singleton {
    * @since   2.0.0
    */
   public function add_admin_pages() {
+    new Advanced_Page();
     new Security_Page();
   }
 
