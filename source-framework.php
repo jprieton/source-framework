@@ -39,6 +39,7 @@ define( 'SF_VERSION', '2.0.0' );
 define( 'SF_FILENAME', __FILE__ );
 define( 'SF_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SF_BASEDIR', __DIR__ );
+define( 'SF_BASEURL', plugin_dir_url( __FILE__ ) );
 define( 'SF_TEXTDOMAIN', 'source-framework' );
 
 if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' ) ) {
