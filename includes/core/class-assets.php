@@ -129,10 +129,20 @@ class Assets extends Singleton {
     }
 
     $styles = [
+        'bootstrap'        => [
+            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+            'ver'       => '4.0.0',
+            'integrity' => 'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',
+            'autoload'  => true
+        ],
         'source-framework' => [
             'local'    => plugins_url( 'assets/css/public.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
             'autoload' => true
+        ],
+        'font-awesome' => [
+            'remote'    => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
+            'ver'      => SF_VERSION,
         ],
     ];
 
@@ -265,6 +275,22 @@ class Assets extends Singleton {
             'in_footer' => true,
             'autoload'  => true,
             'defer'     => true,
+        ],
+        'popper'           => [
+            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
+            'deps'      => [ 'jquery' ],
+            'ver'       => '1.12.9',
+            'integrity' => 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q',
+            'in_footer' => true,
+            'autoload'  => true,
+        ],
+        'bootstrap'        => [
+            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
+            'deps'      => [ 'jquery', 'popper' ],
+            'ver'       => '4.0.0',
+            'integrity' => 'sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl',
+            'in_footer' => true,
+            'autoload'  => true,
         ],
     ];
 

@@ -290,4 +290,18 @@ class Html {
     return $content;
   }
 
+  /**
+   * Magic method for tags
+   * 
+   * @since   2.0.0
+   * 
+   * @param   string    $tag
+   * @param   array     $arguments
+   * @return  string
+   */
+  public static function __callStatic( $tag, $arguments ) {
+    list($content, $attributes) = $arguments;
+    return static::tag( $tag, $content, $attributes );
+  }
+
 }
