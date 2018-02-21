@@ -55,6 +55,9 @@ final class Init extends Singleton {
 
     // Add theme supports
     add_action( 'after_setup_theme', [ $this, 'add_theme_supports' ], 25 );
+
+    // Add an ofuscate mailto shortcode to prevent spam-bots from sniffing it.
+    add_shortcode( 'mailto', [ 'SourceFramework\Shortcode\General', 'mailto' ] );
   }
 
   /**
