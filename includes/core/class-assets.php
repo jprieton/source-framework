@@ -140,9 +140,9 @@ class Assets extends Singleton {
             'ver'      => SF_VERSION,
             'autoload' => true
         ],
-        'font-awesome' => [
-            'remote'    => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
-            'ver'      => SF_VERSION,
+        'font-awesome'     => [
+            'remote' => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
+            'ver'    => SF_VERSION,
         ],
     ];
 
@@ -278,9 +278,9 @@ class Assets extends Singleton {
         ],
         'popper'           => [
             'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
+            'integrity' => 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q',
             'deps'      => [ 'jquery' ],
             'ver'       => '1.12.9',
-            'integrity' => 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q',
             'in_footer' => true,
             'autoload'  => true,
         ],
@@ -365,7 +365,6 @@ class Assets extends Singleton {
    */
   public function localize_scripts() {
     $data   = [
-        'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
         'messages' => [
             'success'   => __( 'Success!', SF_TEXTDOMAIN ),
             'fail'      => __( 'Fail!', SF_TEXTDOMAIN ),
@@ -379,6 +378,7 @@ class Assets extends Singleton {
     ];
     $handle = is_admin() ? 'source-framework-admin' : 'source-framework';
 
+    wp_localize_script( $handle, 'ajaxurl', admin_url( 'admin-ajax.php' ) );
     wp_localize_script( $handle, 'SourceFrameworkLocale', apply_filters( 'source_framework_localize_scripts', $data ) );
   }
 
