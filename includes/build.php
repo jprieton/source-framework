@@ -9,7 +9,7 @@ if ( file_exists( $phar_path ) ) {
 $phar = new Phar( $phar_path );
 $phar->setStub( '<?php __HALT_COMPILER();' );
 
-$folders = [ 'Abstracts', 'Admin', 'Core', 'Data', 'Settings', 'Template', 'Tools' ];
+$folders = [ 'admin', 'ajax', 'core', 'data', 'shortcode', 'template', 'tools', 'vendor' ];
 
 foreach ( $folders as $folder ) {
   if ( !file_exists( $folder ) || !is_dir( $folder ) ) {
