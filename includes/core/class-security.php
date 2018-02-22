@@ -9,7 +9,6 @@ if ( !defined( 'ABSPATH' ) ) {
 
 use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\Settings_Group;
-use WP_Rewrite;
 
 /**
  * Assets class
@@ -67,7 +66,7 @@ class Security extends Singleton {
 
     add_action( 'wp_loaded', [ $this, 'disable_admin_bar' ] );
     add_action( 'wp_loaded', [ $this, 'disable_dashboard' ] );
-    add_filter( 'mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
+    add_filter( 'security_mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
   }
 
   /**
@@ -108,6 +107,12 @@ class Security extends Singleton {
 
     // Disable all XML-RCP methods
     add_filter( 'xmlrpc_methods', '__return_empty_array' );
+
+    // Add xmlrpc.php to list to blocked files
+    add_filter( 'htaccess_blocked_filenames', function($files) {
+      $files[] = 'xmlrpc.php';
+      return $files;
+    } );
   }
 
   /**
@@ -163,7 +168,7 @@ class Security extends Singleton {
    *
    * @since 1.0.0
    *
-   * @global SettingGroup $advanced_setting_group
+   * @global Settings_Group $advanced_setting_group
    */
   public function disable_dashboard() {
     global $security_options;
@@ -192,41 +197,85 @@ class Security extends Singleton {
   /**
    *
    * @global Settings_Group $security_options
-   * @global WP_Rewrite $wp_rewrite
    */
   public function mod_rewrite_rules( $rules ) {
-    global $security_options, $wp_rewrite;
+    global $security_options;
 
     if ( empty( $security_options ) ) {
       $security_options = new Settings_Group( 'security_options' );
     }
 
-    $filenames = apply_filters( 'htaccess_blocked_filenames', [] );
-    $filenames = [ '.htaccess', 'wp-config.php', 'xmlrpc.php', 'readme.html' ];
+    $new_rules = '';
 
-    if ( !empty( $filenames ) && $security_options->get_bool_option( 'htaccess-block-files' ) ) {
-      $rules = sprintf( "<FilesMatch %s>\n"
-                      . "Order Deny,Allow\n"
-                      . "Deny from all\n"
-                      . "</FilesMatch>\n"
-                      . "\n", implode( '|', $filenames ) ) . $rules;
+    if ( $security_options->get_bool_option( 'htaccess-disable-indexes' ) ) {
+      $new_rules .= '# [DISABLE INDEXES]
+Options All -Indexes
+
+';
     }
 
-    if ( $security_options->get_bool_option( 'htaccess-disable-methods' ) ) {
-      $rules = "<IfModule mod_rewrite.c>\n"
-              . "RewriteEngine On\n"
-              . "RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)\n"
-              . "RewriteRule .* - [F]\n"
-              . "</IfModule>\n"
-              . "\n"
-              . $rules;
+    if ( $security_options->get_bool_option( 'htaccess-block-request-methods' ) ) {
+      $new_rules .= '# [BLOCK REQUEST METHODS]
+<IfModule mod_rewrite.c>
+RewriteCond %{REQUEST_METHOD} ^(connect|debug|move|put|trace|track) [NC]
+RewriteRule .* - [F]
+</IfModule>
+
+';
     }
 
-    if ( $security_options->get_bool_option( 'htacces-disable-directory-index' ) ) {
-      $rules = "Options All -Indexes\n" . $rules;
+    if ( $security_options->get_bool_option( 'htaccess-block-query-strings' ) ) {
+      $new_rules .= '# [BLOCK QUERY STRINGS]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (eval\() [NC,OR]
+RewriteCond %{QUERY_STRING} (127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} ([a-z0-9]{2000,}) [NC,OR]
+RewriteCond %{QUERY_STRING} (javascript:)(.*)(;) [NC,OR]
+RewriteCond %{QUERY_STRING} (base64_encode)(.*)(\() [NC,OR]
+RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)(.*)script(.*)(>|%3) [NC,OR]
+RewriteCond %{QUERY_STRING} (\\|\.\.\.|\.\./|~|`|<|>|\|) [NC,OR]
+RewriteCond %{QUERY_STRING} (boot\.ini|etc/passwd|self/environ) [NC,OR]
+RewriteCond %{QUERY_STRING} (thumbs?(_editor|open)?|tim(thumb)?)\.php [NC,OR]
+RewriteCond %{QUERY_STRING} (\'|\")(.*)(drop|insert|md5|select|union) [NC]
+RewriteRule .* - [F]
+</IfModule>
+
+';
     }
 
-    return $rules;
+    if ( $security_options->get_bool_option( 'htaccess-block-request-strings' ) ) {
+      $new_rules .= '# [BLOCK REQUEST STRINGS]
+<IfModule mod_alias.c>
+RedirectMatch 403 (?i)([a-z0-9]{2000,})
+RedirectMatch 403 (?i)(https?|ftp|php):/
+RedirectMatch 403 (?i)(base64_encode)(.*)(\()
+RedirectMatch 403 (?i)(=\\\'|=\\%27|/\\\'/?)\.
+RedirectMatch 403 (?i)/(\$(\&)?|\*|\"|\.|,|&|&amp;?)/?$
+RedirectMatch 403 (?i)(\{0\}|\(/\(|\.\.\.|\+\+\+|\\\"\\\")
+RedirectMatch 403 (?i)(~|`|<|>|:|;|,|%|\\|\s|\{|\}|\[|\]|\|)
+RedirectMatch 403 (?i)/(=|\$&|_mm|cgi-|etc/passwd|muieblack)
+RedirectMatch 403 (?i)(&pws=0|_vti_|\(null\)|\{\$itemURL\}|echo(.*)kae|etc/passwd|eval\(|self/environ)
+RedirectMatch 403 (?i)\.(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rar|rdf)$
+RedirectMatch 403 (?i)/(^$|(wp-)?config|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell)\.php
+</IfModule>
+
+';
+    }
+
+    $files = apply_filters( 'htaccess_blocked_filenames', [ '.htaccess', 'wp-config.php', 'readme.html' ] );
+    if ( !empty( $files ) && $security_options->get_bool_option( 'htaccess-block-direct-access' ) ) {
+      $new_rules .= sprintf( '# [BLOCK DIRECT ACCESS]
+<FilesMatch %s>
+Order Deny,Allow
+Deny from all
+</FilesMatch>
+
+', implode( '|', $files ) );
+    }
+
+    return $new_rules . $rules;
   }
 
 }

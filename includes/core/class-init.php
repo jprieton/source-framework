@@ -58,6 +58,9 @@ final class Init extends Singleton {
 
     // Add an ofuscate mailto shortcode to prevent spam-bots from sniffing it.
     add_shortcode( 'mailto', [ 'SourceFramework\Shortcode\General', 'mailto' ] );
+
+    // Add additional mod_rewrite rules
+    add_filter( 'mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
   }
 
   /**
@@ -81,6 +84,19 @@ final class Init extends Singleton {
 
     // Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
+  }
+
+  /**
+   * Adds additional rules to .htaccess
+   *
+   * @since     2.0.0
+   *
+   * @param     sring     $rules
+   * @return    string
+   */
+  public function mod_rewrite_rules( $rules ) {
+    $security = apply_filters( 'security_mod_rewrite_rules', '' );
+    return $security . $rules;
   }
 
 }

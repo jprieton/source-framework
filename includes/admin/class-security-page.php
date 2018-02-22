@@ -226,16 +226,24 @@ final class Security_Page extends Settings_Page {
 
     $options = [
         [
-            'label' => __( 'Block critical files' ),
-            'id'    => 'htaccess-block-files',
+            'label' => __( 'Disable directory index', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-disable-indexes',
         ],
         [
-            'label' => __( 'Disable TRACE/TRACK methods' ),
-            'id'    => 'htaccess-disable-methods',
+            'label' => __( 'Disable CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK methods', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-block-request-methods',
         ],
         [
-            'label' => __( 'Disable directory index' ),
-            'id'    => 'htaccess-disable-directory-index',
+            'label' => __( 'Block unsafe query strings', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-block-query-strings',
+        ],
+        [
+            'label' => __( 'Block unsafe request strings', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-block-request-strings',
+        ],
+        [
+            'label' => __( 'Block direct access to critical files', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-block-direct-access',
         ],
     ];
 
