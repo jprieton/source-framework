@@ -133,16 +133,16 @@ class Assets extends Singleton {
             'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
             'ver'       => '4.0.0',
             'integrity' => 'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',
-            'autoload'  => true
+            'autoload'  => true,
+        ],
+        'fontawesome'      => [
+            'remote' => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
+            'ver'    => '5.0.6',
         ],
         'source-framework' => [
             'local'    => plugins_url( 'assets/css/public.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
-            'autoload' => true
-        ],
-        'font-awesome'     => [
-            'remote' => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
-            'ver'    => SF_VERSION,
+            'autoload' => true,
         ],
     ];
 
