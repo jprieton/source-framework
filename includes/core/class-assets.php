@@ -144,10 +144,10 @@ class Assets extends Singleton {
             'ver'      => SF_VERSION,
             'autoload' => true,
         ],
-        'bootstrap-helper' => [
-            'local'    => plugins_url( 'assets/css/bootstrap-helper.css', SF_FILENAME ),
+        'bootstrap-breakpoint-helper' => [
+            'local'    => plugins_url( 'assets/css/bootstrap-breakpoint-helper.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
-            'autoload' => get_theme_mod('bootstrap-helper', false),
+            'autoload' => get_theme_mod('bootstrap-breakpoint-helper', false),
         ],
     ];
 

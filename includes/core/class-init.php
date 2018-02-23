@@ -66,8 +66,8 @@ final class Init extends Singleton {
     // Add additional mod_rewrite rules
     add_filter( 'mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
 
-    // Add the Bootstrap helper to footer
-    add_action( 'wp_footer', [ $this, 'bootstrap_helper' ], 99 );
+    // Add the Bootstrap Breakpoint Helper to footer
+    add_action( 'wp_footer', [ $this, 'bootstrap_breakpoint_helper' ], 99 );
   }
 
   /**
@@ -111,9 +111,9 @@ final class Init extends Singleton {
    * 
    * @since     2.0.0
    */
-  public function bootstrap_helper() {
-    if ( get_theme_mod( 'bootstrap-helper', false ) ) {
-      include_once SF_ABSPATH . '/partials/bootstrap-helper.php';
+  public function bootstrap_breakpoint_helper() {
+    if ( get_theme_mod( 'bootstrap-breakpoint-helper', false ) ) {
+      include_once SF_ABSPATH . '/partials/bootstrap-breakpoint-helper.php';
     }
   }
 
