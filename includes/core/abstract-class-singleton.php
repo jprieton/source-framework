@@ -20,7 +20,7 @@ abstract class Singleton {
   /**
    * Main instance
    * Ensures only one instance of this class is loaded or can be loaded.
-   * 
+   *
    * @since   1.0.0
    * @static
    * @return  static
@@ -40,16 +40,16 @@ abstract class Singleton {
    * @since   1.0.0
    */
   protected function __construct() {
-    
+
   }
 
   /**
    * Declared as private to prevent cloning of an instance of the class via the clone operator.
-   * 
+   *
    * @since   1.0.0
    */
   private function __clone() {
-    
+
   }
 
   /**
@@ -58,7 +58,7 @@ abstract class Singleton {
    * @since   1.0.0
    */
   private function __wakeup() {
-    
+
   }
 
   /**
@@ -67,7 +67,7 @@ abstract class Singleton {
    * @since   1.0.0
    */
   protected function __sleep() {
-    
+
   }
 
   /**

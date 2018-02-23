@@ -10,9 +10,14 @@ if ( !defined( 'ABSPATH' ) ) {
 use SourceFramework\Template\Html;
 
 /**
- * Description of Components
+ * Bootstrap 4.x alert class
  *
- * @author perseo
+ * @package       SourceFramework
+ * @subpackage    Vendor\Bootstrap4
+ *
+ * @since         2.0.0
+ * @see           http://getbootstrap.com/components/#alerts
+ * @author        Javier Prieto
  */
 class Alert {
 
@@ -40,7 +45,7 @@ class Alert {
     $content = '';
 
     if ( $args['dismissible'] ) {
-      $content       .= static::dismiss( 'alert' );
+      $content       .= static::dismiss();
       $args['class'] .= ' alert-dismissible fade show';
     }
     unset( $args['dismissible'] );
@@ -204,9 +209,9 @@ class Alert {
    * @param   string    $component
    * @return  string
    */
-  public static function dismiss( $component ) {
-    $format = '<button type="button" class="close" data-dismiss="%s" aria-label="%s"><span aria-hidden="true">&times;</span></button>';
-    return sprintf( $format, $component, __( 'Close', SF_TEXTDOMAIN ) );
+  public static function dismiss() {
+    $format = '<button type="button" class="close" data-dismiss="alert" aria-label="%s"><span aria-hidden="true">&times;</span></button>';
+    return sprintf( $format, __( 'Close', SF_TEXTDOMAIN ) );
   }
 
 }
