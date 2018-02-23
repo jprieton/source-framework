@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2018-02-17 04:15-0400\n"
-"PO-Revision-Date: 2018-02-17 04:15-0400\n"
+"POT-Creation-Date: 2018-02-22 23:11-0400\n"
+"PO-Revision-Date: 2018-02-22 23:15-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -19,33 +19,69 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/Admin/SecurityPage.php:70
+#: ../includes/admin/class-advanced-page.php:66
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: ../includes/admin/class-advanced-page.php:77
+msgid "CDN"
+msgstr "CDN"
+
+#: ../includes/admin/class-advanced-page.php:82
+msgid ""
+"Enables the <strong>Content Distribution Network (CDN)</strong> for scripts/"
+"styles registered with <code>remote</code> attribute defined."
+msgstr ""
+
+#: ../includes/admin/class-advanced-page.php:83
+msgid "Enable CDN"
+msgstr "Habilitar CDN"
+
+#: ../includes/admin/class-advanced-page.php:87
+msgid ""
+"Enables the <strong>Subresource Integrity (SRI)</strong> for scripts/styles "
+"registered with <code>integrity</code> attribute defined."
+msgstr ""
+
+#: ../includes/admin/class-advanced-page.php:88
+msgid "Enable SRI"
+msgstr "Habilitar SRI"
+
+#: ../includes/admin/class-security-page.php:71
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../includes/Admin/SecurityPage.php:81
+#: ../includes/admin/class-security-page.php:82
+msgid "General"
+msgstr "General"
+
+#: ../includes/admin/class-security-page.php:87
+msgid "Disable the Plugin and Theme Editor"
+msgstr "Deshabilitar el editor para temas y plugins"
+
+#: ../includes/admin/class-security-page.php:103
 msgid "Header"
 msgstr "Encabezado"
 
-#: ../includes/Admin/SecurityPage.php:86
+#: ../includes/admin/class-security-page.php:108
 msgid "Remove WordPress version number"
 msgstr "Eliminar el número de versión de WordPress"
 
-#: ../includes/Admin/SecurityPage.php:90
+#: ../includes/admin/class-security-page.php:112
 msgid "Remove the EditURI/RSD link from your header"
 msgstr "Elimina el enlace EditURI/RSD del encabezado."
 
-#: ../includes/Admin/SecurityPage.php:91
+#: ../includes/admin/class-security-page.php:113
 msgid "This option also removes the <b>Windows Live Writer</b> manifest link."
 msgstr ""
 "Esta opción también elimina el enlace al manifiesto de <b>Windows Live "
 "Writer</b>."
 
-#: ../includes/Admin/SecurityPage.php:112
+#: ../includes/admin/class-security-page.php:134
 msgid "Disable XML-RPC Pingback"
 msgstr "Desactivar Pingback XML-RPC"
 
-#: ../includes/Admin/SecurityPage.php:113
+#: ../includes/admin/class-security-page.php:135
 msgid ""
 "If you uses XML-RPC in your theme/plugin check this for disable only "
 "pingback method."
@@ -53,11 +89,11 @@ msgstr ""
 "Si usas XML-RPC en tu tema/plugin marca esto para desactivar solo el método "
 "de pingback."
 
-#: ../includes/Admin/SecurityPage.php:117
+#: ../includes/admin/class-security-page.php:139
 msgid "Completely disable XML-RPC"
 msgstr "Desactivar XML-RPC completamente"
 
-#: ../includes/Admin/SecurityPage.php:118
+#: ../includes/admin/class-security-page.php:140
 #, php-format
 msgid ""
 "This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove "
@@ -67,107 +103,123 @@ msgstr ""
 "<b>Eliminar el enlace EditURI</b>. <a href=\"%s\" target=\"_blank\"> Más "
 "información </a>."
 
-#: ../includes/Admin/SecurityPage.php:150
+#: ../includes/admin/class-security-page.php:172
 msgid "Hide Admin Bar"
 msgstr ""
 
-#: ../includes/Admin/SecurityPage.php:153
+#: ../includes/admin/class-security-page.php:175
 msgid "Hides the admin bar to user roles."
 msgstr "Oculta la barra de administración a los roles de usuario."
 
-#: ../includes/Admin/SecurityPage.php:187
+#: ../includes/admin/class-security-page.php:209
 msgid "Disable Dashboard"
-msgstr ""
+msgstr "Deshabilitar escritorio"
 
-#: ../includes/Admin/SecurityPage.php:190
+#: ../includes/admin/class-security-page.php:212
 msgid "Disable access to the dashboard to user roles."
 msgstr "Deshabilita el acceso al escritorio a los roles de usuario."
 
-#: ../includes/Admin/SecurityPage.php:207
-msgid "Block critical files"
-msgstr ""
-
-#: ../includes/Admin/SecurityPage.php:211
-msgid "Disable TRACE/TRACK methods"
-msgstr ""
-
-#: ../includes/Admin/SecurityPage.php:215
+#: ../includes/admin/class-security-page.php:229
 msgid "Disable directory index"
+msgstr "Deshabilitar índice de directorio"
+
+#: ../includes/admin/class-security-page.php:233
+msgid "Disable CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK methods"
+msgstr "Deshabilitar los métodos CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK"
+
+#: ../includes/admin/class-security-page.php:237
+msgid "Block unsafe query strings"
+msgstr "Bloquear cadenas de consulta inseguras"
+
+#: ../includes/admin/class-security-page.php:241
+msgid "Block unsafe request strings"
+msgstr "Bloquear cadenas de solicitud inseguras"
+
+#: ../includes/admin/class-security-page.php:245
+msgid "Block direct access to critical files"
+msgstr "Bloquear el acceso directo a archivos críticos"
+
+#: ../includes/admin/class-theme-customizer.php:48
+msgid "Development"
+msgstr "Desarrollo"
+
+#: ../includes/admin/class-theme-customizer.php:52
+msgid "Bootstrap 4.x Breakpoint Helper"
 msgstr ""
 
-#: ../includes/Ajax/UserActions.php:52
+#: ../includes/ajax/class-user-actions.php:52
 msgid "Password successfully updated."
 msgstr "Contraseña actualizada correctamente"
 
-#: ../includes/Ajax/UserActions.php:84
+#: ../includes/ajax/class-user-actions.php:84
 msgid "Your username or password are incorrect."
 msgstr "Tu usuario o contraseña son incorrectos."
 
-#: ../includes/Ajax/UserActions.php:89
+#: ../includes/ajax/class-user-actions.php:89
 msgid "You have successfully logged in."
 msgstr "Has iniciado sesión correctamente."
 
-#: ../includes/Core/Assets.php:344
+#: ../includes/core/class-assets.php:374
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../includes/Core/Assets.php:345
+#: ../includes/core/class-assets.php:375
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../includes/Core/Assets.php:346
+#: ../includes/core/class-assets.php:376
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../includes/Core/Assets.php:347
+#: ../includes/core/class-assets.php:377
 msgid "Send"
 msgstr "Enviar"
 
-#: ../includes/Core/Assets.php:348
+#: ../includes/core/class-assets.php:378
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../includes/Core/Assets.php:349
+#: ../includes/core/class-assets.php:379
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../includes/Core/Assets.php:350
+#: ../includes/core/class-assets.php:380
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../includes/Core/Assets.php:351
+#: ../includes/core/class-assets.php:381
 msgid "Sent!"
 msgstr "¡Enviado!"
 
-#: ../includes/Core/Cron.php:64
+#: ../includes/core/class-cron.php:64
 msgid "Once weekly"
 msgstr "Una vez a la semana"
 
-#: ../includes/Core/Cron.php:68
+#: ../includes/core/class-cron.php:68
 msgid "Once monthly"
 msgstr "Una vez al mes"
 
-#: ../includes/Core/ErrorMessage.php:32
+#: ../includes/core/class-error-message.php:32
 msgid "This action isn't supported."
 msgstr "Esta acción no esta soportada."
 
-#: ../includes/Core/ErrorMessage.php:43
+#: ../includes/core/class-error-message.php:43
 msgid "This action is disabled."
 msgstr "Esta acción esta deshabilitada."
 
-#: ../includes/Core/ErrorMessage.php:54
+#: ../includes/core/class-error-message.php:54
 msgid "You must logged in to perform this action."
 msgstr "Debes iniciar sesión para realizar esta acción."
 
-#: ../includes/Core/ErrorMessage.php:65
+#: ../includes/core/class-error-message.php:65
 msgid "You are not authorized to perform this action."
 msgstr "Debes iniciar sesión para realizar esta acción."
 
-#: ../includes/Core/ErrorMessage.php:76
+#: ../includes/core/class-error-message.php:76
 msgid "The data that you entered is invalid."
 msgstr "Los datos ingresados son inválidos."
 
-#: ../includes/Core/TextDomain.php:38
+#: ../includes/core/class-textdomain.php:38
 msgid ""
 "An extensible object-oriented micro-framework for WordPress that helps you "
 "to develop themes and plugins."
@@ -175,11 +227,15 @@ msgstr ""
 "Un micro-framework extensible orientado a objetos para WordPress que te "
 "ayuda a desarrollar temas y complementos"
 
-#: ../includes/Template/Form.php:215
+#: ../includes/template/class-form.php:215
 msgid "Select..."
 msgstr "Seleccione..."
 
-#: ../source-framework.php:83
+#: ../includes/vendor/bootstrap4/class-components.php:69
+msgid "Close"
+msgstr "Cerrar"
+
+#: ../source-framework.php:110
 msgid "SourceFramework requires PHP version 5.4 or later."
 msgstr "SourceFramework requiere PHP versión 5.4 o superior."
 
@@ -206,9 +262,6 @@ msgstr "SourceFramework requiere PHP versión 5.4 o superior."
 
 #~ msgid "General Settings"
 #~ msgstr "Ajustes generales"
-
-#~ msgid "General"
-#~ msgstr "General"
 
 #~ msgid "This action isn't supported"
 #~ msgstr "Esta acción no esta soportada"

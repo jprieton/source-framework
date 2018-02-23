@@ -11,6 +11,7 @@ use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
 use SourceFramework\Admin\Advanced_Page;
+use SourceFramework\Admin\Theme_Customizer;
 
 /**
  * Class to initialize plugin
@@ -50,6 +51,9 @@ final class Init extends Singleton {
     // Initialize security
     Security::instance();
 
+    // Theme Customizer
+    Theme_Customizer::instance();
+
     // Initialize admin menus
     add_action( 'init', [ $this, 'add_admin_pages' ] );
 
@@ -61,6 +65,9 @@ final class Init extends Singleton {
 
     // Add additional mod_rewrite rules
     add_filter( 'mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
+
+    // Add the Bootstrap helper to footer
+    add_action( 'wp_footer', [ $this, 'bootstrap_helper' ], 99 );
   }
 
   /**
@@ -97,6 +104,17 @@ final class Init extends Singleton {
   public function mod_rewrite_rules( $rules ) {
     $security = apply_filters( 'security_mod_rewrite_rules', '' );
     return $security . $rules;
+  }
+
+  /**
+   * Adds the Bootstrap Breakpoint Helper to footer
+   * 
+   * @since     2.0.0
+   */
+  public function bootstrap_helper() {
+    if ( get_theme_mod( 'bootstrap-helper', false ) ) {
+      include_once SF_ABSPATH . '/partials/bootstrap-helper.php';
+    }
   }
 
 }

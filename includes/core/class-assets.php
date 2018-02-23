@@ -127,7 +127,7 @@ class Assets extends Singleton {
     if ( empty( $tools_setting_group ) ) {
       $tools_setting_group = new Settings_Group( 'tools_settings' );
     }
-
+    
     $styles = [
         'bootstrap'        => [
             'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
@@ -143,6 +143,11 @@ class Assets extends Singleton {
             'local'    => plugins_url( 'assets/css/public.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
             'autoload' => true,
+        ],
+        'bootstrap-helper' => [
+            'local'    => plugins_url( 'assets/css/bootstrap-helper.css', SF_FILENAME ),
+            'ver'      => SF_VERSION,
+            'autoload' => get_theme_mod('bootstrap-helper', false),
         ],
     ];
 

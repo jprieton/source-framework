@@ -1,7 +1,7 @@
 What is SourceFramework?
 ===========
 
-An extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.
+SourceFramework is an extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.
 
 Bug tracker
 -----------
