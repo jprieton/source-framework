@@ -37,9 +37,9 @@ class Theme_Customizer extends Singleton {
 
   /**
    * Adds the devlopment menu to theme customizer
-   * 
+   *
    * @since     2.0.0
-   * 
+   *
    * @param WP_Customize_Manager $wp_customize
    */
   public function devlopment( $wp_customize ) {

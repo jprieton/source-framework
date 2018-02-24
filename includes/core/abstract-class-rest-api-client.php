@@ -14,7 +14,6 @@ if ( !defined( 'ABSPATH' ) ) {
  * @subpackage     Abstracts
  * @since          2.0.0
  * @author         Javier Prieto
-
  */
 class Rest_Api_Client {
 
@@ -28,7 +27,7 @@ class Rest_Api_Client {
 
   /**
    * Default args used in <code>wp_remote_get</code> or <code>wp_remote_post</code>.
-   * 
+   *
    * @see    https://codex.wordpress.org/Function_Reference/wp_remote_get
    * @see    https://codex.wordpress.org/Function_Reference/wp_remote_post
    * @since   2.0.0
@@ -75,7 +74,7 @@ class Rest_Api_Client {
   /**
    * Path to save API response when <code>WP_DEBUG</code> is enabled.
    * <code>$transient_name</code> must be defined.
-   * 
+   *
    * @since   2.0.0
    * @var     string
    */
