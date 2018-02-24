@@ -51,7 +51,13 @@ class Html {
     static::parse_shorthand( $tag, $attributes );
     $attributes = static::parse_attributes( $attributes );
 
-    return sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
+    if ( in_array( $tag, static::$void ) ) {
+      $html = sprintf( '<%s />', trim( $tag . ' ' . $attributes ) );
+    } else {
+      $html = sprintf( '<%s>', trim( $tag . ' ' . $attributes ) );
+    }
+
+    return $html;
   }
 
   /**
@@ -66,7 +72,7 @@ class Html {
     if ( empty( $tag ) ) {
       return '';
     }
-    return sprintf( '</%s>', trim( esc_attr( $tag ) ) );
+    return in_array( $tag, static::$void ) ? '' : sprintf( '</%s>', trim( esc_attr( $tag ) ) );
   }
 
   /**
@@ -123,6 +129,12 @@ class Html {
     if ( 'pixel' == $src ) {
       $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
     }
+
+    // avoid overrides if $src is defined
+    if ( !empty( $src ) ) {
+      unset( $attributes['src'] );
+    }
+
     $attributes = wp_parse_args( $attributes, compact( 'src' ) );
 
     return static::tag( 'img', '', $attributes );
@@ -280,13 +292,13 @@ class Html {
 
     foreach ( (array) $list as $key => $item ) {
       if ( is_array( $item ) ) {
-        $content .= static::tag( 'li', $key . static::ul( $item ) );
+        $content .= static::tag( 'li', $key . static::ol( $item ) );
       } else {
         $content .= static::tag( 'li', $item );
       }
     }
 
-    $content = static::tag( 'ul', $content, $attributes );
+    $content = static::tag( 'ol', $content, $attributes );
     return $content;
   }
 
