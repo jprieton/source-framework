@@ -207,7 +207,7 @@ class Html {
     $items = str_replace( [ '.', '#' ], [ ' .', ' #' ], $tag );
     $items = explode( ' ', $items );
 
-    $tag   = $items[0] ?: 'div';
+    $tag   = !empty( $items[0] ) ? $items[0] : 'div';
     $id    = null;
     $class = null;
 
@@ -312,7 +312,7 @@ class Html {
    * @return  string
    */
   public static function __callStatic( $tag, $arguments ) {
-    list($content, $attributes) = $arguments;
+    list($content, $attributes) = $arguments + [ '', '' ];
     return static::tag( $tag, $content, $attributes );
   }
 

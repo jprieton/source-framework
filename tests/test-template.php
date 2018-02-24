@@ -79,12 +79,11 @@ class TemplateTest extends WP_UnitTestCase {
     }
 
     // test magic methods
-    /*
-      $this->assertEquals( '<br />', SourceFramework\Template\Html::br() );
-      $this->assertEquals( '<br />', SourceFramework\Template\Html::br( 'content' ) );
-      $this->assertEquals( '<div></div>', SourceFramework\Template\Html::div() );
-      $this->assertEquals( '<div>content</div>', SourceFramework\Template\Html::div( 'content' ) );
-     */
+    $this->assertEquals( SourceFramework\Template\Html::br(), '<br />' );
+    $this->assertEquals( SourceFramework\Template\Html::br( 'content' ), '<br />' );
+    $this->assertEquals( SourceFramework\Template\Html::div(), '<div></div>' );
+    $this->assertEquals( SourceFramework\Template\Html::div( 'content' ), '<div>content</div>' );
+    $this->assertEquals( SourceFramework\Template\Html::div( 'content', [ 'class' => 'class1', 'id' => 'id1' ] ), '<div class="class1" id="id1">content</div>' );
 
     // Test image tag
     $this->assertEquals( SourceFramework\Template\Html::img( 'pixel' ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
