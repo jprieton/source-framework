@@ -1,0 +1,12 @@
+# ----------------------------------------------------------------------
+# Disable directory browsing
+# ----------------------------------------------------------------------
+Options All -Indexes
+# ----------------------------------------------------------------------
+# Disable access to all file types except images, styles and scripts
+# ----------------------------------------------------------------------
+Order deny,allow
+Deny from all
+<Files ~ ".(jpg|svg|png|css|js)$">
+  Allow from all  
+</Files>

@@ -6,6 +6,8 @@
  * @package Source_Framework_Rewrite
  */
 
+use SourceFramework\Template\Html;
+
 /**
  * Sample test case.
  */
@@ -29,7 +31,7 @@ class TemplateTest extends WP_UnitTestCase {
     ];
 
     foreach ( $shorthands as $shorthand => $result ) {
-      $this->assertEquals( $result, SourceFramework\Template\Html::tag( $shorthand ) );
+      $this->assertEquals( $result, Html::tag( $shorthand ) );
     }
 
     // Test empty tags
@@ -41,7 +43,7 @@ class TemplateTest extends WP_UnitTestCase {
     ];
 
     foreach ( $empty_tags as $tag => $result ) {
-      $this->assertEquals( $result, SourceFramework\Template\Html::tag( $tag ) );
+      $this->assertEquals( $result, Html::tag( $tag ) );
     }
 
     // Test open tags
@@ -63,7 +65,7 @@ class TemplateTest extends WP_UnitTestCase {
     ];
 
     foreach ( $open_tags as $tag => $result ) {
-      $this->assertEquals( $result, SourceFramework\Template\Html::open( $tag ) );
+      $this->assertEquals( $result, Html::open( $tag ) );
     }
 
     // Test close tags
@@ -75,57 +77,39 @@ class TemplateTest extends WP_UnitTestCase {
     ];
 
     foreach ( $close_tags as $tag => $result ) {
-      $this->assertEquals( $result, SourceFramework\Template\Html::close( $tag ) );
+      $this->assertEquals( $result, Html::close( $tag ) );
     }
 
     // test magic methods
-    $this->assertEquals( SourceFramework\Template\Html::br(), '<br />' );
-    $this->assertEquals( SourceFramework\Template\Html::br( 'content' ), '<br />' );
-    $this->assertEquals( SourceFramework\Template\Html::div(), '<div></div>' );
-    $this->assertEquals( SourceFramework\Template\Html::div( 'content' ), '<div>content</div>' );
-    $this->assertEquals( SourceFramework\Template\Html::div( 'content', [ 'class' => 'class1', 'id' => 'id1' ] ), '<div class="class1" id="id1">content</div>' );
+    $this->assertEquals( Html::br(), '<br />' );
+    $this->assertEquals( Html::br( 'content' ), '<br />' );
+    $this->assertEquals( Html::div(), '<div></div>' );
+    $this->assertEquals( Html::div( 'content' ), '<div>content</div>' );
+    $this->assertEquals( Html::div( 'content', [ 'class' => 'class1', 'id' => 'id1' ] ), '<div class="class1" id="id1">content</div>' );
 
     // Test image tag
-    $this->assertEquals( SourceFramework\Template\Html::img( 'pixel' ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
-    $this->assertEquals( SourceFramework\Template\Html::img( 'pixel', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
-    $this->assertEquals( SourceFramework\Template\Html::img( '', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="http://path.to/image.jpg" />' );
+    $this->assertEquals( Html::img( 'pixel' ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
+    $this->assertEquals( Html::img( 'pixel', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
+    $this->assertEquals( Html::img( '', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="http://path.to/image.jpg" />' );
 
-    $simple_list = [
-        'red',
-        'blue',
-        'green',
-        'yellow'
-    ];
+    $simple_list = [ 'red', 'blue', 'green', 'yellow' ];
     $nested_list = [
-        'colors'  => [
-            'red',
-            'blue',
-            'green',
-            'yellow'
-        ],
-        'numbers' => [
-            'one',
-            'two',
-            'three',
-            'four',
-        ]
+        'colors'  => [ 'red', 'blue', 'green', 'yellow' ],
+        'numbers' => [ 'one', 'two', 'three', 'four', ]
     ];
+    $attributes  = [ 'class' => 'class1', 'id' => 'id1' ];
 
-    $attributes = array(
-        'class' => 'class1',
-        'id'    => 'id1'
-    );
     // Test simple lists
-    $this->assertEquals( SourceFramework\Template\Html::ul( $simple_list ), '<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul>' );
-    $this->assertEquals( SourceFramework\Template\Html::ul( $simple_list, $attributes ), '<ul class="class1" id="id1"><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul>' );
-    $this->assertEquals( SourceFramework\Template\Html::ol( $simple_list ), '<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol>' );
-    $this->assertEquals( SourceFramework\Template\Html::ol( $simple_list, $attributes ), '<ol class="class1" id="id1"><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol>' );
+    $this->assertEquals( Html::ul( $simple_list ), '<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul>' );
+    $this->assertEquals( Html::ul( $simple_list, $attributes ), '<ul class="class1" id="id1"><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul>' );
+    $this->assertEquals( Html::ol( $simple_list ), '<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol>' );
+    $this->assertEquals( Html::ol( $simple_list, $attributes ), '<ol class="class1" id="id1"><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol>' );
 
     // Test nested lists
-    $this->assertEquals( SourceFramework\Template\Html::ul( $nested_list ), '<ul><li>colors<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul></li><li>numbers<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul></li></ul>' );
-    $this->assertEquals( SourceFramework\Template\Html::ul( $nested_list, $attributes ), '<ul class="class1" id="id1"><li>colors<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul></li><li>numbers<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul></li></ul>' );
-    $this->assertEquals( SourceFramework\Template\Html::ol( $nested_list ), '<ol><li>colors<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol></li><li>numbers<ol><li>one</li><li>two</li><li>three</li><li>four</li></ol></li></ol>' );
-    $this->assertEquals( SourceFramework\Template\Html::ol( $nested_list, $attributes ), '<ol class="class1" id="id1"><li>colors<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol></li><li>numbers<ol><li>one</li><li>two</li><li>three</li><li>four</li></ol></li></ol>' );
+    $this->assertEquals( Html::ul( $nested_list ), '<ul><li>colors<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul></li><li>numbers<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul></li></ul>' );
+    $this->assertEquals( Html::ul( $nested_list, $attributes ), '<ul class="class1" id="id1"><li>colors<ul><li>red</li><li>blue</li><li>green</li><li>yellow</li></ul></li><li>numbers<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul></li></ul>' );
+    $this->assertEquals( Html::ol( $nested_list ), '<ol><li>colors<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol></li><li>numbers<ol><li>one</li><li>two</li><li>three</li><li>four</li></ol></li></ol>' );
+    $this->assertEquals( Html::ol( $nested_list, $attributes ), '<ol class="class1" id="id1"><li>colors<ol><li>red</li><li>blue</li><li>green</li><li>yellow</li></ol></li><li>numbers<ol><li>one</li><li>two</li><li>three</li><li>four</li></ol></li></ol>' );
   }
 
 }
