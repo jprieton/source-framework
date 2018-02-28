@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Plugin Name:   SourceFramework
  * Plugin URI:    https://github.com/jprieton/source-framework
  * Description:   An extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.
@@ -79,15 +79,15 @@ spl_autoload_register( function($class_name) {
     array_pop( $namespace );
   }
 
-
   $namespace[0] = SF_ABSPATH;
   $namespace[]  = $class_filename;
 
   $filename = implode( DIRECTORY_SEPARATOR, $namespace ) . '.php';
 
   if ( file_exists( $filename ) ) {
-    include $filename;
+    require $filename;
   } else {
+    // developmet
     var_dump( $filename );
     die;
   }

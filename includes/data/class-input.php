@@ -183,18 +183,6 @@ class Input {
   }
 
   /**
-   * Is CLI?
-   *
-   * Test to see if a request was made from the command line.
-   *
-   * @since     1.1.0
-   * @return 	bool
-   */
-  public function is_cli_request() {
-    return (PHP_SAPI === 'cli' OR defined( 'STDIN' ));
-  }
-
-  /**
    * Get Request Method
    *
    * Return the request method
