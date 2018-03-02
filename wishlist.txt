@@ -1,0 +1,5 @@
+- Like/Dislike
+- Reactions
+- Favorite posts
+- Featured posts
+- Featured image column
