@@ -245,6 +245,10 @@ final class Security_Page extends Settings_Page {
             'label' => __( 'Block direct access to critical files', SF_TEXTDOMAIN ),
             'id'    => 'htaccess-block-direct-access',
         ],
+        [
+            'label' => __( 'Block user enumeration', SF_TEXTDOMAIN ),
+            'id'    => 'htaccess-block-user-enumeration',
+        ],
     ];
 
     unset( $options['administrator'] );

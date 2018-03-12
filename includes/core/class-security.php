@@ -64,6 +64,10 @@ class Security extends Singleton {
       $this->disable_all_xmlrpc();
     }
 
+    if ( $security_options->get_bool_option( 'htaccess-block-user-enumeration' ) ) {
+      $this->block_user_enumeration();
+    }
+
     add_action( 'wp_loaded', [ $this, 'disable_admin_bar' ] );
     add_action( 'wp_loaded', [ $this, 'disable_dashboard' ] );
     add_filter( 'security_mod_rewrite_rules', [ $this, 'mod_rewrite_rules' ] );
@@ -195,8 +199,24 @@ class Security extends Singleton {
   }
 
   /**
+   * Block user enumeration when htaccess is disabled
    *
-   * @global Settings_Group $security_options
+   * @since 2.0.0
+   */
+  public function block_user_enumeration() {
+    if ( !is_admin() && isset( $_REQUEST['author'] ) && is_numeric( $_REQUEST['author'] ) ) {
+      wp_die( Error_Message::user_not_authorized() );
+    }
+  }
+
+  /**
+   * Add custom rules to .htaccess
+   *
+   * @since 2.0.0
+   *
+   * @global    Settings_Group    $security_options
+   * @param     string            $rules
+   * @return    string
    */
   public function mod_rewrite_rules( $rules ) {
     global $security_options;
@@ -264,7 +284,19 @@ RedirectMatch 403 (?i)/(^$|(wp-)?config|mobiquo|phpinfo|shell|sqlpatch|thumb|thu
 ';
     }
 
-    $files = apply_filters( 'htaccess_blocked_filenames', [ '.htaccess', 'wp-config.php', 'readme.html' ] );
+    if ( $security_options->get_bool_option( 'htaccess-block-user-enumeration' ) ) {
+      $new_rules .= '# [BLOCK USER ENUMERATION]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-admin.*) $2 [L]
+RewriteCond %{QUERY_STRING} author=\d
+RewriteRule .* - [F]
+</IfModule>
+
+';
+    }
+
+    $files = apply_filters( 'htaccess_blocked_filenames', [ 'license.txt', '.htaccess', 'wp-config.php', 'wp-config-sambple.php', 'readme.html' ] );
     if ( !empty( $files ) && $security_options->get_bool_option( 'htaccess-block-direct-access' ) ) {
       $new_rules .= sprintf( '# [BLOCK DIRECT ACCESS]
 <FilesMatch %s>
