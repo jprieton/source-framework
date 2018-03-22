@@ -27,6 +27,11 @@ class User_Actions {
    * @since          2.0.0
    */
   public static function change_password() {
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'SF_AJAX_DEBUG' ) && SF_AJAX_DEBUG ) {
+      error_reporting( E_ALL );
+      ini_set( 'display_errors', 1 );
+    }
+
     $user_id = get_current_user_id();
     if ( empty( $user_id ) ) {
       wp_send_json_error( Error_Message::user_not_authenticated() );
@@ -60,6 +65,11 @@ class User_Actions {
    * @since          2.0.0
    */
   public static function authenticate() {
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'SF_AJAX_DEBUG' ) && SF_AJAX_DEBUG ) {
+      error_reporting( E_ALL );
+      ini_set( 'display_errors', 1 );
+    }
+
     $verify_nonce = Input::verify_wpnonce( 'user_authenticate' );
     if ( !$verify_nonce ) {
       wp_send_json_error( Error_Message::user_not_authorized() );

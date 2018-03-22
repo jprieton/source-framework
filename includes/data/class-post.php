@@ -7,8 +7,9 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use WP_Error;
 use SourceFramework\Core\Error_Message;
+use WC_Admin_Duplicate_Product;
+use WP_Error;
 
 /**
  * Description of Post
@@ -17,6 +18,12 @@ use SourceFramework\Core\Error_Message;
  */
 class Post {
 
+  /**
+   * Duplicate a post and set status to draft
+   *
+   * @param   int           $post_id
+   * @return  int|WP_Error  Returns the post_ID of the duplicated post
+   */
   public static function duplicate( $post_id ) {
     $post_id = absint( $post_id );
 
@@ -24,21 +31,24 @@ class Post {
       return Error_Message::invalid_data();
     }
 
-    $post = (array) get_post( $post_id );
+    $post = get_post( $post_id );
 
     if ( empty( $post_id ) ) {
       return Error_Message::invalid_data();
     }
 
-    // Set current user as author
-    $post['post_author'] = get_current_user_id();
+    // If the post_type is product and WooCommerce is active then use their duplicator
+    if ( 'product' == $post->post_type && class_exists( 'WC_Admin_Duplicate_Product' ) ) {
+      $wcadp = new WC_Admin_Duplicate_Product();
+      $product      = $wcadp->product_duplicate( wc_get_product( $post_id ) );
+      return (int) $product->id;
+    }
 
     // Set publish status to draft
     $post['post_status'] = 'draft';
 
     // Removes old unnecesary data
-    unset( $post['ID'], $post['post_date'], $post['post_date_gmt'], $post['post_name'],
-            $post['post_modified'], $post['post_modified_gmt'], $post['guid'] );
+    unset( $post['ID'], $post['post_date'], $post['post_date_gmt'], $post['post_name'], $post['post_modified'], $post['post_modified_gmt'], $post['guid'] );
 
     // Filter data before create post
     $post = apply_filters( 'duplicate_post_data', $post );
@@ -61,7 +71,7 @@ class Post {
       wp_set_object_terms( $new_post_id, $post_terms, $taxonomy, false );
     }
 
-    return $new_post_id;
+    return (int) $new_post_id;
   }
 
 }
