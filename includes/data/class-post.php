@@ -39,22 +39,23 @@ class Post {
 
     // If the post_type is product and WooCommerce is active then use their duplicator
     if ( 'product' == $post->post_type && class_exists( 'WC_Admin_Duplicate_Product' ) ) {
-      $wcadp = new WC_Admin_Duplicate_Product();
-      $product      = $wcadp->product_duplicate( wc_get_product( $post_id ) );
+      $wcadp   = new WC_Admin_Duplicate_Product();
+      $product = $wcadp->product_duplicate( wc_get_product( $post_id ) );
       return (int) $product->id;
     }
 
     // Set publish status to draft
-    $post['post_status'] = 'draft';
+    $post->post_status = 'draft';
+    $post->post_title  = sprintf( __( '%s (Copy)', SF_TEXTDOMAIN ), $post->post_title );
 
     // Removes old unnecesary data
-    unset( $post['ID'], $post['post_date'], $post['post_date_gmt'], $post['post_name'], $post['post_modified'], $post['post_modified_gmt'], $post['guid'] );
+    unset( $post->ID, $post->guid );
 
     // Filter data before create post
     $post = apply_filters( 'duplicate_post_data', $post );
 
     // Creates new post
-    $new_post_id = wp_insert_post( $post );
+    $new_post_id = wp_insert_post( (array) $post );
 
     // Clone metadata
     $data = get_post_meta( $post_id );
