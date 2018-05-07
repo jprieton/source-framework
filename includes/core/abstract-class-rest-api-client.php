@@ -48,14 +48,6 @@ class Rest_Api_Client {
   public $default_params = [];
 
   /**
-   * Filename to save the last response of API when <code>WP_DEBUG</code> is set to <code>true</code>.
-   *
-   * @since   2.0.0
-   * @var     string
-   */
-  private $debug_filepath = '';
-
-  /**
    * Name of transient to save the last response of API when <code>$transient_cache</code> is set.
    *
    * @since   2.0.0
