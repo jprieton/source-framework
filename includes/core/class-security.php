@@ -296,7 +296,7 @@ RewriteRule .* - [F]
 ';
     }
 
-    $files = apply_filters( 'htaccess_blocked_filenames', [ 'license.txt', '.htaccess', 'wp-config.php', 'wp-config-sambple.php', 'readme.html' ] );
+    $files = apply_filters( 'htaccess_blocked_filenames', [ 'license.txt', '.htaccess', 'wp-config.php', 'wp-config-sample.php', 'readme.html' ] );
     if ( !empty( $files ) && $security_options->get_bool_option( 'htaccess-block-direct-access' ) ) {
       $new_rules .= sprintf( '# [BLOCK DIRECT ACCESS]
 <FilesMatch %s>

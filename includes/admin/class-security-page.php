@@ -257,6 +257,7 @@ final class Security_Page extends Settings_Page {
         'title'   => '.htaccess',
         'type'    => 'checkbox',
         'id'      => 'htaccess-settings',
+        'desc'    => __( 'This option requires regenerate permalinks', SF_TEXTDOMAIN ),
         'options' => $options,
     );
 
