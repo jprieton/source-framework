@@ -169,10 +169,10 @@ final class Security_Page extends Settings_Page {
     }
 
     $fields = [
-        'title'    => __( 'Hide Admin Bar', SF_TEXTDOMAIN ),
+        'title'    => __( 'Hide Toolbar', SF_TEXTDOMAIN ),
         'type'     => 'checkbox',
         'id'       => 'admin-bar-disabled',
-        'desc'     => __( 'Hides the admin bar to user roles.', SF_TEXTDOMAIN ),
+        'desc'     => __( 'Hides the toolbar to user roles when viewing site.', SF_TEXTDOMAIN ),
         'multiple' => true,
         'options'  => $options,
     ];

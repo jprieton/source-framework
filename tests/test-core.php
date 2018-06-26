@@ -14,7 +14,7 @@ class CoreTest extends WP_UnitTestCase {
   /**
    * A single example test.
    */
-  function test_defined() {
+  function test_constants_defined() {
     // 9 tests
     $items = [
         'SF_VERSION',

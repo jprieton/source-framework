@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2018-02-22 23:11-0400\n"
-"PO-Revision-Date: 2018-02-22 23:15-0400\n"
+"POT-Creation-Date: 2018-06-26 14:30-0400\n"
+"PO-Revision-Date: 2018-06-26 14:35-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
@@ -69,7 +69,7 @@ msgstr "Eliminar el número de versión de WordPress"
 
 #: ../includes/admin/class-security-page.php:112
 msgid "Remove the EditURI/RSD link from your header"
-msgstr "Elimina el enlace EditURI/RSD del encabezado."
+msgstr "Elimina el enlace EditURI/RSD del encabezado"
 
 #: ../includes/admin/class-security-page.php:113
 msgid "This option also removes the <b>Windows Live Writer</b> manifest link."
@@ -104,12 +104,12 @@ msgstr ""
 "información </a>."
 
 #: ../includes/admin/class-security-page.php:172
-msgid "Hide Admin Bar"
-msgstr ""
+msgid "Hide Toolbar"
+msgstr "Ocultar barra de herramientas"
 
 #: ../includes/admin/class-security-page.php:175
-msgid "Hides the admin bar to user roles."
-msgstr "Oculta la barra de administración a los roles de usuario."
+msgid "Hides the toolbar to user roles when viewing site."
+msgstr "Oculta la barra de herramientas a roles de usuario al ver el sitio."
 
 #: ../includes/admin/class-security-page.php:209
 msgid "Disable Dashboard"
@@ -139,55 +139,93 @@ msgstr "Bloquear cadenas de solicitud inseguras"
 msgid "Block direct access to critical files"
 msgstr "Bloquear el acceso directo a archivos críticos"
 
-#: ../includes/admin/class-theme-customizer.php:48
+#: ../includes/admin/class-security-page.php:249
+msgid "Block user enumeration"
+msgstr "Bloquea la enumeración de usuarios"
+
+#: ../includes/admin/class-theme-customizer.php:50
 msgid "Development"
 msgstr "Desarrollo"
 
-#: ../includes/admin/class-theme-customizer.php:52
+#: ../includes/admin/class-theme-customizer.php:54
 msgid "Bootstrap 4.x Breakpoint Helper"
 msgstr ""
 
-#: ../includes/ajax/class-user-actions.php:52
-msgid "Password successfully updated."
-msgstr "Contraseña actualizada correctamente"
+#: ../includes/admin/class-theme-customizer.php:72
+msgid "Login Page"
+msgstr ""
 
-#: ../includes/ajax/class-user-actions.php:84
+#: ../includes/admin/class-theme-customizer.php:79
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+#: ../includes/admin/class-theme-customizer.php:88
+msgid "Background color"
+msgstr "Color de fondo"
+
+#: ../includes/admin/class-theme-customizer.php:97
+msgid "Font color"
+msgstr "Color de la fuente"
+
+#: ../includes/admin/class-theme-customizer.php:106
+msgid "Header image"
+msgstr "Imagen de cabecera"
+
+#: ../includes/admin/class-theme-customizer.php:109
+msgid "The custom header is centered and contained in a 320 x 60 pixels block"
+msgstr ""
+"El encabezado personalizado está centrado y contenido en un bloque de 320 x "
+"60 píxeles"
+
+#: ../includes/admin/class-theme-customizer.php:115
+msgid "Link URL"
+msgstr "URL del enlace"
+
+#: ../includes/admin/class-theme-customizer.php:123
+msgid "Link Caption"
+msgstr "Caption del enlace"
+
+#: ../includes/ajax/class-user-actions.php:57
+msgid "Password successfully updated."
+msgstr "Contraseña actualizada correctamente."
+
+#: ../includes/ajax/class-user-actions.php:94
 msgid "Your username or password are incorrect."
 msgstr "Tu usuario o contraseña son incorrectos."
 
-#: ../includes/ajax/class-user-actions.php:89
+#: ../includes/ajax/class-user-actions.php:99
 msgid "You have successfully logged in."
 msgstr "Has iniciado sesión correctamente."
 
-#: ../includes/core/class-assets.php:374
+#: ../includes/core/class-assets.php:410
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../includes/core/class-assets.php:375
+#: ../includes/core/class-assets.php:411
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../includes/core/class-assets.php:376
+#: ../includes/core/class-assets.php:412
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../includes/core/class-assets.php:377
+#: ../includes/core/class-assets.php:413
 msgid "Send"
 msgstr "Enviar"
 
-#: ../includes/core/class-assets.php:378
+#: ../includes/core/class-assets.php:414
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../includes/core/class-assets.php:379
+#: ../includes/core/class-assets.php:415
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../includes/core/class-assets.php:380
+#: ../includes/core/class-assets.php:416
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../includes/core/class-assets.php:381
+#: ../includes/core/class-assets.php:417
 msgid "Sent!"
 msgstr "¡Enviado!"
 
@@ -225,19 +263,31 @@ msgid ""
 "to develop themes and plugins."
 msgstr ""
 "Un micro-framework extensible orientado a objetos para WordPress que te "
-"ayuda a desarrollar temas y complementos"
+"ayuda a desarrollar temas y complementos."
+
+#: ../includes/data/class-post.php:49
+#, php-format
+msgid "%s (Copy)"
+msgstr "%s (Copia)"
 
 #: ../includes/template/class-form.php:215
 msgid "Select..."
 msgstr "Seleccione..."
 
-#: ../includes/vendor/bootstrap4/class-components.php:69
+#: ../includes/vendor/bootstrap4/class-alert.php:214
 msgid "Close"
 msgstr "Cerrar"
+
+#: ../includes/vendor/bootstrap4/class-nav-walker.php:301
+msgid "Add a menu"
+msgstr ""
 
 #: ../source-framework.php:110
 msgid "SourceFramework requires PHP version 5.4 or later."
 msgstr "SourceFramework requiere PHP versión 5.4 o superior."
+
+#~ msgid "Hides the admin bar to user roles."
+#~ msgstr "Oculta la barra de administración a los roles de usuario."
 
 #~ msgid "Disable Access"
 #~ msgstr "Deshabilitar acceso"
