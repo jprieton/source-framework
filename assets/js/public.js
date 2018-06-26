@@ -1,3 +1,5 @@
+var formAjaxOptionsJSON;
+
 (function ($) {
   'use strict';
 
@@ -6,5 +8,16 @@
     let url = $(this).val();
     window.location.assign(url);
   });
+
+  // Options for ajaxForm default behavior
+  formAjaxOptionsJSON = {
+    dataType: 'json',
+    method: 'post',
+    beforeSubmit: function (formData, form, options) {
+      let button = form.find('button[type=submit]');
+      button.attr('disabled', '').text(SourceFrameworkLocale.messages.sending);
+      form.trigger('ajaxFormBeforeSubmit', [form]);
+    }
+  };
 
 })(jQuery);

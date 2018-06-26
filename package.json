@@ -1,0 +1,16 @@
+{
+  "name": "source-framework",
+  "version": "2.0.0",
+  "description": "An extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.",
+  "author": "Javier Prieto",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jprieton/source-framework.git"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.1.1",
+    "lesshat": "^4.1.0",
+    "popper.js": "^1.14.3"
+  }
+}

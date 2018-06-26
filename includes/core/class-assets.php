@@ -21,6 +21,9 @@ use SourceFramework\Template\Html;
  */
 class Assets extends Singleton {
 
+  const BS_VER = '4.1.1';
+  const FA_VER = '5.1.0';
+
   /**
    * Single instance of this class
    *
@@ -129,22 +132,40 @@ class Assets extends Singleton {
     }
 
     $styles = [
-        'bootstrap'        => [
-            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-            'ver'       => '4.0.0',
-            'integrity' => 'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',
-            'autoload'  => true,
+        'bootstrap'                   => [
+            'remote'   => 'https://maxcdn.bootstrapcdn.com/bootstrap/' . self::BS_VER . '/css/bootstrap.min.css',
+            'ver'      => self::BS_VER,
+            'autoload' => true,
         ],
-        'fontawesome'      => [
-            'remote' => 'https://use.fontawesome.com/releases/v5.0.6/css/all.css',
-            'ver'    => '5.0.6',
+        'fontawesome-all'             => [
+            'remote' => 'https://use.fontawesome.com/releases/v' . self::FA_VER . '/css/all.css',
+            'ver'    => self::FA_VER,
         ],
-        'source-framework' => [
+        'fontawesome'                 => [
+            'remote' => 'https://use.fontawesome.com/releases/v' . self::FA_VER . '/css/fontawesome.css',
+            'ver'    => self::FA_VER,
+        ],
+        'fontawesome-brands'          => [
+            'remote' => 'https://use.fontawesome.com/releases/v' . self::FA_VER . '/css/brands.css',
+            'deps'   => [ 'fontawesome' ],
+            'ver'    => self::FA_VER,
+        ],
+        'fontawesome-regular'         => [
+            'remote' => 'https://use.fontawesome.com/releases/v' . self::FA_VER . '/css/regular.css',
+            'deps'   => [ 'fontawesome' ],
+            'ver'    => self::FA_VER,
+        ],
+        'fontawesome-solid'           => [
+            'remote' => 'https://use.fontawesome.com/releases/v' . self::FA_VER . '/css/solid.css',
+            'deps'   => [ 'fontawesome' ],
+            'ver'    => self::FA_VER,
+        ],
+        'source-framework'            => [
             'local'    => plugins_url( 'assets/css/public.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
             'autoload' => true,
         ],
-        'wordpress-content' => [
+        'wordpress-content'           => [
             'local'    => plugins_url( 'assets/css/wordpress-content.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
             'autoload' => true,
@@ -152,9 +173,15 @@ class Assets extends Singleton {
         'bootstrap-breakpoint-helper' => [
             'local'    => plugins_url( 'assets/css/bootstrap-breakpoint-helper.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
-            'autoload' => get_theme_mod('bootstrap-breakpoint-helper', false),
+            'autoload' => get_theme_mod( 'bootstrap-breakpoint-helper', false ),
         ],
     ];
+
+    $has_node_modules = file_exists( plugin_dir_path( SF_FILENAME ) . 'node_modules' );
+
+    if ( $has_node_modules && file_exists( plugin_dir_path( SF_FILENAME ) . 'node_modules/bootstrap/dist/css/bootstrap.min.css' ) ) {
+      $styles['bootstrap']['local'] = plugins_url( 'node_modules/bootstrap/dist/css/bootstrap.min.css', SF_FILENAME );
+    }
 
     return apply_filters( 'register_styles', $styles );
   }
@@ -287,22 +314,26 @@ class Assets extends Singleton {
             'defer'     => true,
         ],
         'popper'           => [
-            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
-            'integrity' => 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q',
+            'remote'    => 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js',
             'deps'      => [ 'jquery' ],
-            'ver'       => '1.12.9',
+            'ver'       => '1.14.3',
             'in_footer' => true,
             'autoload'  => true,
         ],
         'bootstrap'        => [
-            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
+            'remote'    => 'https://maxcdn.bootstrapcdn.com/bootstrap/' . self::BS_VER . '/js/bootstrap.min.js',
             'deps'      => [ 'jquery', 'popper' ],
-            'ver'       => '4.0.0',
-            'integrity' => 'sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl',
+            'ver'       => self::BS_VER,
             'in_footer' => true,
             'autoload'  => true,
         ],
     ];
+
+    $has_node_modules = file_exists( plugin_dir_path( SF_FILENAME ) . 'node_modules' );
+
+    if ( $has_node_modules && file_exists( plugin_dir_path( SF_FILENAME ) . 'node_modules/bootstrap/dist/js/bootstrap.min.js' ) ) {
+      $scripts['bootstrap']['local'] = plugins_url( 'node_modules/bootstrap/dist/js/bootstrap.min.js', SF_FILENAME );
+    }
 
     return apply_filters( 'register_scripts', $scripts );
   }
