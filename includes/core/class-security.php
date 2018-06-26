@@ -217,6 +217,7 @@ class Security extends Singleton {
    * @global    Settings_Group    $security_options
    * @param     string            $rules
    * @return    string
+   * @link      https://perishablepress.com/6g/     Source of most of the rules applied here
    */
   public function mod_rewrite_rules( $rules ) {
     global $security_options;
@@ -297,6 +298,7 @@ RewriteRule .* - [F]
     }
 
     $files = apply_filters( 'htaccess_blocked_filenames', [ 'license.txt', '.htaccess', 'wp-config.php', 'wp-config-sample.php', 'readme.html' ] );
+
     if ( !empty( $files ) && $security_options->get_bool_option( 'htaccess-block-direct-access' ) ) {
       $new_rules .= sprintf( '# [BLOCK DIRECT ACCESS]
 <FilesMatch %s>

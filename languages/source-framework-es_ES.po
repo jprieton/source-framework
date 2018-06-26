@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2018-06-26 14:30-0400\n"
-"PO-Revision-Date: 2018-06-26 14:35-0400\n"
+"POT-Creation-Date: 2018-06-26 15:03-0400\n"
+"PO-Revision-Date: 2018-06-26 15:04-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -12,8 +12,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -47,41 +46,53 @@ msgstr ""
 msgid "Enable SRI"
 msgstr "Habilitar SRI"
 
-#: ../includes/admin/class-security-page.php:71
+#: ../includes/admin/class-security-page.php:52
+msgid ""
+"This is not intended to be an exhaustive solution of security settings on "
+"your site, they are the most common solutions for development and testing "
+"environments, we strongly recommend the use of additional security tools and "
+"measures to keep your site safe."
+msgstr ""
+"Esto no pretende ser una exhaustiva solución de ajustes de seguridad en su "
+"sito, solo son las soluciones más comunes para ambientes de desarrollo y "
+"prueba, encarecidamente recomendamos el uso de herramientas y medidas de "
+"seguridad adicionales para mantener su sitio seguro."
+
+#: ../includes/admin/class-security-page.php:74
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../includes/admin/class-security-page.php:82
+#: ../includes/admin/class-security-page.php:85
 msgid "General"
 msgstr "General"
 
-#: ../includes/admin/class-security-page.php:87
+#: ../includes/admin/class-security-page.php:90
 msgid "Disable the Plugin and Theme Editor"
 msgstr "Deshabilitar el editor para temas y plugins"
 
-#: ../includes/admin/class-security-page.php:103
+#: ../includes/admin/class-security-page.php:106
 msgid "Header"
 msgstr "Encabezado"
 
-#: ../includes/admin/class-security-page.php:108
+#: ../includes/admin/class-security-page.php:111
 msgid "Remove WordPress version number"
 msgstr "Eliminar el número de versión de WordPress"
 
-#: ../includes/admin/class-security-page.php:112
+#: ../includes/admin/class-security-page.php:115
 msgid "Remove the EditURI/RSD link from your header"
 msgstr "Elimina el enlace EditURI/RSD del encabezado"
 
-#: ../includes/admin/class-security-page.php:113
+#: ../includes/admin/class-security-page.php:116
 msgid "This option also removes the <b>Windows Live Writer</b> manifest link."
 msgstr ""
 "Esta opción también elimina el enlace al manifiesto de <b>Windows Live "
 "Writer</b>."
 
-#: ../includes/admin/class-security-page.php:134
+#: ../includes/admin/class-security-page.php:137
 msgid "Disable XML-RPC Pingback"
 msgstr "Desactivar Pingback XML-RPC"
 
-#: ../includes/admin/class-security-page.php:135
+#: ../includes/admin/class-security-page.php:138
 msgid ""
 "If you uses XML-RPC in your theme/plugin check this for disable only "
 "pingback method."
@@ -89,11 +100,11 @@ msgstr ""
 "Si usas XML-RPC en tu tema/plugin marca esto para desactivar solo el método "
 "de pingback."
 
-#: ../includes/admin/class-security-page.php:139
+#: ../includes/admin/class-security-page.php:142
 msgid "Completely disable XML-RPC"
 msgstr "Desactivar XML-RPC completamente"
 
-#: ../includes/admin/class-security-page.php:140
+#: ../includes/admin/class-security-page.php:143
 #, php-format
 msgid ""
 "This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove "
@@ -103,45 +114,49 @@ msgstr ""
 "<b>Eliminar el enlace EditURI</b>. <a href=\"%s\" target=\"_blank\"> Más "
 "información </a>."
 
-#: ../includes/admin/class-security-page.php:172
+#: ../includes/admin/class-security-page.php:175
 msgid "Hide Toolbar"
 msgstr "Ocultar barra de herramientas"
 
-#: ../includes/admin/class-security-page.php:175
+#: ../includes/admin/class-security-page.php:178
 msgid "Hides the toolbar to user roles when viewing site."
 msgstr "Oculta la barra de herramientas a roles de usuario al ver el sitio."
 
-#: ../includes/admin/class-security-page.php:209
+#: ../includes/admin/class-security-page.php:212
 msgid "Disable Dashboard"
 msgstr "Deshabilitar escritorio"
 
-#: ../includes/admin/class-security-page.php:212
+#: ../includes/admin/class-security-page.php:215
 msgid "Disable access to the dashboard to user roles."
 msgstr "Deshabilita el acceso al escritorio a los roles de usuario."
 
-#: ../includes/admin/class-security-page.php:229
+#: ../includes/admin/class-security-page.php:232
 msgid "Disable directory index"
 msgstr "Deshabilitar índice de directorio"
 
-#: ../includes/admin/class-security-page.php:233
+#: ../includes/admin/class-security-page.php:236
 msgid "Disable CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK methods"
 msgstr "Deshabilitar los métodos CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK"
 
-#: ../includes/admin/class-security-page.php:237
+#: ../includes/admin/class-security-page.php:240
 msgid "Block unsafe query strings"
 msgstr "Bloquear cadenas de consulta inseguras"
 
-#: ../includes/admin/class-security-page.php:241
+#: ../includes/admin/class-security-page.php:244
 msgid "Block unsafe request strings"
 msgstr "Bloquear cadenas de solicitud inseguras"
 
-#: ../includes/admin/class-security-page.php:245
+#: ../includes/admin/class-security-page.php:248
 msgid "Block direct access to critical files"
 msgstr "Bloquear el acceso directo a archivos críticos"
 
-#: ../includes/admin/class-security-page.php:249
+#: ../includes/admin/class-security-page.php:252
 msgid "Block user enumeration"
 msgstr "Bloquea la enumeración de usuarios"
+
+#: ../includes/admin/class-security-page.php:263
+msgid "This option requires regenerate permalinks"
+msgstr "Esta opción requiere regenerar los enlaces permanentes"
 
 #: ../includes/admin/class-theme-customizer.php:50
 msgid "Development"

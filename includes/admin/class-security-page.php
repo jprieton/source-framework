@@ -49,6 +49,9 @@ final class Security_Page extends Settings_Page {
     $this->option_page          = 'security-options';
     $this->option_group         = 'security-options';
     $this->option_name          = 'security_options';
+    $this->page_description     = __( 'This is not intended to be an exhaustive solution of security settings on your site, '
+            . 'they are the most common solutions for development and testing environments, '
+            . 'we strongly recommend the use of additional security tools and measures to keep your site safe.', SF_TEXTDOMAIN );
     $this->settings_group_field = new Settings_Group_Field( $this->option_name );
 
     parent::__construct( 'options-general.php', $this->option_page );
