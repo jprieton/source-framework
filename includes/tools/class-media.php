@@ -30,18 +30,18 @@ class Media {
   /**
    * @since   2.0.0
    *
-   * @param   array    $image_data    Response of the `wp_handle_upload` function
+   * @param   array    $handle_upload    Response of the `wp_handle_upload` function
    * @return  int
    */
-  public static function insert_attachment( $image_data, $args = [] ) {
-    $post_title = preg_replace( '/\.[^.]+$/', '', basename( $image_data['file'] ) );
+  public static function insert_attachment( $handle_upload, $args = [] ) {
+    $post_title = preg_replace( '/\.[^.]+$/', '', basename( $handle_upload['file'] ) );
 
     $defaults  = [
-        'post_mime_type' => $image_data['type'],
+        'post_mime_type' => $handle_upload['type'],
         'post_title'     => $post_title,
         'post_content'   => '',
         'post_status'    => 'inherit',
-        'guid'           => $image_data['url']
+        'guid'           => $handle_upload['url']
     ];
     $post_data = wp_parse_args( $args, $defaults );
 
@@ -51,10 +51,10 @@ class Media {
       require_once(ABSPATH . 'wp-admin/includes/media.php');
     }
 
-    $wp_upload_dir   = wp_upload_dir();
-    $filename        = str_replace( $wp_upload_dir['baseurl'] . '/', '', $image_data['url'] );
+    $upload_dir      = wp_upload_dir();
+    $filename        = str_replace( $upload_dir      ['baseurl'] . '/', '', $handle_upload['url'] );
     $attachment_id   = wp_insert_attachment( $post_data, $filename );
-    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_data['file'] );
+    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $handle_upload['file'] );
     wp_update_attachment_metadata( $attachment_id, $attachment_data );
     return $attachment_id;
   }

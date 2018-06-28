@@ -173,7 +173,7 @@ class Assets extends Singleton {
         'bootstrap-breakpoint-helper' => [
             'local'    => plugins_url( 'assets/css/bootstrap-breakpoint-helper.css', SF_FILENAME ),
             'ver'      => SF_VERSION,
-            'autoload' => get_theme_mod( 'bootstrap-breakpoint-helper', false ),
+            'autoload' => get_theme_mod( 'bootstrap_breakpoint_helper', false ),
         ],
     ];
 

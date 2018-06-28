@@ -12,6 +12,7 @@ use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
 use SourceFramework\Admin\Advanced_Page;
 use SourceFramework\Admin\Theme_Customizer;
+use SourceFramework\Admin\Theme_Customizer_Login;
 
 /**
  * Class to initialize plugin
@@ -53,6 +54,9 @@ final class Init extends Singleton {
 
     // Theme Customizer
     Theme_Customizer::instance();
+
+    // Theme Customizer
+    Theme_Customizer_Login::instance();
 
     // Initialize admin menus
     add_action( 'init', [ $this, 'add_admin_pages' ] );
@@ -108,11 +112,11 @@ final class Init extends Singleton {
 
   /**
    * Adds the Bootstrap Breakpoint Helper to footer
-   * 
+   *
    * @since     2.0.0
    */
   public function bootstrap_breakpoint_helper() {
-    if ( get_theme_mod( 'bootstrap-breakpoint-helper', false ) ) {
+    if ( get_theme_mod( 'bootstrap_breakpoint_helper', false ) ) {
       include_once SF_ABSPATH . '/partials/bootstrap-breakpoint-helper.php';
     }
   }

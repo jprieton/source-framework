@@ -159,6 +159,10 @@ class Html {
     $_attributes = [];
 
     foreach ( (array) $attributes as $key => $value ) {
+      if ( is_bool( $value ) && !$value ) {
+        continue;
+      }
+
       if ( is_numeric( $key ) && !is_bool( $value ) ) {
         $key   = $value;
         $value = null;
@@ -166,10 +170,6 @@ class Html {
 
       if ( is_bool( $value ) && $value ) {
         $value = $key;
-      }
-
-      if ( is_bool( $value ) && !$value ) {
-        continue;
       }
 
       if ( is_array( $value ) ) {
@@ -304,9 +304,9 @@ class Html {
 
   /**
    * Magic method for tags
-   * 
+   *
    * @since   2.0.0
-   * 
+   *
    * @param   string    $tag
    * @param   array     $arguments
    * @return  string

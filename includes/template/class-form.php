@@ -203,8 +203,6 @@ class Form {
    * @return  string
    */
   public static function select( $attributes = [], $options = [] ) {
-    global $wp_locale;
-
     $placeholder = '';
     $required    = false;
     $selected    = '';
@@ -212,7 +210,7 @@ class Form {
     if ( !empty( $attributes['placeholder'] ) && !is_bool( $attributes['placeholder'] ) ) {
       $placeholder = $attributes['placeholder'];
     } elseif ( !empty( $attributes['placeholder'] ) && is_bool( $attributes['placeholder'] ) && $attributes['placeholder'] ) {
-      $placeholder = __( 'Select...', \SourceFramework\TEXTDOMAIN );
+      $placeholder = __( 'Select...', SF_TEXTDOMAIN );
     }
 
     if ( !empty( $attributes['required'] ) && is_bool( $attributes['required'] ) && $attributes['required'] ) {
@@ -261,7 +259,7 @@ class Form {
         $options = $wp_locale->weekday;
         break;
       default:
-        $options = (is_array( $options )) ? $options : (array) $options;
+        $options = (array) $options;
         break;
     }
 
@@ -269,12 +267,10 @@ class Form {
       if ( is_array( $value ) ) {
         $_options .= Html::tag( 'optgroup', self::options( $value, $selected ), array( 'label' => $key ) );
       } else {
-        $attributes = array(
-            'value' => $key,
-        );
-        if ( !empty( $selected ) && ($selected == $key) ) {
-          $attributes[] = 'selected';
-        }
+        $attributes = [
+            'value'    => $key,
+            'selected' => (!empty( $selected ) && $selected == $key) ? 'selected' : false,
+        ];
         $_options .= Html::tag( 'option', $value, $attributes );
       }
     }

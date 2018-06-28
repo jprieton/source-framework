@@ -88,7 +88,7 @@ spl_autoload_register( function($class_name) {
     require $filename;
   } else {
     // developmet
-    var_dump( $filename );
+    var_dump( $class_name , $filename );
     die;
   }
 } );

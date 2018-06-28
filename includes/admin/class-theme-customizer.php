@@ -30,6 +30,12 @@ class Theme_Customizer extends Singleton {
    */
   protected static $instance;
 
+  /**
+   * Class constructor
+   * Declared as protected to prevent creating a new instance outside of the class via the new operator.
+   *
+   * @since   2.0.0
+   */
   protected function __construct() {
     parent::__construct();
 
@@ -45,7 +51,7 @@ class Theme_Customizer extends Singleton {
    * @param WP_Customize_Manager $wp_customize
    */
   public function development( $wp_customize ) {
-    $wp_customize->add_setting( 'bootstrap-breakpoint-helper' );
+    $wp_customize->add_setting( 'bootstrap_breakpoint_helper' );
     $wp_customize->add_section( 'development_customizer_section', [
         'title'    => __( 'Development', SF_TEXTDOMAIN ),
         'priority' => 1000,
@@ -53,7 +59,7 @@ class Theme_Customizer extends Singleton {
     $wp_customize->add_control( 'bootstrap-helper', [
         'label'    => __( 'Bootstrap 4.x Breakpoint Helper', SF_TEXTDOMAIN ),
         'section'  => 'development_customizer_section',
-        'settings' => 'bootstrap-breakpoint-helper',
+        'settings' => 'bootstrap_breakpoint_helper',
         'type'     => 'checkbox',
     ] );
   }
@@ -66,63 +72,77 @@ class Theme_Customizer extends Singleton {
    * @param WP_Customize_Manager $wp_customize
    */
   public function login_page( $wp_customize ) {
-    $section_id = 'login_page_customizer_section';
+    $section_id = 'login_customizer_section';
 
-    $wp_customize->add_section( 'login_page_customizer_section', [
+    $wp_customize->add_section( $section_id, [
         'title'    => __( 'Login Page', SF_TEXTDOMAIN ),
         'priority' => 1000,
     ] );
 
-    $wp_customize->add_setting( 'login-page-background-image' );
+    $wp_customize->add_setting( 'login_background_color', [ 'default' => '#f1f1f1', ] );
     $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, 'logo', [
-        'label'    => __( 'Background image', SF_TEXTDOMAIN ),
-        'section'  => $section_id,
-        'settings' => 'login-page-background-image',
-            ] )
-    );
-
-    $wp_customize->add_setting( 'login-page-background-color', [ 'default' => '#f1f1f1', ] );
-    $wp_customize->add_control(
-            new WP_Customize_Color_Control( $wp_customize, 'login-page-background-color', [
+            new WP_Customize_Color_Control( $wp_customize, 'login_background_color', [
         'label'    => __( 'Background color', SF_TEXTDOMAIN ),
         'section'  => $section_id,
-        'settings' => 'login-page-background-color',
+        'settings' => 'login_background_color',
             ] )
     );
 
-    $wp_customize->add_setting( 'login-page-font-color', [ 'default' => '#555d66', ] );
+    $wp_customize->add_setting( 'login_background_image' );
     $wp_customize->add_control(
-            new WP_Customize_Color_Control( $wp_customize, 'login-page-font-color', [
+            new WP_Customize_Image_Control( $wp_customize, 'login_background_image', [
+        'label'    => __( 'Background image', SF_TEXTDOMAIN ),
+        'section'  => $section_id,
+        'settings' => 'login_background_image',
+            ] )
+    );
+
+    $wp_customize->add_setting( 'login_background_position' );
+    $wp_customize->add_control( 'login_background_position', [
+        'label'    => __( 'Background position', SF_TEXTDOMAIN ),
+        'section'  => $section_id,
+        'settings' => 'login_background_position',
+        'type'     => 'select',
+        'choices'  => [
+            ''        => 'Auto',
+            'contain' => 'Contain',
+            'cover'   => 'Cover',
+            'repeat'  => 'Repeat',
+        ]
+    ] );
+
+    $wp_customize->add_setting( 'login_font_color', [ 'default' => '#555d66', ] );
+    $wp_customize->add_control(
+            new WP_Customize_Color_Control( $wp_customize, 'login_font_color', [
         'label'    => __( 'Font color', SF_TEXTDOMAIN ),
         'section'  => $section_id,
-        'settings' => 'login-page-font-color',
+        'settings' => 'login_font_color',
             ] )
     );
 
-    $wp_customize->add_setting( 'login-page-header-image' );
+    $wp_customize->add_setting( 'login_header_image' );
     $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, 'logo', [
+            new WP_Customize_Image_Control( $wp_customize, 'login_header_image', [
         'label'       => __( 'Header image', SF_TEXTDOMAIN ),
         'section'     => $section_id,
-        'settings'    => 'login-page-header-image',
-        'description' => __( 'The custom header is centered and contained in a 320 x 60 pixels block', SF_TEXTDOMAIN ),
+        'settings'    => 'login_header_image',
+        'description' => __( 'The custom header is centered and contained in a 320 x 84 pixels block', SF_TEXTDOMAIN ),
             ] )
     );
 
-    $wp_customize->add_setting( 'login-page-link-url' );
-    $wp_customize->add_control( 'login-page-link-url', [
-        'label'    => __( 'Link URL', SF_TEXTDOMAIN ),
-        'section'  => 'login_page_customizer_section',
-        'settings' => 'login-page-link-url',
+    $wp_customize->add_setting( 'login_header_url' );
+    $wp_customize->add_control( 'login_header_url', [
+        'label'    => __( 'Header URL', SF_TEXTDOMAIN ),
+        'section'  => $section_id,
+        'settings' => 'login_header_url',
         'type'     => 'text',
     ] );
 
-    $wp_customize->add_setting( 'login-page-link-caption' );
-    $wp_customize->add_control( 'login-page-linkcaption', [
-        'label'    => __( 'Link Caption', SF_TEXTDOMAIN ),
-        'section'  => 'login_page_customizer_section',
-        'settings' => 'login-page-link-caption',
+    $wp_customize->add_setting( 'login_header_title' );
+    $wp_customize->add_control( 'login_header_title', [
+        'label'    => __( 'Header Title', SF_TEXTDOMAIN ),
+        'section'  => $section_id,
+        'settings' => 'login_header_title',
         'type'     => 'text',
     ] );
   }
