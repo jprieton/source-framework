@@ -42,10 +42,10 @@ define( 'SF_BASEDIR', __DIR__ );
 define( 'SF_BASEURL', plugin_dir_url( __FILE__ ) );
 define( 'SF_TEXTDOMAIN', 'source-framework' );
 
-if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar' ) ) {
-  $abspath = 'phar://' . plugin_dir_path( SF_FILENAME ) . 'includes/source-framework.phar';
+if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'source-framework.phar' ) ) {
+  $abspath = 'phar://' . plugin_dir_path( SF_FILENAME ) . 'source-framework.phar';
 } else {
-  $abspath = plugin_dir_path( SF_FILENAME ) . 'includes';
+  $abspath = plugin_dir_path( SF_FILENAME ) . 'src/includes';
 }
 
 /**
@@ -115,5 +115,5 @@ if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
 } else {
 
   // Initialize SourceFramework
-  SourceFramework\Core\Init::instance();
+  SourceFramework\Core\Init::init();
 }

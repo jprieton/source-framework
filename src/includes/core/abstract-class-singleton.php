@@ -24,7 +24,7 @@ abstract class Singleton {
    * @since   1.0.0
    * @static
    */
-  public static function &init() {
+  public static function init() {
     if ( empty( static::$instance ) ) {
       static::$instance = new static();
     }
