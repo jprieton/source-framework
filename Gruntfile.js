@@ -68,6 +68,11 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+
+    clean: {
+      folder: ['dist'],
+      phar: ['*.phar']
     }
 
   });
@@ -77,6 +82,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task(s).
   grunt.registerTask('build', ['cssmin:target', 'uglify:target', 'shell:build', 'compress:build']);
