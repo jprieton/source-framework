@@ -35,6 +35,14 @@ class Html {
   ];
 
   /**
+   * @see http://w3c.github.io/html/syntax.html#void-elements
+   *
+   * @var array List of void elements.
+   * @since   1.0.0
+   */
+  private static $image_sizes = [];
+
+  /**
    * Retrieve a HTML open tag
    *
    * @since   1.0.0
@@ -121,13 +129,41 @@ class Html {
    * @param   string              $src
    * @param   string|array        $attributes
    *
-   * @see     http://png-pixel.com/
+   * @link    http://png-pixel.com/
+   * @link    https://placeholder.com/
    *
    * @return  string
    */
   public static function img( $src, $attributes = [] ) {
     if ( 'pixel' == $src ) {
       $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+    }
+
+    if ( empty( static::$image_sizes ) ) {
+      static::$image_sizes = get_intermediate_image_sizes();
+    }
+
+    if ( in_array( $src, static::$image_sizes ) ) {
+      $src = "placeholder:{$src}";
+    }
+
+    if ( strpos( $src, 'placeholder' ) === 0 ) {
+      $params = explode( ':', $src );
+      $src    = 'http://via.placeholder.com/';
+
+      if ( count( $params ) == 1 ) {
+        $params[] = 'thumbnail';
+      }
+
+      if ( in_array( $params[1], static::$image_sizes ) ) {
+        $size      = [
+            get_option( $params[1] . '_size_w' ),
+            get_option( $params[1] . '_size_h' ),
+        ];
+        $params[1] = implode( 'x', $size );
+      }
+
+      $src .= $params[1];
     }
 
     // avoid overrides if $src is defined

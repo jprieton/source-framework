@@ -88,8 +88,14 @@ class TemplateTest extends WP_UnitTestCase {
     $this->assertEquals( Html::div( 'content', [ 'class' => 'class1', 'id' => 'id1' ] ), '<div class="class1" id="id1">content</div>' );
 
     // Test image tag
+    // Pixel
     $this->assertEquals( Html::img( 'pixel' ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
     $this->assertEquals( Html::img( 'pixel', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
+    // Placeholder
+    $this->assertEquals( Html::img( 'placeholder' ), '<img src="http://via.placeholder.com/150x150" />' );
+    $this->assertEquals( Html::img( 'placeholder:medium' ), '<img src="http://via.placeholder.com/300x300" />' );
+    $this->assertEquals( Html::img( 'placeholder:256x256' ), '<img src="http://via.placeholder.com/256x256" />' );
+    // Default
     $this->assertEquals( Html::img( '', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="http://path.to/image.jpg" />' );
 
     $simple_list = [ 'red', 'blue', 'green', 'yellow' ];
