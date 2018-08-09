@@ -135,6 +135,10 @@ class Html {
    * @return  string
    */
   public static function img( $src, $attributes = [] ) {
+    if ( empty( $src ) && !empty( $attributes['src'] ) ) {
+      $src = $attributes['src'];
+    }
+
     if ( 'pixel' == $src ) {
       $src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
     }
@@ -148,22 +152,26 @@ class Html {
     }
 
     if ( strpos( $src, 'placeholder' ) === 0 ) {
-      $params = explode( ':', $src );
-      $src    = 'http://via.placeholder.com/';
+      $_attributes = [
+          'alt' => 'Placeholder'
+      ];
+      $params      = explode( ':', $src );
+      $src         = 'http://via.placeholder.com/';
 
       if ( count( $params ) == 1 ) {
         $params[] = 'thumbnail';
       }
 
       if ( in_array( $params[1], static::$image_sizes ) ) {
-        $size      = [
-            get_option( $params[1] . '_size_w' ),
-            get_option( $params[1] . '_size_h' ),
+        $size        = [
+            'width'  => get_option( $params[1] . '_size_w' ),
+            'heignt' => get_option( $params[1] . '_size_h' ),
         ];
-        $params[1] = implode( 'x', $size );
+        $_attributes = array_merge( $size, $_attributes );
+        $params[1]   = implode( 'x', $size );
       }
-
-      $src .= $params[1];
+      $attributes = wp_parse_args( $attributes, $_attributes );
+      $src        .= $params[1];
     }
 
     // avoid overrides if $src is defined
