@@ -45,6 +45,29 @@ module.exports = function (grunt) {
           interrupt: true
         }
       }
+    },
+
+    shell: {
+      options: {
+        stderr: false
+      },
+      build: {
+        command: 'php ./src/build.php'
+      }
+    },
+
+    compress: {
+      build: {
+        options: {
+          archive: 'dist/source-framework.zip'
+        },
+        files: [
+          {
+            src: ['*.php', '*.phar', 'LICENSE', 'assets/**', 'languages/**', 'templates/**'],
+            dest: 'source-framework/'
+          }
+        ]
+      }
     }
 
   });
@@ -52,7 +75,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Default task(s).
-  grunt.registerTask('default', ['cssmin:target', 'uglify:target']);
+  grunt.registerTask('build', ['cssmin:target', 'uglify:target', 'shell:build', 'compress:build']);
 };
