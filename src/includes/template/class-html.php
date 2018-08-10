@@ -278,16 +278,16 @@ class Html {
    * @since   1.0.0
    *
    * @param   string              $email
-   * @param   string              $text
+   * @param   string              $content
    * @param   array|string        $attributes
    * @return  string
    */
-  public static function mailto( $email, $text = null, $attributes = [] ) {
+  public static function mailto( $email, $content = null, $attributes = [] ) {
     if ( empty( $email ) || !is_email( $email ) ) {
       return '';
     }
 
-    $text  = $text ?: antispambot( $email );
+    $content  = $content ?: antispambot( $email );
     $email = antispambot( 'mailto:' . $email );
 
     $defaults   = [
@@ -295,7 +295,7 @@ class Html {
     ];
     $attributes = wp_parse_args( $attributes, $defaults );
 
-    return static::tag( 'a', $text, $attributes );
+    return static::tag( 'a', $content, $attributes );
   }
 
   /**
