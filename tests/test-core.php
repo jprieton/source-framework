@@ -3,7 +3,7 @@
 /**
  * Class SampleTest
  *
- * @package Source_Framework_Rewrite
+ * @package SourceFramework
  */
 
 /**
