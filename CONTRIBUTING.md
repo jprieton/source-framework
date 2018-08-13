@@ -7,7 +7,7 @@ process easy and effective for everyone involved.
 
 ## Feature Requests
 
-Feature requests can be [submitted to our issue tracker](https://gitlab.com/jprieton/smg-tools/issues).
+Feature requests can be [submitted to our issue tracker](https://github.com/jprieton/source-framework/issues).
 Be sure to include a description of the expected behavior and use case, and before submitting a request, please search for similar ones in the closed issues.
 
 ## Coding Guidelines
