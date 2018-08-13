@@ -68,7 +68,7 @@ class Alert {
       $classes[] = 'alert';
     }
 
-    $attibutes['class'] = implode( ' ', $classes );
+    $args['class'] = implode( ' ', $classes );
 
     return Html::tag( 'div', $content, $args );
   }
