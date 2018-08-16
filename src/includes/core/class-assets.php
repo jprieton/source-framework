@@ -394,7 +394,15 @@ class Assets extends Singleton {
    * @return  string
    */
   public function script_loader_tag( $tag, $handle ) {
-    if ( in_array( $handle, $this->script_integrity_handles ) ) {
+    global $advanced_setting_group;
+
+    if ( empty( $advanced_setting_group ) ) {
+      $advanced_setting_group = new Settings_Group( 'advanced_settings' );
+    }
+
+    $use_sri = $advanced_setting_group->get_bool_option( 'sri-enabled' );
+
+    if ( in_array( $handle, $this->script_integrity_handles ) && $use_sri) {
       $attr = [
           'integrity'   => $this->scripts[$handle]['integrity'],
           'crossorigin' => $this->scripts[$handle]['crossorigin'],

@@ -46,9 +46,9 @@ final class Advanced_Page extends Settings_Page {
    * @since 2.0.0
    */
   public function __construct() {
-    $this->option_page          = 'advanced-options';
-    $this->option_group         = 'advanced-options';
-    $this->option_name          = 'advanced_options';
+    $this->option_page          = 'advanced-settings';
+    $this->option_group         = 'advanced-settings';
+    $this->option_name          = 'advanced_settings';
     $this->settings_group_field = new Settings_Group_Field( $this->option_name );
 
     parent::__construct( 'options-general.php', $this->option_page );
