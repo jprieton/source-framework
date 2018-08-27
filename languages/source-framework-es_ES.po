@@ -1,52 +1,71 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Source Framework\n"
-"POT-Creation-Date: 2018-06-26 15:03-0400\n"
-"PO-Revision-Date: 2018-06-26 15:04-0400\n"
+"POT-Creation-Date: 2018-08-27 14:37-0400\n"
+"PO-Revision-Date: 2018-08-27 14:38-0400\n"
 "Last-Translator: Javier Prieto <jprieton@gmail.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
 
-#: ../includes/admin/class-advanced-page.php:66
+#: source-framework.php:110
+msgid "SourceFramework requires PHP version 5.4 or later."
+msgstr "SourceFramework requiere PHP versión 5.4 o superior."
+
+#: src/includes/admin/class-advanced-page.php:66
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../includes/admin/class-advanced-page.php:77
+#: src/includes/admin/class-advanced-page.php:77
 msgid "CDN"
 msgstr "CDN"
 
-#: ../includes/admin/class-advanced-page.php:82
+#: src/includes/admin/class-advanced-page.php:82
 msgid ""
 "Enables the <strong>Content Distribution Network (CDN)</strong> for scripts/"
 "styles registered with <code>remote</code> attribute defined."
 msgstr ""
 
-#: ../includes/admin/class-advanced-page.php:83
+#: src/includes/admin/class-advanced-page.php:83
 msgid "Enable CDN"
 msgstr "Habilitar CDN"
 
-#: ../includes/admin/class-advanced-page.php:87
+#: src/includes/admin/class-advanced-page.php:87
 msgid ""
 "Enables the <strong>Subresource Integrity (SRI)</strong> for scripts/styles "
 "registered with <code>integrity</code> attribute defined."
 msgstr ""
 
-#: ../includes/admin/class-advanced-page.php:88
+#: src/includes/admin/class-advanced-page.php:88
 msgid "Enable SRI"
 msgstr "Habilitar SRI"
 
-#: ../includes/admin/class-security-page.php:52
+#: src/includes/admin/class-media-page.php:44
+msgid "Thumbnails"
+msgstr "Miniaturas"
+
+#: src/includes/admin/class-media-page.php:62
+msgid "Shows a thumbnail column in post types with thumbnail support."
+msgstr ""
+"Muestra una columna con las miniaturas en post types con soporte para "
+"miniaturas."
+
+#: src/includes/admin/class-media-page.php:125
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: src/includes/admin/class-security-page.php:52
 msgid ""
 "This is not intended to be an exhaustive solution of security settings on "
 "your site, they are the most common solutions for development and testing "
@@ -58,41 +77,41 @@ msgstr ""
 "prueba, encarecidamente recomendamos el uso de herramientas y medidas de "
 "seguridad adicionales para mantener su sitio seguro."
 
-#: ../includes/admin/class-security-page.php:74
+#: src/includes/admin/class-security-page.php:74
 msgid "Security"
 msgstr "Seguridad"
 
-#: ../includes/admin/class-security-page.php:85
+#: src/includes/admin/class-security-page.php:85
 msgid "General"
 msgstr "General"
 
-#: ../includes/admin/class-security-page.php:90
+#: src/includes/admin/class-security-page.php:90
 msgid "Disable the Plugin and Theme Editor"
 msgstr "Deshabilitar el editor para temas y plugins"
 
-#: ../includes/admin/class-security-page.php:106
+#: src/includes/admin/class-security-page.php:106
 msgid "Header"
 msgstr "Encabezado"
 
-#: ../includes/admin/class-security-page.php:111
+#: src/includes/admin/class-security-page.php:111
 msgid "Remove WordPress version number"
 msgstr "Eliminar el número de versión de WordPress"
 
-#: ../includes/admin/class-security-page.php:115
+#: src/includes/admin/class-security-page.php:115
 msgid "Remove the EditURI/RSD link from your header"
 msgstr "Elimina el enlace EditURI/RSD del encabezado"
 
-#: ../includes/admin/class-security-page.php:116
+#: src/includes/admin/class-security-page.php:116
 msgid "This option also removes the <b>Windows Live Writer</b> manifest link."
 msgstr ""
 "Esta opción también elimina el enlace al manifiesto de <b>Windows Live "
 "Writer</b>."
 
-#: ../includes/admin/class-security-page.php:137
+#: src/includes/admin/class-security-page.php:137
 msgid "Disable XML-RPC Pingback"
 msgstr "Desactivar Pingback XML-RPC"
 
-#: ../includes/admin/class-security-page.php:138
+#: src/includes/admin/class-security-page.php:138
 msgid ""
 "If you uses XML-RPC in your theme/plugin check this for disable only "
 "pingback method."
@@ -100,11 +119,11 @@ msgstr ""
 "Si usas XML-RPC en tu tema/plugin marca esto para desactivar solo el método "
 "de pingback."
 
-#: ../includes/admin/class-security-page.php:142
+#: src/includes/admin/class-security-page.php:142
 msgid "Completely disable XML-RPC"
 msgstr "Desactivar XML-RPC completamente"
 
-#: ../includes/admin/class-security-page.php:143
+#: src/includes/admin/class-security-page.php:143
 #, php-format
 msgid ""
 "This setting implies the <b>Disable XML-RPC Pingback</b> and <b>Remove "
@@ -114,165 +133,169 @@ msgstr ""
 "<b>Eliminar el enlace EditURI</b>. <a href=\"%s\" target=\"_blank\"> Más "
 "información </a>."
 
-#: ../includes/admin/class-security-page.php:175
+#: src/includes/admin/class-security-page.php:175
 msgid "Hide Toolbar"
 msgstr "Ocultar barra de herramientas"
 
-#: ../includes/admin/class-security-page.php:178
+#: src/includes/admin/class-security-page.php:178
 msgid "Hides the toolbar to user roles when viewing site."
 msgstr "Oculta la barra de herramientas a roles de usuario al ver el sitio."
 
-#: ../includes/admin/class-security-page.php:212
+#: src/includes/admin/class-security-page.php:212
 msgid "Disable Dashboard"
 msgstr "Deshabilitar escritorio"
 
-#: ../includes/admin/class-security-page.php:215
+#: src/includes/admin/class-security-page.php:215
 msgid "Disable access to the dashboard to user roles."
 msgstr "Deshabilita el acceso al escritorio a los roles de usuario."
 
-#: ../includes/admin/class-security-page.php:232
+#: src/includes/admin/class-security-page.php:232
 msgid "Disable directory index"
 msgstr "Deshabilitar índice de directorio"
 
-#: ../includes/admin/class-security-page.php:236
+#: src/includes/admin/class-security-page.php:236
 msgid "Disable CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK methods"
 msgstr "Deshabilitar los métodos CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK"
 
-#: ../includes/admin/class-security-page.php:240
+#: src/includes/admin/class-security-page.php:240
 msgid "Block unsafe query strings"
 msgstr "Bloquear cadenas de consulta inseguras"
 
-#: ../includes/admin/class-security-page.php:244
+#: src/includes/admin/class-security-page.php:244
 msgid "Block unsafe request strings"
 msgstr "Bloquear cadenas de solicitud inseguras"
 
-#: ../includes/admin/class-security-page.php:248
+#: src/includes/admin/class-security-page.php:248
 msgid "Block direct access to critical files"
 msgstr "Bloquear el acceso directo a archivos críticos"
 
-#: ../includes/admin/class-security-page.php:252
+#: src/includes/admin/class-security-page.php:252
 msgid "Block user enumeration"
 msgstr "Bloquea la enumeración de usuarios"
 
-#: ../includes/admin/class-security-page.php:263
+#: src/includes/admin/class-security-page.php:263
 msgid "This option requires regenerate permalinks"
 msgstr "Esta opción requiere regenerar los enlaces permanentes"
 
-#: ../includes/admin/class-theme-customizer.php:50
+#: src/includes/admin/class-theme-customizer.php:56
 msgid "Development"
 msgstr "Desarrollo"
 
-#: ../includes/admin/class-theme-customizer.php:54
+#: src/includes/admin/class-theme-customizer.php:60
 msgid "Bootstrap 4.x Breakpoint Helper"
 msgstr ""
 
-#: ../includes/admin/class-theme-customizer.php:72
+#: src/includes/admin/class-theme-customizer.php:78
 msgid "Login Page"
-msgstr ""
+msgstr "Página de inicio de sesión"
 
-#: ../includes/admin/class-theme-customizer.php:79
-msgid "Background image"
-msgstr "Imagen de fondo"
-
-#: ../includes/admin/class-theme-customizer.php:88
+#: src/includes/admin/class-theme-customizer.php:85
 msgid "Background color"
 msgstr "Color de fondo"
 
-#: ../includes/admin/class-theme-customizer.php:97
+#: src/includes/admin/class-theme-customizer.php:94
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+#: src/includes/admin/class-theme-customizer.php:102
+msgid "Background position"
+msgstr "Posición del fondo"
+
+#: src/includes/admin/class-theme-customizer.php:117
 msgid "Font color"
 msgstr "Color de la fuente"
 
-#: ../includes/admin/class-theme-customizer.php:106
+#: src/includes/admin/class-theme-customizer.php:126
 msgid "Header image"
 msgstr "Imagen de cabecera"
 
-#: ../includes/admin/class-theme-customizer.php:109
-msgid "The custom header is centered and contained in a 320 x 60 pixels block"
+#: src/includes/admin/class-theme-customizer.php:129
+msgid "The custom header is centered and contained in a 320 x 84 pixels block"
 msgstr ""
 "El encabezado personalizado está centrado y contenido en un bloque de 320 x "
 "60 píxeles"
 
-#: ../includes/admin/class-theme-customizer.php:115
-msgid "Link URL"
-msgstr "URL del enlace"
+#: src/includes/admin/class-theme-customizer.php:135
+msgid "Header URL"
+msgstr "URL del encabezado"
 
-#: ../includes/admin/class-theme-customizer.php:123
-msgid "Link Caption"
-msgstr "Caption del enlace"
+#: src/includes/admin/class-theme-customizer.php:143
+msgid "Header Title"
+msgstr "Título del encabezado"
 
-#: ../includes/ajax/class-user-actions.php:57
+#: src/includes/ajax/class-user-actions.php:57
 msgid "Password successfully updated."
 msgstr "Contraseña actualizada correctamente."
 
-#: ../includes/ajax/class-user-actions.php:94
+#: src/includes/ajax/class-user-actions.php:94
 msgid "Your username or password are incorrect."
 msgstr "Tu usuario o contraseña son incorrectos."
 
-#: ../includes/ajax/class-user-actions.php:99
+#: src/includes/ajax/class-user-actions.php:99
 msgid "You have successfully logged in."
 msgstr "Has iniciado sesión correctamente."
 
-#: ../includes/core/class-assets.php:410
+#: src/includes/core/class-assets.php:343
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: ../includes/core/class-assets.php:411
+#: src/includes/core/class-assets.php:344
 msgid "Fail!"
 msgstr "¡Falló!"
 
-#: ../includes/core/class-assets.php:412
+#: src/includes/core/class-assets.php:345
 msgid "Error!"
 msgstr "¡Error!"
 
-#: ../includes/core/class-assets.php:413
+#: src/includes/core/class-assets.php:346
 msgid "Send"
 msgstr "Enviar"
 
-#: ../includes/core/class-assets.php:414
+#: src/includes/core/class-assets.php:347
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../includes/core/class-assets.php:415
+#: src/includes/core/class-assets.php:348
 msgid "Submiting..."
 msgstr "Enviando..."
 
-#: ../includes/core/class-assets.php:416
+#: src/includes/core/class-assets.php:349
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: ../includes/core/class-assets.php:417
+#: src/includes/core/class-assets.php:350
 msgid "Sent!"
 msgstr "¡Enviado!"
 
-#: ../includes/core/class-cron.php:64
+#: src/includes/core/class-cron.php:64
 msgid "Once weekly"
 msgstr "Una vez a la semana"
 
-#: ../includes/core/class-cron.php:68
+#: src/includes/core/class-cron.php:68
 msgid "Once monthly"
 msgstr "Una vez al mes"
 
-#: ../includes/core/class-error-message.php:32
+#: src/includes/core/class-error-message.php:32
 msgid "This action isn't supported."
 msgstr "Esta acción no esta soportada."
 
-#: ../includes/core/class-error-message.php:43
+#: src/includes/core/class-error-message.php:43
 msgid "This action is disabled."
 msgstr "Esta acción esta deshabilitada."
 
-#: ../includes/core/class-error-message.php:54
+#: src/includes/core/class-error-message.php:54
 msgid "You must logged in to perform this action."
 msgstr "Debes iniciar sesión para realizar esta acción."
 
-#: ../includes/core/class-error-message.php:65
+#: src/includes/core/class-error-message.php:65
 msgid "You are not authorized to perform this action."
 msgstr "Debes iniciar sesión para realizar esta acción."
 
-#: ../includes/core/class-error-message.php:76
+#: src/includes/core/class-error-message.php:76
 msgid "The data that you entered is invalid."
 msgstr "Los datos ingresados son inválidos."
 
-#: ../includes/core/class-textdomain.php:38
+#: src/includes/core/class-textdomain.php:38
 msgid ""
 "An extensible object-oriented micro-framework for WordPress that helps you "
 "to develop themes and plugins."
@@ -280,26 +303,34 @@ msgstr ""
 "Un micro-framework extensible orientado a objetos para WordPress que te "
 "ayuda a desarrollar temas y complementos."
 
-#: ../includes/data/class-post.php:49
+#: src/includes/data/class-post.php:49
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (Copia)"
 
-#: ../includes/template/class-form.php:215
+#: src/includes/template/class-form.php:213
 msgid "Select..."
 msgstr "Seleccione..."
 
-#: ../includes/vendor/bootstrap4/class-alert.php:214
+#: src/includes/vendor/bootstrap4/class-alert.php:214
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../includes/vendor/bootstrap4/class-nav-walker.php:301
+#: src/includes/vendor/bootstrap4/class-nav-walker.php:301
 msgid "Add a menu"
-msgstr ""
+msgstr "Agrega un menú"
 
-#: ../source-framework.php:110
-msgid "SourceFramework requires PHP version 5.4 or later."
-msgstr "SourceFramework requiere PHP versión 5.4 o superior."
+#~ msgid ""
+#~ "The custom header is centered and contained in a 320 x 60 pixels block"
+#~ msgstr ""
+#~ "El encabezado personalizado está centrado y contenido en un bloque de 320 "
+#~ "x 60 píxeles"
+
+#~ msgid "Link URL"
+#~ msgstr "URL del enlace"
+
+#~ msgid "Link Caption"
+#~ msgstr "Caption del enlace"
 
 #~ msgid "Hides the admin bar to user roles."
 #~ msgstr "Oculta la barra de administración a los roles de usuario."

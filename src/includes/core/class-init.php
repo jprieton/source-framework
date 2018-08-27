@@ -11,6 +11,7 @@ use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
 use SourceFramework\Admin\Advanced_Page;
+use SourceFramework\Admin\Media_Page;
 use SourceFramework\Admin\Theme_Customizer;
 use SourceFramework\Admin\Theme_Customizer_Login;
 
@@ -82,6 +83,7 @@ final class Init extends Singleton {
   public function add_admin_pages() {
     new Advanced_Page();
     new Security_Page();
+    new Media_Page();
   }
 
   /**
