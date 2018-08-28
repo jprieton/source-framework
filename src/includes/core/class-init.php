@@ -12,6 +12,7 @@ use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
 use SourceFramework\Admin\Advanced_Page;
 use SourceFramework\Admin\Media_Page;
+use SourceFramework\Admin\Featured_Post;
 use SourceFramework\Admin\Theme_Customizer;
 use SourceFramework\Admin\Theme_Customizer_Login;
 
@@ -84,6 +85,7 @@ final class Init extends Singleton {
     new Advanced_Page();
     new Security_Page();
     new Media_Page();
+    new Featured_Post();
   }
 
   /**

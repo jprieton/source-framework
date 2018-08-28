@@ -55,6 +55,7 @@ final class Advanced_Page extends Settings_Page {
 
     add_action( 'admin_menu', [ $this, 'add_advanced_page' ] );
     add_action( 'admin_init', [ $this, 'add_cdn_settings_section' ] );
+    add_action( 'admin_init', [ $this, 'add_post_settings_section' ] );
   }
 
   /**
@@ -91,6 +92,27 @@ final class Advanced_Page extends Settings_Page {
     ];
 
     $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-advanced-cdn', $fields );
+  }
+
+  /**
+   *
+   * @since 2.0.0
+   */
+  public function add_post_settings_section() {
+    $this->add_settings_section( 'section-advanced-post' );
+
+    $fields = [
+        'title'   => __( 'Featured', SF_TEXTDOMAIN ),
+        'type'    => 'checkbox',
+        'options' => [
+            [
+                'id'    => 'featured-posts-enabled',
+                'label' => __( 'Enable the featured capability for post, pages and custom post types', SF_TEXTDOMAIN ),
+            ],
+        ],
+    ];
+
+    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-advanced-post', $fields );
   }
 
 }
