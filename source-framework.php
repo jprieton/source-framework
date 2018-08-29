@@ -45,7 +45,7 @@ define( 'SF_TEXTDOMAIN', 'source-framework' );
 if ( file_exists( plugin_dir_path( SF_FILENAME ) . 'source-framework.phar' ) ) {
   $abspath = 'phar://' . plugin_dir_path( SF_FILENAME ) . 'source-framework.phar';
 } else {
-  $abspath = plugin_dir_path( SF_FILENAME ) . 'src/includes';
+  $abspath = plugin_dir_path( SF_FILENAME ) . 'includes';
 }
 
 /**

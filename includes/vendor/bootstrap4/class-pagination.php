@@ -31,6 +31,12 @@ class Pagination {
    * @return  string
    */
   public static function get_paginate_links( $args = [] ) {
+    $defaults = [
+        'class' => '',
+    ];
+    $args     = wp_parse_args( $args, $defaults );
+
+    // Avoid overrides the default type
     $args['type'] = 'array';
 
     $links = paginate_links( $args );
@@ -52,7 +58,9 @@ class Pagination {
     }
     unset( $link );
 
-    return implode( "\n", $links );
+    return Html::tag( 'ul', implode( "\n", $links ), [
+                'class' => $args['class'],
+            ] );
   }
 
 }
