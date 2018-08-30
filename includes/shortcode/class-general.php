@@ -35,15 +35,12 @@ class General {
    * @return string
    */
   public static function mailto( $attributes, $content = null ) {
+    $defaults   = [ 'href' => '' ];
+    $attributes = wp_parse_args( $attributes, $defaults );
+
     if ( is_email( $content ) ) {
       $attributes['href'] = $content;
     }
-
-    $defaults = [
-        'href' => ''
-    ];
-
-    $attributes = wp_parse_args( $attributes, $defaults );
 
     if ( empty( $attributes['href'] ) ) {
       return '';
