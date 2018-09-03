@@ -1,14 +1,14 @@
 <?php
 
-namespace SMGTools\Admin;
+namespace SourceFramework\Admin;
 
 // If this file is called directly, abort.
 if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SMGTools\Template\Html;
-use SMGTools\Settings\Settings_Group;
+use SourceFramework\Template\Html;
+use SourceFramework\Settings\Settings_Group;
 use WP_Error;
 
 /**
@@ -118,7 +118,7 @@ class Featured_Post {
   public static function manage_columns( $posts_columns ) {
     $new = array(
         'cb'       => $posts_columns['cb'],
-        'featured' => '<span class="dashicons dashicons-star-filled" title="' . __( 'Featured', SMGTOOLS_TEXTDOMAIN ) . '"><span class="screen-reader-text">' . __( 'Featured', SMGTOOLS_TEXTDOMAIN ) . '</span></span>'
+        'featured' => '<span class="dashicons dashicons-star-filled" title="' . __( 'Featured', SF_TEXTDOMAIN ) . '"><span class="screen-reader-text">' . __( 'Featured', SF_TEXTDOMAIN ) . '</span></span>'
     );
 
     $posts_columns = array_merge( $new, $posts_columns );
@@ -137,21 +137,21 @@ class Featured_Post {
     }
 
     if ( !is_admin() ) {
-      $error = new WP_Error( 'unauthorized', __( 'You are not authorized to perform this action.', SMGTOOLS_TEXTDOMAIN ), $data );
+      $error = new WP_Error( 'unauthorized', __( 'You are not authorized to perform this action.', SF_TEXTDOMAIN ), $data );
       wp_send_json_error( $error );
     }
 
     $post_id = (int) filter_input( INPUT_POST, 'post_id', FILTER_SANITIZE_NUMBER_INT );
 
     if ( empty( $post_id ) ) {
-      $error = new WP_Error( 'invalid_data', __( 'The data that you entered is invalid.', SMGTOOLS_TEXTDOMAIN ), $data );
+      $error = new WP_Error( 'invalid_data', __( 'The data that you entered is invalid.', SF_TEXTDOMAIN ), $data );
       wp_send_json_error( $error );
     }
 
     $post = get_post( $post_id );
 
     if ( empty( $post ) ) {
-      $error = new WP_Error( 'invalid_data', __( 'The data that you entered is invalid.', SMGTOOLS_TEXTDOMAIN ), $data );
+      $error = new WP_Error( 'invalid_data', __( 'The data that you entered is invalid.', SF_TEXTDOMAIN ), $data );
       wp_send_json_error( $error );
     }
 

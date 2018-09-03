@@ -108,8 +108,12 @@ class Theme_Customizer_Login extends Singleton {
     if ( !empty( $custom_font_color ) ) {
       ?>
       <style type="text/css">
-        body.login #backtoblog a, body.login #nav a {
+        body.login #backtoblog a, body.login #nav a, body.login a.privacy-policy-link {
           color: <?php echo $custom_font_color ?>;
+          text-decoration: none;
+        }
+        body.login #backtoblog a:hover, body.login #nav a:hover, body.login a.privacy-policy-link:hover {
+          color: #00a0d2;
         }
       </style>
       <?php

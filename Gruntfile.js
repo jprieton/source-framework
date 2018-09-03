@@ -63,7 +63,7 @@ module.exports = function (grunt) {
         },
         files: [
           {
-            src: ['*.php', '*.phar', 'LICENSE', 'assets/**', 'languages/**', 'templates/**'],
+            src: ['source-framework.php', '*.phar', 'LICENSE', 'assets/**', 'languages/**', 'templates/**'],
             dest: 'source-framework/'
           }
         ]
@@ -85,5 +85,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task(s).
-  grunt.registerTask('build', ['cssmin:target', 'uglify:target', 'shell:build', 'compress:build']);
+  grunt.registerTask('build', ['cssmin:target', 'uglify:target', 'compress:build']);
 };
