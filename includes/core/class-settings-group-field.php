@@ -103,9 +103,9 @@ class Settings_Group_Field extends Settings_Group {
       unset( $field['default'] );
     }
 
-    if ( !empty( $this->setting_group ) ) {
-      $field['name']  = sprintf( "{$this->setting_group->setting_group_name}[%s]", $field['id'] );
-      $field['value'] = $this->setting_group->get_option( $field['id'], $default_value );
+    if ( !empty( $this->setting_group_name ) ) {
+      $field['name']  = sprintf( "{$this->setting_group_name}[%s]", $field['id'] );
+      $field['value'] = $this->get_option( $field['id'], $default_value );
     } else {
       $field['name']  = $field['id'];
       $field['value'] = get_option( $field['id'], $default_value );

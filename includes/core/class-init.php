@@ -12,6 +12,7 @@ use SourceFramework\Core\Cron;
 use SourceFramework\Admin\Security_Page;
 use SourceFramework\Admin\Advanced_Page;
 use SourceFramework\Admin\Media_Page;
+use SourceFramework\Admin\Social_Page;
 use SourceFramework\Admin\Featured_Post;
 use SourceFramework\Admin\Theme_Customizer;
 use SourceFramework\Admin\Theme_Customizer_Login;
@@ -63,6 +64,9 @@ final class Init extends Singleton {
     // Initialize admin menus
     add_action( 'init', [ $this, 'add_admin_pages' ] );
 
+    // Initialize social_networks
+    add_filter( 'social_networks', [ $this, 'social_networks' ], 0 );
+
     // Add theme supports
     add_action( 'after_setup_theme', [ $this, 'add_theme_supports' ], 25 );
 
@@ -82,10 +86,12 @@ final class Init extends Singleton {
    * @since   2.0.0
    */
   public function add_admin_pages() {
-    new Advanced_Page();
-    new Security_Page();
     new Media_Page();
     new Featured_Post();
+
+    new Advanced_Page();
+    new Social_Page();
+    new Security_Page();
   }
 
   /**
@@ -123,6 +129,31 @@ final class Init extends Singleton {
     if ( get_theme_mod( 'bootstrap_breakpoint_helper', false ) ) {
       include_once SF_ABSPATH . '/partials/bootstrap-breakpoint-helper.php';
     }
+  }
+
+  /**
+   * Default social networks
+   *
+   * @since     1.0.0
+   *
+   * @return    array
+   */
+  public function social_networks( $networks = [] ) {
+    $new_networks = [
+        'social-email'       => 'Email',
+        'social-facebook'    => 'Facebook',
+        'social-dribbble'    => 'Dribble',
+        'social-google-plus' => 'Google+',
+        'social-instagram'   => 'Instagram',
+        'social-linkedin'    => 'LinkedIn',
+        'social-pinterest'   => 'Pinterest',
+        'social-rss'         => 'RSS',
+        'social-skype'       => 'Skype',
+        'social-twitter'     => 'Twitter',
+        'social-yelp'        => 'Yelp',
+        'social-youtube'     => 'YouTube',
+    ];
+    return array_merge( $new_networks, $networks );
   }
 
 }
