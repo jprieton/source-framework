@@ -100,13 +100,13 @@ class Rest_Api_Client {
    */
   public function get_endpoint( $endpoint, $params = [], $args = [], $transient_name = '' ) {
     $args   = wp_parse_args( $args, $this->default_args );
-    $params = wp_parse_args( $args, $this->default_params );
+    $params = wp_parse_args( $params, $this->default_params );
 
     $response = get_transient( $transient_name ?: "{$this->transient_name}_{$endpoint}" );
 
     // If empty the transient cache make a new request to remote API
     if ( empty( $response ) && !empty( $this->api_base_url ) ) {
-      $args['body'] = http_build_query( $params );
+      $args['body'] =  $params ;
 
       switch ( $args['method'] ) {
         case 'GET':
