@@ -1,3 +1,0 @@
-- Like/Dislike
-- Reactions
-- Favorite posts
