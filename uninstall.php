@@ -9,9 +9,6 @@
  * @since       1.3.0
  */
 
-// If this file is called directly, abort.
-if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 // TODO: Define uninstall functionality

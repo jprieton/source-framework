@@ -2,10 +2,7 @@
 
 namespace SourceFramework\Template;
 
-// If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Html class
@@ -134,7 +131,7 @@ class Html {
    *
    * @return  string
    */
-  public static function img( $src, $attributes = [] ) {
+  public static function img( $src = '', $attributes = [] ) {
     if ( empty( $src ) && !empty( $attributes['src'] ) ) {
       $src = $attributes['src'];
     }
@@ -159,7 +156,7 @@ class Html {
       $src         = 'http://via.placeholder.com/';
 
       if ( count( $params ) == 1 ) {
-        $params[] = 'thumbnail';
+        $params[] = static::$image_sizes[0];
       }
 
       if ( in_array( $params[1], static::$image_sizes ) ) {
@@ -169,7 +166,15 @@ class Html {
         ];
         $_attributes = array_merge( $size, $_attributes );
         $params[1]   = implode( 'x', $size );
+      } else {
+        $size        = explode( 'x', $params[1] );
+        $size        = [
+            'width'  => $size[0],
+            'heignt' => $size[1],
+        ];
+        $_attributes = array_merge( $size, $_attributes );
       }
+
       $attributes = wp_parse_args( $attributes, $_attributes );
       $src        .= $params[1];
     }
@@ -287,8 +292,8 @@ class Html {
       return '';
     }
 
-    $content  = $content ?: antispambot( $email );
-    $email = antispambot( 'mailto:' . $email );
+    $content = $content ?: antispambot( $email );
+    $email   = antispambot( 'mailto:' . $email );
 
     $defaults   = [
         'href' => $email,

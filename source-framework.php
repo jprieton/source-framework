@@ -26,7 +26,6 @@
  * @package SourceFramework
  */
 
-// If this file is called directly, abort.
 defined( 'ABSPATH' ) || exit;
 
 /**

@@ -2,14 +2,10 @@
 
 namespace SourceFramework\Shortcode;
 
-/**
- * If this file is called directly, abort.
- */
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
-use SourceFramework\Template\Html;
+use SMGTools\Template\Html;
+use SMGTools\Settings\Settings_Group;
 
 /**
  * General shortcode class
@@ -54,6 +50,48 @@ class General {
     }
 
     return Html::mailto( $email, $content, $attributes );
+  }
+
+  /**
+   * Adds a list with the social media links
+   * 
+   * @since 2.1.0
+   * 
+   * @param  type $attributes
+   * @return type
+   */
+  public static function social_links( $attributes = [] ) {
+    $defaults   = [ 'class' => '' ];
+    $attributes = wp_parse_args( $attributes, $defaults );
+
+    if ( !empty( $attributes['class'] ) ) {
+      $attributes['class'] .= ' social-links-container';
+    } else {
+      $attributes['class'] = 'social-links-container';
+    }
+
+    $social_links = apply_filters( 'social_networks', [] );
+    $settings     = new Settings_Group( 'social_links' );
+
+    $links = [];
+
+    foreach ( $social_links as $key => $label ) {
+      $link = $settings->get_option( $key );
+
+      if ( empty( $link ) ) {
+        continue;
+      }
+
+      $links[] = Html::a( $link, Html::span( $label ), [ 'class' => "social-link {$key}" ] );
+    }
+
+    if ( empty( $links ) ) {
+      return '';
+    }
+
+    $html = apply_filters( 'social_links_shortcode', Html::ul( $links, $attributes ), $social_links, $settings );
+
+    return $html;
   }
 
 }

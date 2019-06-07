@@ -2,10 +2,7 @@
 
 namespace SourceFramework\Template;
 
-// If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
 use SourceFramework\Template\Html;
 use WP_Locale;
