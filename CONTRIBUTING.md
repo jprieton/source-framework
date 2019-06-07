@@ -14,6 +14,6 @@ Be sure to include a description of the expected behavior and use case, and befo
 
 - **Ensure you stick to the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/)**
 - When committing, reference your issue number (#1234) and include a note about the fix.
-- Ensure that your code is compatible with PHP 5.4+.
+- Ensure that your code is compatible with PHP 5.6+.
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 
