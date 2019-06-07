@@ -2,12 +2,7 @@
 
 namespace SourceFramework\Core;
 
-// If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
-
-use SourceFramework\Abstracts\Singleton;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Cron class
@@ -17,15 +12,14 @@ use SourceFramework\Abstracts\Singleton;
  * @since          1.5.0
  * @author         Javier Prieto
  */
-final class Cron extends Singleton {
+final class Cron {
 
   /**
-   * Static instance of this class
-   *
-   * @since     1.5.0
-   * @var       Cron
+   * Adds Singleton methods and properties
+   * 
+   * @since     2.0.0
    */
-  protected static $instance;
+  use Traits\Singleton;
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -33,8 +27,6 @@ final class Cron extends Singleton {
    * @since     1.5.0
    */
   protected function __construct() {
-    parent::__construct();
-
     // Adds non-default cron schedules
     add_filter( 'cron_schedules', [ $this, 'add_cron_schedules' ] );
 

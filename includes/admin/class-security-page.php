@@ -2,12 +2,7 @@
 
 namespace SourceFramework\Admin;
 
-/**
- * If this file is called directly, abort.
- */
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
 use SourceFramework\Abstracts\Settings_Page;
 use SourceFramework\Settings\Settings_Group_Field;
@@ -23,24 +18,11 @@ use SourceFramework\Settings\Settings_Group_Field;
 final class Security_Page extends Settings_Page {
 
   /**
-   * Option group
-   * @since   1.0.0
-   * @var     string
+   * Adds Settings_Page methods and properties
+   * 
+   * @since     2.0.0
    */
-  protected $option_group = '';
-
-  /**
-   * Option group
-   * @since   1.0.0
-   * @var     string
-   */
-  protected $option_page = '';
-
-  /**
-   *
-   * @var Settings_Group_Field
-   */
-  private $settings_group_field;
+  use Traits\Settings_Page;
 
   /**
    * Constructor
@@ -48,8 +30,8 @@ final class Security_Page extends Settings_Page {
    * @since 2.0.0
    */
   public function __construct() {
-    $this->option_page          = 'security-options';
-    $this->option_group         = 'security-options';
+    $this->option_page          = 'security_options';
+    $this->option_group         = 'security_options';
     $this->option_name          = 'security_options';
     $this->page_description     = __( 'This is not intended to be an exhaustive solution of security settings on your site, '
             . 'they are the most common solutions for development and testing environments, '
@@ -64,7 +46,6 @@ final class Security_Page extends Settings_Page {
     add_action( 'admin_init', [ $this, 'add_xmlrpc_settings_section' ] );
     add_action( 'admin_init', [ $this, 'add_admin_bar_settings_section' ] );
     add_action( 'admin_init', [ $this, 'add_dashboard_settings_section' ] );
-    add_action( 'admin_init', [ $this, 'add_htaccess_settings_section' ] );
   }
 
   /**
@@ -220,53 +201,6 @@ final class Security_Page extends Settings_Page {
     );
 
     $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-dashboard', $fields );
-  }
-
-  /**
-   *
-   * @since 2.0.0
-   */
-  public function add_htaccess_settings_section() {
-    $this->add_settings_section( 'section-security-htaccess' );
-
-    $options = [
-        [
-            'label' => __( 'Disable directory index', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-disable-indexes',
-        ],
-        [
-            'label' => __( 'Disable CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK methods', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-block-request-methods',
-        ],
-        [
-            'label' => __( 'Block unsafe query strings', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-block-query-strings',
-        ],
-        [
-            'label' => __( 'Block unsafe request strings', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-block-request-strings',
-        ],
-        [
-            'label' => __( 'Block direct access to critical files', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-block-direct-access',
-        ],
-        [
-            'label' => __( 'Block user enumeration', SF_TEXTDOMAIN ),
-            'id'    => 'htaccess-block-user-enumeration',
-        ],
-    ];
-
-    unset( $options['administrator'] );
-
-    $fields = array(
-        'title'   => '.htaccess',
-        'type'    => 'checkbox',
-        'id'      => 'htaccess-settings',
-        'desc'    => __( 'This option requires regenerate permalinks', SF_TEXTDOMAIN ),
-        'options' => $options,
-    );
-
-    $this->settings_group_field->add_settings_field( $this->submenu_slug, 'section-security-htaccess', $fields );
   }
 
 }

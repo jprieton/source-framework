@@ -4,12 +4,17 @@ namespace SourceFramework\Core\Traits;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Singleton trait
+ * 
+ * @since     2.0.0
+ */
 trait Singleton {
 
   /**
    * Single instance of this class
    *
-   * @since     1.0.0
+   * @since     2.0.0
    * @var       self
    */
   protected static $instance;
@@ -18,7 +23,7 @@ trait Singleton {
    * Main instance
    * Ensures only one instance of this class is loaded or can be loaded.
    *
-   * @since   1.0.0
+   * @since   2.0.0
    * @static
    */
   public static function get_instance() {
@@ -31,7 +36,7 @@ trait Singleton {
   /**
    * Declared as private to prevent cloning of an instance of the class via the clone operator.
    *
-   * @since   1.0.0
+   * @since   2.0.0
    */
   private function __clone() {
     
@@ -40,7 +45,7 @@ trait Singleton {
   /**
    * Declared as private to prevent unserializing of an instance of the class via the global function unserialize().
    *
-   * @since   1.0.0
+   * @since   2.0.0
    */
   private function __wakeup() {
     
@@ -49,7 +54,7 @@ trait Singleton {
   /**
    * Declared as protected to prevent serializg of an instance of the class via the global function serialize().
    *
-   * @since   1.0.0
+   * @since   2.0.0
    */
   protected function __sleep() {
     
@@ -58,7 +63,7 @@ trait Singleton {
   /**
    * PHP5 style destructor and will run when object is destroyed.
    *
-   * @since   1.0.0
+   * @since   2.0.0
    */
   public function __destruct() {
     self::$instance = null;

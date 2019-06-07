@@ -7,7 +7,6 @@ if ( !defined( 'ABSPATH' ) ) {
   die( 'Direct access is forbidden.' );
 }
 
-use SourceFramework\Abstracts\Singleton;
 use WP_Customize_Manager;
 use WP_Customize_Color_Control;
 use WP_Customize_Image_Control;
@@ -20,15 +19,14 @@ use WP_Customize_Image_Control;
  * @since          2.0.0
  * @author         Javier Prieto
  */
-class Theme_Customizer extends Singleton {
+class Theme_Customizer {
 
   /**
-   * Single instance of this class
-   *
+   * Adds Singleton methods and properties
+   * 
    * @since     2.0.0
-   * @var       Theme_Customizer
    */
-  protected static $instance;
+  use \SourceFramework\Core\Traits\Singleton;
 
   /**
    * Class constructor
@@ -37,8 +35,6 @@ class Theme_Customizer extends Singleton {
    * @since   2.0.0
    */
   protected function __construct() {
-    parent::__construct();
-
     add_action( 'customize_register', [ $this, 'login_page' ] );
     add_action( 'customize_register', [ $this, 'development' ] );
   }
@@ -51,15 +47,15 @@ class Theme_Customizer extends Singleton {
    * @param WP_Customize_Manager $wp_customize
    */
   public function development( $wp_customize ) {
-    $wp_customize->add_setting( 'bootstrap_breakpoint_helper' );
+    $wp_customize->add_setting( 'breakpoint_helper' );
     $wp_customize->add_section( 'development_customizer_section', [
         'title'    => __( 'Development', SF_TEXTDOMAIN ),
         'priority' => 1000,
     ] );
     $wp_customize->add_control( 'bootstrap-helper', [
-        'label'    => __( 'Bootstrap 4.x Breakpoint Helper', SF_TEXTDOMAIN ),
+        'label'    => __( 'Breakpoint Helper', SF_TEXTDOMAIN ),
         'section'  => 'development_customizer_section',
-        'settings' => 'bootstrap_breakpoint_helper',
+        'settings' => 'breakpoint_helper',
         'type'     => 'checkbox',
     ] );
   }
@@ -82,19 +78,19 @@ class Theme_Customizer extends Singleton {
     $wp_customize->add_setting( 'login_background_color', [ 'default' => '#f1f1f1', ] );
     $wp_customize->add_control(
             new WP_Customize_Color_Control( $wp_customize, 'login_background_color', [
-        'label'    => __( 'Background color', SF_TEXTDOMAIN ),
-        'section'  => $section_id,
-        'settings' => 'login_background_color',
-            ] )
+                'label'    => __( 'Background color', SF_TEXTDOMAIN ),
+                'section'  => $section_id,
+                'settings' => 'login_background_color',
+                    ] )
     );
 
     $wp_customize->add_setting( 'login_background_image' );
     $wp_customize->add_control(
             new WP_Customize_Image_Control( $wp_customize, 'login_background_image', [
-        'label'    => __( 'Background image', SF_TEXTDOMAIN ),
-        'section'  => $section_id,
-        'settings' => 'login_background_image',
-            ] )
+                'label'    => __( 'Background image', SF_TEXTDOMAIN ),
+                'section'  => $section_id,
+                'settings' => 'login_background_image',
+                    ] )
     );
 
     $wp_customize->add_setting( 'login_background_position' );
@@ -114,20 +110,20 @@ class Theme_Customizer extends Singleton {
     $wp_customize->add_setting( 'login_font_color', [ 'default' => '#555d66', ] );
     $wp_customize->add_control(
             new WP_Customize_Color_Control( $wp_customize, 'login_font_color', [
-        'label'    => __( 'Font color', SF_TEXTDOMAIN ),
-        'section'  => $section_id,
-        'settings' => 'login_font_color',
-            ] )
+                'label'    => __( 'Font color', SF_TEXTDOMAIN ),
+                'section'  => $section_id,
+                'settings' => 'login_font_color',
+                    ] )
     );
 
     $wp_customize->add_setting( 'login_header_image' );
     $wp_customize->add_control(
             new WP_Customize_Image_Control( $wp_customize, 'login_header_image', [
-        'label'       => __( 'Header image', SF_TEXTDOMAIN ),
-        'section'     => $section_id,
-        'settings'    => 'login_header_image',
-        'description' => __( 'The custom header is centered and contained in a 320 x 84 pixels block', SF_TEXTDOMAIN ),
-            ] )
+                'label'       => __( 'Header image', SF_TEXTDOMAIN ),
+                'section'     => $section_id,
+                'settings'    => 'login_header_image',
+                'description' => __( 'The custom header is centered and contained in a 320 x 84 pixels block', SF_TEXTDOMAIN ),
+                    ] )
     );
 
     $wp_customize->add_setting( 'login_header_url' );

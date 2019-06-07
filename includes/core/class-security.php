@@ -2,31 +2,26 @@
 
 namespace SourceFramework\Core;
 
-// If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
-use SourceFramework\Abstracts\Singleton;
 use SourceFramework\Settings\Settings_Group;
 
 /**
- * Assets class
+ * Security class
  *
  * @package        Core
- * @subpackage     Assets
+ * @subpackage     Security
  * @since          2.0.0
  * @author         Javier Prieto
  */
-class Security extends Singleton {
+class Security {
 
   /**
-   * Single instance of this class
-   *
-   * @since     1.0.0
-   * @var       Assets
+   * Adds Singleton methods and properties
+   * 
+   * @since     2.0.0
    */
-  protected static $instance;
+  use Traits\Singleton;
 
   /**
    * Declared as protected to prevent creating a new instance outside of the class via the new operator.
@@ -36,8 +31,6 @@ class Security extends Singleton {
    * @global    Settings_Group     $security_options
    */
   protected function __construct() {
-    parent::__construct();
-
     global $security_options;
 
     if ( empty( $security_options ) ) {

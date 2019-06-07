@@ -2,12 +2,7 @@
 
 namespace SourceFramework\Admin;
 
-/**
- * If this file is called directly, abort.
- */
-if ( !defined( 'ABSPATH' ) ) {
-  die( 'Direct access is forbidden.' );
-}
+defined( 'ABSPATH' ) || exit;
 
 use SourceFramework\Abstracts\Settings_Page;
 use SourceFramework\Settings\Settings_Group_Field;
@@ -23,24 +18,11 @@ use SourceFramework\Settings\Settings_Group_Field;
 final class Social_Page extends Settings_Page {
 
   /**
-   * Option group
-   * @since   1.0.0
-   * @var     string
+   * Adds Settings_Page methods and properties
+   * 
+   * @since     2.0.0
    */
-  protected $option_group = '';
-
-  /**
-   * Option group
-   * @since   1.0.0
-   * @var     string
-   */
-  protected $option_page = '';
-
-  /**
-   *
-   * @var Settings_Group_Field
-   */
-  private $settings_group_field;
+  use Traits\Settings_Page;
 
   /**
    * Constructor
@@ -48,8 +30,8 @@ final class Social_Page extends Settings_Page {
    * @since 1.0.0
    */
   public function __construct() {
-    $this->option_page          = 'social-links';
-    $this->option_group         = 'social-links';
+    $this->option_page          = 'social_links';
+    $this->option_group         = 'social_links';
     $this->option_name          = 'social_links';
     $this->settings_group_field = new Settings_Group_Field( $this->option_name );
 
