@@ -91,12 +91,12 @@ class TemplateTest extends WP_UnitTestCase {
     $this->assertEquals( Html::img( null, [ 'src' => 'pixel' ] ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
     $this->assertEquals( Html::img( 'pixel', [ 'src' => 'http://path.to/image.jpg' ] ), '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />' );
     // Placeholder
-    $this->assertEquals( Html::img( 'placeholder' ), '<img src="http://via.placeholder.com/150x150" alt="Placeholder" />' );
-    $this->assertEquals( Html::img( null, [ 'src' => 'placeholder' ] ), '<img src="http://via.placeholder.com/150x150" alt="Placeholder" />' );
+    $this->assertEquals( Html::img( 'placeholder' ), '<img src="http://via.placeholder.com/150x150" width="150" heignt="150" alt="Placeholder" />' );
+    $this->assertEquals( Html::img( null, [ 'src' => 'placeholder' ] ), '<img src="http://via.placeholder.com/150x150" width="150" heignt="150" alt="Placeholder" />' );
     $this->assertEquals( Html::img( 'placeholder:medium' ), '<img src="http://via.placeholder.com/300x300" width="300" heignt="300" alt="Placeholder" />' );
     $this->assertEquals( Html::img( null, [ 'src' => 'placeholder:medium' ] ), '<img src="http://via.placeholder.com/300x300" width="300" heignt="300" alt="Placeholder" />' );
-    $this->assertEquals( Html::img( 'placeholder:256x256' ), '<img src="http://via.placeholder.com/256x256" alt="Placeholder" />' );
-    $this->assertEquals( Html::img( null, [ 'src' => 'placeholder:256x256' ] ), '<img src="http://via.placeholder.com/256x256" alt="Placeholder" />' );
+    $this->assertEquals( Html::img( 'placeholder:256x256' ), '<img src="http://via.placeholder.com/256x256" width="256" heignt="256" alt="Placeholder" />' );
+    $this->assertEquals( Html::img( null, [ 'src' => 'placeholder:256x256' ] ), '<img src="http://via.placeholder.com/256x256" width="256" heignt="256" alt="Placeholder" />' );
     $this->assertEquals( Html::img( 'large', [ 'alt' => 'Test' ] ), '<img src="http://via.placeholder.com/1024x1024" width="1024" heignt="1024" alt="Test" />' );
     $this->assertEquals( Html::img( null, [ 'src' => 'large', 'alt' => 'Test' ] ), '<img src="http://via.placeholder.com/1024x1024" width="1024" heignt="1024" alt="Test" />' );
 
