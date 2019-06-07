@@ -1,7 +1,12 @@
 {
   "name": "source-framework",
-  "version": "2.0.0",
-  "description": "An extensible object-oriented micro-framework for WordPress that helps you to develop themes and plugins.",
+  "version": "2.2.0",
+  "description": "An extensible object-oriented tools for WordPress that helps you to develop themes and plugins.",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development --mode=development",
+    "watch": "cross-env NODE_ENV=development --mode=development; grunt watch",
+    "build": "cross-env NODE_ENV=production --mode=production; grunt build"
+  },
   "author": "Javier Prieto",
   "license": "GPL-3.0-or-later",
   "repository": {
@@ -9,12 +14,14 @@
     "url": "https://github.com/jprieton/source-framework.git"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-contrib-clean": "^1.1.0",
+    "cross-env": "^5.2.0",
+    "grunt": "^1.0.4",
     "grunt-contrib-compress": "^1.4.3",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-uglify": "^3.3.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-shell": "^2.1.0"
-  }
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "dependencies": {}
 }
